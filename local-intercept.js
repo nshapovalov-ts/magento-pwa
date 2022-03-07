@@ -17,6 +17,20 @@
  * or modify functionality from its dependencies.
  */
 
-function localIntercept() {}
+/**
+ * Added package to allow splitting targetables interceptors into separate files for each component
+ * To do this, create a local-intercept.js in the folder of each intercepted component
+ **/
+
+const { ExtendLocalIntercept } = require('@larsroettig/component-targetables');
+
+function localIntercept(targets) {
+    const { Targetables } = require('@magento/pwa-buildpack');
+    const targetables = Targetables.using(targets);
+
+    const extendLocalIntercept = new ExtendLocalIntercept(targetables);
+    extendLocalIntercept.allowCustomTargetables();
+    extendLocalIntercept.allowCssOverwrites();
+}
 
 module.exports = localIntercept;
