@@ -68,10 +68,11 @@
 
 /* Large screen styles */
 .toolbar {
-    composes: lg_h-20 from global;
     composes: lg_gap-x-8 from global;
     composes: lg_grid-cols-12 from global;
+    composes: md_grid-rows-2 from global;
     composes: lg_min-height-header from global;
+    composes: md_h-28 from global;
 }
 
 .logo {
@@ -103,6 +104,27 @@
     composes: lg_justify-self-start from global;
     composes: lg_mr-8 from global;
     composes: lg_row-start-1 from global;
+}
+
+.searchContainer {
+    composes: absolute grid from global;
+    composes: left-0 mt-24 from global;
+    composes: w-full from global;
+}
+
+/* >= 768 screen styles */
+.searchContainer {
+    composes: md_static from global;
+    composes: md_row-start-2 from global;
+    composes: md_mt-0 from global;
+    composes: md_col-span-3 from global;
+}
+
+/* >= 1024 screen styles */
+.searchContainer {
+    composes: lg_row-start-1 from global;
+    composes: lg_col-start-3 from global;
+    composes: lg_col-end-8 from global;
 }
 
 .secondaryActions {

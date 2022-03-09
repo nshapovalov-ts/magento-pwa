@@ -6,21 +6,19 @@ import Logo from '../Logo';
 import AccountTrigger from '@magento/venia-ui/lib/components/Header/accountTrigger';
 import CartTrigger from '@magento/venia-ui/lib/components/Header/cartTrigger';
 import NavTrigger from '@magento/venia-ui/lib/components/Header/navTrigger';
-import SearchTrigger from '@magento/venia-ui/lib/components/Header/searchTrigger';
+import SearchTrigger from './searchTrigger';
 import OnlineIndicator from '@magento/venia-ui/lib/components/Header/onlineIndicator';
 import { useHeader } from '@magento/peregrine/lib/talons/Header/useHeader';
 import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './header.module.css';
-import StoreSwitcher from '@magento/venia-ui/lib/components/Header/storeSwitcher';
-import CurrencySwitcher from '@magento/venia-ui/lib/components/Header/currencySwitcher';
-import MegaMenu from '@magento/venia-ui/lib/components/MegaMenu';
+// import StoreSwitcher from '@magento/venia-ui/lib/components/Header/storeSwitcher';
+// import CurrencySwitcher from '@magento/venia-ui/lib/components/Header/currencySwitcher';
+// import MegaMenu from '@magento/venia-ui/lib/components/MegaMenu';
 import PageLoadingIndicator from '@magento/venia-ui/lib/components/PageLoadingIndicator';
 
-const SearchBar = React.lazy(() =>
-    import('@magento/venia-ui/lib/components/SearchBar')
-);
+const SearchBar = React.lazy(() => import('../SearchBar'));
 
 const Header = props => {
     const {
@@ -42,13 +40,13 @@ const Header = props => {
             </div>
         </div>
     );
-    const searchBar = isSearchOpen ? (
+    const searchBar = (
         <Suspense fallback={searchBarFallback}>
             <Route>
                 <SearchBar isOpen={isSearchOpen} ref={searchRef} />
             </Route>
         </Suspense>
-    ) : null;
+    );
 
     return (
         <Fragment>
@@ -71,7 +69,9 @@ const Header = props => {
                     >
                         <Logo classes={{ logo: classes.logo }} />
                     </Link>
-                    <MegaMenu />
+                    {/* <MegaMenu /> */}
+                    <div className={classes.searchContainer}>{searchBar}</div>
+
                     <div className={classes.secondaryActions}>
                         <SearchTrigger
                             onClick={handleSearchTriggerClick}
@@ -82,7 +82,6 @@ const Header = props => {
                         <NavTrigger />
                     </div>
                 </div>
-                {searchBar}
                 <PageLoadingIndicator absolute />
             </header>
         </Fragment>
