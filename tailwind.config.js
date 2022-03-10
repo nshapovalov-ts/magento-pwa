@@ -1,9 +1,9 @@
-const venia = require('@magento/pwa-theme-venia');
+const tradesquare = require('./src/pwa-theme-tradesquare');
 
 const config = {
     mode: 'jit',
     // Include your custom theme here.
-    presets: [venia],
+    presets: [tradesquare],
     // Configure how Tailwind statically analyzes your code here.
     // Note that the Tailwind's `jit` mode doesn't actually use PurgeCSS.
     purge: {
