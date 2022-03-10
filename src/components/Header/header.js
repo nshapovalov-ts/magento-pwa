@@ -1,22 +1,23 @@
 import React, { Fragment, Suspense } from 'react';
 import { shape, string } from 'prop-types';
+import { useIntl } from 'react-intl';
+
 import { Link, Route } from 'react-router-dom';
 
-import Logo from '../Logo';
 import AccountTrigger from '@magento/venia-ui/lib/components/Header/accountTrigger';
+import MegaMenuButton from '../MegaMenuButton';
 import CartTrigger from '@magento/venia-ui/lib/components/Header/cartTrigger';
 import NavTrigger from '@magento/venia-ui/lib/components/Header/navTrigger';
 import SearchTrigger from './searchTrigger';
+import Logo from '../Logo';
 import OnlineIndicator from '@magento/venia-ui/lib/components/Header/onlineIndicator';
 import { useHeader } from '@magento/peregrine/lib/talons/Header/useHeader';
 import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './header.module.css';
-// import StoreSwitcher from '@magento/venia-ui/lib/components/Header/storeSwitcher';
-// import CurrencySwitcher from '@magento/venia-ui/lib/components/Header/currencySwitcher';
-// import MegaMenu from '@magento/venia-ui/lib/components/MegaMenu';
-import PageLoadingIndicator from '@magento/venia-ui/lib/components/PageLoadingIndicator';
+import MegaMenu from '../MegaMenu';
+import PageLoadingIndicator from '../PageLoadingIndicator';
 
 const SearchBar = React.lazy(() => import('../SearchBar'));
 
@@ -32,6 +33,8 @@ const Header = props => {
 
     const classes = useStyle(defaultClasses, props.classes);
     const rootClass = isSearchOpen ? classes.open : classes.closed;
+
+    const { formatMessage } = useIntl();
 
     const searchBarFallback = (
         <div className={classes.searchFallback} ref={searchRef}>
@@ -50,12 +53,6 @@ const Header = props => {
 
     return (
         <Fragment>
-            {/* <div className={classes.switchersContainer}>
-                <div className={classes.switchers}>
-                    <StoreSwitcher />
-                    <CurrencySwitcher />
-                </div>
-            </div> */}
             <header className={rootClass} data-cy="Header-root">
                 <div className={classes.toolbar}>
                     <div className={classes.primaryActions} />
@@ -69,7 +66,11 @@ const Header = props => {
                     >
                         <Logo classes={{ logo: classes.logo }} />
                     </Link>
-                    {/* <MegaMenu /> */}
+                    <div className={classes.menuDropdown} tabIndex="0">
+                        <MegaMenuButton />
+                        <MegaMenu />
+                    </div>
+
                     <div className={classes.searchContainer}>{searchBar}</div>
 
                     <div className={classes.secondaryActions}>
@@ -95,9 +96,7 @@ Header.propTypes = {
         open: string,
         primaryActions: string,
         secondaryActions: string,
-        toolbar: string,
-        switchers: string,
-        switchersContainer: string
+        toolbar: string
     })
 };
 

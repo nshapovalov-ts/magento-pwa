@@ -1,7 +1,6 @@
 .root {
     composes: auto-cols-fr from global;
     composes: bg-white from global;
-    composes: border-b from global;
     composes: border-neutral-l1 from global;
     composes: grid from global;
     composes: h-auto from global;
@@ -16,30 +15,6 @@
 /* Large screen styles */
 .root {
     composes: lg_px-8 from global;
-}
-
-.switchers {
-    composes: auto-cols-max from global;
-    composes: grid from global;
-    composes: grid-flow-col from global;
-    composes: justify-end from global;
-    composes: max-w-desktop from global;
-    composes: mx-auto from global;
-    composes: relative from global;
-    composes: w-full from global;
-    composes: z-11 from global;
-}
-
-.switchersContainer {
-    composes: bg-gray-100 from global;
-    composes: hidden from global;
-    composes: px-8 from global;
-    composes: w-full from global;
-}
-
-/* Large screen styles */
-.switchersContainer {
-    composes: sm_block from global;
 }
 
 .open {
@@ -60,7 +35,6 @@
     composes: h-14 from global;
     composes: items-center from global;
     composes: justify-self-center from global;
-    composes: max-w-desktop from global;
     composes: min-height-header from global;
     composes: w-full from global;
     composes: z-3 from global;
@@ -73,6 +47,7 @@
     composes: md_grid-rows-2 from global;
     composes: lg_min-height-header from global;
     composes: md_h-28 from global;
+    composes: max-w-desktop from global;
 }
 
 .logo {
@@ -110,6 +85,25 @@
     composes: absolute grid from global;
     composes: left-0 mt-24 from global;
     composes: w-full from global;
+}
+
+/* >= 768 screen styles */
+.menuDropdown {
+    composes: hidden from global;
+}
+
+/* >= 1024 screen styles */
+.menuDropdown {
+    max-width: 280px;
+    align-items: center;
+    position: relative;
+    composes: lg_block from global;
+    composes: lg_col-span-5 from global;
+    composes: lg_row-start-2 from global;
+}
+
+.menuDropdown:hover > nav {
+    display: flex;
 }
 
 /* >= 768 screen styles */
@@ -171,7 +165,7 @@
 
 .loader {
     composes: relative from global;
-    color: rgb(var(--venia-global-color-gray-dark));
+    color: rgb(var(--color-gray-dark));
     font-size: var(--dot-font-size);
     margin: var(--dot-shadow-offset) auto 0;
     transform: translateZ(0);
@@ -186,13 +180,13 @@
 }
 
 .loader:before {
-    color: rgb(var(--venia-global-color-gray));
+    color: rgb(var(--color-gray));
     left: -3.5em;
     animation-delay: -0.32s;
 }
 
 .loader:after {
-    color: rgb(var(--venia-global-color-gray-darker));
+    color: rgb(var(--color-gray-darker));
     left: 3.5em;
 }
 

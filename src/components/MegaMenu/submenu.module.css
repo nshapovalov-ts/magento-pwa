@@ -1,0 +1,36 @@
+.submenu {
+    background-color: rgb(var(--color-gray-50));
+    border: 1px solid rgb(var(--color-gray-100));
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    left: 100%;
+    top: 0;
+    height: 100%;
+    position: absolute;
+    composes: w-screen from global;
+    composes: lg_max-w-3xl from global;
+    composes: xl_max-w-4xl from global;
+    composes: 2xl_max-w-5xl from global;
+}
+
+.submenu::before {
+    box-shadow: inset 0 2px rgb(var(--color-gray-100));
+    content: '';
+    height: 10px;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.submenu_active {
+    composes: submenu;
+    display: flex;
+}
+
+.submenuItems {
+    composes: flex flex-col from global;
+    composes: max-w-desktop from global;
+}

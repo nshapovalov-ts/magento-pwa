@@ -1,0 +1,45 @@
+.megaMenuItem {
+    width: 100%;
+}
+
+.megaMenuItem:hover {
+    background-color: rgb(var(--color-gray-100));
+}
+
+.megaMenuLink {
+    width: 100%;
+    padding: 10px 10px 10px 20px;
+    composes: h-9 from global;
+    composes: relative flex items-center justify-between from global;
+}
+
+.megaMenuLinkActive {
+    composes: megaMenuLink;
+}
+
+.megaMenuLink::before {
+    content: '';
+    display: block;
+    width: 2px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    background-color: rgb(var(--color-secondary-main));
+}
+
+.megaMenuItem:hover .megaMenuLink:before {
+    opacity: 1;
+}
+
+.megaMenuItem_active {
+    composes: megaMenuItem;
+    display: flex;
+}
+
+.arrowRight {
+    padding-left: 0.5rem;
+    line-height: 0;
+    --stroke: rgb(var(--color-gray-700));
+}
