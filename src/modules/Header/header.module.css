@@ -35,7 +35,6 @@
     composes: h-14 from global;
     composes: items-center from global;
     composes: justify-self-center from global;
-    composes: min-height-header from global;
     composes: w-full from global;
     composes: z-3 from global;
 }

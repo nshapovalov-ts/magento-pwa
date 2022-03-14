@@ -1,5 +1,5 @@
 .root {
-    color: rgb(var(--venia-global-color-text));
+    composes: text-gray-900 from global;
     display: grid;
     align-content: start;
 }
@@ -8,7 +8,7 @@
     align-items: center;
     display: flex;
     font-size: 1rem;
-    font-weight: var(--venia-global-fontWeight-semibold);
+    composes: font-semibold from global;
     justify-content: space-between;
     line-height: 1rem;
     padding: 0.5625rem 0.125rem;
@@ -17,8 +17,7 @@
 
 .input_base {
     border-radius: 6px;
-    font-size: 1rem;
-    height: 2.5rem;
+    composes: text-base from global;
     margin: 0;
     max-width: 100%;
     padding: calc(0.375rem - 1px) calc(0.625rem - 1px);
@@ -27,21 +26,19 @@
 
 .input {
     composes: input_base;
-    background: white;
-    border: 2px solid rgb(var(--venia-global-color-gray-600));
-    color: rgb(var(--venia-global-color-text));
+    composes: text-gray-900 from global;
+    composes: bg-white from global;
+    border: 2px solid rgb(var(--color-gray-600));
     display: inline-flex;
     flex: 0 0 100%;
     -webkit-appearance: none;
 }
 
 .input:focus {
-    /* box-shadow: -6px 6px rgb(var(--venia-brand-color-1-100)); */
     outline: none;
 }
 
 .optional {
-    color: rgb(var(--venia-global-color-gray-700));
-    font-size: var(--venia-global-fontSize-100);
-    font-weight: var(--venia-global-fontWeight-normal);
+    composes: text-gray-700 from global;
+    composes: text-sm from global;
 }

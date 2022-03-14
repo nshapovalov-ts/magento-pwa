@@ -1,13 +1,11 @@
 .root {
     border-top: 2px solid rgb(var(--color-gray-100));
-    color: rgb(var(--color-gray-700));
     display: grid;
-    font-size: var(--venia-typography-body-S-fontSize);
+    composes: text-sm text-gray-700 from global;
     grid-template-areas:
         'links'
         'brand';
     grid-template-columns: 100%;
-    line-height: var(--venia-global-lineHeight-300);
     margin: 0 auto;
     min-height: 15rem;
     padding-top: 4rem;

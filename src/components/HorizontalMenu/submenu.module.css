@@ -33,5 +33,5 @@
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
-    max-width: var(--maxWidth);
+    max-width: var(--max-width-desktop);
 }

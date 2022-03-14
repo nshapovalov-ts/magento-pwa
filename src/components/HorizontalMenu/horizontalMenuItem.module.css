@@ -19,7 +19,7 @@
     display: block;
     height: 2px;
     z-index: 10;
-    background-color: rgb(var(--color-secondary-main));
+    background-color: rgb(var(--color-secondary));
 }
 
 .horizontalMenuLinkActive {

@@ -2,7 +2,7 @@
     width: 100%;
     height: 40px;
     border-radius: 10px;
-    background: rgb(var(--color-primary-main));
+    background: rgb(var(--color-primary));
 }
 
 .root > span {
