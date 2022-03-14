@@ -1,7 +1,7 @@
 .root {
     border-top: 2px solid rgb(var(--color-gray-100));
     display: grid;
-    composes: text-sm text-gray-700 from global;
+    composes: text-base text-gray-700 from global;
     grid-template-areas:
         'links'
         'brand';
@@ -42,36 +42,35 @@
     align-content: start;
     display: grid;
     gap: 1em;
+    color: rgb(var(--color-black));
+}
+
+.arrowRight {
+    padding-right: 5px;
+}
+
+.linkItem {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.linkItem:hover {
+    color: rgb(var(--color-orange-400));
+    --stroke: rgb(var(--color-orange-400));
 }
 
 .linkItem:first-child {
-    font-size: var(--venia-global-fontSize-400);
-    color: rgb(var(--color-black));
+    font-size: var(--venia-global-fontSize-600);
+    color: rgb(var(--color-primary));
     font-weight: bold;
-}
-
-.contact {
-    font-size: var(--venia-typography-body-S-fontSize);
-    line-height: var(--venia-global-lineHeight-300);
-    max-width: 20rem;
-    white-space: pre-line;
+    margin-bottom: 1rem;
 }
 
 @media (max-width: 960px) {
     .contact {
         justify-self: start;
     }
-}
-
-.contactHeading {
-    composes: text-xl from global;
-    color: rgb(var(--color-black));
-    font-weight: bold;
-    margin: 1rem 0;
-}
-
-.contactBody {
-    margin: 1rem 0;
 }
 
 .socialLinks {
@@ -125,20 +124,4 @@
 
 .copyright {
     grid-area: a;
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .callout {
-        min-width: 10rem;
-    }
-}
-@media screen and (max-width: 767px) {
-    .links {
-        padding: 0 1rem;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem 10px;
-    }
-    .callout {
-        min-width: 100%;
-    }
 }

@@ -3,11 +3,15 @@ import { Facebook, Instagram, Twitter } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { shape, string } from 'prop-types';
+
+import { ChevronRight as ArrowRight } from 'react-feather';
+import Icon from '@magento/venia-ui/lib/components/Icon';
+import Newsletter from "@magento/venia-ui/lib/components/Newsletter";
 import { useFooter } from '@magento/peregrine/lib/talons/Footer/useFooter';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './footer.module.css';
-import { DEFAULT_LINKS, SAMPLE_CONTACT } from './sampleData';
+import { DEFAULT_LINKS } from './sampleData';
 
 const Footer = props => {
     const { links } = props;
@@ -16,8 +20,10 @@ const Footer = props => {
 
     const { copyrightText } = talonProps;
 
-    const linkGroups = Array.from(links, ([groupKey, linkProps]) => {
-        const linkElements = Array.from(linkProps, ([text, pathInfo]) => {
+    const linkGroupArray = Array.from(links);
+
+    const linkGroups = linkGroupArray.map(([groupKey, linkProps], index) => {
+        const linkElements = Array.from(linkProps, ([text, pathInfo], linkIndex) => {
             let path = pathInfo;
             let Component = Fragment;
             if (pathInfo && typeof pathInfo === 'object') {
@@ -36,9 +42,11 @@ const Footer = props => {
                 </span>
             );
 
+            const icon = linkIndex > 0 ?  <Icon className={classes.arrowRight} src={ArrowRight} size={16} /> : null
+
             return (
                 <Component key={itemKey}>
-                    <li className={classes.linkItem}>{child}</li>
+                    <li className={classes.linkItem}>{icon}{child}</li>
                 </Component>
             );
         });
@@ -46,22 +54,7 @@ const Footer = props => {
         return (
             <ul key={groupKey} className={classes.linkGroup}>
                 {linkElements}
-            </ul>
-        );
-    });
-
-    return (
-        <footer className={classes.root} data-cy="Footer-root">
-            <div className={classes.links}>
-                {linkGroups}
-                <div className={classes.contact}>
-                    <span className={classes.contactHeading}>
-                        <span>Contact Us</span>
-                    </span>
-                    <p className={classes.contactBody}>
-                        <span>{SAMPLE_CONTACT}</span>
-                    </p>
-                    <ul className={classes.socialLinks}>
+                {index === 2 ? <ul className={classes.socialLinks}>
                         <li>
                             <Instagram size={20} />
                         </li>
@@ -71,8 +64,16 @@ const Footer = props => {
                         <li>
                             <Twitter size={20} />
                         </li>
-                    </ul>
-                </div>
+                    </ul> : null}
+            </ul>
+        );
+    })
+
+    return (
+        <footer className={classes.root} data-cy="Footer-root">
+            <div className={classes.links}>
+                {linkGroups}
+                <Newsletter />
             </div>
             <div className={classes.branding}>
                 <p className={classes.copyright}>{copyrightText || null}</p>
