@@ -1,4 +1,5 @@
 const { getColors } = require('./lib/colors');
+const { getAnimations } = require('./lib/animations');
 const customPlugins = require('./plugins');
 /**
  * This is the main tailwindcss theme file for the updated theme
@@ -13,6 +14,7 @@ module.exports = {
         backgroundColor: theme => theme('colors'),
         borderColor: theme => theme('colors'),
         colors: getColors(),
+        animations: getAnimations(),
         fontFamily: {
             sans: ['Muli', 'sans-serif'],
             serif: ['Source Serif Pro', 'serif']
