@@ -29,7 +29,8 @@
   },
   "dependencies": {
     "@larsroettig/component-targetables": "^3.0.0",
-    "@magento/pwa-buildpack": "~11.1.0"
+    "@magento/pwa-buildpack": "~11.1.0",
+    "classnames": "^2.3.1"
   },
   "devDependencies": {
     "@adobe/apollo-link-mutation-queue": "~1.0.2",

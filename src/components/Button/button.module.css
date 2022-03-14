@@ -1,0 +1,71 @@
+.root {
+    composes: root from '@magento/venia-ui/lib/components/clickable.module.css';
+    border-color: none;
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-width: 0;
+    background: none;
+    font-size: var(--venia-global-fontSize-100);
+    font-weight: bold;
+    max-width: 100%;
+    min-height: 2rem;
+    outline: none;
+    color: rgb(var(--color-black));
+}
+
+/**
+ * Some browsers retain the :hover state after a click, this ensures if a button becomes disabled after
+ * being clicked it will be visually disabled.
+ */
+.root:disabled,
+.root:hover:disabled {
+    pointer-events: none;
+    border-color: var(--color-gray-400);
+}
+
+.content {
+    align-items: center;
+    display: inline-grid;
+    gap: 0.35rem;
+    grid-auto-flow: column;
+    justify-content: center;
+    justify-items: center;
+}
+
+/* button sizes */
+
+.smallSize {
+    padding: 13px 20px;
+}
+
+.mediumSize {
+    padding: 17px 24px;
+}
+
+.largeSize {
+    padding: 20px 30px;
+}
+
+/* variants of the button */
+
+/* derived classes */
+.contained {
+    border-style: solid;
+    border-width: 2px;
+    color: rgb(var(--color-white));
+    border-color: rgb(var(--color-primary-main));
+    background: rgb(var(--color-primary-main));
+}
+
+.contained:hover {
+    border-color: rgb(var(--color-primary-main));
+}
+
+.outlined {
+    border-width: 2px;
+    border-color: rgb(var(--color-gray-200));
+}
+
+.text {
+    composes: root;
+}

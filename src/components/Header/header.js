@@ -2,6 +2,7 @@ import React, { Fragment, Suspense } from 'react';
 import { shape, string } from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 
+import Button from '../Button';
 import CartTrigger from '@magento/venia-ui/lib/components/Header/cartTrigger';
 import NavTrigger from '@magento/venia-ui/lib/components/Header/navTrigger';
 import SearchTrigger from './searchTrigger';
@@ -80,6 +81,20 @@ const Header = props => {
                             ref={searchTriggerRef}
                         />
                         <CartTrigger />
+                        <Button
+                            component="link"
+                            variant="outlined"
+                            to="/sign-in"
+                        >
+                            Login
+                        </Button>
+                        <Button
+                            component="link"
+                            variant="contained"
+                            to="/create-account"
+                        >
+                            Sign Up
+                        </Button>
                         <NavTrigger />
                     </div>
                 </div>
