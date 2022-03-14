@@ -1,0 +1,19 @@
+.submenuColumn {
+    composes: flex items-center h-9 from global;
+}
+
+.heading {
+    font-weight: 600;
+}
+
+.link {
+    white-space: nowrap;
+}
+
+.submenuChild {
+    margin-top: 21px;
+}
+
+.submenuChildItem {
+    margin-bottom: 12px;
+}

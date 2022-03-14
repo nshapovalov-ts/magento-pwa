@@ -6,12 +6,12 @@ import { ChevronDown as ArrowDown } from 'react-feather';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
-import defaultClasses from './megaMenuButton.module.css';
+import defaultClasses from './verticalMenuButton.module.css';
 
 /**
- * The MegaMenu trigger
+ * The VerticalMenu trigger
  */
-const MegaMenuButton = props => {
+const VerticalMenuButton = props => {
     const classes = useStyle(defaultClasses, props.classes);
 
     return (
@@ -22,7 +22,7 @@ const MegaMenuButton = props => {
     );
 };
 
-MegaMenuButton.propTypes = {
+VerticalMenuButton.propTypes = {
     classes: PropTypes.shape({
         root: PropTypes.string,
         title: PropTypes.string,
@@ -30,4 +30,4 @@ MegaMenuButton.propTypes = {
     })
 };
 
-export default MegaMenuButton;
+export default VerticalMenuButton;

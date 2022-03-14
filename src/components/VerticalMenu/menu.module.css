@@ -1,5 +1,5 @@
 /* Large screen styles */
-.megaMenu {
+.menu {
     composes: lg_absolute from global;
     composes: lg_flex-col from global;
     composes: text-sm from global;

@@ -1,0 +1,37 @@
+.horizontalMenuItem {
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+.horizontalMenuLink {
+    position: relative;
+    align-items: center;
+    display: inline-flex;
+    min-height: 3rem;
+}
+
+.horizontalMenuLink:hover::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    display: block;
+    height: 2px;
+    z-index: 10;
+    background-color: rgb(var(--color-secondary-main));
+}
+
+.horizontalMenuLinkActive {
+    composes: horizontalMenuLink;
+}
+
+.horizontalMenuItem_active {
+    composes: horizontalMenuItem;
+    display: flex;
+}
+
+.arrowDown {
+    padding-left: 0.5rem;
+    line-height: 0;
+}

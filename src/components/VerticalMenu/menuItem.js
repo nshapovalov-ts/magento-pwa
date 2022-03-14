@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { ChevronRight as ArrowRight } from 'react-feather';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -7,19 +6,18 @@ import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
 import { useMegaMenuItem } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenuItem';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import defaultClasses from './megaMenuItem.module.css';
+import defaultClasses from './menuItem.module.css';
 import Submenu from './submenu';
-import Icon from '@magento/venia-ui/lib/components/Icon';
 
 /**
- * The MegaMenuItem component displays mega menu item
+ * The MenuItem component displays mega menu item
  *
- * @param {MegaMenuCategory} props.category
+ * @param {VerticalMenuCategory} props.category
  * @param {String} props.activeCategoryId - uid of active category
  * @param {int} props.mainNavWidth - width of the main nav. It's used for setting min-width of the submenu
  * @param {function} props.onNavigate - function called when clicking on Link
  */
-const MegaMenuItem = props => {
+const MenuItem = props => {
     const {
         activeCategoryId,
         category,
@@ -53,9 +51,9 @@ const MegaMenuItem = props => {
         handleKeyDown
     } = talonProps;
 
-    const megaMenuItemClassname = isMenuActive
-        ? classes.megaMenuItem_active
-        : classes.megaMenuItem;
+    const menuItemClassname = isMenuActive
+        ? classes.menuItem_active
+        : classes.menuItem;
 
     const children = useMemo(() => {
         return category.children.length ? (
@@ -79,10 +77,6 @@ const MegaMenuItem = props => {
         onNavigate
     ]);
 
-    const maybeRightArrowIcon = category.children.length ? (
-        <Icon className={classes.arrowRight} src={ArrowRight} size={16} />
-    ) : null;
-
     const linkAttributes = category.children.length
         ? {
               'aria-label': `Category: ${category.name}. ${
@@ -93,8 +87,8 @@ const MegaMenuItem = props => {
 
     return (
         <div
-            className={megaMenuItemClassname}
-            data-cy="MegaMenu-MegaMenuItem-megaMenuItem"
+            className={menuItemClassname}
+            data-cy="VerticalMenu-MenuItem"
             onMouseEnter={() => {
                 handleSubMenuFocus();
                 handleMenuItemFocus();
@@ -111,24 +105,21 @@ const MegaMenuItem = props => {
             <Link
                 {...linkAttributes}
                 onKeyDown={handleKeyDown}
-                className={
-                    isActive ? classes.megaMenuLinkActive : classes.megaMenuLink
-                }
-                data-cy="MegaMenu-MegaMenuItem-link"
+                className={isActive ? classes.menuLinkActive : classes.menuLink}
+                data-cy="VerticalMenu-MenuItem-link"
                 to={categoryUrl}
                 onClick={onNavigate}
             >
                 {category.name}
-                {maybeRightArrowIcon}
             </Link>
             {children}
         </div>
     );
 };
 
-export default MegaMenuItem;
+export default MenuItem;
 
-MegaMenuItem.propTypes = {
+MenuItem.propTypes = {
     category: PropTypes.shape({
         children: PropTypes.array,
         uid: PropTypes.string.isRequired,

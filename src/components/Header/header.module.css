@@ -5,7 +5,7 @@
     composes: grid from global;
     composes: h-auto from global;
     composes: justify-center from global;
-    composes: px-4 from global;
+    composes: px-4 pt-3.5 from global;
     composes: top-0 from global;
     composes: sticky from global;
     composes: w-full from global;
@@ -89,7 +89,7 @@
 
 /* >= 768 screen styles */
 .menuDropdown {
-    composes: hidden from global;
+    display: none;
 }
 
 /* >= 1024 screen styles */
@@ -98,12 +98,26 @@
     align-items: center;
     position: relative;
     composes: lg_block from global;
-    composes: lg_col-span-5 from global;
+    composes: lg_col-start-1 from global;
+    composes: lg_col-span-3 from global;
     composes: lg_row-start-2 from global;
 }
 
 .menuDropdown:hover > nav {
     display: flex;
+}
+
+/* >= 768 screen styles */
+.horizontalMenu {
+    display: none;
+}
+
+/* >= 1024 screen styles */
+.horizontalMenu {
+    composes: lg_flex from global;
+    composes: lg_row-start-2 from global;
+    composes: lg_col-start-4 from global;
+    composes: lg_col-span-10 from global;
 }
 
 /* >= 768 screen styles */
@@ -135,7 +149,7 @@
 .secondaryActions {
     composes: lg_col-end-13 from global;
     composes: lg_col-start-10 from global;
-    composes: lg_gap-x-4 from global;
+    composes: lg_gap-x-1 from global;
 }
 
 .searchFallback {

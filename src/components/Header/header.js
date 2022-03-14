@@ -1,23 +1,22 @@
 import React, { Fragment, Suspense } from 'react';
 import { shape, string } from 'prop-types';
-import { useIntl } from 'react-intl';
-
 import { Link, Route } from 'react-router-dom';
 
-import AccountTrigger from '@magento/venia-ui/lib/components/Header/accountTrigger';
-import MegaMenuButton from '../MegaMenuButton';
 import CartTrigger from '@magento/venia-ui/lib/components/Header/cartTrigger';
 import NavTrigger from '@magento/venia-ui/lib/components/Header/navTrigger';
 import SearchTrigger from './searchTrigger';
 import Logo from '../Logo';
 import OnlineIndicator from '@magento/venia-ui/lib/components/Header/onlineIndicator';
+import VerticalMenu from '../VerticalMenu';
+import VerticalMenuButton from '../VerticalMenuButton';
+import HorizontalMenu from '../HorizontalMenu';
+import PageLoadingIndicator from '../PageLoadingIndicator';
+
 import { useHeader } from '@magento/peregrine/lib/talons/Header/useHeader';
 import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
-
 import { useStyle } from '@magento/venia-ui/lib/classify';
+
 import defaultClasses from './header.module.css';
-import MegaMenu from '../MegaMenu';
-import PageLoadingIndicator from '../PageLoadingIndicator';
 
 const SearchBar = React.lazy(() => import('../SearchBar'));
 
@@ -33,8 +32,6 @@ const Header = props => {
 
     const classes = useStyle(defaultClasses, props.classes);
     const rootClass = isSearchOpen ? classes.open : classes.closed;
-
-    const { formatMessage } = useIntl();
 
     const searchBarFallback = (
         <div className={classes.searchFallback} ref={searchRef}>
@@ -66,9 +63,13 @@ const Header = props => {
                     >
                         <Logo classes={{ logo: classes.logo }} />
                     </Link>
-                    <div className={classes.menuDropdown} tabIndex="0">
-                        <MegaMenuButton />
-                        <MegaMenu />
+                    <div className={classes.menuDropdown}>
+                        <VerticalMenuButton />
+                        <VerticalMenu />
+                    </div>
+
+                    <div className={classes.horizontalMenu}>
+                        <HorizontalMenu />
                     </div>
 
                     <div className={classes.searchContainer}>{searchBar}</div>
@@ -78,7 +79,6 @@ const Header = props => {
                             onClick={handleSearchTriggerClick}
                             ref={searchTriggerRef}
                         />
-                        <AccountTrigger />
                         <CartTrigger />
                         <NavTrigger />
                     </div>

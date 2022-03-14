@@ -8,10 +8,12 @@
     top: 0;
     height: 100%;
     position: absolute;
+    overflow-y: auto;
     composes: w-screen from global;
     composes: lg_max-w-3xl from global;
     composes: xl_max-w-4xl from global;
     composes: 2xl_max-w-5xl from global;
+    padding: 20px 0 20px 30px;
 }
 
 .submenu::before {

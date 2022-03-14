@@ -8,7 +8,11 @@ const AppContainer = () => {
     const ErrorBoundary = useErrorBoundary(App);
     const [unhandledErrors, errorApi] = useErrorContext();
 
-    return <ErrorBoundary unhandledErrors={unhandledErrors} {...errorApi} />;
+    return (
+        <React.StrictMode>
+            <ErrorBoundary unhandledErrors={unhandledErrors} {...errorApi} />
+        </React.StrictMode>
+    );
 };
 
 export default AppContainer;

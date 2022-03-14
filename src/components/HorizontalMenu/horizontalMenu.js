@@ -4,17 +4,18 @@ import { useIsInViewport } from '@magento/peregrine/lib/hooks/useIsInViewport';
 import { useMegaMenu } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenu';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
-import MegaMenuItem from './megaMenuItem';
-import defaultClasses from './megaMenu.module.css';
+import HorizontalMenuItem from './horizontalMenuItem';
+import defaultClasses from './horizontalMenu.module.css';
+
+import { MENU_LINKS } from './sampleData';
 
 /**
- * The MegaMenu component displays menu with categories on desktop devices
+ * The HorizontalMenu component displays menu with categories on desktop devices
  */
-const MegaMenu = props => {
+const HorizontalMenu = props => {
     const mainNavRef = useRef(null);
 
     const {
-        megaMenuData,
         activeCategoryId,
         subMenuState,
         disableFocus,
@@ -49,10 +50,10 @@ const MegaMenu = props => {
         };
     });
 
-    const items = megaMenuData.children
-        ? megaMenuData.children.map(category => {
+    const items = MENU_LINKS.children
+        ? MENU_LINKS.children.map(category => {
               return (
-                  <MegaMenuItem
+                  <HorizontalMenuItem
                       category={category}
                       activeCategoryId={activeCategoryId}
                       categoryUrlSuffix={categoryUrlSuffix}
@@ -71,8 +72,8 @@ const MegaMenu = props => {
     return (
         <nav
             ref={mainNavRef}
-            className={classes.megaMenu}
-            data-cy="MegaMenu-megaMenu"
+            className={classes.horizontalMenu}
+            data-cy="HorizontalMenu-megaMenu"
             role="navigation"
             onFocus={handleSubMenuFocus}
         >
@@ -81,4 +82,4 @@ const MegaMenu = props => {
     );
 };
 
-export default MegaMenu;
+export default HorizontalMenu;

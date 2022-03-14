@@ -1,6 +1,6 @@
 .submenuColumn {
-    padding-left: 30px;
-    composes: flex items-center h-9 from global;
+    max-width: 235px;
+    padding: 20px;
 }
 
 .heading {
