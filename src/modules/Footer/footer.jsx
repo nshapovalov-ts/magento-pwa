@@ -6,7 +6,8 @@ import { shape, string } from 'prop-types';
 
 import { ChevronRight as ArrowRight } from 'react-feather';
 import Icon from '@magento/venia-ui/lib/components/Icon';
-import Newsletter from "@magento/venia-ui/lib/components/Newsletter";
+// import Newsletter from "@magento/venia-ui/lib/components/Newsletter";
+import Newsletter from '../../components/Newsletter';
 import { useFooter } from '@magento/peregrine/lib/talons/Footer/useFooter';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
@@ -23,38 +24,56 @@ const Footer = props => {
     const linkGroupArray = Array.from(links);
 
     const linkGroups = linkGroupArray.map(([groupKey, linkProps], index) => {
-        const linkElements = Array.from(linkProps, ([text, pathInfo], linkIndex) => {
-            let path = pathInfo;
-            let Component = Fragment;
-            if (pathInfo && typeof pathInfo === 'object') {
-                path = pathInfo.path;
-                Component = pathInfo.Component;
+        const linkElements = Array.from(
+            linkProps,
+            ([text, pathInfo], linkIndex) => {
+                let path = pathInfo;
+                let Component = Fragment;
+                if (pathInfo && typeof pathInfo === 'object') {
+                    path = pathInfo.path;
+                    Component = pathInfo.Component;
+                }
+
+                const itemKey = `text: ${text} path:${path}`;
+                const child = path ? (
+                    <Link
+                        className={classes.link}
+                        to={path}
+                        data-cy="Footer-link"
+                    >
+                        <FormattedMessage id={text} defaultMessage={text} />
+                    </Link>
+                ) : (
+                    <span className={classes.label}>
+                        <FormattedMessage id={text} defaultMessage={text} />
+                    </span>
+                );
+
+                const icon =
+                    linkIndex > 0 ? (
+                        <Icon
+                            className={classes.arrowRight}
+                            src={ArrowRight}
+                            size={16}
+                        />
+                    ) : null;
+
+                return (
+                    <Component key={itemKey}>
+                        <li className={classes.linkItem}>
+                            {icon}
+                            {child}
+                        </li>
+                    </Component>
+                );
             }
-
-            const itemKey = `text: ${text} path:${path}`;
-            const child = path ? (
-                <Link className={classes.link} to={path} data-cy="Footer-link">
-                    <FormattedMessage id={text} defaultMessage={text} />
-                </Link>
-            ) : (
-                <span className={classes.label}>
-                    <FormattedMessage id={text} defaultMessage={text} />
-                </span>
-            );
-
-            const icon = linkIndex > 0 ?  <Icon className={classes.arrowRight} src={ArrowRight} size={16} /> : null
-
-            return (
-                <Component key={itemKey}>
-                    <li className={classes.linkItem}>{icon}{child}</li>
-                </Component>
-            );
-        });
+        );
 
         return (
             <ul key={groupKey} className={classes.linkGroup}>
                 {linkElements}
-                {index === 2 ? <ul className={classes.socialLinks}>
+                {index === 2 ? (
+                    <ul className={classes.socialLinks}>
                         <li>
                             <Instagram size={20} />
                         </li>
@@ -64,16 +83,19 @@ const Footer = props => {
                         <li>
                             <Twitter size={20} />
                         </li>
-                    </ul> : null}
+                    </ul>
+                ) : null}
             </ul>
         );
-    })
+    });
 
     return (
         <footer className={classes.root} data-cy="Footer-root">
-            <div className={classes.links}>
-                {linkGroups}
-                <Newsletter />
+            <div className={classes.main}>
+                <div className={classes.links}>{linkGroups}</div>
+                <div className={classes.subscribe}>
+                    <Newsletter />
+                </div>
             </div>
             <div className={classes.branding}>
                 <p className={classes.copyright}>{copyrightText || null}</p>

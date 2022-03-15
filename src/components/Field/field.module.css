@@ -2,6 +2,7 @@
     composes: text-gray-900 from global;
     display: grid;
     align-content: start;
+    width: 100%;
 }
 
 .label {
@@ -10,9 +11,9 @@
     font-size: 1rem;
     composes: font-semibold from global;
     justify-content: space-between;
-    line-height: 1rem;
+    line-height: 1.25rem;
     padding: 0.5625rem 0.125rem;
-    min-height: 2.125rem;
+    min-height: 2.5rem;
 }
 
 .input_base {
@@ -28,7 +29,7 @@
     composes: input_base;
     composes: text-gray-900 from global;
     composes: bg-white from global;
-    border: 2px solid rgb(var(--color-gray-600));
+    border: 2px solid rgb(var(--color-gray-200));
     display: inline-flex;
     flex: 0 0 100%;
     -webkit-appearance: none;

@@ -34,14 +34,17 @@
 /* button sizes */
 
 .smallSize {
+    composes: root;
     padding: 13px 20px;
 }
 
 .mediumSize {
+    composes: root;
     padding: 17px 24px;
 }
 
 .largeSize {
+    composes: root;
     padding: 20px 30px;
 }
 
@@ -49,6 +52,7 @@
 
 /* derived classes */
 .contained {
+    composes: root;
     border-style: solid;
     border-width: 2px;
     color: rgb(var(--color-white));
@@ -61,6 +65,7 @@
 }
 
 .outlined {
+    composes: root;
     border-width: 2px;
     border-color: rgb(var(--color-gray-200));
 }
