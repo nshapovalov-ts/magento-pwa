@@ -23,7 +23,7 @@
 
 .buttonSubmit {
     composes: contained from '../Button/button.module.css';
-    composes: smallSize from '../Button/button.module.css';
+    composes: mediumSize from '../Button/button.module.css';
     composes: bg-secondary from global;
     border-color: rgb(var(--color-secondary));
     margin-left: 10px;
