@@ -2,24 +2,25 @@
     display: grid;
     grid-auto-flow: row;
     justify-content: stretch;
-    row-gap: 1.5rem;
-    padding: 1.5rem;
+    padding: 0.5rem;
 }
 
 .link {
     composes: root from '@magento/venia-ui/lib/components/LinkButton/linkButton.module.css';
-    composes: text-gray-700 from global;
+    composes: leading-8 from global;
+    composes: pl-5 from global;
     justify-content: start;
     text-decoration: none;
+    transition: all 0.2s ease-in-out 0s;
+    color: rgb(var(--color-gray-700));
 }
 
 .link:hover {
-    color: rgb(var(--color-gray-600));
+    background: rgb(var(--color-secondary));
+    color: rgb(var(--color-white));
 }
 
 .signOut {
     composes: link;
-
     border-top: 2px solid rgb(var(--color-gray));
-    padding-top: 1rem;
 }

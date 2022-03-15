@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { useIntl } from 'react-intl';
 import { shape, string } from 'prop-types';
 
@@ -33,7 +33,7 @@ const AccountTrigger = props => {
     const { formatMessage } = useIntl();
 
     return (
-        <Fragment>
+        <>
             <div className={rootClassName} ref={accountMenuTriggerRef}>
                 <button
                     aria-label={formatMessage({
@@ -46,15 +46,15 @@ const AccountTrigger = props => {
                 >
                     <AccountChip fallbackText="" shouldIndicateLoading={true} />
                 </button>
+                <Suspense fallback={null}>
+                    <AccountMenu
+                        ref={accountMenuRef}
+                        accountMenuIsOpen={accountMenuIsOpen}
+                        setAccountMenuIsOpen={setAccountMenuIsOpen}
+                    />
+                </Suspense>
             </div>
-            <Suspense fallback={null}>
-                <AccountMenu
-                    ref={accountMenuRef}
-                    accountMenuIsOpen={accountMenuIsOpen}
-                    setAccountMenuIsOpen={setAccountMenuIsOpen}
-                />
-            </Suspense>
-        </Fragment>
+        </>
     );
 };
 

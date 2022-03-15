@@ -1,0 +1,36 @@
+.actionButtons {
+    display: flex;
+    align-items: center;
+}
+
+.sellLink {
+    composes: root smallSize from '../../../components/Button/button.module.css';
+    composes: text-primary from global;
+    composes: hidden md_flex from global;
+}
+
+.smallButton {
+    composes: smallSize from '../../../components/Button/button.module.css';
+}
+
+.mediumButton {
+    composes: mediumSize from '../../../components/Button/button.module.css';
+}
+
+.loginButton {
+    composes: outlined from '../../../components/Button/button.module.css';
+    composes: mediumButton;
+    margin-right: 0.5rem;
+    composes: hidden sm_flex from global;
+}
+
+.signupButton {
+    composes: contained from '../../../components/Button/button.module.css';
+    composes: mediumButton;
+}
+
+@media (min-width: 1024px) {
+    .signupButton {
+        composes: mediumButton;
+    }
+}

@@ -7,18 +7,13 @@
 
 .root_open {
     composes: root;
+    position: relative;
 }
 
 .trigger {
     composes: root from '@magento/venia-ui/lib/components/clickable.module.css';
 
     height: 3rem;
-    min-width: 6rem;
+    min-width: 4rem;
     z-index: 1;
-}
-
-@media (max-width: 640px) {
-    .root {
-        display: none;
-    }
 }

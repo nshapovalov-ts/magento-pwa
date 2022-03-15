@@ -2,7 +2,6 @@ import React, { Fragment, Suspense } from 'react';
 import { shape, string } from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 
-import CartTrigger from '@magento/venia-ui/lib/components/Header/cartTrigger';
 import NavTrigger from '@magento/venia-ui/lib/components/Header/navTrigger';
 import SearchTrigger from './searchTrigger';
 import Logo from '../../components/Logo';
@@ -11,7 +10,7 @@ import VerticalMenu from '../../components/VerticalMenu';
 import VerticalMenuButton from '../../components/VerticalMenuButton';
 import HorizontalMenu from '../../components/HorizontalMenu';
 import PageLoadingIndicator from '../../components/PageLoadingIndicator';
-import { AccountButtons } from './AccountButtons';
+import { ActionButtons } from './ActionButtons';
 
 import { useHeader } from '@magento/peregrine/lib/talons/Header/useHeader';
 import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
@@ -53,7 +52,6 @@ const Header = props => {
         <Fragment>
             <header className={rootClass} data-cy="Header-root">
                 <div className={classes.toolbar}>
-                    <div className={classes.primaryActions} />
                     <OnlineIndicator
                         hasBeenOffline={hasBeenOffline}
                         isOnline={isOnline}
@@ -75,13 +73,12 @@ const Header = props => {
 
                     <div className={classes.searchContainer}>{searchBar}</div>
 
-                    <div className={classes.secondaryActions}>
+                    <div className={classes.actions}>
                         <SearchTrigger
                             onClick={handleSearchTriggerClick}
                             ref={searchTriggerRef}
                         />
-                        <CartTrigger />
-                        <AccountButtons />
+                        <ActionButtons />
                         <NavTrigger />
                     </div>
                 </div>

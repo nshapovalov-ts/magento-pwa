@@ -1,24 +1,25 @@
 .root {
     --content-width: 27.5rem;
-
+    position: relative;
     height: 0;
     overflow: visible;
     left: -100vw;
     opacity: 0;
     position: absolute;
-    top: 100%;
-    transition: opacity 192ms var(--animation-out),
-        visibility 192ms var(--animation-ou),
-        /* Adding delay to move container off the screen after previous transitions happened */
-            left 0s 192ms;
+    top: 70px;
     visibility: hidden;
-    width: calc(100vw - 2rem);
-    /* max-width wider than header to let dropdown to move left on wider screens while still staying near the trigger */
-    max-width: calc(
-        var(--max-width-desktop) + var(--content-width) * 2 - 25rem
-    );
     z-index: 3;
     transform: translate3d(-50%, 0, 0);
+}
+
+.root::after {
+    content: '';
+    position: absolute;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgb(var(--color-gray-200));
+    right: -32px;
+    top: -4px;
 }
 
 .root_open {
@@ -31,19 +32,14 @@
 }
 
 .contents {
-    background-color: rgb(var(--color-gray-50));
-    border-radius: 1px;
-    box-shadow: 0 1px 6px rgb(var(--color-gray-900) / 0.2);
-    display: grid;
-    min-height: 10rem;
     position: absolute;
-    right: 0;
-    top: 0;
-    transform: translate3d(0, -8px, 0);
-    transition-duration: 192ms;
-    transition-property: transform;
-    transition-timing-function: var(--animation-out);
-    width: var(--content-width);
+    right: -90px;
+    top: 0px;
+    /* padding: 10px; */
+    width: 250px;
+    background: rgb(var(--color-gray-200));
+    border-radius: 5px;
+    z-index: 11;
 }
 
 .contents_open {

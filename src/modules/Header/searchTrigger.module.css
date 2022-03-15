@@ -4,8 +4,9 @@
     transition-property: color;
     transition-duration: 224ms;
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    height: 3rem;
-    width: 3rem;
+    composes: h-2 w-2 from global;
+
+    composes: md_h-3 md_w-3 from global;
 }
 
 .label {

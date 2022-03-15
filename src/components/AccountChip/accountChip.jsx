@@ -1,7 +1,11 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { bool, shape, string } from 'prop-types';
-import { Loader, User as AccountIcon } from 'react-feather';
+import {
+    Loader,
+    User as AccountIcon,
+    ChevronDown as ArrowDown
+} from 'react-feather';
 
 import { useAccountChip } from '@magento/peregrine/lib/talons/AccountChip/useAccountChip';
 import { useStyle } from '@magento/venia-ui/lib/classify';
@@ -52,10 +56,12 @@ const AccountChip = props => {
     }
 
     return (
-        <span className={classes.root}>
-            <Icon src={AccountIcon} />
-            <span className={classes.text}>{chipText}</span>
-        </span>
+        <>
+            <span className={classes.root}>
+                <Icon src={AccountIcon} />
+            </span>
+            <Icon src={ArrowDown} size={20} />
+        </>
     );
 };
 
