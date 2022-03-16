@@ -3,6 +3,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const fs = require('fs');
 const { promisify } = require('util');
+const path = require('path');
 
 const {
     getMediaURL,
@@ -127,6 +128,14 @@ module.exports = async env => {
         }),
         new HTMLWebpackPlugin(htmlWebpackConfig)
     ];
+
+    config.resolve = {
+        ...config.resolve,
+        alias: {
+            ...config.resolve.alias,
+            components: path.resolve(__dirname, './src/components/')
+        }
+    };
 
     /* 
     Commenting out this section until SSR is fully implemented
