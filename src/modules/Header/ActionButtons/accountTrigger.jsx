@@ -1,15 +1,13 @@
 import React, { Suspense } from 'react';
-import { useIntl } from 'react-intl';
 import { shape, string } from 'prop-types';
 
+import AccountChip from 'components/AccountChip';
+import defaultClasses from './accountTrigger.module.css';
 import { useAccountTrigger } from '@magento/peregrine/lib/talons/Header/useAccountTrigger';
+import { useIntl } from 'react-intl';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
-import AccountChip from '../../../components/AccountChip';
-
-import defaultClasses from './accountTrigger.module.css';
-
-const AccountMenu = React.lazy(() => import('../../../components/AccountMenu'));
+const AccountMenu = React.lazy(() => import('components/AccountMenu'));
 
 /**
  * The AccountTrigger component is the call to action in the site header

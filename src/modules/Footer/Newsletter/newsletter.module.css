@@ -22,8 +22,8 @@
 }
 
 .buttonSubmit {
-    composes: contained from '../Button/button.module.css';
-    composes: mediumSize from '../Button/button.module.css';
+    composes: contained from 'components/Button/button.module.css';
+    composes: mediumSize from 'components/Button/button.module.css';
     composes: bg-secondary from global;
     border-color: rgb(var(--color-secondary));
     margin-left: 10px;

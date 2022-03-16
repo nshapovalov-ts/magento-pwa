@@ -6,8 +6,8 @@ import { shape, string } from 'prop-types';
 
 import { ChevronRight as ArrowRight } from 'react-feather';
 import Icon from '@magento/venia-ui/lib/components/Icon';
-// import Newsletter from "@magento/venia-ui/lib/components/Newsletter";
-import Newsletter from '../../components/Newsletter';
+
+import Newsletter from './Newsletter';
 import { useFooter } from '@magento/peregrine/lib/talons/Footer/useFooter';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';

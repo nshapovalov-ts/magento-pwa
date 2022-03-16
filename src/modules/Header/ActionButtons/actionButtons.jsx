@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '../../../components/Button';
+import Button from 'components/Button';
 import AccountTrigger from './accountTrigger';
 import CartTrigger from '@magento/venia-ui/lib/components/Header/cartTrigger';
 import { useStyle } from '@magento/venia-ui/lib/classify';

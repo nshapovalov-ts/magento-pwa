@@ -9,8 +9,8 @@ import { useToasts } from '@magento/peregrine';
 import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import FormError from '@magento/venia-ui/lib/components/FormError';
-import Button from '../../components/Button';
-import Field from '../../components/Field';
+import Button from 'components/Button';
+import Field from 'components/Field';
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 import TextInput from '@magento/venia-ui/lib/components/TextInput';
 import Shimmer from '@magento/venia-ui/lib/components/Newsletter/newsletter.shimmer';
@@ -67,12 +67,11 @@ const Newsletter = props => {
     return (
         <div className={classes.root} data-cy={'Newsletter-root'}>
             {maybeLoadingIndicator}
-            <span className={classes.title}>
-                Subscribe to Learning
-            </span>
+            <span className={classes.title}>Subscribe to Learning</span>
 
             <p className={classes.newsletter_text}>
-                Subscribe to receive news on latest campaigns, promotions, and learning to grow your business.
+                Subscribe to receive news on latest campaigns, promotions, and
+                learning to grow your business.
             </p>
             <FormError
                 allowErrorMessages
@@ -99,19 +98,19 @@ const Newsletter = props => {
                         placeholder="Your email address"
                     />
                 </Field>
-                    <Button
-                        variant="contained"
-                        size="small"
-                        type="submit"
-                        disabled={isBusy}
-                        onClick={clearErrors}
-                        className={classes.buttonSubmit}
-                    >
-                        <FormattedMessage
-                            id={'newsletter.subscribeText'}
-                            defaultMessage={'Subscribe'}
-                        />
-                    </Button>
+                <Button
+                    variant="contained"
+                    size="small"
+                    type="submit"
+                    disabled={isBusy}
+                    onClick={clearErrors}
+                    className={classes.buttonSubmit}
+                >
+                    <FormattedMessage
+                        id={'newsletter.subscribeText'}
+                        defaultMessage={'Subscribe'}
+                    />
+                </Button>
             </Form>
         </div>
     );
