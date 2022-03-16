@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { bool, node, shape, string } from 'prop-types';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
+
 import defaultClasses from './field.module.css';
 
 const Field = props => {

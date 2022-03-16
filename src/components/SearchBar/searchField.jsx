@@ -1,11 +1,12 @@
 import React from 'react';
-import { func } from 'prop-types';
 import { Search as SearchIcon, X as ClearIcon } from 'react-feather';
+import { func } from 'prop-types';
+
 import { useSearchField } from '@magento/peregrine/lib/talons/SearchBar';
 
 import Icon from '@magento/venia-ui/lib/components/Icon';
-import TextInput from '../TextInput';
 import Trigger from '@magento/venia-ui/lib/components/Trigger';
+import TextInput from '../TextInput';
 
 const clearIcon = <Icon src={ClearIcon} size={24} />;
 const searchIcon = <Icon src={SearchIcon} size={24} />;

@@ -1,8 +1,10 @@
 import React from 'react';
-import { shape, string, bool } from 'prop-types';
+import { bool, shape, string } from 'prop-types';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import defaultClasses from './pageLoadingIndicator.module.css';
 import usePageLoadingIndicator from '@magento/peregrine/lib/talons/PageLoadingIndicator/usePageLoadingIndicator';
+
+import defaultClasses from './pageLoadingIndicator.module.css';
 
 const PageLoadingIndicator = props => {
     const classes = useStyle(defaultClasses, props.classes);

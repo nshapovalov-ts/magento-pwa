@@ -1,10 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import store from './store';
 import app from '@magento/peregrine/lib/store/actions/app';
+
 import Adapter from './modules/Adapter';
 import { registerSW } from './registerSW';
+import store from './store';
+
 import './index.css';
 
 // server rendering differs from browser rendering

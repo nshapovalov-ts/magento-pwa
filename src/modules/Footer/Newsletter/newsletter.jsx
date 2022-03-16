@@ -3,17 +3,18 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { Form } from 'informed';
 import { shape, string } from 'prop-types';
 
-import { useNewsletter } from '@magento/peregrine/lib/talons/Newsletter/useNewsletter';
-import { useToasts } from '@magento/peregrine';
-
-import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
 import { useStyle } from '@magento/venia-ui/lib/classify';
+import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
+import { useToasts } from '@magento/peregrine';
+import { useNewsletter } from '@magento/peregrine/lib/talons/Newsletter/useNewsletter';
+
 import FormError from '@magento/venia-ui/lib/components/FormError';
+import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
+import Shimmer from '@magento/venia-ui/lib/components/Newsletter/newsletter.shimmer';
+import TextInput from '@magento/venia-ui/lib/components/TextInput';
 import Button from 'components/Button';
 import Field from 'components/Field';
-import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
-import TextInput from '@magento/venia-ui/lib/components/TextInput';
-import Shimmer from '@magento/venia-ui/lib/components/Newsletter/newsletter.shimmer';
+
 import defaultClasses from './newsletter.module.css';
 
 const Newsletter = props => {

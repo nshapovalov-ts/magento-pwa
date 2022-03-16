@@ -1,12 +1,14 @@
 import React from 'react';
-import { bool, shape, string } from 'prop-types';
 import { Form } from 'informed';
-import { useSearchBar } from '@magento/peregrine/lib/talons/SearchBar';
-import { useWindowSize } from '@magento/peregrine/lib/hooks/useWindowSize';
+import { bool, shape, string } from 'prop-types';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
+import { useWindowSize } from '@magento/peregrine/lib/hooks/useWindowSize';
+import { useSearchBar } from '@magento/peregrine/lib/talons/SearchBar';
+
 import Autocomplete from '@magento/venia-ui/lib/components/SearchBar/autocomplete';
 import SearchField from './searchField';
+
 import defaultClasses from './searchBar.module.css';
 
 const SearchBar = React.forwardRef((props, ref) => {

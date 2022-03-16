@@ -1,19 +1,20 @@
 import React, { Fragment, Suspense } from 'react';
-
 import { Link, Route } from 'react-router-dom';
-import NavTrigger from '@magento/venia-ui/lib/components/Header/navTrigger';
-import SearchTrigger from './SearchTrigger';
-import Logo from 'components/Logo';
-import OnlineIndicator from '@magento/venia-ui/lib/components/Header/onlineIndicator';
-import VerticalMenu from './VerticalMenu';
-import VerticalMenuButton from './VerticalMenuButton';
-import HorizontalMenu from './HorizontalMenu';
-import PageLoadingIndicator from 'components/PageLoadingIndicator';
-import { ActionButtons } from './ActionButtons';
 import { shape, string } from 'prop-types';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useHeader } from '@magento/peregrine/lib/talons/Header/useHeader';
 import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
-import { useStyle } from '@magento/venia-ui/lib/classify';
+
+import NavTrigger from '@magento/venia-ui/lib/components/Header/navTrigger';
+import OnlineIndicator from '@magento/venia-ui/lib/components/Header/onlineIndicator';
+import Logo from 'components/Logo';
+import PageLoadingIndicator from 'components/PageLoadingIndicator';
+import ActionButtons from './ActionButtons';
+import HorizontalMenu from './HorizontalMenu';
+import SearchTrigger from './SearchTrigger';
+import VerticalMenu from './VerticalMenu';
+import VerticalMenuButton from './VerticalMenuButton';
 
 import defaultClasses from './header.module.css';
 

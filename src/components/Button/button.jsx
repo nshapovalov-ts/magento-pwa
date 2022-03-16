@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
 import { useButton } from 'react-aria';
-import { oneOf, shape, string, bool } from 'prop-types';
 import classNames from 'classnames';
+import { bool, oneOf, shape, string } from 'prop-types';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
+
 import Link from '@magento/venia-ui/lib/components/Link';
+
 import defaultClasses from './button.module.css';
 
 const getRootClassName = ({ classes, variant = 'text', size = 'medium' }) =>

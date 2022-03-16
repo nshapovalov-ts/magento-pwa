@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import { shape, string } from 'prop-types';
 
-import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
-import { useCmsPage } from '@magento/peregrine/lib/talons/Cms/useCmsPage';
-// import RichContent from '../../components/RichContent';
-import { Meta, StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { toCamelCase } from '@magento/venia-ui/lib/util/toCamelCase';
+import { useCmsPage } from '@magento/peregrine/lib/talons/Cms/useCmsPage';
+
+import { Meta, StoreTitle } from '@magento/venia-ui/lib/components/Head';
+import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 
 import defaultClasses from './cms.module.css';
 
@@ -45,10 +45,7 @@ const CMSPage = props => {
             <StoreTitle>{pageTitle}</StoreTitle>
             <Meta name="title" content={pageTitle} />
             <Meta name="description" content={meta_description} />
-            <article className={rootClassName}>
-                {headingElement}
-                {/* <RichContent html={content} /> */}
-            </article>
+            <article className={rootClassName}>{headingElement}</article>
         </Fragment>
     );
 };

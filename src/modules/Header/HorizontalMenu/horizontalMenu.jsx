@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useIsInViewport } from '@magento/peregrine/lib/hooks/useIsInViewport';
 import { useMegaMenu } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenu';
-import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import HorizontalMenuItem from './horizontalMenuItem';
-import defaultClasses from './horizontalMenu.module.css';
-
 import { MENU_LINKS } from './sampleData';
+
+import defaultClasses from './horizontalMenu.module.css';
 
 /**
  * The HorizontalMenu component displays menu with categories on desktop devices

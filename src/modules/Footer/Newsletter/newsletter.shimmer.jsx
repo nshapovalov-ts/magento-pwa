@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
+
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
+
 import defaultClasses from './newsletter.module.css';
 import defaultShimmerClasses from './newsletter.shimmer.module.css';
 

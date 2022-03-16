@@ -1,12 +1,14 @@
 import React from 'react';
 import { shape, string } from 'prop-types';
-import { useAccountMenu } from '@magento/peregrine/lib/talons/Header/useAccountMenu';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
+import { useAccountMenu } from '@magento/peregrine/lib/talons/Header/useAccountMenu';
+
 import CreateAccount from '@magento/venia-ui/lib/components/CreateAccount';
+import ForgotPassword from '@magento/venia-ui/lib/components/ForgotPassword';
 import SignIn from '@magento/venia-ui/lib/components/SignIn/signIn';
 import AccountMenuItems from './accountMenuItems';
-import ForgotPassword from '@magento/venia-ui/lib/components/ForgotPassword';
+
 import defaultClasses from './accountMenu.module.css';
 
 const AccountMenu = React.forwardRef((props, ref) => {

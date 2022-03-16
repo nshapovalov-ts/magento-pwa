@@ -1,12 +1,14 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { gql } from '@apollo/client';
 import { bool, func, shape, string } from 'prop-types';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useAutocomplete } from '@magento/peregrine/lib/talons/SearchBar';
-import { useIntl } from 'react-intl';
+
+import Suggestions from '@magento/venia-ui/lib/components/SearchBar/suggestions';
 
 import defaultClasses from './autocomplete.module.css';
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import Suggestions from '@magento/venia-ui/lib/components/SearchBar/suggestions';
 
 const GET_AUTOCOMPLETE_RESULTS = gql`
     query getAutocompleteResults($inputText: String!) {

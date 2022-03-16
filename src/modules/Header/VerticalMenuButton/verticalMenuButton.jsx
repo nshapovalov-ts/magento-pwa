@@ -1,10 +1,11 @@
 import React from 'react';
+import { ChevronDown as ArrowDown } from 'react-feather';
 import PropTypes from 'prop-types';
 
-import Button from '@magento/venia-ui/lib/components/Button';
-import { ChevronDown as ArrowDown } from 'react-feather';
-import Icon from '@magento/venia-ui/lib/components/Icon';
 import { useStyle } from '@magento/venia-ui/lib/classify';
+
+import Button from '@magento/venia-ui/lib/components/Button';
+import Icon from '@magento/venia-ui/lib/components/Icon';
 
 import defaultClasses from './verticalMenuButton.module.css';
 

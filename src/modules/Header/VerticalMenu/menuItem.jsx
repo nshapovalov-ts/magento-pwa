@@ -2,12 +2,13 @@ import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
-import { useMegaMenuItem } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenuItem';
-
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import defaultClasses from './menuItem.module.css';
+import { useMegaMenuItem } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenuItem';
+import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
+
 import Submenu from './submenu';
+
+import defaultClasses from './menuItem.module.css';
 
 /**
  * The MenuItem component displays mega menu item

@@ -2,6 +2,7 @@ import React from 'react';
 import { shape, string } from 'prop-types';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
+
 import defaultClasses from './fieldIcons.module.css';
 
 const FieldIcons = props => {

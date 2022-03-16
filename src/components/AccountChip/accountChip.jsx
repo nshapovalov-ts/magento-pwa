@@ -1,18 +1,19 @@
 import React from 'react';
+import {
+    ChevronDown as ArrowDown,
+    Loader,
+    User as AccountIcon
+} from 'react-feather';
 import { useIntl } from 'react-intl';
 import { bool, shape, string } from 'prop-types';
-import {
-    Loader,
-    User as AccountIcon,
-    ChevronDown as ArrowDown
-} from 'react-feather';
 
-import { useAccountChip } from '@magento/peregrine/lib/talons/AccountChip/useAccountChip';
 import { useStyle } from '@magento/venia-ui/lib/classify';
+import { useAccountChip } from '@magento/peregrine/lib/talons/AccountChip/useAccountChip';
+import { GET_CUSTOMER_DETAILS } from './accountChip.gql';
 
 import Icon from '@magento/venia-ui/lib/components/Icon';
+
 import defaultClasses from './accountChip.module.css';
-import { GET_CUSTOMER_DETAILS } from './accountChip.gql';
 
 /**
  * The AccountChip component shows an icon next to some text.

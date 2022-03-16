@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
+import PropTypes from 'prop-types';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
+import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
+
 import defaultClasses from './submenuColumn.module.css';
-import PropTypes from 'prop-types';
 
 /**
  * The SubmenuColumn component displays columns with categories in submenu
@@ -87,9 +87,9 @@ SubmenuColumn.propTypes = {
         children: PropTypes.array,
         uid: PropTypes.string.isRequired,
         include_in_menu: PropTypes.number,
-        isActive: PropTypes.bool.isRequired,
+        isActive: PropTypes.bool,
         name: PropTypes.string.isRequired,
-        path: PropTypes.array.isRequired,
+        path: PropTypes.array,
         position: PropTypes.number.isRequired,
         url_path: PropTypes.string.isRequired
     }).isRequired,

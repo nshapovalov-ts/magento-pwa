@@ -1,10 +1,12 @@
 import React from 'react';
 
-import Button from 'components/Button';
-import AccountTrigger from './accountTrigger';
-import CartTrigger from '@magento/venia-ui/lib/components/Header/cartTrigger';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useUserContext } from '@magento/peregrine/lib/context/user';
+
+import CartTrigger from '@magento/venia-ui/lib/components/Header/cartTrigger';
+import Button from 'components/Button';
+import AccountTrigger from './accountTrigger';
+
 import defaultClasses from './actionButtons.module.css';
 
 const ActionButtons = props => {

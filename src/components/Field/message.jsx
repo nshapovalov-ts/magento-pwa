@@ -2,8 +2,9 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import { node, number, oneOfType, shape, string } from 'prop-types';
 
-import defaultClasses from './message.module.css';
 import { useStyle } from '@magento/venia-ui/lib/classify';
+
+import defaultClasses from './message.module.css';
 
 const Message = props => {
     const { children, classes: propClasses, fieldState } = props;

@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useSubMenu } from '@magento/peregrine/lib/talons/MegaMenu/useSubMenu';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import defaultClasses from './submenu.module.css';
 import SubmenuColumn from './submenuColumn';
+
+import defaultClasses from './submenu.module.css';
 
 /**
  * The Submenu component displays submenu in mega menu
@@ -42,6 +43,7 @@ const Submenu = props => {
     const subMenus = items.map((category, index) => {
         const keyboardProps =
             index === items.length - 1 ? talonProps.keyboardProps : {};
+
         return (
             <SubmenuColumn
                 index={index}

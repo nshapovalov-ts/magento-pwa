@@ -3,13 +3,14 @@ import { ChevronDown as ArrowDown } from 'react-feather';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
-import { useMegaMenuItem } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenuItem';
-
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import defaultClasses from './horizontalMenuItem.module.css';
-import Submenu from './submenu';
+import { useMegaMenuItem } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenuItem';
+import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
+
 import Icon from '@magento/venia-ui/lib/components/Icon';
+import Submenu from './submenu';
+
+import defaultClasses from './horizontalMenuItem.module.css';
 
 /**
  * The HorizontalMenuItem component displays mega menu item
@@ -135,9 +136,9 @@ HorizontalMenuItem.propTypes = {
         children: PropTypes.array,
         uid: PropTypes.string.isRequired,
         include_in_menu: PropTypes.number,
-        isActive: PropTypes.bool.isRequired,
+        isActive: PropTypes.bool,
         name: PropTypes.string.isRequired,
-        path: PropTypes.array.isRequired,
+        path: PropTypes.array,
         position: PropTypes.number.isRequired,
         url_path: PropTypes.string.isRequired
     }).isRequired,

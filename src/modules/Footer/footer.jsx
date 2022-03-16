@@ -1,18 +1,22 @@
 import React, { Fragment } from 'react';
-import { Facebook, Instagram, Twitter } from 'react-feather';
+import {
+    ChevronRight as ArrowRight,
+    Facebook,
+    Instagram,
+    Twitter
+} from 'react-feather';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { shape, string } from 'prop-types';
 
-import { ChevronRight as ArrowRight } from 'react-feather';
-import Icon from '@magento/venia-ui/lib/components/Icon';
-
-import Newsletter from './Newsletter';
+import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useFooter } from '@magento/peregrine/lib/talons/Footer/useFooter';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import defaultClasses from './footer.module.css';
+import Icon from '@magento/venia-ui/lib/components/Icon';
+import Newsletter from './Newsletter';
 import { DEFAULT_LINKS } from './sampleData';
+
+import defaultClasses from './footer.module.css';
 
 const Footer = props => {
     const { links } = props;
