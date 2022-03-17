@@ -54,7 +54,9 @@ const config = {
         'prefer-destructuring': 'warn',
         'no-return-assign': 'error',
         'no-useless-return': 'error',
-        'no-extra-boolean-cast': 'error'
+        'no-extra-boolean-cast': 'error',
+        'jsx-quotes': ['warn', 'prefer-double'],
+        'react/jsx-filename-extension': ['error', { extensions: ['.jsx'] }]
     }
 };
 
