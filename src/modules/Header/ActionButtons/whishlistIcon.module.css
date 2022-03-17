@@ -1,0 +1,15 @@
+.root {
+    composes: root from '@magento/venia-ui/lib/components/clickable.module.css';
+    align-content: center;
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    min-width: 3rem;
+    position: relative;
+    z-index: 1;
+    padding: 0 0.5rem;
+}
+
+.counter {
+    composes: counter from './actionButtons.module.css';
+}
