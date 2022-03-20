@@ -23,6 +23,7 @@
  **/
 
 const { ExtendLocalIntercept } = require('@larsroettig/component-targetables');
+const { useSingleWishlistTarget } = require('./src/targets/wishlist');
 
 function localIntercept(targets) {
     const { Targetables } = require('@magento/pwa-buildpack');
@@ -32,17 +33,7 @@ function localIntercept(targets) {
     extendLocalIntercept.allowCustomTargetables();
     extendLocalIntercept.allowCssOverwrites();
 
-    /**
-     * TODO: custom plugin for create separate intercept files for talons in custom folder
-     */
-    const useSingleWishlist = targetables.esModule(
-        '@magento/peregrine/lib/talons/Wishlist/AddToListButton/helpers/useSingleWishlist.js'
-    );
-
-    useSingleWishlist.insertAfterSource(
-        'addProductToWishlistMutation',
-        ", { refetchQueries: ['GetCustomerWishlist'] }"
-    );
+    useSingleWishlistTarget(targets);
 }
 
 module.exports = localIntercept;
