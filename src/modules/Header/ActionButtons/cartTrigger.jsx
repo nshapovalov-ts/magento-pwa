@@ -1,34 +1,29 @@
-import React, { Fragment, Suspense } from 'react';
-import { ShoppingBag as ShoppingCartIcon } from 'react-feather';
+import React, { Fragment } from 'react';
+import { ShoppingCart as ShoppingCartIcon } from 'react-feather';
 import { useIntl } from 'react-intl';
 import { shape, string } from 'prop-types';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
+import { Price } from '@magento/peregrine';
 import { useCartTrigger } from '@magento/peregrine/lib/talons/Header/useCartTrigger';
+import { useMiniCart } from '@magento/peregrine/lib/talons/MiniCart/useMiniCart';
 
 import { GET_ITEM_COUNT_QUERY } from '@magento/venia-ui/lib/components/Header/cartTrigger.gql';
 import Icon from '@magento/venia-ui/lib/components/Icon';
+import minicartOperations from '@magento/venia-ui/lib/components/MiniCart/miniCart.gql.js';
 
 import defaultClasses from './cartTrigger.module.css';
 
-const MiniCart = React.lazy(() =>
-    import('@magento/venia-ui/lib/components/MiniCart')
-);
-
 const CartTrigger = props => {
-    const {
-        handleLinkClick,
-        handleTriggerClick,
-        itemCount,
-        miniCartRef,
-        miniCartIsOpen,
-        hideCartTrigger,
-        setMiniCartIsOpen,
-        miniCartTriggerRef
-    } = useCartTrigger({
+    const { handleLinkClick, itemCount, setMiniCartIsOpen } = useCartTrigger({
         queries: {
             getItemCountQuery: GET_ITEM_COUNT_QUERY
         }
+    });
+
+    const { subTotal, totalQuantity } = useMiniCart({
+        setIsOpen: setMiniCartIsOpen,
+        operations: minicartOperations
     });
 
     const classes = useStyle(defaultClasses, props.classes);
@@ -36,53 +31,37 @@ const CartTrigger = props => {
     const buttonAriaLabel = formatMessage(
         {
             id: 'cartTrigger.ariaLabel',
-            defaultMessage:
-                'Toggle mini cart. You have {count} items in your cart.'
+            defaultMessage: 'You have {count} items in your cart.'
         },
         { count: itemCount }
     );
-    const itemCountDisplay = itemCount > 99 ? '99+' : itemCount;
-    const triggerClassName = miniCartIsOpen
-        ? classes.triggerContainer_open
-        : classes.triggerContainer;
 
-    const maybeItemCounter = itemCount ? (
+    const itemCountDisplay = itemCount > 99 ? '99+' : itemCount;
+
+    const itemCounter = itemCount ? (
         <span className={classes.counter} data-cy="CartTrigger-counter">
             {itemCountDisplay}
         </span>
     ) : null;
 
-    const cartTrigger = hideCartTrigger ? null : (
-        // Because this button behaves differently on desktop and mobile
-        // we render two buttons that differ only in their click handler
-        // and control which one displays via CSS.
+    const itemsWithSubtotal = subTotal ? (
+        <span className={classes.subtotal}>
+            {`${totalQuantity} items - `}
+            <Price currencyCode={subTotal.currency} value={subTotal.value} />
+        </span>
+    ) : null;
+
+    const cartTrigger = (
         <Fragment>
-            <div className={triggerClassName} ref={miniCartTriggerRef}>
-                <button
-                    aria-label={buttonAriaLabel}
-                    className={classes.trigger}
-                    onClick={handleTriggerClick}
-                    data-cy="CartTrigger-trigger"
-                >
-                    <Icon src={ShoppingCartIcon} />
-                    {maybeItemCounter}
-                </button>
-            </div>
             <button
                 aria-label={buttonAriaLabel}
-                className={classes.link}
+                className={classes.root}
                 onClick={handleLinkClick}
             >
                 <Icon src={ShoppingCartIcon} />
-                {maybeItemCounter}
+                {itemCounter}
+                {itemsWithSubtotal}
             </button>
-            <Suspense fallback={null}>
-                <MiniCart
-                    isOpen={miniCartIsOpen}
-                    setIsOpen={setMiniCartIsOpen}
-                    ref={miniCartRef}
-                />
-            </Suspense>
         </Fragment>
     );
 
@@ -94,10 +73,7 @@ export default CartTrigger;
 CartTrigger.propTypes = {
     classes: shape({
         counter: string,
-        link: string,
-        openIndicator: string,
-        root: string,
-        trigger: string,
-        triggerContainer: string
+        subTotal: string,
+        root: string
     })
 };
