@@ -1,0 +1,38 @@
+.root {
+    composes: root contained from 'components/Button/button.module.css';
+    margin-left: -0.5rem;
+    min-height: 2rem;
+    padding: 0 0.5rem;
+    align-self: center;
+    background-color: rgb(var(--color-secondary));
+    border-color: rgb(var(--color-secondary));
+}
+
+.icon {
+    display: none;
+    stroke: rgb(var(--color-white));
+}
+
+.text {
+    display: inline;
+}
+
+@media (max-width: 640px) {
+    .root {
+        min-width: 8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .root {
+        min-width: 6.125rem;
+    }
+
+    .icon {
+        display: inline;
+    }
+
+    .text {
+        display: none;
+    }
+}

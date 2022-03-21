@@ -4,34 +4,27 @@
 }
 
 .sellLink {
-    composes: root smallSize from '../../../components/Button/button.module.css';
+    composes: root text smallSize from 'components/Button/button.module.css';
     composes: text-primary from global;
     composes: hidden md_flex from global;
 }
 
-.smallButton {
-    composes: smallSize from '../../../components/Button/button.module.css';
-}
-
-.mediumButton {
-    composes: mediumSize from '../../../components/Button/button.module.css';
-}
-
 .loginButton {
-    composes: outlined from '../../../components/Button/button.module.css';
-    composes: mediumButton;
-    margin-right: 0.5rem;
+    composes: outlined from 'components/Button/button.module.css';
     composes: hidden sm_flex from global;
+    margin-right: 0.5rem;
+    color: rgb(var(--color-black));
 }
 
 .signupButton {
-    composes: contained from '../../../components/Button/button.module.css';
-    composes: mediumButton;
+    composes: contained from 'components/Button/button.module.css';
+    background: rgb(var(--color-primary));
 }
 
-@media (min-width: 1024px) {
-    .signupButton {
-        composes: mediumButton;
+@media (max-width: 1024px) {
+    .signupButton,
+    .loginButton {
+        padding: 0 15px;
     }
 }
 

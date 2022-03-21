@@ -1,0 +1,5 @@
+.addToCart {
+    composes: root from 'components/Button/button.module.css';
+    justify-self: left;
+    margin-top: 0.25rem;
+}
