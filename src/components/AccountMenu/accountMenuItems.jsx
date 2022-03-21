@@ -1,10 +1,13 @@
 import React from 'react';
+import { LogOut } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { func, shape, string } from 'prop-types';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useAccountMenuItems } from '@magento/peregrine/lib/talons/AccountMenu/useAccountMenuItems';
+
+import Icon from '@magento/venia-ui/lib/components/Icon';
 
 import defaultClasses from './accountMenuItems.module.css';
 
@@ -18,9 +21,10 @@ const AccountMenuItems = props => {
 
     const menu = menuItems.map(item => {
         return (
-            <Link className={classes.link} key={item.name} to={item.url}>
-                <FormattedMessage id={item.id} defaultMessage={item.name} />
-            </Link>
+            <div key={item.name} className={classes.link}>
+                {item.icon && <Icon src={item.icon} size={20} />}
+                <Link to={item.url}>{item.name}</Link>
+            </div>
         );
     });
 
@@ -33,6 +37,7 @@ const AccountMenuItems = props => {
                 type="button"
                 data-cy="accountMenuItems-signOut"
             >
+                <Icon src={LogOut} size={20} />
                 <FormattedMessage
                     id={'accountMenu.signOutButtonText'}
                     defaultMessage={'Sign Out'}

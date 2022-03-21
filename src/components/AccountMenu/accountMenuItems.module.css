@@ -12,12 +12,21 @@
     justify-content: start;
     text-decoration: none;
     transition: all 0.2s ease-in-out 0s;
-    color: rgb(var(--color-gray-700));
+    color: rgb(var(--color-gray-800));
 }
 
 .link:hover {
     background: rgb(var(--color-secondary));
     color: rgb(var(--color-white));
+}
+
+.link svg {
+    margin-right: 0.5rem;
+    stroke: rgb(var(--color-gray-800));
+}
+
+.link:hover svg {
+    stroke: rgb(var(--color-white));
 }
 
 .signOut {

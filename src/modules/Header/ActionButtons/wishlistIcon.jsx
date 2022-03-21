@@ -32,7 +32,7 @@ const WishlistIcon = props => {
     ) : null;
 
     return (
-        <Link to="/wishlist">
+        <Link to="/customer/wishlist">
             <div className={classes.root}>
                 <Icon src={Heart} />
                 {itemCounter}
