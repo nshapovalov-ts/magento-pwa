@@ -1,11 +1,17 @@
 const updateRoutes = targets => {
     targets.of('@magento/venia-ui').routes.tap(routes => {
         routes.push({
+            name: 'SignInPage',
+            pattern: '/sign-in',
+            exact: true,
+            path: require.resolve('../modules/SignInPage')
+        });
+
+        routes.push({
             name: 'My Account',
             pattern: '/customer/account-information',
             exact: true,
-            path:
-                '@magento/venia-ui/lib/components/AccountInformationPage/accountInformationPage.js',
+            path: '@magento/venia-ui/lib/components/AccountInformationPage',
             authed: true,
             redirectTo: '/sign-in'
         });
@@ -14,8 +20,7 @@ const updateRoutes = targets => {
             name: 'My Orders',
             pattern: '/customer/order-history',
             exact: true,
-            path:
-                '@magento/venia-ui/lib/components/OrderHistoryPage/orderHistoryPage.js',
+            path: '@magento/venia-ui/lib/components/OrderHistoryPage',
             authed: true,
             redirectTo: '/sign-in'
         });
@@ -41,8 +46,7 @@ const updateRoutes = targets => {
         routes.push({
             name: 'Messages',
             pattern: '/customer/communications',
-            path:
-                '@magento/venia-ui/lib/components/CommunicationsPage/communicationsPage.js',
+            path: '@magento/venia-ui/lib/components/CommunicationsPage',
             exact: true,
             authed: true,
             redirectTo: '/sign-in'
@@ -52,8 +56,7 @@ const updateRoutes = targets => {
             name: 'Wishlist',
             pattern: '/customer/wishlist',
             exact: true,
-            path:
-                '@magento/venia-ui/lib/components/WishlistPage/wishlistPage.js',
+            path: '@magento/venia-ui/lib/components/WishlistPage',
             authed: true,
             redirectTo: '/sign-in'
         });

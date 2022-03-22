@@ -1,0 +1,65 @@
+.root {
+    display: grid;
+    gap: 1.5rem;
+    justify-items: stretch;
+    padding: 1rem 1.5rem;
+}
+
+.forgotPassword {
+    display: block;
+    text-decoration: underline;
+    color: rgb(var(--color-error));
+    font-size: 0.8rem;
+}
+
+.form {
+    display: grid;
+    row-gap: 0.9375rem;
+}
+
+.modal {
+    visibility: hidden;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(var(--color-gray));
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+}
+
+.modal_active {
+    visibility: visible;
+    composes: modal;
+    opacity: 0.9;
+}
+
+.buttonsContainer {
+    display: grid;
+    gap: 1.5rem;
+    grid-auto-flow: row;
+    justify-content: flex-start;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.signInButton {
+    composes: root contained from 'components/Button/button.module.css';
+    composes: px-7 py-4 from global;
+    composes: bg-primary from global;
+}
+
+.forgotPasswordButtonContainer {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    justify-self: flex-end;
+    text-align: center;
+}
+
+.linkButton {
+    composes: root from '@magento/venia-ui/lib/components/LinkButton/linkButton.module.css';
+    padding: 0;
+    color: rgb(var(--color-blue-500));
+    padding-left: 0.2rem;
+}
