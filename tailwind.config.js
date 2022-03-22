@@ -1,4 +1,4 @@
-const tradesquare = require('./pwa-theme-tradesquare/tailwind.preset');
+const tradesquare = require('./tailwind-pwa-theme/tailwind.preset');
 
 const config = {
     mode: 'jit',
