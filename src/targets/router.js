@@ -9,25 +9,26 @@ const updateRoutes = targets => {
 
         routes.push({
             name: 'My Account',
-            pattern: '/customer/account-information',
+            pattern: '/account-information',
             exact: true,
-            path: '@magento/venia-ui/lib/components/AccountInformationPage',
+            path: require.resolve('../modules/AccountInformationPage'),
             authed: true,
-            redirectTo: '/sign-in'
+            redirectTo: '/sign-in',
+            shimmer: null
         });
 
         routes.push({
             name: 'My Orders',
-            pattern: '/customer/order-history',
+            pattern: '/order-history',
             exact: true,
-            path: '@magento/venia-ui/lib/components/OrderHistoryPage',
+            path: require.resolve('../modules/OrderHistoryPage'),
             authed: true,
             redirectTo: '/sign-in'
         });
 
         routes.push({
             name: 'Invoices',
-            pattern: '/customer/invoices',
+            pattern: '/invoices',
             exact: true,
             path: require.resolve('../modules/Account/stub.jsx'),
             authed: true,
@@ -36,7 +37,7 @@ const updateRoutes = targets => {
 
         routes.push({
             name: 'Reorder',
-            pattern: '/customer/reorder',
+            pattern: '/reorder',
             exact: true,
             path: require.resolve('../modules/Account/stub.jsx'),
             authed: true,
@@ -45,8 +46,8 @@ const updateRoutes = targets => {
 
         routes.push({
             name: 'Messages',
-            pattern: '/customer/communications',
-            path: '@magento/venia-ui/lib/components/CommunicationsPage',
+            pattern: '/communications',
+            path: require.resolve('../modules/CommunicationsPage'),
             exact: true,
             authed: true,
             redirectTo: '/sign-in'
@@ -54,16 +55,17 @@ const updateRoutes = targets => {
 
         routes.push({
             name: 'Wishlist',
-            pattern: '/customer/wishlist',
+            pattern: '/wishlist',
             exact: true,
-            path: '@magento/venia-ui/lib/components/WishlistPage',
+            path: require.resolve('../modules/WishlistPage'),
             authed: true,
-            redirectTo: '/sign-in'
+            redirectTo: '/sign-in',
+            shimmer: null
         });
 
         routes.push({
             name: 'Account Information',
-            pattern: '/customer/account-edit',
+            pattern: '/account-edit',
             exact: true,
             path: require.resolve('../modules/Account/stub.jsx'),
             authed: true,
@@ -72,7 +74,7 @@ const updateRoutes = targets => {
 
         routes.push({
             name: 'Reviews',
-            pattern: '/customer/reviews',
+            pattern: '/reviews',
             exact: true,
             path: require.resolve('../modules/Account/stub.jsx'),
             authed: true,

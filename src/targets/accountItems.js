@@ -22,49 +22,49 @@ const useAccountMenuItemsTarget = targets => {
             {
                 name: 'My Account',
                 id: 'accountMenu.accountInfoLink',
-                url: '/customer/account-information',
+                url: '/account-information',
                 icon: User
             },
             {
                 name: 'My Orders',
                 id: 'accountMenu.orderHistoryLink',
-                url: '/customer/order-history',
+                url: '/order-history',
                 icon: ShoppingBag
             },
             {
                 name: 'Invoices',
                 id: 'accountMenu.savedPaymentsLink',
-                url: '/customer/invoices',
+                url: '/invoices',
                 icon: FileText
             },
             {
                 name: 'Reorder',
                 id: 'accountMenu.orderHistoryLink',
-                url: '/customer/reorder',
+                url: '/reorder',
                 icon: RotateCw
             },
             {
                 name: 'Messages',
                 id: 'accountMenu.communicationsLink',
-                url: '/customer/communications',
+                url: '/communications',
                 icon: MessageSquare
             },
             {
                 name: 'My Wish List',
                 id: 'accountMenu.favoritesListsLink',
-                url: '/customer/wishlist',
+                url: '/wishlist',
                 icon: Heart
             },
             {
                 name: 'Account Information',
                 id: 'accountMenu.addressBookLink',
-                url: '/customer/account-edit',
+                url: '/account-edit',
                 icon: Info
             },
             {
                 name: 'My Product Reviews',
                 id: 'accountMenu.savedPaymentsLink',
-                url: '/customer/reviews',
+                url: '/reviews',
                 icon: Star
             }
         ];`,

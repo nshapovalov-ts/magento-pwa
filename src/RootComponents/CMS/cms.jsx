@@ -7,6 +7,7 @@ import { useCmsPage } from '@magento/peregrine/lib/talons/Cms/useCmsPage';
 
 import { Meta, StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
+import RichContent from '@magento/venia-ui/lib/components/RichContent';
 
 import defaultClasses from './cms.module.css';
 
@@ -45,7 +46,10 @@ const CMSPage = props => {
             <StoreTitle>{pageTitle}</StoreTitle>
             <Meta name="title" content={pageTitle} />
             <Meta name="description" content={meta_description} />
-            <article className={rootClassName}>{headingElement}</article>
+            <article className={rootClassName}>
+                {headingElement}
+                <RichContent html={content} />
+            </article>
         </Fragment>
     );
 };
