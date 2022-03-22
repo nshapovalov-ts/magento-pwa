@@ -1,0 +1,27 @@
+.root {
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    max-width: var(--max-width-desktop);
+    margin: 0 auto;
+}
+
+.pageContent {
+    padding: 0 10px;
+}
+
+@media (max-width: 1024px) {
+    .root {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(min-content, max-content) 1fr;
+    }
+
+    .menu {
+        grid-column-start: 1;
+        padding: 0 20px;
+    }
+
+    .pageContent {
+        grid-column-start: 1;
+        grid-row-start: 2;
+    }
+}
