@@ -29,6 +29,16 @@
     stroke: rgb(var(--color-white));
 }
 
+.activeLink {
+    composes: link;
+    background: rgb(var(--color-secondary));
+    color: rgb(var(--color-white));
+}
+
+.activeLink svg {
+    stroke: rgb(var(--color-white));
+}
+
 .signOut {
     composes: link;
     border-top: 2px solid rgb(var(--color-gray));

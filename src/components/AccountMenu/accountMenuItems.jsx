@@ -32,13 +32,14 @@ const AccountMenuItems = props => {
         const activeMenu = isMenuActive(item.url);
 
         return (
-            <div
+            <Link
                 key={item.name}
+                to={item.url}
                 className={activeMenu ? classes.activeLink : classes.link}
             >
                 {item.icon && <Icon src={item.icon} size={20} />}
-                <Link to={item.url}>{item.name}</Link>
-            </div>
+                {item.name}
+            </Link>
         );
     });
 
