@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Form } from 'informed';
 import { func, shape, string } from 'prop-types';
 
@@ -26,6 +26,7 @@ const SignIn = props => {
         showForgotPassword,
         initialValues
     } = props;
+    const { formatMessage } = useIntl();
 
     const talonProps = useSignIn({
         getCartDetailsQuery: GET_CART_DETAILS_QUERY,
@@ -59,7 +60,10 @@ const SignIn = props => {
     return (
         <div data-cy="SignIn-root" className={classes.root}>
             <span>
-                If you have an account, sign in with your email address.
+                <FormattedMessage
+                    id={'signIn.description'}
+                    defaultMessage="If you have an account, sign in with your email address."
+                />
             </span>
             <FormError errors={Array.from(errors.values())} />
             <Form
@@ -69,7 +73,12 @@ const SignIn = props => {
                 data-cy="SignIn-form"
                 initialValues={initialValues && initialValues}
             >
-                <Field label="Email *">
+                <Field
+                    label={formatMessage({
+                        id: 'signIn.emailAddressText',
+                        defaultMessage: 'Email'
+                    })}
+                >
                     <TextInput
                         data-cy="SignIn-email"
                         autoComplete="email"
@@ -80,7 +89,10 @@ const SignIn = props => {
                 <Password
                     data-cy="SignIn-password"
                     fieldName="password"
-                    label="Password *"
+                    label={formatMessage({
+                        id: 'signIn.passwordText',
+                        defaultMessage: 'Password'
+                    })}
                     validate={isRequired}
                     autoComplete="current-password"
                     isToggleButtonHidden={false}
@@ -94,7 +106,7 @@ const SignIn = props => {
                     >
                         <FormattedMessage
                             id={'signIn.forgotPasswordText'}
-                            defaultMessage={'Forgot Password?'}
+                            defaultMessage={'Forgot Your Password?'}
                         />
                     </LinkButton>
                 </div>
@@ -112,7 +124,10 @@ const SignIn = props => {
                     </Button>
                 </div>
                 <span>
-                    Don't have an account yet?
+                    <FormattedMessage
+                        id={'signIn.signUpDescription'}
+                        defaultMessage={"Don't have an account yet?"}
+                    />
                     <LinkButton
                         className={classes.linkButton}
                         type="button"

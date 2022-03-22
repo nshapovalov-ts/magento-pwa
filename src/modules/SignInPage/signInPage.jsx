@@ -1,5 +1,5 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { shape, string } from 'prop-types';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
@@ -38,10 +38,14 @@ const SignInPage = props => {
                     })}
                     width={160}
                     height={160}
-                    ratio={0.8}
                 />
             </div>
-            <h1 className={classes.header}>Welcome back!</h1>
+            <h1 className={classes.header}>
+                <FormattedMessage
+                    id={'signInPage.header'}
+                    defaultMessage={'Welcome back!'}
+                />
+            </h1>
             <div className={classes.contentContainer}>
                 <SignIn {...signInProps} />
             </div>
