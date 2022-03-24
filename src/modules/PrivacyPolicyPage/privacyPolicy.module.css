@@ -1,0 +1,62 @@
+.root {
+    max-width: var(--max-width-desktop);
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.title {
+    composes: text-3xl font-bold from global;
+    margin-bottom: 2rem;
+}
+
+.cookieTitle {
+    composes: text-3xl font-bold from global;
+    margin: 2rem 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.policyBlock a {
+    color: rgb(var(--color-secondary));
+}
+
+.policyBlock h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.policyBlock h2::before {
+    counter-increment: item;
+    content: counters(item, '.') '. ';
+}
+
+.policyBlock p {
+    margin: 10px 0;
+}
+
+.policyBlock ol {
+    counter-reset: item;
+    margin-top: 10px;
+}
+
+.policyBlock ul {
+    list-style-type: disc;
+}
+
+.policyBlock ul li {
+    margin: 10px 0 10px 30px;
+}
+
+.policyBlock table tr > td:nth-child(1) {
+    width: 200px;
+}
+
+.policyBlock table {
+    margin-top: 2rem;
+}
+
+.policyBlock table tr > td {
+    vertical-align: top;
+    padding-bottom: 1rem;
+}

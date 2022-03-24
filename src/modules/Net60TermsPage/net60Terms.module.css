@@ -1,0 +1,47 @@
+.root {
+    max-width: var(--max-width-desktop);
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.title {
+    composes: text-3xl font-bold from global;
+    margin-bottom: 2rem;
+}
+
+.terms a {
+    color: rgb(var(--color-secondary));
+}
+
+.terms h2 {
+    display: inline-block;
+    margin-top: 30px;
+}
+
+/* first level counter */
+.terms > ol > li::before,
+.terms h2 {
+    padding-right: 10px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.terms ol {
+    counter-reset: item;
+    margin-top: 10px;
+}
+
+/* counters on every li inside ol list */
+.terms ol > li::before {
+    counter-increment: item;
+    content: counters(item, '.') '. ';
+    padding-right: 10px;
+}
+
+.terms ul {
+    margin: 15px 0 0 30px;
+}
+
+.terms li {
+    margin-bottom: 15px;
+}

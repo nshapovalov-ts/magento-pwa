@@ -7,6 +7,7 @@ const updateRoutes = targets => {
             path: require.resolve('../modules/SignInPage')
         });
 
+        // Customer menu routes
         routes.push({
             name: 'My Account',
             pattern: '/account-information',
@@ -79,6 +80,29 @@ const updateRoutes = targets => {
             path: require.resolve('../modules/Account/stub.jsx'),
             authed: true,
             redirectTo: '/sign-in'
+        });
+
+        // Footer pages routes
+
+        routes.push({
+            name: 'Buyer Terms',
+            pattern: '/buyer-terms',
+            exact: true,
+            path: require.resolve('../modules/BuyerTermsPage')
+        });
+
+        routes.push({
+            name: 'Buyer Terms',
+            pattern: '/net60-terms',
+            exact: true,
+            path: require.resolve('../modules/Net60TermsPage')
+        });
+
+        routes.push({
+            name: 'Privacy Policy',
+            pattern: '/privacy-policy',
+            exact: true,
+            path: require.resolve('../modules/PrivacyPolicyPage')
         });
 
         return routes;

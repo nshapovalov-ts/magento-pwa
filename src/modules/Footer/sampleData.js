@@ -3,10 +3,10 @@ import { ContactLink } from '@magento/venia-ui/lib/components/ContactPage';
 const supportLinks = new Map()
     .set('Support', null)
     .set('Help Center', '/faq/')
-    .set('Terms of Use', null)
-    .set('Privacy Policy', null)
+    .set('Terms of Use', '/buyer-terms')
+    .set('Privacy Policy', '/privacy-policy')
     .set('Buy Now Pay Later', null)
-    .set('Net 60 terms', null);
+    .set('Net 60 terms', '/net60-terms');
 
 const companyLinks = new Map()
     .set('Company', null)
