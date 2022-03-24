@@ -35,7 +35,6 @@
 }
 
 /* button sizes */
-
 .smallSize {
     composes: root;
     padding: 0px 15px;
@@ -82,17 +81,17 @@
 
 .root_lowPriority {
     composes: root;
-    --stroke: var(--venia-global-color-gray-700);
+    --stroke: var(--color-gray-700);
 }
 .root_lowPriority:hover {
-    --stroke: var(--venia-global-color-gray-900);
+    --stroke: var(--color-gray-900);
 }
 .root_lowPriorityNegative {
     composes: root_lowPriority;
-    --stroke: var(--venia-global-color-red-700);
+    --stroke: var(--color-red-400);
 }
 .root_lowPriorityNegative:hover {
-    --stroke: var(--venia-global-color-red-800);
+    --stroke: var(--color-red-800);
 }
 
 .root_normalPriority {
@@ -100,21 +99,25 @@
 }
 .root_normalPriorityNegative {
     composes: root_normalPriority;
-    --stroke: var(--venia-global-color-red-700);
+    --stroke: var(--color-red-400);
 }
 .root_normalPriorityNegative:hover {
-    --stroke: var(--venia-global-color-red-800);
+    --stroke: var(--color-red-800);
 }
 
 .root_highPriority {
     composes: root;
     background-color: rgb(var(--color-secondary));
-    color: rgb(var(--venia-global-color-gray-50));
+    color: rgb(var(--color-gray-50));
 }
 .root_highPriorityNegative {
     composes: root_highPriority;
-    --stroke: var(--venia-global-color-red-700);
+    --stroke: var(--color-red-400);
 }
 .root_highPriorityNegative:hover {
-    --stroke: var(--venia-global-color-red-800);
+    --stroke: var(--color-red-800);
+}
+
+.primary {
+    background: rgb(var(--color-primary));
 }

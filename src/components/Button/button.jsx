@@ -9,8 +9,8 @@ import Link from '@magento/venia-ui/lib/components/Link';
 
 import defaultClasses from './button.module.css';
 
-const getRootClassName = ({ classes, variant = 'text', size = 'medium' }) =>
-    `${classes[variant]} ${classes[size + 'Size']}`;
+const getRootClassName = ({ classes, variant = 'text', size = 'medium', primary }) =>
+    `${classes[variant]} ${classes[size + 'Size']} ${primary && classes.primary}`;
 
 /**
  * A component for buttons.
@@ -29,6 +29,7 @@ const Button = ({
     classes: propClasses,
     variant = 'text',
     size = 'medium',
+    primary,
     disabled,
     onPress,
     ...restProps
@@ -47,29 +48,19 @@ const Button = ({
     const classes = useStyle(defaultClasses, propClasses);
     const rootClassName = classNames(
         classes.root,
-        getRootClassName({ classes, variant, size })
+        getRootClassName({ classes, variant, size, primary })
     );
 
     if (component === 'link') {
         return (
-            <Link
-                ref={buttonRef}
-                className={rootClassName}
-                {...buttonProps}
-                {...restProps}
-            >
+            <Link ref={buttonRef} className={rootClassName} {...buttonProps} {...restProps}>
                 <span className={classes.content}>{children}</span>
             </Link>
         );
     }
 
     return (
-        <button
-            ref={buttonRef}
-            className={rootClassName}
-            {...buttonProps}
-            {...restProps}
-        >
+        <button ref={buttonRef} className={rootClassName} {...buttonProps} {...restProps}>
             <span className={classes.content}>{children}</span>
         </button>
     );
@@ -99,11 +90,13 @@ Button.propTypes = {
         outlined: string,
         sizeSmall: string,
         sizeMedium: string,
-        sizeLarge: string
+        sizeLarge: string,
+        primary: string
     }),
     component: oneOf(['button', 'link']),
     variant: oneOf(['text', 'contained', 'outlined']),
     size: oneOf(['small', 'medium', 'large']),
+    primary: bool,
     disabled: bool
 };
 
