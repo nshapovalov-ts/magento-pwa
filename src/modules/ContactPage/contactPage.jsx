@@ -13,9 +13,9 @@ import ErrorView from '@magento/venia-ui/lib/components/ErrorView';
 import FormError from '@magento/venia-ui/lib/components/FormError';
 import { Meta, StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
-import TextArea from '@magento/venia-ui/lib/components/TextArea';
 import Button from 'components/Button';
 import Field from 'components/Field';
+import TextArea from 'components/TextArea';
 import TextInput from 'components/TextInput';
 import ContactPageShimmer from './contactPage.shimmer';
 
@@ -116,16 +116,13 @@ const ContactPage = props => {
                                     id: 'global.email',
                                     defaultMessage: 'Email'
                                 })}
+                                required
                             >
                                 <TextInput
                                     autoComplete="email"
                                     field="email"
                                     id="contact-email"
                                     validate={isRequired}
-                                    placeholder={formatMessage({
-                                        id: 'global.emailPlaceholder',
-                                        defaultMessage: 'abc@xyz.com'
-                                    })}
                                     data-cy="email"
                                 />
                             </Field>
@@ -136,6 +133,7 @@ const ContactPage = props => {
                                         id: 'global.firstName',
                                         defaultMessage: 'First name'
                                     })}
+                                    required
                                 >
                                     <TextInput
                                         autoComplete="firstname"
@@ -151,6 +149,7 @@ const ContactPage = props => {
                                         id: 'global.lastName',
                                         defaultMessage: 'Last name'
                                     })}
+                                    required
                                 >
                                     <TextInput
                                         autoComplete="lastname"
@@ -163,22 +162,19 @@ const ContactPage = props => {
                             </div>
 
                             <Field
-                                id="contact-comment"
+                                id="contact-message"
                                 label={formatMessage({
                                     id: 'contactPage.message',
                                     defaultMessage: 'Your message'
                                 })}
+                                required
                             >
                                 <TextArea
-                                    autoComplete="comment"
-                                    field="comment"
-                                    id="contact-comment"
+                                    autoComplete="message"
+                                    field="message"
+                                    id="contact-message"
                                     validate={isRequired}
-                                    placeholder={formatMessage({
-                                        id: 'contactPage.commentPlaceholder',
-                                        defaultMessage: `Tell us what's on your mind`
-                                    })}
-                                    data-cy="comment"
+                                    data-cy="message"
                                 />
                             </Field>
                             <p>
@@ -220,7 +216,7 @@ const ContactPage = props => {
                                 >
                                     <FormattedMessage
                                         id={'contactPage.submit'}
-                                        defaultMessage={'Send'}
+                                        defaultMessage={'Submit'}
                                     />
                                 </Button>
                             </div>

@@ -12,5 +12,5 @@
 
 .root_error {
     composes: root;
-    composes: font-semibold text-red from global;
+    composes: font-semibold text-error from global;
 }

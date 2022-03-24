@@ -10,10 +10,13 @@
     display: flex;
     font-size: 1rem;
     composes: font-semibold from global;
-    justify-content: space-between;
     line-height: 1.25rem;
     padding: 0.5625rem 0.125rem;
     min-height: 2.5rem;
+}
+
+.required {
+    color: rgb(var(--color-error));
 }
 
 .input_base {
@@ -28,7 +31,6 @@
 .input {
     composes: input_base;
     composes: text-gray-900 from global;
-    composes: bg-white from global;
     border: 2px solid rgb(var(--color-gray-200));
     display: inline-flex;
     flex: 0 0 100%;
@@ -42,4 +44,6 @@
 .optional {
     composes: text-gray-700 from global;
     composes: text-sm from global;
+    width: 100%;
+    text-align: end;
 }

@@ -6,6 +6,11 @@
     padding: 12px 15px;
 }
 
+.input_error {
+    composes: input from 'components/Field/field.module.css';
+    border-color: rgb(var(--color-red-400));
+}
+
 .input_shimmer {
     composes: input_base from 'components/Field/field.module.css';
     height: auto;
