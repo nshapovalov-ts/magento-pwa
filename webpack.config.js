@@ -5,12 +5,7 @@ const fs = require('fs');
 const { promisify } = require('util');
 const path = require('path');
 
-const {
-    getMediaURL,
-    getStoreConfigData,
-    getAvailableStoresConfigData,
-    getPossibleTypes
-} = graphQL;
+const { getMediaURL, getStoreConfigData, getAvailableStoresConfigData, getPossibleTypes } = graphQL;
 
 const { DefinePlugin } = webpack;
 // const { LimitChunkCountPlugin } = webpack.optimize;
@@ -69,9 +64,7 @@ module.exports = async env => {
      * in the .env file, because should set the store name from the
      * given store code instead of the default one.
      */
-    const availableStore = availableStores.find(
-        ({ code }) => code === process.env.STORE_VIEW_CODE
-    );
+    const availableStore = availableStores.find(({ code }) => code === process.env.STORE_VIEW_CODE);
 
     global.MAGENTO_MEDIA_BACKEND_URL = mediaUrl;
     global.LOCALE = storeConfigData.locale.replace('_', '-');
@@ -88,10 +81,7 @@ module.exports = async env => {
     };
 
     // Strip UPWARD mustache from template file during watch
-    if (
-        process.env.npm_lifecycle_event &&
-        process.env.npm_lifecycle_event.includes('watch')
-    ) {
+    if (process.env.npm_lifecycle_event && process.env.npm_lifecycle_event.includes('watch')) {
         const devTemplate = await getCleanTemplate('./template.html');
 
         // Generate new gitignored html file based on the cleaned template
@@ -101,10 +91,7 @@ module.exports = async env => {
         htmlWebpackConfig.template = './template.html';
     }
 
-    config.module.noParse = [
-        /@adobe\/adobe\-client\-data\-layer/,
-        /braintree\-web\-drop\-in/
-    ];
+    config.module.noParse = [/@adobe\/adobe\-client\-data\-layer/, /braintree\-web\-drop\-in/];
     config.plugins = [
         ...config.plugins,
         new DefinePlugin({
@@ -121,9 +108,7 @@ module.exports = async env => {
                 : JSON.stringify(storeConfigData.code),
             AVAILABLE_STORE_VIEWS: JSON.stringify(availableStores),
             DEFAULT_LOCALE: JSON.stringify(global.LOCALE),
-            DEFAULT_COUNTRY_CODE: JSON.stringify(
-                process.env.DEFAULT_COUNTRY_CODE || 'US'
-            ),
+            DEFAULT_COUNTRY_CODE: JSON.stringify(process.env.DEFAULT_COUNTRY_CODE || 'US'),
             __DEV__: process.env.NODE_ENV !== 'production'
         }),
         new HTMLWebpackPlugin(htmlWebpackConfig)
@@ -136,6 +121,14 @@ module.exports = async env => {
             components: path.resolve(__dirname, './src/components/')
         }
     };
+
+    config.module.rules = [
+        ...config.module.rules,
+        {
+            test: /\.html$/i,
+            use: 'raw-loader'
+        }
+    ];
 
     /* 
     Commenting out this section until SSR is fully implemented
