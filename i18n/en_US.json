@@ -144,6 +144,8 @@
     "completedView.shippingMethod": "Shipping Method",
     "contactPage.comment": "Message",
     "contactPage.commentPlaceholder": "Tell us what's on your mind",
+    "contactPage.message": "Your message",
+    "contactPage.subscribeCheckbox": "I agree to receive other communications from TradeSquare.",
     "contactPage.infoText": "Drop us a line and we'll get back to you as soon as possible.",
     "contactPage.loadingText": "Sending",
     "contactPage.submit": "Send",

@@ -105,6 +105,13 @@ const updateRoutes = targets => {
             path: require.resolve('../modules/PrivacyPolicyPage')
         });
 
+        routes.push({
+            name: 'ContactPage',
+            pattern: '/contact-us',
+            exact: true,
+            path: require.resolve('../modules/ContactPage')
+        });
+
         return routes;
     });
 };

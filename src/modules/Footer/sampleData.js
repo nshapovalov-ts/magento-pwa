@@ -1,4 +1,4 @@
-import { ContactLink } from '@magento/venia-ui/lib/components/ContactPage';
+import { ContactLink } from 'modules/ContactPage';
 
 const supportLinks = new Map()
     .set('Support', null)

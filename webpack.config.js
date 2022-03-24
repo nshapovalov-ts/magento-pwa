@@ -118,7 +118,8 @@ module.exports = async env => {
         ...config.resolve,
         alias: {
             ...config.resolve.alias,
-            components: path.resolve(__dirname, './src/components/')
+            components: path.resolve(__dirname, './src/components/'),
+            modules: path.resolve(__dirname, './src/modules/')
         }
     };
 
