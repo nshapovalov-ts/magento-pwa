@@ -2,6 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import dompurify from 'dompurify';
 
+import { StaticPageLayout } from 'components/Layouts';
 import cookiePolicyHtml from './cookiePolicy.html';
 import privacyPolicyHtml from './privacyPolicy.html';
 
@@ -11,7 +12,7 @@ const PrivacyPolicyPage = () => {
     const clearHtml = dompurify.sanitize;
 
     return (
-        <article className={classes.root}>
+        <StaticPageLayout>
             <h1 className={classes.title}>
                 <FormattedMessage
                     id={'privacyPolicyPage.title'}
@@ -36,7 +37,7 @@ const PrivacyPolicyPage = () => {
                     __html: clearHtml(cookiePolicyHtml)
                 }}
             />
-        </article>
+        </StaticPageLayout>
     );
 };
 

@@ -4,6 +4,7 @@ import { shape, string } from 'prop-types';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
+import { StaticPageLayout } from 'components/Layouts';
 
 import defaultClasses from './contactPage.module.css';
 import shimmerClasses from './contactPage.shimmer.module.css';
@@ -13,7 +14,7 @@ const ContactPageShimmer = props => {
     const classes = useStyle(defaultClasses, shimmerClasses, propClasses);
 
     return (
-        <article className={classes.root} data-cy="ContactPage-root">
+        <StaticPageLayout>
             <div className={classes.content}>
                 <div className={classes.formContainer}>
                     <div className={classes.title}>
@@ -75,7 +76,7 @@ const ContactPageShimmer = props => {
                     </div>
                 </div>
             </div>
-        </article>
+        </StaticPageLayout>
     );
 };
 

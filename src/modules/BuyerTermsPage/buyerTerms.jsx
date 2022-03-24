@@ -2,6 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import dompurify from 'dompurify';
 
+import { StaticPageLayout } from 'components/Layouts';
 import buyerTermsHtml from './buyerTerms.html';
 import { Disclaimer } from './disclaimer';
 
@@ -11,7 +12,7 @@ const BuyerTerms = () => {
     const clearHtml = dompurify.sanitize;
 
     return (
-        <article className={classes.root}>
+        <StaticPageLayout>
             <h1 className={classes.title}>
                 <FormattedMessage
                     id={'buyerTermsPage.title'}
@@ -23,7 +24,7 @@ const BuyerTerms = () => {
                 className={classes.terms}
                 dangerouslySetInnerHTML={{ __html: clearHtml(buyerTermsHtml) }}
             />
-        </article>
+        </StaticPageLayout>
     );
 };
 

@@ -1,9 +1,3 @@
-.root {
-    max-width: var(--max-width-desktop);
-    margin: 0 auto;
-    padding: 10px;
-}
-
 .title {
     composes: text-3xl font-bold from global;
     margin-bottom: 2rem;
