@@ -15,13 +15,13 @@ const companyLinks = new Map()
         Component: ContactLink
     })
     .set('About Us', '/about-us')
-    .set('Sell on TradeSquare', null)
-    .set('Supplier Login', null);
+    .set('Sell on TradeSquare', '/sell')
+    .set('Supplier Login', 'https://tradesquare.mirakl.net/');
 
 const connectLinks = new Map()
     .set('Connect', null)
-    .set('Learning Square', null)
-    .set('TSQ Podcast', null);
+    .set('Learning Square', 'https://learn.tradesquare.com.au/blog')
+    .set('TSQ Podcast', 'https://learn.tradesquare.com.au/en-au/tsq-podcast');
 
 export const DEFAULT_LINKS = new Map()
     .set('support', supportLinks)

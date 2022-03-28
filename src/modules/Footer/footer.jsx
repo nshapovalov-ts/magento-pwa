@@ -1,102 +1,24 @@
-import React, { Fragment } from 'react';
-import {
-    ChevronRight as ArrowRight,
-    Facebook,
-    Instagram,
-    Twitter
-} from 'react-feather';
-import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { shape, string } from 'prop-types';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useFooter } from '@magento/peregrine/lib/talons/Footer/useFooter';
 
-import Icon from '@magento/venia-ui/lib/components/Icon';
+import LinkGroups from './linkGroups';
 import Newsletter from './Newsletter';
-import { DEFAULT_LINKS } from './sampleData';
 
 import defaultClasses from './footer.module.css';
 
 const Footer = props => {
-    const { links } = props;
     const classes = useStyle(defaultClasses, props.classes);
     const talonProps = useFooter();
 
     const { copyrightText } = talonProps;
 
-    const linkGroupArray = Array.from(links);
-
-    const linkGroups = linkGroupArray.map(([groupKey, linkProps], index) => {
-        const linkElements = Array.from(
-            linkProps,
-            ([text, pathInfo], linkIndex) => {
-                let path = pathInfo;
-                let Component = Fragment;
-                if (pathInfo && typeof pathInfo === 'object') {
-                    path = pathInfo.path;
-                    Component = pathInfo.Component;
-                }
-
-                const itemKey = `text: ${text} path:${path}`;
-                const child = path ? (
-                    <Link
-                        className={classes.link}
-                        to={path}
-                        data-cy="Footer-link"
-                    >
-                        <FormattedMessage id={text} defaultMessage={text} />
-                    </Link>
-                ) : (
-                    <span className={classes.label}>
-                        <FormattedMessage id={text} defaultMessage={text} />
-                    </span>
-                );
-
-                const icon =
-                    linkIndex > 0 ? (
-                        <Icon
-                            className={classes.arrowRight}
-                            src={ArrowRight}
-                            size={16}
-                        />
-                    ) : null;
-
-                return (
-                    <Component key={itemKey}>
-                        <li className={classes.linkItem}>
-                            {icon}
-                            {child}
-                        </li>
-                    </Component>
-                );
-            }
-        );
-
-        return (
-            <ul key={groupKey} className={classes.linkGroup}>
-                {linkElements}
-                {index === 2 ? (
-                    <ul className={classes.socialLinks}>
-                        <li>
-                            <Instagram size={20} />
-                        </li>
-                        <li>
-                            <Facebook size={20} />
-                        </li>
-                        <li>
-                            <Twitter size={20} />
-                        </li>
-                    </ul>
-                ) : null}
-            </ul>
-        );
-    });
-
     return (
         <footer className={classes.root} data-cy="Footer-root">
             <div className={classes.main}>
-                <div className={classes.links}>{linkGroups}</div>
+                <LinkGroups />
                 <div className={classes.subscribe}>
                     <Newsletter />
                 </div>
@@ -109,10 +31,6 @@ const Footer = props => {
 };
 
 export default Footer;
-
-Footer.defaultProps = {
-    links: DEFAULT_LINKS
-};
 
 Footer.propTypes = {
     classes: shape({

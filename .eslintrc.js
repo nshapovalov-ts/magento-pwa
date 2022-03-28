@@ -17,15 +17,13 @@ const config = {
                     // react and all external modules
                     ['^react', '^@?\\w'],
                     // pwa magento hooks, helpers, utils and graphql requests
-                    [
-                        '^@magento/venia-ui/lib/(?!components)',
-                        '^@magento/peregrine',
-                        '\\.gql$'
-                    ],
+                    ['^@magento/venia-ui/lib/(?!components)', '^@magento/peregrine', '\\.gql$'],
                     // pwa components, reusable components with webpack alias and all modules with relative path
                     [
                         '^@magento/venia-ui/lib/components',
                         '^components',
+                        '^modules',
+                        '^helpers',
                         '^\\.'
                     ],
                     // static files and styles
