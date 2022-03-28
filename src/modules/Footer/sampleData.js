@@ -14,7 +14,7 @@ const companyLinks = new Map()
         path: '/contact-us',
         Component: ContactLink
     })
-    .set('About Us', null)
+    .set('About Us', '/about-us')
     .set('Sell on TradeSquare', null)
     .set('Supplier Login', null);
 

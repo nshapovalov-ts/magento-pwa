@@ -1,0 +1,55 @@
+.root {
+    margin-top: 30px;
+}
+
+.title {
+    composes: text-3xl from global;
+    margin: 0 0 27px;
+    text-align: center;
+}
+
+.imagesContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.imagesContainer figure {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+}
+
+.imagesContainer figure:not(:last-child)::after {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    transform: translate(50%, -50%);
+    width: 132px;
+    height: 32px;
+    background: url(./assets/our_values_line.png) no-repeat center;
+    content: '';
+}
+
+@media (max-width: 768px) {
+    .imagesContainer figure:not(:last-child)::after {
+        content: none;
+    }
+}
+
+.image {
+    margin: 10px auto;
+}
+
+.imageDescription {
+    composes: text-xl from global;
+}
+
+@media (max-width: 768px) {
+    .imagesContainer {
+        display: grid;
+        row-gap: 2rem;
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+}

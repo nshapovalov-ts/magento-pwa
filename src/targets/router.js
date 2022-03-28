@@ -112,6 +112,13 @@ const updateRoutes = targets => {
             path: require.resolve('../modules/ContactPage')
         });
 
+        routes.push({
+            name: 'AboutUsPage',
+            pattern: '/about-us',
+            exact: true,
+            path: require.resolve('../modules/AboutUsPage')
+        });
+
         return routes;
     });
 };
