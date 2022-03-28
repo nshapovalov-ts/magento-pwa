@@ -1,15 +1,13 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import dompurify from 'dompurify';
 
+import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import { StaticPageLayout } from 'components/Layouts';
 import net60TermsHtml from './net60Terms.html';
 
 import classes from './net60Terms.module.css';
 
 const Net60Terms = () => {
-    const clearHtml = dompurify.sanitize;
-
     return (
         <StaticPageLayout>
             <h1 className={classes.title}>
@@ -18,10 +16,7 @@ const Net60Terms = () => {
                     defaultMessage={'Net 60 terms and conditions'}
                 />
             </h1>
-            <section
-                className={classes.terms}
-                dangerouslySetInnerHTML={{ __html: clearHtml(net60TermsHtml) }}
-            />
+            <RichContent classes={{ root: classes.terms }} html={net60TermsHtml} />
         </StaticPageLayout>
     );
 };

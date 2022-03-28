@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import dompurify from 'dompurify';
 
+import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import { StaticPageLayout } from 'components/Layouts';
 import cookiePolicyHtml from './cookiePolicy.html';
 import privacyPolicyHtml from './privacyPolicy.html';
@@ -9,8 +9,6 @@ import privacyPolicyHtml from './privacyPolicy.html';
 import classes from './privacyPolicy.module.css';
 
 const PrivacyPolicyPage = () => {
-    const clearHtml = dompurify.sanitize;
-
     return (
         <StaticPageLayout>
             <h1 className={classes.title}>
@@ -19,24 +17,15 @@ const PrivacyPolicyPage = () => {
                     defaultMessage={'Tradesquare Pty Ltd Privacy Policy'}
                 />
             </h1>
-            <section
-                className={classes.policyBlock}
-                dangerouslySetInnerHTML={{
-                    __html: clearHtml(privacyPolicyHtml)
-                }}
-            />
+            <RichContent classes={{ root: classes.policyBlock }} html={privacyPolicyHtml} />
+
             <h1 className={classes.cookieTitle}>
                 <FormattedMessage
                     id={'privacyPolicyPage.cookieTitle'}
                     defaultMessage={'Cookie policy'}
                 />
             </h1>
-            <section
-                className={classes.policyBlock}
-                dangerouslySetInnerHTML={{
-                    __html: clearHtml(cookiePolicyHtml)
-                }}
-            />
+            <RichContent classes={{ root: classes.policyBlock }} html={cookiePolicyHtml} />
         </StaticPageLayout>
     );
 };

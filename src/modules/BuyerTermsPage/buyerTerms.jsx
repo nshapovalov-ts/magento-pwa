@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import dompurify from 'dompurify';
 
+import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import { StaticPageLayout } from 'components/Layouts';
 import buyerTermsHtml from './buyerTerms.html';
 import { Disclaimer } from './disclaimer';
@@ -9,8 +9,6 @@ import { Disclaimer } from './disclaimer';
 import classes from './buyerTerms.module.css';
 
 const BuyerTerms = () => {
-    const clearHtml = dompurify.sanitize;
-
     return (
         <StaticPageLayout>
             <h1 className={classes.title}>
@@ -20,10 +18,7 @@ const BuyerTerms = () => {
                 />
             </h1>
             <Disclaimer />
-            <section
-                className={classes.terms}
-                dangerouslySetInnerHTML={{ __html: clearHtml(buyerTermsHtml) }}
-            />
+            <RichContent classes={{ root: classes.terms }} html={buyerTermsHtml} />
         </StaticPageLayout>
     );
 };
