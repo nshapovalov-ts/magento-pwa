@@ -1,0 +1,78 @@
+.container {
+    display: grid;
+    row-gap: 2rem;
+    grid-template-columns: 1fr;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+.image {
+    position: relative;
+    width: 80px;
+    margin-bottom: 20px;
+    max-width: 950px;
+}
+
+.imageContainer figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .container .imageContainer:not(:last-child) figure::after {
+        position: absolute;
+        right: 0;
+        top: 40px;
+        transform: translate(50%, -50%);
+        width: 132px;
+        height: 32px;
+        background: url(./assets/neto_3_easy_img_bg.png) no-repeat center;
+        content: '';
+    }
+}
+
+.root h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 1200px) {
+    .root h2 {
+        font-size: 3.5rem;
+        margin-bottom: 70px;
+    }
+}
+
+.imageNumber {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: rgb(var(--color-yellow-400));
+    box-shadow: 0px 16px 24px rgb(0 0 0 / 12%);
+    border-radius: 8px;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(var(--color-black));
+    right: -16px;
+    top: -16px;
+}
+
+.imageDescription {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    white-space: pre-line;
+    line-height: 0.8rem;
+}

@@ -119,6 +119,13 @@ const updateRoutes = targets => {
             path: require.resolve('../modules/AboutUsPage')
         });
 
+        routes.push({
+            name: 'Sell on Tradesquare',
+            pattern: '/sell',
+            exact: true,
+            path: require.resolve('../modules/SellOnPage')
+        });
+
         return routes;
     });
 };

@@ -16,7 +16,7 @@ module.exports = {
         colors: getColors(),
         animations: getAnimations(),
         fontFamily: {
-            sans: ['Muli', 'sans-serif'],
+            sans: ['Montserrat', 'sans-serif'],
             serif: ['Source Serif Pro', 'serif']
         },
         extend: {

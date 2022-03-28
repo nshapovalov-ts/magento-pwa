@@ -17,8 +17,9 @@ import logo from 'static/Trade-Square-Logo-Black.png';
  *
  * @returns {React.Element} A React component that displays a logo.
  */
-const Logo = ({ height = 36, width = 100, classes }) => {
-    const classNames = useStyle({}, classes);
+const Logo = props => {
+    const { height = 36, width = 100 } = props;
+    const classes = useStyle({}, props.classes);
     const { formatMessage } = useIntl();
 
     const title = formatMessage({
@@ -29,7 +30,7 @@ const Logo = ({ height = 36, width = 100, classes }) => {
     return (
         <Image
             alt={title}
-            classes={{ image: classNames.logo }}
+            classes={{ image: classes.logo }}
             height={height}
             src={logo}
             title={title}

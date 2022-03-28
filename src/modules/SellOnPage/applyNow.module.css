@@ -1,0 +1,36 @@
+.root {
+    margin: 0;
+    padding: 75px 0px;
+    width: 100%;
+    background: url(./assets/neto_apply_seller_bg.png) no-repeat center;
+    background-size: cover;
+    text-align: center;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.root h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.button {
+    composes: mediumSize from 'components/Button/button.module.css';
+}
+
+@media (min-width: 1200px) {
+    .root {
+        margin-bottom: 120px;
+    }
+    .root h2 {
+        font-size: 2.75rem;
+        margin-bottom: 80px;
+    }
+
+    .button {
+        padding: 20px 30px;
+    }
+}
