@@ -7,7 +7,7 @@ import { useSignInPage } from '@magento/peregrine/lib/talons/SignInPage/useSignI
 
 import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import Image from '@magento/venia-ui/lib/components/Image';
-import SignIn from './SignInForm';
+import SignIn from './signInForm';
 
 import signInImage from 'static/welcome_back.png';
 import defaultClasses from './signInPage.module.css';
@@ -41,10 +41,7 @@ const SignInPage = props => {
                 />
             </div>
             <h1 className={classes.header}>
-                <FormattedMessage
-                    id={'signInPage.header'}
-                    defaultMessage={'Welcome back!'}
-                />
+                <FormattedMessage id={'signInPage.header'} defaultMessage={'Welcome back!'} />
             </h1>
             <div className={classes.contentContainer}>
                 <SignIn {...signInProps} />
