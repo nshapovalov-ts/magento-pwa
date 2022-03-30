@@ -124,13 +124,22 @@ module.exports = async env => {
         }
     };
 
-    config.module.rules = [
-        ...config.module.rules,
-        {
-            test: /\.html$/i,
-            use: 'raw-loader'
-        }
-    ];
+    config.module.rules.push({
+        test: /\.html$/i,
+        use: 'raw-loader'
+    });
+
+    config.module.rules.push({
+        test: /\.(jpeg|webp)$/,
+        use: [
+            {
+                loader: 'file-loader',
+                options: {
+                    name: '[name]-[hash:base58:3].[ext]'
+                }
+            }
+        ]
+    });
 
     /* 
     Commenting out this section until SSR is fully implemented
