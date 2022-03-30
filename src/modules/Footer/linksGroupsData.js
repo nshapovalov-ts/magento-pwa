@@ -5,7 +5,7 @@ const supportLinks = new Map()
     .set('Help Center', '/faq/')
     .set('Terms of Use', '/buyer-terms')
     .set('Privacy Policy', '/privacy-policy')
-    .set('Buy Now Pay Later', null)
+    .set('Buy Now Pay Later', '/zip-business')
     .set('Net 60 terms', '/net60-terms');
 
 const companyLinks = new Map()

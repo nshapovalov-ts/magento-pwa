@@ -1,0 +1,39 @@
+.root {
+    margin-bottom: 50px;
+    padding: 50px 0px;
+    width: 100%;
+    background: rgb(var(--color-blue-50));
+}
+
+@media (min-width: 1200px) {
+    .root {
+        padding: 100px 0px;
+    }
+}
+
+.container {
+    max-width: var(--max-width-desktop);
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: var(--max-width-desktop);
+        margin: 0 auto;
+        padding: 0 30px;
+    }
+}
+
+.container h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 1200px) {
+    .container h2 {
+        font-size: 2.5rem;
+    }
+}

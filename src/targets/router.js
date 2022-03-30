@@ -106,6 +106,13 @@ const updateRoutes = targets => {
         });
 
         routes.push({
+            name: 'Privacy Policy',
+            pattern: '/zip-business',
+            exact: true,
+            path: require.resolve('../modules/ZipBusinessPage')
+        });
+
+        routes.push({
             name: 'ContactPage',
             pattern: '/contact-us',
             exact: true,

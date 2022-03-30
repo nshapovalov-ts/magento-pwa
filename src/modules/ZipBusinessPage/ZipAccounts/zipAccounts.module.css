@@ -1,0 +1,68 @@
+.root {
+    width: calc(100% - 16px);
+    margin: 0 8px 100px;
+    border-radius: 12px;
+    padding: 66px 0;
+    background: rgb(var(--color-blue-50));
+    text-align: center;
+}
+
+@media (min-width: 1200px) {
+    .root {
+        margin: 0 64px 100px;
+        padding: 110px 0px 99px;
+        width: calc(100% - 128px);
+        border-radius: 40px;
+    }
+}
+
+.container {
+    max-width: rgb(var(--max-width-desktop));
+}
+
+.container h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 1200px) {
+    .container h2 {
+        font-size: 2.5rem;
+        margin-bottom: 70px;
+    }
+}
+
+.accountsBlock {
+    margin: 0 auto;
+    max-width: var(--max-width-desktop);
+}
+
+@media (min-width: 768px) {
+    .accountsBlock {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.accountsDescription {
+    max-width: 700px;
+    font-weight: 500;
+    margin: 0 auto;
+    color: rgb(var(--color-gray-800));
+    margin-top: 40px;
+}
+
+.link {
+    color: rgb(var(--color-gray-800));
+}
+
+.link:hover {
+    color: rgb(var(--color-primary));
+}
+
+.linkUnderlined {
+    composes: link;
+    text-decoration: underline;
+}

@@ -1,0 +1,129 @@
+.root {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+@media (min-width: 1200px) {
+    .root {
+        margin-bottom: 50px;
+    }
+}
+
+.topBannerBackground {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .topBannerBackground {
+        display: block;
+        width: 100%;
+    }
+}
+
+.topBannerBackground img {
+    width: 100%;
+}
+
+.info {
+    position: static;
+    text-align: center;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .info {
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+}
+
+.applyBlock {
+    max-width: var(--max-width-desktop);
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .applyBlock {
+        background: none;
+        box-shadow: none;
+        text-align: left;
+    }
+}
+
+@media (min-width: 1200px) {
+    .applyBlock {
+        padding: 100px 0;
+    }
+}
+
+.applyBlock img {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    max-width: 150px;
+}
+
+.applyBlock h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.applyBlock strong {
+    color: rgb(var(--color-secondary));
+}
+
+.applyBlock p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.button {
+    background: rgb(var(--color-black));
+}
+
+@media (min-width: 768px) {
+    .applyBlock img {
+        margin: 0 0 20px 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    .applyBlock img {
+        max-width: 100%;
+        margin-bottom: 35px;
+    }
+
+    .applyBlock h3 {
+        font-size: 1.75rem;
+        line-height: 130%;
+        margin-bottom: 30px;
+        font-weight: 600;
+    }
+
+    .applyBlock p {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+    }
+
+    .button {
+        padding: 20px 30px;
+    }
+}
+
+.topBannerMobile img {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .topBannerMobile {
+        display: none;
+    }
+}

@@ -1,0 +1,120 @@
+.container {
+    padding: 0 15px 20px 15px;
+}
+
+.account {
+    display: inline-block;
+    margin: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0px 4px 16px rgb(34 42 93 / 8%);
+    border-radius: 16px;
+    text-align: left;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    background: rgb(var(--color-sky-400));
+    box-shadow: 0px 4px 16px rgb(34 42 93 / 8%);
+    border-radius: 16px 16px 0px 0px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: rgb(var(--color-white));
+    text-align: center;
+    padding: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header img {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+.headerNew {
+    composes: header;
+    background: rgb(var(--color-blue-800));
+}
+
+.sum {
+    text-align: center;
+    padding: 26px 36px;
+}
+
+.sum p {
+    font-weight: 600;
+}
+
+.sum h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+@media (min-width: 1200px) {
+    .sum {
+        text-align: left;
+    }
+
+    .sum p {
+        font-size: 1.5rem;
+    }
+
+    .sum h3 {
+        font-size: 2.5rem;
+    }
+}
+
+.accountTable table {
+    width: 100%;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+@media (min-width: 1200px) {
+    .accountTable table {
+        font-size: 1.1rem;
+    }
+}
+
+.accountTable td {
+    padding: 20px 19px;
+}
+
+.accountTable th {
+    max-width: 150px;
+    padding: 20px 19px;
+}
+
+.accountTable tr:nth-child(even) {
+    background: rgb(var(--color-gray-100));
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+}
+
+@media (min-width: 1024px) {
+    .buttonContainer {
+        padding: 100px 0 50px 0;
+    }
+}
+
+.button {
+    background-color: rgb(var(--color-black));
+    align-self: flex-end;
+    padding: 16px 24px;
+}
+
+@media (min-width: 1200px) {
+    .button {
+        padding: 20px 30px;
+    }
+}
