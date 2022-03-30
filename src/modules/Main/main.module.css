@@ -11,9 +11,8 @@
 
 .page {
     margin: 0 auto;
-    max-width: var(--venia-global-maxWidth);
     min-height: 40rem;
-    padding: 30px 0;
+    padding-bottom: 30px;
 }
 
 .page_masked {

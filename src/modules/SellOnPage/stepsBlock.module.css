@@ -2,12 +2,18 @@
     display: grid;
     grid-template-columns: 1fr;
     text-align: left;
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
     .stepsBlock {
         grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    .stepsBlock {
+        margin-bottom: 70px;
     }
 }
 

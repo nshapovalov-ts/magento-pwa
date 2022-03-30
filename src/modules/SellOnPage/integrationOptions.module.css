@@ -1,0 +1,51 @@
+.root {
+    padding: 30px 20px;
+    width: 100%;
+    background: rgb(var(--color-gray-100));
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 1200px) {
+    .root {
+        padding: 88px 30px;
+        border-radius: 64px;
+        margin-bottom: 110px;
+    }
+}
+
+.root h2 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 1200px) {
+    .root h2 {
+        font-size: 2.5rem;
+        margin-bottom: 70px;
+    }
+}
+
+.root ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.root ul li {
+    width: 50%;
+    justify-self: center;
+    padding: 0 10px;
+}
+
+@media (min-width: 768px) {
+    .root ul li {
+        width: 25%;
+        /* padding: 0 26px; */
+        display: flex;
+        justify-content: center;
+    }
+}
