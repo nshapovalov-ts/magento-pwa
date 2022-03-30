@@ -1,0 +1,41 @@
+.container {
+    padding: 0 0 50px 0;
+    overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 90px 80px 90px;
+        overflow: hidden;
+    }
+}
+
+.container :global .slider-control-centerright {
+    right: -90px !important;
+}
+
+.container :global .slider-control-centerleft {
+    left: -90px !important;
+}
+
+.dotsContainer {
+    top: 30px !important;
+}
+
+@media (min-width: 1024px) {
+    .dotsContainer {
+        top: 50px !important;
+    }
+}
+
+.dots {
+    width: 10px !important;
+    height: 10px !important;
+    background: rgb(var(--color-orange-400)) !important;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.dots svg {
+    display: none !important;
+}

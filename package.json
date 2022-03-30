@@ -31,7 +31,8 @@
         "@larsroettig/component-targetables": "^3.0.0",
         "@magento/pwa-buildpack": "~11.1.0",
         "classnames": "^2.3.1",
-        "dompurify": "^2.3.6"
+        "dompurify": "^2.3.6",
+        "nuka-carousel": "^5.0.7"
     },
     "devDependencies": {
         "@adobe/apollo-link-mutation-queue": "~1.0.2",
