@@ -28,14 +28,22 @@
     }
 }
 
-.dots {
-    width: 10px !important;
-    height: 10px !important;
-    background: rgb(var(--color-orange-400)) !important;
-    border-radius: 50%;
-    margin-right: 8px;
+.container :global .paging-item :local .dots {
+    padding: 0 5px;
+    fill: rgb(var(--color-gray-400)) !important;
+}
+
+.container :global .paging-item.active :local .dots {
+    fill: rgb(var(--color-orange-400)) !important;
 }
 
 .dots svg {
-    display: none !important;
+    width: 14px;
+    height: 14px;
+}
+
+.container :global .paging-dot > circle {
+    r: 5px;
+    cx: 8px;
+    cy: 8px;
 }
