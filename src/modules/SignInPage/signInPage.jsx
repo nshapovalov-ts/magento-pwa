@@ -9,7 +9,7 @@ import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import Image from '@magento/venia-ui/lib/components/Image';
 import SignIn from './signInForm';
 
-import signInImage from 'static/welcome_back.png';
+import signInImage from 'public/welcome_back.png';
 import defaultClasses from './signInPage.module.css';
 
 const SignInPage = props => {

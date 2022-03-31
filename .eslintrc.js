@@ -27,7 +27,7 @@ const config = {
                         '^\\.'
                     ],
                     // static files and styles
-                    ['^static/', '\\.css$']
+                    ['\\.(gif|jpg|png|svg|jpeg|webp)$', '\\.css$']
                 ]
             }
         ],

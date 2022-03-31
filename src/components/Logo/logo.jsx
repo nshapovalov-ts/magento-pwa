@@ -6,7 +6,7 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import Image from '@magento/venia-ui/lib/components/Image';
 
-import logo from 'static/Trade-Square-Logo-Black.png';
+import logo from 'public/Trade-Square-Logo-Black.png';
 
 /**
  * A component that renders a logo in the header.

@@ -131,7 +131,7 @@ module.exports = async env => {
                         options: {
                             // move all media files except static to assets folder
                             name(resourcePath) {
-                                if (/pwa\/static/.test(resourcePath)) {
+                                if (/\/public/.test(resourcePath)) {
                                     return '[path][name].[ext]';
                                 }
 

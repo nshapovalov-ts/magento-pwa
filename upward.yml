@@ -22,4 +22,4 @@ veniaStaticIncludes:
     resolver: directory
     directory:
         resolver: inline
-        inline: './static'
+        inline: './public'
