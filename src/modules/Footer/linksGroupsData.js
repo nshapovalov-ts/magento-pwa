@@ -15,7 +15,7 @@ const companyLinks = new Map()
         Component: ContactLink
     })
     .set('About Us', '/about-us')
-    .set('Sell on TradeSquare', '/sell')
+    .set('Sell on TradeSquare', '/seller')
     .set('Supplier Login', 'https://tradesquare.mirakl.net/');
 
 const connectLinks = new Map()

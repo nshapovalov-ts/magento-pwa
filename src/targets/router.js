@@ -128,7 +128,7 @@ const updateRoutes = targets => {
 
         routes.push({
             name: 'Sell on Tradesquare',
-            pattern: '/sell',
+            pattern: '/seller',
             exact: true,
             path: require.resolve('../modules/SellOnPage')
         });
