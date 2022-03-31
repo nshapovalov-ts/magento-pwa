@@ -34,7 +34,7 @@ const Account = ({ data }) => {
                                 </tr>
                                 {data.tableData.map(item => {
                                     return (
-                                        <tr>
+                                        <tr key={item.name}>
                                             <th>{item.name}</th>
                                             <td>{item.value}</td>
                                         </tr>

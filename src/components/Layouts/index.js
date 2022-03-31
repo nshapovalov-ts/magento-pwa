@@ -1,2 +1,2 @@
-export { AccountPageLayout } from './AccountPageLayout/accountPageLayout';
-export { StaticPageLayout } from './StaticPageLayout/staticPageLayout';
+export { default as AccountPageLayout } from './AccountPageLayout';
+export { default as ContentLayout } from './ContentLayout';

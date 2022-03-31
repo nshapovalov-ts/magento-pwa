@@ -88,28 +88,28 @@ const updateRoutes = targets => {
             name: 'Buyer Terms',
             pattern: '/buyer-terms',
             exact: true,
-            path: require.resolve('../modules/BuyerTermsPage')
+            path: require.resolve('../modules/StaticPages/BuyerTerms')
         });
 
         routes.push({
             name: 'Buyer Terms',
             pattern: '/net60-terms',
             exact: true,
-            path: require.resolve('../modules/Net60TermsPage')
+            path: require.resolve('../modules/StaticPages/Net60Terms')
         });
 
         routes.push({
             name: 'Privacy Policy',
             pattern: '/privacy-policy',
             exact: true,
-            path: require.resolve('../modules/PrivacyPolicyPage')
+            path: require.resolve('../modules/StaticPages/PrivacyPolicy')
         });
 
         routes.push({
             name: 'Privacy Policy',
             pattern: '/zip-business',
             exact: true,
-            path: require.resolve('../modules/ZipBusinessPage')
+            path: require.resolve('../modules/StaticPages/ZipBusiness')
         });
 
         routes.push({
@@ -123,14 +123,14 @@ const updateRoutes = targets => {
             name: 'AboutUsPage',
             pattern: '/about-us',
             exact: true,
-            path: require.resolve('../modules/AboutUsPage')
+            path: require.resolve('../modules/StaticPages/AboutUs')
         });
 
         routes.push({
             name: 'Sell on Tradesquare',
             pattern: '/seller',
             exact: true,
-            path: require.resolve('../modules/SellOnPage')
+            path: require.resolve('../modules/StaticPages/SellOn')
         });
 
         return routes;

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 import { Title } from '@magento/venia-ui/lib/components/Head';
-import { StaticPageLayout } from 'components/Layouts';
+import { ContentLayout } from 'components/Layouts';
 import EasySteps from './easySteps';
 import FAQ from './FAQ';
 import TopBanner from './topBanner';
@@ -20,9 +20,9 @@ const ZipBusinessPage = () => {
             <Title>Zip Business Offer</Title>
             <div>
                 <TopBanner onButtonClick={handleTopBannerClick} />
-                <StaticPageLayout>
+                <ContentLayout>
                     <EasySteps />
-                </StaticPageLayout>
+                </ContentLayout>
                 <ZipAccounts ref={accountsRef} />
                 <FAQ />
             </div>

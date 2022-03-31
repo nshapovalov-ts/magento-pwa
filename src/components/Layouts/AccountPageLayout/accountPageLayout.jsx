@@ -7,7 +7,7 @@ import AccountMenuItems from 'components/AccountMenu/accountMenuItems';
 import menuClasses from './accountMenu.module.css';
 import classes from './accountPageLayout.module.css';
 
-export const AccountPageLayout = ({ children }) => {
+const AccountPageLayout = ({ children }) => {
     const talonProps = useAccountMenu({
         accountMenuIsOpen: false,
         setAccountMenuIsOpen: () => {}
@@ -17,12 +17,11 @@ export const AccountPageLayout = ({ children }) => {
     return (
         <section className={classes.root}>
             <aside className={classes.menu}>
-                <AccountMenuItems
-                    classes={menuClasses}
-                    onSignOut={handleSignOut}
-                />
+                <AccountMenuItems classes={menuClasses} onSignOut={handleSignOut} />
             </aside>
             <div className={classes.pageContent}>{children}</div>
         </section>
     );
 };
+
+export default AccountPageLayout;

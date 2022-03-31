@@ -53,7 +53,7 @@ const Button = ({
 
     if (component === 'link') {
         return (
-            <Link ref={buttonRef} className={rootClassName} {...buttonProps} {...restProps}>
+            <Link className={rootClassName} {...buttonProps} {...restProps}>
                 <span className={classes.content}>{children}</span>
             </Link>
         );

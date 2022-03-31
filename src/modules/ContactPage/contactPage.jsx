@@ -15,7 +15,7 @@ import { Meta, StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 import Button from 'components/Button';
 import Field from 'components/Field';
-import { StaticPageLayout } from 'components/Layouts';
+import { ContentLayout } from 'components/Layouts';
 import TextArea from 'components/TextArea';
 import TextInput from 'components/TextInput';
 import ContactPageShimmer from './contactPage.shimmer';
@@ -98,7 +98,7 @@ const ContactPage = props => {
             <StoreTitle>{pageTitle}</StoreTitle>
             <Meta name="title" content={pageTitle} />
             <Meta name="description" content={metaDescription} />
-            <StaticPageLayout data-cy="ContactPage-root">
+            <ContentLayout data-cy="ContactPage-root">
                 <div className={classes.content}>
                     <div className={classes.formContainer} data-cy="ContactPage-formContainer">
                         {maybeLoadingIndicator}
@@ -225,7 +225,7 @@ const ContactPage = props => {
                         </Form>
                     </div>
                 </div>
-            </StaticPageLayout>
+            </ContentLayout>
         </Fragment>
     );
 };
