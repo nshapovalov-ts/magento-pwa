@@ -114,31 +114,41 @@ module.exports = async env => {
         new HTMLWebpackPlugin(htmlWebpackConfig)
     ];
 
-    config.resolve = {
-        ...config.resolve,
-        alias: {
-            ...config.resolve.alias,
-            components: path.resolve(__dirname, './src/components/'),
-            modules: path.resolve(__dirname, './src/modules/'),
-            helpers: path.resolve(__dirname, './src/helpers/')
-        }
+    config.resolve.alias = {
+        ...config.resolve.alias,
+        components: path.resolve(__dirname, './src/components/'),
+        modules: path.resolve(__dirname, './src/modules/'),
+        helpers: path.resolve(__dirname, './src/helpers/')
     };
+
+    config.module.rules = config.module.rules.map(rule => {
+        if (rule.test.toString() === '/\\.(gif|jpg|png|svg)$/') {
+            return {
+                test: /\.(gif|jpg|png|svg|jpeg|webp)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            // move all media files except static to assets folder
+                            name(resourcePath) {
+                                if (/pwa\/static/.test(resourcePath)) {
+                                    return '[path][name].[ext]';
+                                }
+
+                                return './assets/[name]-[hash:base58:3].[ext]';
+                            }
+                        }
+                    }
+                ]
+            };
+        }
+
+        return rule;
+    });
 
     config.module.rules.push({
         test: /\.html$/i,
         use: 'raw-loader'
-    });
-
-    config.module.rules.push({
-        test: /\.(jpeg|webp)$/,
-        use: [
-            {
-                loader: 'file-loader',
-                options: {
-                    name: '[name]-[hash:base58:3].[ext]'
-                }
-            }
-        ]
     });
 
     /* 
