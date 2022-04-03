@@ -2,22 +2,15 @@ import React, { Fragment } from 'react';
 import { Text as InformedText } from 'informed';
 import { node, shape, string } from 'prop-types';
 
+import { FieldIcons, Message } from '../Field';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import useFieldState from '@magento/peregrine/lib/hooks/hook-wrappers/useInformedFieldStateWrapper';
-
-import { FieldIcons, Message } from '../Field';
 
 import defaultClasses from './textInput.module.css';
 
 const TextInput = props => {
-    const {
-        after,
-        before,
-        classes: propClasses,
-        field,
-        message,
-        ...rest
-    } = props;
+    const { after, before, classes: propClasses, field, message, ...rest } = props;
     const fieldState = useFieldState(field);
     const classes = useStyle(defaultClasses, propClasses);
     const inputClass = fieldState.error ? classes.input_error : classes.input;

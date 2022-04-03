@@ -2,11 +2,11 @@ import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import Submenu from './submenu';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useMegaMenuItem } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenuItem';
 import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
-
-import Submenu from './submenu';
 
 import defaultClasses from './menuItem.module.css';
 
@@ -32,9 +32,7 @@ const MenuItem = props => {
     } = props;
 
     const classes = useStyle(defaultClasses, props.classes);
-    const categoryUrl = resourceUrl(
-        `/${category.url_path}${categoryUrlSuffix || ''}`
-    );
+    const categoryUrl = resourceUrl(`/${category.url_path}${categoryUrlSuffix || ''}`);
 
     const talonProps = useMegaMenuItem({
         category,
@@ -52,9 +50,7 @@ const MenuItem = props => {
         handleKeyDown
     } = talonProps;
 
-    const menuItemClassname = isMenuActive
-        ? classes.menuItem_active
-        : classes.menuItem;
+    const menuItemClassname = isMenuActive ? classes.menuItem_active : classes.menuItem;
 
     const children = useMemo(() => {
         return category.children.length ? (
@@ -80,9 +76,7 @@ const MenuItem = props => {
 
     const linkAttributes = category.children.length
         ? {
-              'aria-label': `Category: ${category.name}. ${
-                  category.children.length
-              } sub-categories`
+              'aria-label': `Category: ${category.name}. ${category.children.length} sub-categories`
           }
         : {};
 

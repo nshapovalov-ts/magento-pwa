@@ -1,11 +1,11 @@
 import React from 'react';
 import { shape, string } from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import { useFooter } from '@magento/peregrine/lib/talons/Footer/useFooter';
-
 import LinkGroups from './linkGroups';
 import Newsletter from './Newsletter';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import { useFooter } from '@magento/peregrine/lib/talons/Footer/useFooter';
 
 import defaultClasses from './footer.module.css';
 

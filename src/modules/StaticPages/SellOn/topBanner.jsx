@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Button from 'components/Button';
+
 import topBanner from './assets/top_slider_bg.jpg';
 import screenBanner from './assets/top_slider_img.png';
-
 import classes from './topBanner.module.css';
 
 const TopBanner = () => {

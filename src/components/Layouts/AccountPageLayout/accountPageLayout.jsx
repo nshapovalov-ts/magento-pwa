@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useAccountMenu } from '@magento/peregrine/lib/talons/Header/useAccountMenu';
-
 import AccountMenuItems from 'components/AccountMenu/accountMenuItems';
+
+import { useAccountMenu } from '@magento/peregrine/lib/talons/Header/useAccountMenu';
 
 import menuClasses from './accountMenu.module.css';
 import classes from './accountPageLayout.module.css';

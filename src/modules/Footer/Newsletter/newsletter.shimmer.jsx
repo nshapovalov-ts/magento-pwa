@@ -1,18 +1,14 @@
 import React from 'react';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import defaultClasses from './newsletter.module.css';
 import defaultShimmerClasses from './newsletter.shimmer.module.css';
 
 const NewsletterShimmer = props => {
-    const classes = useStyle(
-        defaultClasses,
-        defaultShimmerClasses,
-        props.classes
-    );
+    const classes = useStyle(defaultClasses, defaultShimmerClasses, props.classes);
 
     return (
         <div className={classes.root}>

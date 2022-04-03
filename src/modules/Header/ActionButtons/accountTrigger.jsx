@@ -2,10 +2,10 @@ import React, { Suspense } from 'react';
 import { useIntl } from 'react-intl';
 import { shape, string } from 'prop-types';
 
+import AccountChip from 'components/AccountChip';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useAccountTrigger } from '@magento/peregrine/lib/talons/Header/useAccountTrigger';
-
-import AccountChip from 'components/AccountChip';
 
 import defaultClasses from './accountTrigger.module.css';
 

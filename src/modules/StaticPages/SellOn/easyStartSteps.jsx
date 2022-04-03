@@ -3,7 +3,6 @@ import React from 'react';
 import image1 from './assets/neto_3_easy_img_1.png';
 import image2 from './assets/neto_3_easy_img_2.png';
 import image3 from './assets/neto_3_easy_img_3.png';
-
 import classes from './easyStartSteps.module.css';
 
 const imagesData = [

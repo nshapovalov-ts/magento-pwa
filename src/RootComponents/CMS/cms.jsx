@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import { shape, string } from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import { toCamelCase } from '@magento/venia-ui/lib/util/toCamelCase';
-import { useCmsPage } from '@magento/peregrine/lib/talons/Cms/useCmsPage';
-
 import { Meta, StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 import RichContent from '@magento/venia-ui/lib/components/RichContent';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import { toCamelCase } from '@magento/venia-ui/lib/util/toCamelCase';
+import { useCmsPage } from '@magento/peregrine/lib/talons/Cms/useCmsPage';
 
 import defaultClasses from './cms.module.css';
 
@@ -22,24 +22,13 @@ const CMSPage = props => {
         return fullPageLoadingIndicator;
     }
 
-    const {
-        content_heading,
-        title,
-        meta_title,
-        meta_description,
-        page_layout,
-        content
-    } = cmsPage;
+    const { content_heading, title, meta_title, meta_description, page_layout, content } = cmsPage;
 
     const headingElement =
-        content_heading !== '' ? (
-            <h1 className={classes.heading}>{content_heading}</h1>
-        ) : null;
+        content_heading !== '' ? <h1 className={classes.heading}>{content_heading}</h1> : null;
 
     const pageTitle = meta_title || title;
-    const rootClassName = page_layout
-        ? classes[`root_${toCamelCase(page_layout)}`]
-        : classes.root;
+    const rootClassName = page_layout ? classes[`root_${toCamelCase(page_layout)}`] : classes.root;
 
     return (
         <Fragment>

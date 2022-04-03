@@ -2,12 +2,12 @@ import React from 'react';
 import { Form } from 'informed';
 import { bool, shape, string } from 'prop-types';
 
+import Autocomplete from '@magento/venia-ui/lib/components/SearchBar/autocomplete';
+import SearchField from './searchField';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useWindowSize } from '@magento/peregrine/lib/hooks/useWindowSize';
 import { useSearchBar } from '@magento/peregrine/lib/talons/SearchBar';
-
-import Autocomplete from '@magento/venia-ui/lib/components/SearchBar/autocomplete';
-import SearchField from './searchField';
 
 import defaultClasses from './searchBar.module.css';
 
@@ -28,8 +28,7 @@ const SearchBar = React.forwardRef((props, ref) => {
     const isMobile = windowSize.innerWidth < 768;
 
     const classes = useStyle(defaultClasses, props.classes);
-    const rootClassName =
-        isOpen || !isMobile ? classes.root_open : classes.root;
+    const rootClassName = isOpen || !isMobile ? classes.root_open : classes.root;
 
     return (
         <div className={rootClassName} data-cy="SearchBar-root" ref={ref}>

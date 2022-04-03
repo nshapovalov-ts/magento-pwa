@@ -1,10 +1,10 @@
 import React from 'react';
 
 import Button from 'components/Button';
+
 import topBanner from './assets/top_banner_bg.jpg';
 import topBannerMobile from './assets/top_banner_bg_mobile.png';
 import zipLogo from './assets/ZB_Logo_LongForm_Positive_RGB1_png.webp';
-
 import classes from './topBanner.module.css';
 
 const TopBanner = ({ onButtonClick }) => {

@@ -2,9 +2,9 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-
 import Image from '@magento/venia-ui/lib/components/Image';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import logo from 'public/Trade-Square-Logo-Black.png';
 

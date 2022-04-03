@@ -2,18 +2,19 @@ import React, { useCallback } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Form } from 'informed';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import { useToasts } from '@magento/peregrine';
-import { useCommunicationsPage } from '@magento/peregrine/lib/talons/CommunicationsPage/useCommunicationsPage';
-
 import Checkbox from '@magento/venia-ui/lib/components/Checkbox';
-import defaultClasses from '@magento/venia-ui/lib/components/CommunicationsPage/communicationsPage.module.css';
 import FormError from '@magento/venia-ui/lib/components/FormError';
 import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
 import Button from 'components/Button';
 import Field from 'components/Field';
 import { AccountPageLayout } from 'components/Layouts';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import { useToasts } from '@magento/peregrine';
+import { useCommunicationsPage } from '@magento/peregrine/lib/talons/CommunicationsPage/useCommunicationsPage';
+
+import defaultClasses from '@magento/venia-ui/lib/components/CommunicationsPage/communicationsPage.module.css';
 
 const CommunicationsPage = props => {
     const { formatMessage } = useIntl();
@@ -85,11 +86,7 @@ const CommunicationsPage = props => {
                         />
                     </Field>
                     <div className={classes.buttonsContainer}>
-                        <Button
-                            disabled={isDisabled}
-                            type="submit"
-                            priority="high"
-                        >
+                        <Button disabled={isDisabled} type="submit" priority="high">
                             {isDisabled
                                 ? formatMessage({
                                       id: 'communicationsPage.savingText',

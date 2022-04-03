@@ -1,16 +1,17 @@
 import React, { Fragment, Suspense } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import { useAccountInformationPage } from '@magento/peregrine/lib/talons/AccountInformationPage/useAccountInformationPage';
-
-import AccountInformationPageOperations from '@magento/venia-ui/lib/components/AccountInformationPage/accountInformationPage.gql.js';
-import defaultClasses from '@magento/venia-ui/lib/components/AccountInformationPage/accountInformationPage.module.css';
 import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 import Button from 'components/Button';
 import { Message } from 'components/Field';
 import { AccountPageLayout } from 'components/Layouts';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import { useAccountInformationPage } from '@magento/peregrine/lib/talons/AccountInformationPage/useAccountInformationPage';
+import AccountInformationPageOperations from '@magento/venia-ui/lib/components/AccountInformationPage/accountInformationPage.gql.js';
+
+import defaultClasses from '@magento/venia-ui/lib/components/AccountInformationPage/accountInformationPage.module.css';
 
 const EditModal = React.lazy(() =>
     import('@magento/venia-ui/lib/components/AccountInformationPage/editModal')
@@ -41,9 +42,7 @@ const AccountInformationPage = props => {
         <Message>
             <FormattedMessage
                 id={'accountInformationPage.errorTryAgain'}
-                defaultMessage={
-                    'Something went wrong. Please refresh and try again.'
-                }
+                defaultMessage={'Something went wrong. Please refresh and try again.'}
             />
         </Message>
     ) : null;
@@ -61,32 +60,17 @@ const AccountInformationPage = props => {
                 <div className={classes.accountDetails}>
                     <div className={classes.lineItemsContainer}>
                         <span className={classes.nameLabel}>
-                            <FormattedMessage
-                                id={'global.name'}
-                                defaultMessage={'Name'}
-                            />
+                            <FormattedMessage id={'global.name'} defaultMessage={'Name'} />
                         </span>
-                        <span className={classes.nameValue}>
-                            {customerName}
-                        </span>
+                        <span className={classes.nameValue}>{customerName}</span>
                         <span className={classes.emailLabel}>
-                            <FormattedMessage
-                                id={'global.email'}
-                                defaultMessage={'Email'}
-                            />
+                            <FormattedMessage id={'global.email'} defaultMessage={'Email'} />
                         </span>
-                        <span className={classes.emailValue}>
-                            {customer.email}
-                        </span>
+                        <span className={classes.emailValue}>{customer.email}</span>
                         <span className={classes.passwordLabel}>
-                            <FormattedMessage
-                                id={'global.password'}
-                                defaultMessage={'Password'}
-                            />
+                            <FormattedMessage id={'global.password'} defaultMessage={'Password'} />
                         </span>
-                        <span className={classes.passwordValue}>
-                            {passwordValue}
-                        </span>
+                        <span className={classes.passwordValue}>{passwordValue}</span>
                     </div>
                     <div className={classes.editButtonContainer}>
                         <Button
@@ -96,10 +80,7 @@ const AccountInformationPage = props => {
                             priority="normal"
                             data-cy="AccountInformationPage-editInformationButton"
                         >
-                            <FormattedMessage
-                                id={'global.editButton'}
-                                defaultMessage={'Edit'}
-                            />
+                            <FormattedMessage id={'global.editButton'} defaultMessage={'Edit'} />
                         </Button>
                     </div>
                 </div>
@@ -128,10 +109,7 @@ const AccountInformationPage = props => {
                         defaultMessage: 'Account Information'
                     })}
                 </StoreTitle>
-                <h1
-                    className={classes.title}
-                    data-cy="AccountInformationPage-title"
-                >
+                <h1 className={classes.title} data-cy="AccountInformationPage-title">
                     <FormattedMessage
                         id={'accountInformationPage.accountInformation'}
                         defaultMessage={'Account Information'}

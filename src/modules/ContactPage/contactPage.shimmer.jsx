@@ -1,10 +1,10 @@
 import React from 'react';
 import { shape, string } from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 import { ContentLayout } from 'components/Layouts';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import defaultClasses from './contactPage.module.css';
 import shimmerClasses from './contactPage.shimmer.module.css';

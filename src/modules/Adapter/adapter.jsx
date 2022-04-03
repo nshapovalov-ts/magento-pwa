@@ -3,21 +3,15 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 
-import { useAdapter } from '@magento/peregrine/lib/talons/Adapter/useAdapter';
-
 import { AppContextProvider } from '@magento/venia-ui/lib/components/App';
 import StoreCodeRoute from '@magento/venia-ui/lib/components/StoreCodeRoute';
 import App from '../App';
 
+import { useAdapter } from '@magento/peregrine/lib/talons/Adapter/useAdapter';
+
 const Adapter = props => {
     const talonProps = useAdapter(props);
-    const {
-        apolloProps,
-        initialized,
-        reduxProps,
-        routerProps,
-        urlHasStoreCode
-    } = talonProps;
+    const { apolloProps, initialized, reduxProps, routerProps, urlHasStoreCode } = talonProps;
 
     // TODO: Replace with app skeleton. See PWA-547.
     if (!initialized) {

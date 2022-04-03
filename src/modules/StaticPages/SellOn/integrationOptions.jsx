@@ -4,7 +4,6 @@ import logo1 from './assets/Neto_logo_img_1.png';
 import logo2 from './assets/Neto_logo_img_2.png';
 import logo3 from './assets/Neto_logo_img_3.png';
 import logo4 from './assets/Neto_logo_img_4.png';
-
 import classes from './integrationOptions.module.css';
 
 const IntegrationOptions = () => {

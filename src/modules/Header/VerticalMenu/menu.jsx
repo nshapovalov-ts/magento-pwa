@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import MenuItem from './menuItem';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useIsInViewport } from '@magento/peregrine/lib/hooks/useIsInViewport';
 import { useMegaMenu } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenu';
-
-import MenuItem from './menuItem';
 
 import defaultClasses from './menu.module.css';
 
@@ -34,9 +34,7 @@ const VerticalMenu = props => {
 
     useEffect(() => {
         const handleResize = () => {
-            const navWidth = mainNavRef.current
-                ? mainNavRef.current.offsetWidth
-                : null;
+            const navWidth = mainNavRef.current ? mainNavRef.current.offsetWidth : null;
 
             setMainNavWidth(navWidth);
         };

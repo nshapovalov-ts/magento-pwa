@@ -3,12 +3,12 @@ import { ChevronDown as ArrowDown } from 'react-feather';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import Icon from '@magento/venia-ui/lib/components/Icon';
+import Submenu from './submenu';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useMegaMenuItem } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenuItem';
 import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
-
-import Icon from '@magento/venia-ui/lib/components/Icon';
-import Submenu from './submenu';
 
 import defaultClasses from './horizontalMenuItem.module.css';
 
@@ -34,9 +34,7 @@ const HorizontalMenuItem = props => {
     } = props;
 
     const classes = useStyle(defaultClasses, props.classes);
-    const categoryUrl = resourceUrl(
-        `/${category.url_path}${categoryUrlSuffix || ''}`
-    );
+    const categoryUrl = resourceUrl(`/${category.url_path}${categoryUrlSuffix || ''}`);
 
     const talonProps = useMegaMenuItem({
         category,
@@ -86,9 +84,7 @@ const HorizontalMenuItem = props => {
 
     const linkAttributes = category.children.length
         ? {
-              'aria-label': `Category: ${category.name}. ${
-                  category.children.length
-              } sub-categories`
+              'aria-label': `Category: ${category.name}. ${category.children.length} sub-categories`
           }
         : {};
 
@@ -113,9 +109,7 @@ const HorizontalMenuItem = props => {
                 {...linkAttributes}
                 onKeyDown={handleKeyDown}
                 className={
-                    isActive
-                        ? classes.horizontalMenuItemLinkActive
-                        : classes.horizontalMenuLink
+                    isActive ? classes.horizontalMenuItemLinkActive : classes.horizontalMenuLink
                 }
                 data-cy="MegaMenu-HorizontalMenuItem-link"
                 to={categoryUrl}

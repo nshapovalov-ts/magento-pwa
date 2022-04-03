@@ -2,10 +2,6 @@ import React, { Fragment, Suspense } from 'react';
 import { Link, Route } from 'react-router-dom';
 import { shape, string } from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import { useHeader } from '@magento/peregrine/lib/talons/Header/useHeader';
-import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
-
 import NavTrigger from '@magento/venia-ui/lib/components/Header/navTrigger';
 import OnlineIndicator from '@magento/venia-ui/lib/components/Header/onlineIndicator';
 import Logo from 'components/Logo';
@@ -15,6 +11,10 @@ import HorizontalMenu from './HorizontalMenu';
 import SearchTrigger from './SearchTrigger';
 import VerticalMenu from './VerticalMenu';
 import VerticalMenuButton from './VerticalMenuButton';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import { useHeader } from '@magento/peregrine/lib/talons/Header/useHeader';
+import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
 
 import defaultClasses from './header.module.css';
 
@@ -52,14 +52,8 @@ const Header = props => {
         <Fragment>
             <header className={rootClass} data-cy="Header-root">
                 <div className={classes.toolbar}>
-                    <OnlineIndicator
-                        hasBeenOffline={hasBeenOffline}
-                        isOnline={isOnline}
-                    />
-                    <Link
-                        to={resourceUrl('/')}
-                        className={classes.logoContainer}
-                    >
+                    <OnlineIndicator hasBeenOffline={hasBeenOffline} isOnline={isOnline} />
+                    <Link to={resourceUrl('/')} className={classes.logoContainer}>
                         <Logo classes={{ logo: classes.logo }} />
                     </Link>
                     <div className={classes.menuDropdown}>
@@ -74,10 +68,7 @@ const Header = props => {
                     <div className={classes.searchContainer}>{searchBar}</div>
 
                     <div className={classes.actions}>
-                        <SearchTrigger
-                            onClick={handleSearchTriggerClick}
-                            ref={searchTriggerRef}
-                        />
+                        <SearchTrigger onClick={handleSearchTriggerClick} ref={searchTriggerRef} />
                         <ActionButtons />
                         <NavTrigger />
                     </div>

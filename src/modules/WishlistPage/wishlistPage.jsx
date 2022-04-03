@@ -1,13 +1,13 @@
 import React, { Fragment, useMemo } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import { useWishlistPage } from '@magento/peregrine/lib/talons/WishlistPage/useWishlistPage';
-import { deriveErrorMessage } from '@magento/peregrine/lib/util/deriveErrorMessage';
-
 import CreateWishlist from '@magento/venia-ui/lib/components/WishlistPage/createWishlist';
 import Wishlist from '@magento/venia-ui/lib/components/WishlistPage/wishlist';
 import { AccountPageLayout } from 'components/Layouts';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import { useWishlistPage } from '@magento/peregrine/lib/talons/WishlistPage/useWishlistPage';
+import { deriveErrorMessage } from '@magento/peregrine/lib/util/deriveErrorMessage';
 
 import defaultClasses from './wishlistPage.module.css';
 
@@ -45,18 +45,14 @@ const WishlistPage = props => {
                 <p>
                     <FormattedMessage
                         id={'wishlistPage.disabledMessage'}
-                        defaultMessage={
-                            'Sorry, this feature has been disabled.'
-                        }
+                        defaultMessage={'Sorry, this feature has been disabled.'}
                     />
                 </p>
             ) : (
                 <p className={classes.fetchError}>
                     <FormattedMessage
                         id={'wishlistPage.fetchErrorMessage'}
-                        defaultMessage={
-                            'Something went wrong. Please refresh and try again.'
-                        }
+                        defaultMessage={'Something went wrong. Please refresh and try again.'}
                     />
                 </p>
             );

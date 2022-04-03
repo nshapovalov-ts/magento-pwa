@@ -4,9 +4,9 @@ import { Title } from '@magento/venia-ui/lib/components/Head';
 import { ContentLayout } from 'components/Layouts';
 import AboutBlockOne from './aboutBlockOne';
 import AboutBlockTwo from './aboutBlockTwo';
-import topBanner from './assets/top-banner.jpg';
 import BottomBlock from './bottomBlock';
 
+import topBanner from './assets/top-banner.jpg';
 import classes from './aboutUs.module.css';
 
 const AboutUsPage = () => {

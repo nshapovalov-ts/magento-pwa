@@ -3,10 +3,10 @@ import { Search as SearchIcon } from 'react-feather';
 import { useIntl } from 'react-intl';
 import { shape, string } from 'prop-types';
 
+import Icon from '@magento/venia-ui/lib/components/Icon';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useSearchTrigger } from '@magento/peregrine/lib/talons/Header/useSearchTrigger';
-
-import Icon from '@magento/venia-ui/lib/components/Icon';
 
 import defaultClasses from './searchTrigger.module.css';
 

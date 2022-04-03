@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import HorizontalMenuItem from './horizontalMenuItem';
+import { MENU_LINKS } from './sampleData';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useIsInViewport } from '@magento/peregrine/lib/hooks/useIsInViewport';
 import { useMegaMenu } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenu';
-
-import HorizontalMenuItem from './horizontalMenuItem';
-import { MENU_LINKS } from './sampleData';
 
 import defaultClasses from './horizontalMenu.module.css';
 
@@ -34,9 +34,7 @@ const HorizontalMenu = props => {
 
     useEffect(() => {
         const handleResize = () => {
-            const navWidth = mainNavRef.current
-                ? mainNavRef.current.offsetWidth
-                : null;
+            const navWidth = mainNavRef.current ? mainNavRef.current.offsetWidth : null;
 
             setMainNavWidth(navWidth);
         };

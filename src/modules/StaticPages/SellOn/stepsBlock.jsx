@@ -5,7 +5,6 @@ import blockImageTwo from './assets/neto_step_img_2.png';
 import blockImageThree from './assets/neto_step_img_3.png';
 import blockImageFour from './assets/neto_step_img_4.png';
 import zipBusinessImage from './assets/zipbiz-navy_1.png';
-
 import classes from './stepsBlock.module.css';
 
 const StepsBlock = () => {

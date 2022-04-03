@@ -4,10 +4,10 @@ import { FormattedMessage } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
 import { func, shape, string } from 'prop-types';
 
+import Icon from '@magento/venia-ui/lib/components/Icon';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useAccountMenuItems } from '@magento/peregrine/lib/talons/AccountMenu/useAccountMenuItems';
-
-import Icon from '@magento/venia-ui/lib/components/Icon';
 
 import defaultClasses from './accountMenuItems.module.css';
 

@@ -1,13 +1,13 @@
 import React from 'react';
 import { shape, string } from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import { useAccountMenu } from '@magento/peregrine/lib/talons/Header/useAccountMenu';
-
 import CreateAccount from '@magento/venia-ui/lib/components/CreateAccount';
 import ForgotPassword from '@magento/venia-ui/lib/components/ForgotPassword';
 import SignIn from '@magento/venia-ui/lib/components/SignIn/signIn';
 import AccountMenuItems from './accountMenuItems';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import { useAccountMenu } from '@magento/peregrine/lib/talons/Header/useAccountMenu';
 
 import defaultClasses from './accountMenu.module.css';
 
@@ -30,9 +30,7 @@ const AccountMenu = React.forwardRef((props, ref) => {
 
     const classes = useStyle(defaultClasses, props.classes);
     const rootClass = accountMenuIsOpen ? classes.root_open : classes.root;
-    const contentsClass = accountMenuIsOpen
-        ? classes.contents_open
-        : classes.contents;
+    const contentsClass = accountMenuIsOpen ? classes.contents_open : classes.contents;
 
     let dropdownContents = null;
 
@@ -44,10 +42,7 @@ const AccountMenu = React.forwardRef((props, ref) => {
         }
         case 'FORGOT_PASSWORD': {
             dropdownContents = (
-                <ForgotPassword
-                    initialValues={{ email: username }}
-                    onCancel={handleCancel}
-                />
+                <ForgotPassword initialValues={{ email: username }} onCancel={handleCancel} />
             );
 
             break;

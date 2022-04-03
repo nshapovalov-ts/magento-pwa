@@ -2,12 +2,12 @@ import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { shape, string } from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import { useSignInPage } from '@magento/peregrine/lib/talons/SignInPage/useSignInPage';
-
 import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import Image from '@magento/venia-ui/lib/components/Image';
 import SignIn from './signInForm';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import { useSignInPage } from '@magento/peregrine/lib/talons/SignInPage/useSignInPage';
 
 import signInImage from 'public/welcome_back.png';
 import defaultClasses from './signInPage.module.css';

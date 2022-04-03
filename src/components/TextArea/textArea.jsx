@@ -2,10 +2,10 @@ import React, { Fragment } from 'react';
 import { TextArea as InformedTextArea } from 'informed';
 import { node, number, oneOf, oneOfType, shape, string } from 'prop-types';
 
+import { Message } from 'components/Field';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import useFieldState from '@magento/peregrine/lib/hooks/hook-wrappers/useInformedFieldStateWrapper';
-
-import { Message } from 'components/Field';
 
 import defaultClasses from './textArea.module.css';
 

@@ -3,11 +3,6 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { Form } from 'informed';
 import { shape, string } from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
-import { useToasts } from '@magento/peregrine';
-import { useContactPage } from '@magento/peregrine/lib/talons/ContactPage';
-
 import Checkbox from '@magento/venia-ui/lib/components/Checkbox';
 import ErrorView from '@magento/venia-ui/lib/components/ErrorView';
 import FormError from '@magento/venia-ui/lib/components/FormError';
@@ -19,6 +14,11 @@ import { ContentLayout } from 'components/Layouts';
 import TextArea from 'components/TextArea';
 import TextInput from 'components/TextInput';
 import ContactPageShimmer from './contactPage.shimmer';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
+import { useToasts } from '@magento/peregrine';
+import { useContactPage } from '@magento/peregrine/lib/talons/ContactPage';
 
 import defaultClasses from './contactPage.module.css';
 

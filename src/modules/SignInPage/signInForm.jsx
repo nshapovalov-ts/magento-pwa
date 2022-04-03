@@ -3,10 +3,6 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { Form } from 'informed';
 import { func, shape, string } from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
-import { useSignIn } from '@magento/peregrine/lib/talons/SignIn/useSignIn';
-
 import Field from '@magento/venia-ui/lib/components/Field';
 import FormError from '@magento/venia-ui/lib/components/FormError/formError';
 import LinkButton from '@magento/venia-ui/lib/components/LinkButton';
@@ -16,16 +12,15 @@ import { GET_CART_DETAILS_QUERY } from '@magento/venia-ui/lib/components/SignIn/
 import Button from 'components/Button';
 import TextInput from 'components/TextInput';
 
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
+import { useSignIn } from '@magento/peregrine/lib/talons/SignIn/useSignIn';
+
 import defaultClasses from './signInForm.module.css';
 
 const SignIn = props => {
     const classes = useStyle(defaultClasses, props.classes);
-    const {
-        setDefaultUsername,
-        showCreateAccount,
-        showForgotPassword,
-        initialValues
-    } = props;
+    const { setDefaultUsername, showCreateAccount, showForgotPassword, initialValues } = props;
     const { formatMessage } = useIntl();
 
     const talonProps = useSignIn({
@@ -48,10 +43,7 @@ const SignIn = props => {
         return (
             <div className={classes.modal_active}>
                 <LoadingIndicator>
-                    <FormattedMessage
-                        id={'signIn.loadingText'}
-                        defaultMessage={'Signing In'}
-                    />
+                    <FormattedMessage id={'signIn.loadingText'} defaultMessage={'Signing In'} />
                 </LoadingIndicator>
             </div>
         );
@@ -117,10 +109,7 @@ const SignIn = props => {
                         data-cy="SignInButton-root_highPriority"
                         className={classes.signInButton}
                     >
-                        <FormattedMessage
-                            id={'signIn.signInText'}
-                            defaultMessage={'Sign In'}
-                        />
+                        <FormattedMessage id={'signIn.signInText'} defaultMessage={'Sign In'} />
                     </Button>
                 </div>
                 <span>

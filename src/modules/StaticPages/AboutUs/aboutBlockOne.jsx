@@ -1,7 +1,6 @@
 import React from 'react';
 
 import centerBanner1 from './assets/large-About_Us_01.jpg';
-
 import classes from './aboutUs.module.css';
 
 const AboutBlockOne = () => {

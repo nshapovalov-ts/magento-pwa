@@ -8,20 +8,21 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { Form } from 'informed';
 import { shape, string } from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import OrderHistoryContextProvider from '@magento/peregrine/lib/talons/OrderHistoryPage/orderHistoryContext';
-import { useOrderHistoryPage } from '@magento/peregrine/lib/talons/OrderHistoryPage/useOrderHistoryPage';
-import { useToasts } from '@magento/peregrine/lib/Toasts';
-
 import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
-import defaultClasses from '@magento/venia-ui/lib/components/OrderHistoryPage/orderHistoryPage.module.css';
 import OrderRow from '@magento/venia-ui/lib/components/OrderHistoryPage/orderRow';
 import ResetButton from '@magento/venia-ui/lib/components/OrderHistoryPage/resetButton';
 import Button from 'components/Button';
 import { AccountPageLayout } from 'components/Layouts';
 import TextInput from 'components/TextInput';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import OrderHistoryContextProvider from '@magento/peregrine/lib/talons/OrderHistoryPage/orderHistoryContext';
+import { useOrderHistoryPage } from '@magento/peregrine/lib/talons/OrderHistoryPage/useOrderHistoryPage';
+import { useToasts } from '@magento/peregrine/lib/Toasts';
+
+import defaultClasses from '@magento/venia-ui/lib/components/OrderHistoryPage/orderHistoryPage.module.css';
 
 const errorIcon = (
     <Icon
@@ -108,9 +109,7 @@ const OrderHistoryPage = props => {
         searchText
     ]);
 
-    const resetButtonElement = searchText ? (
-        <ResetButton onReset={handleReset} />
-    ) : null;
+    const resetButtonElement = searchText ? <ResetButton onReset={handleReset} /> : null;
 
     const submitIcon = (
         <Icon
@@ -137,10 +136,7 @@ const OrderHistoryPage = props => {
             onClick={loadMoreOrders}
             priority="low"
         >
-            <FormattedMessage
-                id={'orderHistoryPage.loadMore'}
-                defaultMessage={'Load More'}
-            />
+            <FormattedMessage id={'orderHistoryPage.loadMore'} defaultMessage={'Load More'} />
         </Button>
     ) : null;
 
@@ -163,13 +159,8 @@ const OrderHistoryPage = props => {
                     <StoreTitle>{PAGE_TITLE}</StoreTitle>
                     <h1 className={classes.heading}>{PAGE_TITLE}</h1>
                     <div className={classes.filterRow}>
-                        <span className={classes.pageInfo}>
-                            {pageInfoLabel}
-                        </span>
-                        <Form
-                            className={classes.search}
-                            onSubmit={handleSubmit}
-                        >
+                        <span className={classes.pageInfo}>{pageInfoLabel}</span>
+                        <Form className={classes.search} onSubmit={handleSubmit}>
                             <TextInput
                                 after={resetButtonElement}
                                 before={searchIcon}
@@ -179,9 +170,7 @@ const OrderHistoryPage = props => {
                             />
                             <Button
                                 className={classes.searchButton}
-                                disabled={
-                                    isBackgroundLoading || isLoadingWithoutData
-                                }
+                                disabled={isBackgroundLoading || isLoadingWithoutData}
                                 priority={'high'}
                                 type="submit"
                             >

@@ -4,7 +4,6 @@ import { FormattedMessage } from 'react-intl';
 import image1 from './assets/zip_four_easy_steps_1_png.webp';
 import image2 from './assets/zip_four_easy_steps_2_png.webp';
 import image3 from './assets/zip_four_easy_steps_3_png.webp';
-
 import classes from './easySteps.module.css';
 
 const imagesData = [

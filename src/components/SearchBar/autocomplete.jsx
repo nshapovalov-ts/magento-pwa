@@ -3,10 +3,10 @@ import { useIntl } from 'react-intl';
 import { gql } from '@apollo/client';
 import { bool, func, shape, string } from 'prop-types';
 
+import Suggestions from '@magento/venia-ui/lib/components/SearchBar/suggestions';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useAutocomplete } from '@magento/peregrine/lib/talons/SearchBar';
-
-import Suggestions from '@magento/venia-ui/lib/components/SearchBar/suggestions';
 
 import defaultClasses from './autocomplete.module.css';
 
@@ -60,14 +60,7 @@ const Autocomplete = props => {
         valid,
         visible
     });
-    const {
-        displayResult,
-        filters,
-        messageType,
-        products,
-        resultCount,
-        value
-    } = talonProps;
+    const { displayResult, filters, messageType, products, resultCount, value } = talonProps;
 
     const classes = useStyle(defaultClasses, props.classes);
     const rootClassName = visible ? classes.root_visible : classes.root_hidden;
@@ -120,10 +113,7 @@ const Autocomplete = props => {
         );
 
     const messageTpl = MESSAGES.get(messageType);
-    const message =
-        typeof messageTpl === 'function'
-            ? messageTpl`${resultCount}`
-            : messageTpl;
+    const message = typeof messageTpl === 'function' ? messageTpl`${resultCount}` : messageTpl;
 
     return (
         <div className={rootClassName}>

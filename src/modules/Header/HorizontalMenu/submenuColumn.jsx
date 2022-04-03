@@ -14,31 +14,19 @@ import defaultClasses from './submenuColumn.module.css';
  * @param {function} props.onNavigate - function called when clicking on Link
  */
 const SubmenuColumn = props => {
-    const {
-        category,
-        categoryUrlSuffix,
-        onNavigate,
-        handleCloseSubMenu
-    } = props;
+    const { category, categoryUrlSuffix, onNavigate, handleCloseSubMenu } = props;
     const classes = useStyle(defaultClasses, props.classes);
 
-    const categoryUrl = resourceUrl(
-        `/${category.url_path}${categoryUrlSuffix || ''}`
-    );
+    const categoryUrl = resourceUrl(`/${category.url_path}${categoryUrlSuffix || ''}`);
     let children = null;
 
     if (category.children.length) {
         const childrenItems = category.children.map((subCategory, index) => {
             const { url_path, isActive, name } = subCategory;
-            const categoryUrl = resourceUrl(
-                `/${url_path}${categoryUrlSuffix || ''}`
-            );
+            const categoryUrl = resourceUrl(`/${url_path}${categoryUrlSuffix || ''}`);
 
             // setting keyboardProps if it is last child of that category
-            const keyboardProps =
-                index === category.children.length - 1
-                    ? props.keyboardProps
-                    : {};
+            const keyboardProps = index === category.children.length - 1 ? props.keyboardProps : {};
 
             return (
                 <li key={index} className={classes.submenuChildItem}>

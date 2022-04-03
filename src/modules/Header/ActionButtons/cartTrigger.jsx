@@ -3,13 +3,13 @@ import { ShoppingCart as ShoppingCartIcon } from 'react-feather';
 import { useIntl } from 'react-intl';
 import { shape, string } from 'prop-types';
 
+import { GET_ITEM_COUNT_QUERY } from '@magento/venia-ui/lib/components/Header/cartTrigger.gql';
+import Icon from '@magento/venia-ui/lib/components/Icon';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { Price } from '@magento/peregrine';
 import { useCartTrigger } from '@magento/peregrine/lib/talons/Header/useCartTrigger';
 import { useMiniCart } from '@magento/peregrine/lib/talons/MiniCart/useMiniCart';
-
-import { GET_ITEM_COUNT_QUERY } from '@magento/venia-ui/lib/components/Header/cartTrigger.gql';
-import Icon from '@magento/venia-ui/lib/components/Icon';
 import minicartOperations from '@magento/venia-ui/lib/components/MiniCart/miniCart.gql.js';
 
 import defaultClasses from './cartTrigger.module.css';
@@ -53,11 +53,7 @@ const CartTrigger = props => {
 
     const cartTrigger = (
         <Fragment>
-            <button
-                aria-label={buttonAriaLabel}
-                className={classes.root}
-                onClick={handleLinkClick}
-            >
+            <button aria-label={buttonAriaLabel} className={classes.root} onClick={handleLinkClick}>
                 <Icon src={ShoppingCartIcon} />
                 {itemCounter}
                 {itemsWithSubtotal}

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import banner from './assets/neto_agha_page_banner.png';
-
 import classes from './digitalPartner.module.css';
 
 const DigitalPartner = () => {

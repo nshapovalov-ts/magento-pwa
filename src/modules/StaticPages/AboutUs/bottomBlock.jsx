@@ -4,7 +4,6 @@ import bottomImage1 from './assets/bottom-img-1.png';
 import bottomImage2 from './assets/bottom-img-2.png';
 import bottomImage3 from './assets/bottom-img-3.png';
 import bottomImage4 from './assets/bottom-img-4.png';
-
 import classes from './bottomBlock.module.css';
 
 const imagesData = [

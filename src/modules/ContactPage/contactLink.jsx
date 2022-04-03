@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useContactLink } from '@magento/peregrine/lib/talons/ContactPage';
-
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
+
+import { useContactLink } from '@magento/peregrine/lib/talons/ContactPage';
 
 const ContactLink = props => {
     const { children } = props;

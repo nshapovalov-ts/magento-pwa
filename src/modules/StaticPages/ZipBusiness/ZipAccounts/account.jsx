@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Button from 'components/Button';
-import labelIcon from '../assets/label_icon_bg.png';
 
+import labelIcon from '../assets/label_icon_bg.png';
 import classes from './account.module.css';
 
 const Account = ({ data }) => {

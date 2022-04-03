@@ -2,9 +2,9 @@ import React from 'react';
 import { ChevronDown as ArrowDown, User as AccountIcon } from 'react-feather';
 import { shape, string } from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-
 import Icon from '@magento/venia-ui/lib/components/Icon';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import defaultClasses from './accountChip.module.css';
 

@@ -3,9 +3,9 @@ import { useButton } from 'react-aria';
 import classNames from 'classnames';
 import { bool, oneOf, shape, string } from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-
 import Link from '@magento/venia-ui/lib/components/Link';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import defaultClasses from './button.module.css';
 

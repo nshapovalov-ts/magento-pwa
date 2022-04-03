@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import { useUserContext } from '@magento/peregrine/lib/context/user';
-
 import Button from 'components/Button';
 import AccountTrigger from './accountTrigger';
 import CartTrigger from './cartTrigger';
 import WishlistIcon from './wishlistIcon';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import { useUserContext } from '@magento/peregrine/lib/context/user';
 
 import defaultClasses from './actionButtons.module.css';
 
@@ -20,11 +20,7 @@ const ActionButtons = props => {
             {isSignedIn && <CartTrigger />}
             {!isSignedIn && (
                 <>
-                    <Button
-                        className={classes.sellLink}
-                        component="link"
-                        to="/seller"
-                    >
+                    <Button className={classes.sellLink} component="link" to="/seller">
                         Sell with us
                     </Button>
                     <Button

@@ -16,18 +16,18 @@ const config = {
                 groups: [
                     // react and all external modules
                     ['^react', '^@?\\w'],
-                    // pwa magento hooks, helpers, utils and graphql requests
-                    ['^@magento/venia-ui/lib/(?!components)', '^@magento/peregrine', '\\.gql$'],
                     // pwa components, reusable components with webpack alias and all modules with relative path
                     [
-                        '^@magento/venia-ui/lib/components',
+                        '^@magento/venia-ui/lib/(components|RootComponents)/',
                         '^components',
                         '^modules',
                         '^helpers',
                         '^\\.'
                     ],
+                    // pwa magento hooks, helpers, utils and graphql requests
+                    ['^@magento/venia-ui/lib/', '^@magento/peregrine', '.+.gql?.js$'],
                     // static files and styles
-                    ['\\.(gif|jpg|png|svg|jpeg|webp)$', '\\.css$']
+                    ['.+.(gif|jpg|png|svg|jpeg|webp)$', '.+.css$']
                 ]
             }
         ],

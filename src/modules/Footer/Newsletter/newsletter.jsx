@@ -3,17 +3,17 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { Form } from 'informed';
 import { shape, string } from 'prop-types';
 
-import { useStyle } from '@magento/venia-ui/lib/classify';
-import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
-import { useToasts } from '@magento/peregrine';
-import { useNewsletter } from '@magento/peregrine/lib/talons/Newsletter/useNewsletter';
-
 import FormError from '@magento/venia-ui/lib/components/FormError';
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 import Shimmer from '@magento/venia-ui/lib/components/Newsletter/newsletter.shimmer';
 import TextInput from '@magento/venia-ui/lib/components/TextInput';
 import Button from 'components/Button';
 import Field from 'components/Field';
+
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
+import { useToasts } from '@magento/peregrine';
+import { useNewsletter } from '@magento/peregrine/lib/talons/Newsletter/useNewsletter';
 
 import defaultClasses from './newsletter.module.css';
 
@@ -57,10 +57,7 @@ const Newsletter = props => {
     const maybeLoadingIndicator = isBusy ? (
         <div className={classes.loadingContainer}>
             <LoadingIndicator>
-                <FormattedMessage
-                    id={'newsletter.loadingText'}
-                    defaultMessage={'Subscribing'}
-                />
+                <FormattedMessage id={'newsletter.loadingText'} defaultMessage={'Subscribing'} />
             </LoadingIndicator>
         </div>
     ) : null;
@@ -71,18 +68,11 @@ const Newsletter = props => {
             <span className={classes.title}>Subscribe to Learning</span>
 
             <p className={classes.newsletter_text}>
-                Subscribe to receive news on latest campaigns, promotions, and
-                learning to grow your business.
+                Subscribe to receive news on latest campaigns, promotions, and learning to grow your
+                business.
             </p>
-            <FormError
-                allowErrorMessages
-                errors={Array.from(errors.values())}
-            />
-            <Form
-                getApi={setFormApi}
-                className={classes.form}
-                onSubmit={handleSubmit}
-            >
+            <FormError allowErrorMessages errors={Array.from(errors.values())} />
+            <Form getApi={setFormApi} className={classes.form} onSubmit={handleSubmit}>
                 <Field
                     id="email"
                     label={formatMessage({
