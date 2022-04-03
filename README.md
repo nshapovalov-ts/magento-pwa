@@ -56,9 +56,11 @@ Basic documentation for Magento PWA Studio packages is located at [https://pwast
 
     About env setup https://developer.adobe.com/commerce/pwa-studio/api/buildpack/cli/create-environment-file/
 
-    All parameters can be found here https://github.com/magento/pwa-studio/blob/v12.2.0/packages/pwa-buildpack/envVarDefinitions.json (or choose the correct pwa-studio version first)
+    All parameters can be found here https://github.com/magento/pwa-studio/blob/v12.3.0/packages/pwa-buildpack/envVarDefinitions.json (or choose the correct pwa-studio version first)
 
-    For sample backend used MAGENTO_BACKEND_URL=https://master-7rqtwti-mfwmkrjfqvbjk.us-4.magentosite.cloud but sometimes backend has problems and returns non valid json data and frontend app can't be build
+    For sample backend used MAGENTO_BACKEND_URL=https://master-7rqtwti-mfwmkrjfqvbjk.us-4.magentosite.cloud
+
+    If local magento backend used, make sure you have the correct version of the magento >=2.4.3, and also [metapackage](https://developer.adobe.com/commerce/pwa-studio/metapackages/open-source/) is installed.
 
 -   run command to create unique local hostname and trusted SSL certificate
 
