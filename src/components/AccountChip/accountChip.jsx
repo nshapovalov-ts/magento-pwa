@@ -1,15 +1,8 @@
 import React from 'react';
-import {
-    ChevronDown as ArrowDown,
-    Loader,
-    User as AccountIcon
-} from 'react-feather';
-import { useIntl } from 'react-intl';
-import { bool, shape, string } from 'prop-types';
+import { ChevronDown as ArrowDown, User as AccountIcon } from 'react-feather';
+import { shape, string } from 'prop-types';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import { useAccountChip } from '@magento/peregrine/lib/talons/AccountChip/useAccountChip';
-import { GET_CUSTOMER_DETAILS } from './accountChip.gql';
 
 import Icon from '@magento/venia-ui/lib/components/Icon';
 
@@ -28,41 +21,15 @@ import defaultClasses from './accountChip.module.css';
  *  not when the user is signed in but we don't have their details (name) yet.
  */
 const AccountChip = props => {
-    const { fallbackText, shouldIndicateLoading } = props;
-
-    const talonProps = useAccountChip({
-        queries: {
-            getCustomerDetailsQuery: GET_CUSTOMER_DETAILS
-        }
-    });
-    const { currentUser, isLoadingUserName, isUserSignedIn } = talonProps;
-
     const classes = useStyle(defaultClasses, props.classes);
-    const { formatMessage } = useIntl();
-
-    let chipText;
-    if (!isUserSignedIn) {
-        chipText = fallbackText;
-    } else {
-        if (!isLoadingUserName) {
-            chipText = formatMessage(
-                { id: 'accountChip.chipText', defaultMessage: 'Hi, {name}' },
-                { name: currentUser.firstname }
-            );
-        } else if (shouldIndicateLoading) {
-            chipText = <Icon classes={{ icon: classes.loader }} src={Loader} />;
-        } else {
-            chipText = fallbackText;
-        }
-    }
 
     return (
-        <>
-            <span className={classes.root}>
+        <span className={classes.root}>
+            <span className={classes.icon}>
                 <Icon src={AccountIcon} />
             </span>
             <Icon src={ArrowDown} size={20} />
-        </>
+        </span>
     );
 };
 
@@ -73,12 +40,5 @@ AccountChip.propTypes = {
         root: string,
         loader: string,
         text: string
-    }),
-    fallbackText: string,
-    shouldIndicateLoading: bool
-};
-
-AccountChip.defaultProps = {
-    fallbackText: 'Account',
-    shouldIndicateLoading: false
+    })
 };
