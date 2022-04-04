@@ -8,7 +8,7 @@ import Link from '@magento/venia-ui/lib/components/Link';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useWishlistPage } from '@magento/peregrine/lib/talons/WishlistPage/useWishlistPage';
 
-import defaultClasses from './whishListIcon.module.css';
+import defaultClasses from './whishlistIcon.module.css';
 
 /**
  * The WishlistIcon component is the call to action in the site header
