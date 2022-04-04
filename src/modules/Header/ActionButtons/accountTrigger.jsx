@@ -44,7 +44,7 @@ const AccountTrigger = props => {
                     onClick={handleTriggerClick}
                     data-cy="AccountTrigger-trigger"
                 >
-                    <AccountChip fallbackText="" shouldIndicateLoading={true} />
+                    <AccountChip />
                 </button>
                 <Suspense fallback={null}>
                     <AccountMenu
