@@ -1,12 +1,17 @@
 /* Large screen styles */
 .menu {
-    composes: lg_absolute from global;
-    composes: lg_flex-col from global;
-    composes: text-sm from global;
-    margin-top: -7px;
-    border: 1px solid rgb(var(--color-gray-100));
-    width: 280px;
-    background: rgb(var(--color-white));
-    color: rgb(var(--color-gray-700));
     display: none;
+}
+
+@media (min-width: 1024px) {
+    .menu {
+        font-size: var(--venia-global-fontSize-100);
+        margin-top: -7px;
+        border: 1px solid rgb(var(--venia-global-color-gray-100));
+        width: 280px;
+        background: rgb(var(--venia-global-color-white));
+        color: rgb(var(--venia-global-color-gray-700));
+        flex-direction: column;
+        position: absolute;
+    }
 }

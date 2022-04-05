@@ -17,7 +17,7 @@
 }
 
 .header {
-    color: rgb(var(--color-gray-700));
+    color: rgb(var(--venia-global-color-gray-700));
     font-size: 32px;
 }
 

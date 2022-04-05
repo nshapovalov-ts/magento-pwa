@@ -57,14 +57,14 @@
     position: absolute;
     width: 32px;
     height: 32px;
-    background: rgb(var(--color-yellow-400));
+    background: rgb(var(--venia-global-color-yellow-400));
     box-shadow: 0px 16px 24px rgb(0 0 0 / 12%);
     border-radius: 8px;
     line-height: 150%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(var(--color-black));
+    color: rgb(var(--venia-global-color-black));
     right: -16px;
     top: -16px;
 }

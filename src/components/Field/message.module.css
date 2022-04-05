@@ -1,5 +1,6 @@
 .root {
-    composes: text-sm text-gray-900 from global;
+    font-size: var(--venia-global-fontSize-100);
+    color: rgb(var(--venia-global-color-text));
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1rem;
@@ -12,5 +13,6 @@
 
 .root_error {
     composes: root;
-    composes: font-semibold text-error from global;
+    font-weight: var(--venia-global-fontWeight-semibold);
+    color: rgb(var(----venia-global-color-error));
 }

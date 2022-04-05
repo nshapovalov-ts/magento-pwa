@@ -3,14 +3,17 @@
 }
 
 .menuItem:hover {
-    background-color: rgb(var(--color-gray-100));
+    background-color: rgb(var(--venia-global-color-gray-100));
 }
 
 .menuLink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     padding: 10px 10px 10px 20px;
-    composes: h-9 from global;
-    composes: relative flex items-center justify-between from global;
+    height: 2.25rem;
+    position: relative;
 }
 
 .menuLinkActive {
@@ -26,7 +29,7 @@
     top: 0;
     bottom: 0;
     opacity: 0;
-    background-color: rgb(var(--color-primary));
+    background-color: rgb(var(--venia-global-color-primary));
 }
 
 .menuItem:hover .menuLink:before {
@@ -41,5 +44,5 @@
 .arrowRight {
     padding-left: 0.5rem;
     line-height: 0;
-    --stroke: rgb(var(--color-gray-700));
+    --stroke: rgb(var(--venia-global-color-gray-700));
 }

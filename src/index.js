@@ -8,6 +8,7 @@ import store from './store';
 import app from '@magento/peregrine/lib/store/actions/app';
 
 import './index.css';
+import './index.module.css';
 
 // server rendering differs from browser rendering
 const isServer = !globalThis.document;

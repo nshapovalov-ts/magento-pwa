@@ -1,5 +1,5 @@
 .root {
-    composes: text-gray-900 from global;
+    color: rgb(var(--venia-global-color-text));
     display: grid;
     align-content: start;
     width: 100%;
@@ -9,19 +9,19 @@
     align-items: center;
     display: flex;
     font-size: 1rem;
-    composes: font-semibold from global;
+    font-weight: var(--venia-global-fontWeight-semibold);
     line-height: 1.25rem;
     padding: 0.5625rem 0.125rem;
     min-height: 2.5rem;
 }
 
 .required {
-    color: rgb(var(--color-error));
+    color: rgb(var(--venia-global-color-error));
 }
 
 .input_base {
     border-radius: 6px;
-    composes: text-base from global;
+    font-size: var(--venia-global-fontSize-200);
     margin: 0;
     max-width: 100%;
     padding: calc(0.375rem - 1px) calc(0.625rem - 1px);
@@ -30,8 +30,8 @@
 
 .input {
     composes: input_base;
-    composes: text-gray-900 from global;
-    border: 2px solid rgb(var(--color-gray-200));
+    color: rgb(var(--venia-global-color-text));
+    border: 2px solid rgb(var(--venia-global-color-gray-200));
     display: inline-flex;
     flex: 0 0 100%;
     -webkit-appearance: none;
@@ -42,8 +42,8 @@
 }
 
 .optional {
-    composes: text-gray-700 from global;
-    composes: text-sm from global;
+    color: rgb(var(--venia-global-color-text-alt));
+    font-size: var(--venia-global-fontSize-100);
     width: 100%;
     text-align: end;
 }

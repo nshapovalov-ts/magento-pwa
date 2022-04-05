@@ -1,7 +1,7 @@
 .root {
-    --stroke: var(--color-gray-600);
+    --stroke: var(--venia-global-color-gray-600);
     align-items: center;
-    color: rgb(var(--color-gray-900));
+    color: rgb(var(--venia-global-color-gray-900));
     display: grid;
     gap: calc(0.875rem - 5px);
     grid-auto-flow: column;
@@ -54,7 +54,7 @@
 }
 
 .input:checked:enabled + .icon {
-    --stroke: var(--color-primary);
+    --stroke: var(--venia-global-color-primary);
 }
 
 .input:active:enabled,

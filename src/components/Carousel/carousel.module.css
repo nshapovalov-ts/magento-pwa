@@ -30,11 +30,11 @@
 
 .container :global .paging-item :local .dots {
     padding: 0 5px;
-    fill: rgb(var(--color-gray-400)) !important;
+    fill: rgb(var(--venia-global-color-gray-400)) !important;
 }
 
 .container :global .paging-item.active :local .dots {
-    fill: rgb(var(--color-orange-400)) !important;
+    fill: rgb(var(--venia-global-color-orange-400)) !important;
 }
 
 .dots svg {

@@ -4,13 +4,13 @@
     min-height: 2rem;
     padding: 0 0.5rem;
     align-self: center;
-    background-color: rgb(var(--color-secondary));
-    border-color: rgb(var(--color-secondary));
+    background-color: rgb(var(--venia-global-color-secondary));
+    border-color: rgb(var(--venia-global-color-secondary));
 }
 
 .icon {
     display: none;
-    stroke: rgb(var(--color-white));
+    stroke: rgb(var(--venia-global-color-white));
 }
 
 .text {

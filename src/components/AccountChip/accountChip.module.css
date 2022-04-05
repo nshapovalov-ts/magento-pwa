@@ -4,19 +4,19 @@
 
 .icon {
     align-items: center;
+    background: rgb(var(--venia-global-color-gray-200));
+    border-radius: 100%;
+    color: rgb(var(--venia-global-color-black));
+    display: flex;
+    font-size: var(--venia-global-fontSize-200);
+    font-weight: bold;
+    height: 38px;
+    justify-content: center;
+    line-height: 48px;
     padding: 0;
     position: relative;
-    background: rgb(var(--color-gray-200));
-    border-radius: 100%;
-    width: 38px;
-    height: 38px;
-    font-size: 16px;
-    line-height: 48px;
     text-align: center;
-    color: rgb(var(--color-black));
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
+    width: 38px;
 }
 
 @media (min-width: 1024px) {

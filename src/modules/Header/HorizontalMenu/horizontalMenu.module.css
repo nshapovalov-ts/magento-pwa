@@ -1,12 +1,12 @@
 .horizontalMenu {
-    composes: col-end-10 from global;
-    composes: col-start-3 from global;
-    composes: flex-grow from global;
-    composes: hidden from global;
-    composes: justify-self-center from global;
+    display: none;
 }
 
-/* Large screen styles */
-.horizontalMenu {
-    composes: lg_flex from global;
+@media (min-width: 1280px) {
+    .horizontalMenu {
+        grid-column-end: 10;
+        grid-column-start: 3;
+        justify-self: center;
+        display: flex;
+    }
 }

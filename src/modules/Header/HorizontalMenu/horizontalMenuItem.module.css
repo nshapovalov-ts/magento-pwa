@@ -19,7 +19,7 @@
     display: block;
     height: 2px;
     z-index: 10;
-    background-color: rgb(var(--color-secondary));
+    background-color: rgb(var(--venia-global-color-secondary));
 }
 
 .horizontalMenuLinkActive {

@@ -1,6 +1,7 @@
 .root {
     composes: root from '@magento/venia-ui/lib/components/clickable.module.css';
-    composes: text-sm from global;
+    font-size: var(--venia-global-fontSize-100);
+    line-height: var(--venia-global-lineHeight-200);
     --stroke: none;
     border-radius: 0.5rem;
     border-style: solid;
@@ -10,9 +11,9 @@
     max-width: 100%;
     min-height: 2rem;
     outline: none;
-    color: rgb(var(--color-white));
+    color: rgb(var(--venia-global-color-white));
     padding: 10px 24px;
-    background: rgb(var(--color-secondary));
+    background: rgb(var(--venia-global-color-secondary));
 }
 
 /**
@@ -22,7 +23,7 @@
 .root:disabled,
 .root:hover:disabled {
     pointer-events: none;
-    border-color: var(--color-gray-400);
+    border-color: var(--venia-global-color-gray-400);
 }
 
 .content {
@@ -55,43 +56,43 @@
 /* derived classes */
 .contained {
     composes: root;
-    color: rgb(var(--color-white));
-    border-color: rgb(var(--color-secondary));
-    background: rgb(var(--color-secondary));
+    color: rgb(var(--venia-global-color-white));
+    border-color: rgb(var(--venia-global-color-secondary));
+    background: rgb(var(--venia-global-color-secondary));
 }
 
 .contained:hover {
-    border-color: rgb(var(--color-primary));
+    border-color: rgb(var(--venia-global-color-primary));
 }
 
 .outlined {
     composes: root;
     border-style: solid;
     border-width: 2px;
-    border-color: rgb(var(--color-gray-200));
+    border-color: rgb(var(--venia-global-color-gray-200));
     background: none;
-    color: rgb(var(--color-primary));
+    color: rgb(var(--venia-global-color-primary));
 }
 
 .text {
     composes: root;
-    color: rgb(var(--color-primary));
+    color: rgb(var(--venia-global-color-primary));
     background: none;
 }
 
 .root_lowPriority {
     composes: root;
-    --stroke: var(--color-gray-700);
+    --stroke: var(--venia-global-color-gray-700);
 }
 .root_lowPriority:hover {
-    --stroke: var(--color-gray-900);
+    --stroke: var(--venia-global-color-gray-900);
 }
 .root_lowPriorityNegative {
     composes: root_lowPriority;
-    --stroke: var(--color-red-400);
+    --stroke: var(--venia-global-color-red-400);
 }
 .root_lowPriorityNegative:hover {
-    --stroke: var(--color-red-800);
+    --stroke: var(--venia-global-color-red-800);
 }
 
 .root_normalPriority {
@@ -99,25 +100,25 @@
 }
 .root_normalPriorityNegative {
     composes: root_normalPriority;
-    --stroke: var(--color-red-400);
+    --stroke: var(--venia-global-color-red-400);
 }
 .root_normalPriorityNegative:hover {
-    --stroke: var(--color-red-800);
+    --stroke: var(--venia-global-color-red-800);
 }
 
 .root_highPriority {
     composes: root;
-    background-color: rgb(var(--color-secondary));
-    color: rgb(var(--color-gray-50));
+    background-color: rgb(var(--venia-global-color-secondary));
+    color: rgb(var(--venia-global-color-gray-50));
 }
 .root_highPriorityNegative {
     composes: root_highPriority;
-    --stroke: var(--color-red-400);
+    --stroke: var(--venia-global-color-red-400);
 }
 .root_highPriorityNegative:hover {
-    --stroke: var(--color-red-800);
+    --stroke: var(--venia-global-color-red-800);
 }
 
 .primary {
-    background: rgb(var(--color-primary));
+    background: rgb(var(--venia-global-color-primary));
 }

@@ -3,10 +3,16 @@
     display: block;
     justify-items: stretch;
     margin: 0px;
-    background: rgb(var(--color-orange-50));
+    background: rgb(var(--venia-global-color-orange-50));
     border-radius: 24px;
     width: 100%;
-    composes: p-5 lg_p-14 from global;
+    padding: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+    .root {
+        padding: 3.5rem;
+    }
 }
 
 .form {
@@ -24,14 +30,15 @@
 .buttonSubmit {
     composes: contained from 'components/Button/button.module.css';
     composes: mediumSize from 'components/Button/button.module.css';
-    composes: bg-secondary from global;
-    border-color: rgb(var(--color-secondary));
+    background: rgb(var(--venia-global-color-secondary));
+    border-color: rgb(var(--venia-global-color-secondary));
     margin-left: 10px;
 }
 
 .title {
-    composes: text-2xl from global;
-    color: rgb(var(--color-primary));
+    font-size: var(--venia-global-fontSize-600);
+    line-height: 2rem;
+    color: rgb(var(--venia-global-color-primary));
     font-weight: bold;
     margin-bottom: 1rem;
     display: block;
@@ -48,7 +55,7 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: rgba(252, 252, 252, 0.75);
+    background: rgba(var(--venia-global-color-gray-100), 0.75);
 }
 
 @media screen and (max-width: 767px) {

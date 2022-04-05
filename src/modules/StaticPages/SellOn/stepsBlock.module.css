@@ -39,7 +39,7 @@
 .stepsBlockNumber {
     margin-bottom: 26px;
     padding: 0px;
-    background: rgb(var(--color-orange-400));
+    background: rgb(var(--venia-global-color-orange-400));
     width: 40px;
     height: 40px;
     display: flex;
@@ -48,7 +48,7 @@
     font-size: 15px;
     line-height: 150%;
     text-align: center;
-    color: rgb(var(--color-white));
+    color: rgb(var(--venia-global-color-white));
     border-radius: 100%;
 }
 
@@ -88,6 +88,6 @@
     margin-bottom: 8px;
     padding-left: 25px;
     font-weight: bold;
-    color: rgb(var(--color-black));
+    color: rgb(var(--venia-global-color-black));
     background: url(./assets/neto_page_check.png) no-repeat left top 6px;
 }

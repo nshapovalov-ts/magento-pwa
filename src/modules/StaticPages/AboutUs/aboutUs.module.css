@@ -52,20 +52,20 @@
 }
 
 .aboutBlockOne .aboutBlockImage img {
-    box-shadow: 22px 22px 0 0 rgb(var(--color-gray-100));
+    box-shadow: 22px 22px 0 0 rgb(var(--venia-global-color-gray-100));
 }
 
 .aboutBlockTwo .aboutBlockImage img {
-    box-shadow: -22px 22px 0 0 rgb(var(--color-gray-100));
+    box-shadow: -22px 22px 0 0 rgb(var(--venia-global-color-gray-100));
 }
 
 @media (min-width: 1024px) {
     .aboutBlockOne .aboutBlockImage img {
-        box-shadow: 40px 40px 0 0 rgb(var(--color-gray-100));
+        box-shadow: 40px 40px 0 0 rgb(var(--venia-global-color-gray-100));
     }
 
     .aboutBlockTwo .aboutBlockImage img {
-        box-shadow: -40px 40px 0 0 rgb(var(--color-gray-100));
+        box-shadow: -40px 40px 0 0 rgb(var(--venia-global-color-gray-100));
     }
 
     .aboutBlockText {

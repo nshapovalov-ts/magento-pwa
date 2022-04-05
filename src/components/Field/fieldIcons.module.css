@@ -44,5 +44,5 @@
 }
 
 .before svg {
-    stroke: rgb(var(--color-gray-600));
+    stroke: rgb(var(--venia-global-color-gray-600));
 }

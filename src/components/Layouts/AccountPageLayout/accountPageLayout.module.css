@@ -1,8 +1,9 @@
 .root {
     display: grid;
     grid-template-columns: 270px 1fr;
-    max-width: var(--max-width-desktop);
+    max-width: var(--venia-global-maxWidth);
     margin: 0 auto;
+    padding: 20px 0;
 }
 
 .pageContent {

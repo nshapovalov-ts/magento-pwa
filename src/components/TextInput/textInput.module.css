@@ -3,12 +3,12 @@
 }
 
 .input:disabled {
-    color: rgb(var(--color-gray-darker));
+    color: rgb(var(--venia-global-color-gray-darker));
 }
 
 .input_error {
     composes: input from 'components/Field/field.module.css';
-    border-color: rgb(var(--color-red-400));
+    border-color: rgb(var(--venia-global-color-red-400));
 }
 
 .input_shimmer {

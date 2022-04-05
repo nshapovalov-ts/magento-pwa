@@ -1,6 +1,6 @@
 const ANIMATIONS = require('../data/animations');
 
-const PREFIX = '--animation';
+const PREFIX = '--venia-global-anim';
 
 /**
  * create a custom property declaration for each animation

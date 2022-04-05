@@ -2,7 +2,7 @@ const { getColors } = require('./lib/colors');
 const { getAnimations } = require('./lib/animations');
 const customPlugins = require('./plugins');
 /**
- * This is the main tailwindcss theme file for the updated theme
+ * This is the main tailwind css theme file for the updated theme
  * Default theme parameters are overwritten here, if there is no parameter here
  * the default value from the venia theme is used from tokens.module.css file
  */

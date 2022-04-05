@@ -1,6 +1,6 @@
 const COLORS = require('../data/colors');
 
-const PREFIX = '--color';
+const PREFIX = '--venia-global-color';
 
 /**
  * create a custom property declaration for each color-weight
@@ -19,7 +19,11 @@ const declareColors = (data = COLORS, prefix = PREFIX) => {
             declarations[`${prefix}-${color}`] = definition;
         } else {
             for (const [weight, value] of Object.entries(definition)) {
-                declarations[`${prefix}-${color}-${weight}`] = value;
+                if (weight === 'default') {
+                    declarations[`${prefix}-${color}`] = value;
+                } else {
+                    declarations[`${prefix}-${color}-${weight}`] = value;
+                }
             }
         }
     }

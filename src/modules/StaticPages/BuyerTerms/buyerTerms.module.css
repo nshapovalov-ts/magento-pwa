@@ -1,10 +1,12 @@
 .title {
-    composes: text-3xl font-bold from global;
+    font-size: var(--venia-global-typography-heading-XXL-fontSize);
+    font-weight: var(--venia-global-fontWeight-bold);
     margin-bottom: 2rem;
 }
 
 .disclaimerTitle {
-    composes: text-3xl font-bold from global;
+    font-size: var(--venia-global-typography-heading-XXL-fontSize);
+    font-weight: var(--venia-global-fontWeight-bold);
     margin-bottom: 1rem;
     text-transform: uppercase;
 }
@@ -17,7 +19,7 @@
 
 .terms a,
 .link {
-    color: rgb(var(--color-secondary));
+    color: rgb(var(--venia-global-color-secondary));
 }
 
 .terms h2 {
@@ -29,8 +31,8 @@
 .terms > ol > li::before,
 .terms h2 {
     padding-right: 10px;
-    font-size: 26px;
-    font-weight: bold;
+    font-size: var(--venia-global-fontSize-700);
+    font-weight: var(--venia-global-fontWeight-bold);
 }
 
 .terms ol {

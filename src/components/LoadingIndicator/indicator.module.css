@@ -157,6 +157,6 @@ figure div:nth-child(9) {
 
 @keyframes colorChange {
     70% {
-        background-color: rgb(var(--color-gray-200));
+        background-color: rgb(var(--venia-global-color-gray-200));
     }
 }

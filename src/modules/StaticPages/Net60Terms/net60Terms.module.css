@@ -1,10 +1,12 @@
 .title {
-    composes: text-3xl font-bold from global;
+    font-size: var(--venia-global-fontSize-700);
+    line-height: 2.25rem;
+    font-weight: var(--venia-global-fontWeight-bold);
     margin-bottom: 2rem;
 }
 
 .terms a {
-    color: rgb(var(--color-secondary));
+    color: rgb(var(--venia-global-color-secondary));
 }
 
 .terms h2 {

@@ -3,7 +3,7 @@
     margin: 0 8px 100px;
     border-radius: 12px;
     padding: 66px 0;
-    background: rgb(var(--color-blue-50));
+    background: rgb(var(--venia-global-color-blue-50));
     text-align: center;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .container {
-    max-width: rgb(var(--max-width-desktop));
+    max-width: rgb(var(--venia-global-maxWidth));
 }
 
 .container h2 {
@@ -36,7 +36,7 @@
 
 .accountsBlock {
     margin: 0 auto;
-    max-width: var(--max-width-desktop);
+    max-width: var(--venia-global-maxWidth);
 }
 
 @media (min-width: 768px) {
@@ -50,16 +50,16 @@
     max-width: 700px;
     font-weight: 500;
     margin: 0 auto;
-    color: rgb(var(--color-gray-800));
+    color: rgb(var(--venia-global-color-gray-800));
     margin-top: 40px;
 }
 
 .link {
-    color: rgb(var(--color-gray-800));
+    color: rgb(var(--venia-global-color-gray-800));
 }
 
 .link:hover {
-    color: rgb(var(--color-primary));
+    color: rgb(var(--venia-global-color-primary));
 }
 
 .linkUnderlined {

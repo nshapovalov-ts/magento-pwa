@@ -5,20 +5,32 @@
 
 .sellLink {
     composes: root text smallSize from 'components/Button/button.module.css';
-    composes: text-primary from global;
-    composes: hidden md_flex from global;
+    color: rgb(var(--venia-global-color-primary));
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .sellLink {
+        display: flex;
+    }
 }
 
 .loginButton {
     composes: outlined from 'components/Button/button.module.css';
-    composes: hidden sm_flex from global;
+    display: none;
     margin-right: 0.5rem;
-    color: rgb(var(--color-black));
+    color: rgb(var(--venia-global-color-black));
+}
+
+@media (min-width: 768px) {
+    .loginButton {
+        display: flex;
+    }
 }
 
 .signupButton {
     composes: contained from 'components/Button/button.module.css';
-    background: rgb(var(--color-primary));
+    background: rgb(var(--venia-global-color-primary));
 }
 
 @media (max-width: 1024px) {
@@ -35,9 +47,9 @@
     font-weight: 600;
     box-sizing: border-box;
     padding: 0 0.25rem;
-    background-color: rgb(var(--color-primary));
+    background-color: rgb(var(--venia-global-color-primary));
     border-radius: 100px;
-    color: rgb(var(--color-white));
+    color: rgb(var(--venia-global-color-white));
     line-height: 1.25rem;
     min-width: 1.25rem;
     font-size: 0.8125rem;

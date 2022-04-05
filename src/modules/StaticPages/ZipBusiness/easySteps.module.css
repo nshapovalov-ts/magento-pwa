@@ -76,5 +76,5 @@
 }
 
 .link:hover {
-    color: rgb(var(--color-primary));
+    color: rgb(var(--venia-global-color-primary));
 }

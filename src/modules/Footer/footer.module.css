@@ -1,8 +1,8 @@
 .root {
-    composes: text-sm from global;
-    composes: text-gray-700 from global;
-    composes: max-w-desktop w-full from global;
-    border-top: 2px solid rgb(var(--color-gray-100));
+    font-size: var(--venia-global-fontSize-100);
+    color: rgb(var(--venia-global-color-text-alt));
+    width: 100%;
+    border-top: 2px solid rgb(var(--venia-global-color-gray-100));
     display: grid;
     grid-template-areas:
         'main'
@@ -10,6 +10,7 @@
     grid-template-columns: 100%;
     padding-top: 2rem;
     margin: 0 auto;
+    max-width: var(--venia-global-maxWidth);
 }
 
 .main {
@@ -31,7 +32,7 @@
     align-content: start;
     display: grid;
     gap: 1em;
-    color: rgb(var(--color-black));
+    color: rgb(var(--venia-global-color-black));
 }
 
 @media (min-width: 768px) {
@@ -81,18 +82,18 @@
 .linkItem {
     display: flex;
     align-items: center;
-    font-weight: 600;
+    font-weight: var(--venia-global-fontWeight-semibold);
 }
 
 .linkItem:hover {
-    color: rgb(var(--color-orange-400));
-    --stroke: rgb(var(--color-orange-400));
+    color: rgb(var(--venia-global-color-orange-400));
+    --stroke: rgb(var(--venia-global-color-orange-400));
 }
 
 .linkItem:first-child {
     font-size: 1.5rem;
     line-height: 2rem;
-    color: rgb(var(--color-primary));
+    color: rgb(var(--venia-global-color-primary));
     font-weight: bold;
     margin-bottom: 1rem;
     margin-top: 2rem;
@@ -107,7 +108,7 @@
 
 .branding {
     align-items: center;
-    border-top: 2px solid rgb(var(--color-gray-100));
+    border-top: 2px solid rgb(var(--venia-global-color-gray-100));
     display: grid;
     grid-area: brand;
     grid-auto-flow: column;

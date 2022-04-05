@@ -1,0 +1,1 @@
+The basis for theming through tailwind, but, by default, only global css variables are used everywhere (and variables from the tailwind theme are not used anywhere) to style absolutely everything in venia-ui components, while it is easier to rewrite all the values of global css variables separately. Perhaps something will change in the future.

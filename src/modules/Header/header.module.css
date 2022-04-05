@@ -1,6 +1,5 @@
 .root {
     composes: auto-cols-fr from global;
-    composes: bg-white from global;
     composes: border-neutral-l1 from global;
     composes: grid from global;
     composes: h-auto from global;
@@ -10,6 +9,7 @@
     composes: sticky from global;
     composes: w-full from global;
     composes: z-10 from global;
+    background-color: rgb(var(--venia-global-color-white));
 }
 
 /* Large screen styles */
@@ -46,7 +46,7 @@
     composes: md_grid-rows-2 from global;
     composes: lg_min-height-header from global;
     composes: md_h-28 from global;
-    composes: max-w-desktop from global;
+    max-width: var(--venia-global-maxWidth);
 }
 
 .logo {
@@ -178,7 +178,7 @@
 
 .loader {
     composes: relative from global;
-    color: rgb(var(--color-gray-dark));
+    color: rgb(var(--venia-global-color-gray-dark));
     font-size: var(--dot-font-size);
     margin: var(--dot-shadow-offset) auto 0;
     transform: translateZ(0);
@@ -193,13 +193,13 @@
 }
 
 .loader:before {
-    color: rgb(var(--color-gray));
+    color: rgb(var(--venia-global-color-gray));
     left: -3.5em;
     animation-delay: -0.32s;
 }
 
 .loader:after {
-    color: rgb(var(--color-gray-darker));
+    color: rgb(var(--venia-global-color-gray-darker));
     left: 3.5em;
 }
 

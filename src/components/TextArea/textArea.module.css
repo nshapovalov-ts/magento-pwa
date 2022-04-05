@@ -8,7 +8,7 @@
 
 .input_error {
     composes: input from 'components/Field/field.module.css';
-    border-color: rgb(var(--color-red-400));
+    border-color: rgb(var(--venia-global-color-red-400));
 }
 
 .input_shimmer {

@@ -1,4 +1,4 @@
 .root {
     border-radius: 16px;
-    border: 1px solid rgb(var(--color-gray-200));
+    border: 1px solid rgb(var(--venia-global-color-gray-200));
 }

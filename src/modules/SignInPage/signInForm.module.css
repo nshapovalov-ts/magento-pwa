@@ -8,7 +8,7 @@
 .forgotPassword {
     display: block;
     text-decoration: underline;
-    color: rgb(var(--color-error));
+    color: rgb(var(--venia-global-color-error));
     font-size: 0.8rem;
 }
 
@@ -21,7 +21,7 @@
     visibility: hidden;
     height: 100%;
     width: 100%;
-    background-color: rgb(var(--color-gray));
+    background-color: rgb(var(--venia-global-color-gray));
     text-align: center;
     position: absolute;
     bottom: 0;
@@ -45,8 +45,8 @@
 
 .signInButton {
     composes: root contained from 'components/Button/button.module.css';
-    composes: px-7 py-4 from global;
-    composes: bg-primary from global;
+    padding: 1rem 1.75rem;
+    background: rgb(var(--venia-global-color-primary));
 }
 
 .forgotPasswordButtonContainer {
@@ -60,6 +60,6 @@
 .linkButton {
     composes: root from '@magento/venia-ui/lib/components/LinkButton/linkButton.module.css';
     padding: 0;
-    color: rgb(var(--color-blue-500));
+    color: rgb(var(--venia-global-color-blue-500));
     padding-left: 0.2rem;
 }

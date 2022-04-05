@@ -1,15 +1,19 @@
-const tradesquare = require('./tailwind-pwa-theme/tailwind.preset');
+const venia = require('@magento/pwa-theme-venia');
 
 const config = {
     mode: 'jit',
     // Include your custom theme here.
-    presets: [tradesquare],
+    presets: [venia],
     // Configure how Tailwind statically analyzes your code here.
     // Note that the Tailwind's `jit` mode doesn't actually use PurgeCSS.
     purge: {
         // Include paths to every file that may refer to Tailwind classnames.
         // Classnames not found in these files will be excluded at build time.
-        content: ['./src/**/*.module.css'],
+        content: [
+            './node_modules/@magento/venia-ui/lib/**/*.module.css',
+            '../venia-ui/lib/**/*.module.css',
+            './src/**/*.module.css'
+        ],
         // Extract Tailwind classnames from source files.
         // Our default matcher only matches targets of CSS Modules' `composes`,
         // not classnames included directly in HTML or JS!

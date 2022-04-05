@@ -1,6 +1,6 @@
 .submenu {
-    background-color: rgb(var(--color-gray-50));
-    border: 1px solid rgb(var(--color-gray-100));
+    background-color: rgb(var(--venia-global-color-gray-50));
+    border: 1px solid rgb(var(--venia-global-color-gray-100));
     display: none;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -9,15 +9,30 @@
     height: 100%;
     position: absolute;
     overflow-y: auto;
-    composes: w-screen from global;
-    composes: lg_max-w-3xl from global;
-    composes: xl_max-w-4xl from global;
-    composes: 2xl_max-w-5xl from global;
+    width: 100vw;
     padding: 20px 0 20px 30px;
 }
 
+@media (min-width: 1024px) {
+    .submenu {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .submenu {
+        max-width: 896px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .submenu {
+        max-width: 1024px;
+    }
+}
+
 .submenu::before {
-    box-shadow: inset 0 2px rgb(var(--color-gray-100));
+    box-shadow: inset 0 2px rgb(var(--venia-global-color-gray-100));
     content: '';
     height: 10px;
     left: 0;
@@ -33,6 +48,7 @@
 }
 
 .submenuItems {
-    composes: flex flex-col from global;
-    composes: max-w-desktop from global;
+    display: flex;
+    flex-direction: column;
+    max-width: var(--venia-global-maxWidth);
 }

@@ -2,7 +2,7 @@
     margin-bottom: 50px;
     padding: 50px 0px;
     width: 100%;
-    background: rgb(var(--color-blue-50));
+    background: rgb(var(--venia-global-color-blue-50));
 }
 
 @media (min-width: 1200px) {
@@ -12,14 +12,14 @@
 }
 
 .container {
-    max-width: var(--max-width-desktop);
+    max-width: var(--venia-global-maxWidth);
     margin: 0 auto;
     padding: 0 10px;
 }
 
 @media (min-width: 1200px) {
     .container {
-        max-width: var(--max-width-desktop);
+        max-width: var(--venia-global-maxWidth);
         margin: 0 auto;
         padding: 0 30px;
     }

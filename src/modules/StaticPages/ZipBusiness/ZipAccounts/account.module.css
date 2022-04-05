@@ -17,12 +17,12 @@
 }
 
 .header {
-    background: rgb(var(--color-sky-400));
+    background: rgb(var(--venia-global-color-sky-400));
     box-shadow: 0px 4px 16px rgb(34 42 93 / 8%);
     border-radius: 16px 16px 0px 0px;
     font-weight: 600;
     font-size: 1.2rem;
-    color: rgb(var(--color-white));
+    color: rgb(var(--venia-global-color-white));
     text-align: center;
     padding: 18px;
     display: flex;
@@ -38,7 +38,7 @@
 
 .headerNew {
     composes: header;
-    background: rgb(var(--color-blue-800));
+    background: rgb(var(--venia-global-color-blue-800));
 }
 
 .sum {
@@ -91,7 +91,7 @@
 }
 
 .accountTable tr:nth-child(even) {
-    background: rgb(var(--color-gray-100));
+    background: rgb(var(--venia-global-color-gray-100));
 }
 
 .buttonContainer {
@@ -108,7 +108,7 @@
 }
 
 .button {
-    background-color: rgb(var(--color-black));
+    background-color: rgb(var(--venia-global-color-black));
     align-self: flex-end;
     padding: 16px 24px;
 }

@@ -1,12 +1,12 @@
 .root {
     margin: 0 20px;
     border-radius: 16px;
-    background: rgb(var(--color-white));
+    background: rgb(var(--venia-global-color-white));
     overflow: hidden;
 }
 
 .accordionSection {
-    border-bottom: 1px solid rgb(var(--color-gray-200));
+    border-bottom: 1px solid rgb(var(--venia-global-color-gray-200));
 }
 
 .contentsContainer {
@@ -15,7 +15,7 @@
     visibility: visible;
     height: auto;
     max-height: 500px;
-    transition: all 0.5s var(--animation-standard);
+    transition: all 0.5s var(--venia-global-anim-standard);
 }
 
 .contentsContainerClosed {
@@ -25,7 +25,7 @@
     visibility: hidden;
     overflow: hidden;
     max-height: 0;
-    transition: all 0.2s var(--animation-standard);
+    transition: all 0.2s var(--venia-global-anim-standard);
 }
 
 .content {
@@ -44,7 +44,7 @@
 
 .content li {
     list-style: disc;
-    color: rgb(var(--color-primary));
+    color: rgb(var(--venia-global-color-primary));
 }
 
 .titleWrapper {

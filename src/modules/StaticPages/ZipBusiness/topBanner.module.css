@@ -42,7 +42,7 @@
 }
 
 .applyBlock {
-    max-width: var(--max-width-desktop);
+    max-width: var(--venia-global-maxWidth);
     margin: 0 auto;
     padding: 30px;
     border-radius: 20px;
@@ -76,7 +76,7 @@
 }
 
 .applyBlock strong {
-    color: rgb(var(--color-secondary));
+    color: rgb(var(--venia-global-color-secondary));
 }
 
 .applyBlock p {
@@ -86,7 +86,7 @@
 }
 
 .button {
-    background: rgb(var(--color-black));
+    background: rgb(var(--venia-global-color-black));
 }
 
 @media (min-width: 768px) {
