@@ -3,7 +3,7 @@
     grid-auto-flow: column;
     grid-template-areas: 'before input after';
     grid-template-columns: auto 1fr auto;
-    height: 2.5rem;
+    height: 3.5rem;
     width: 100%;
 }
 

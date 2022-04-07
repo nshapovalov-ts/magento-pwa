@@ -14,5 +14,5 @@
 .root_error {
     composes: root;
     font-weight: var(--venia-global-fontWeight-semibold);
-    color: rgb(var(----venia-global-color-error));
+    color: rgb(var(--venia-global-color-error));
 }

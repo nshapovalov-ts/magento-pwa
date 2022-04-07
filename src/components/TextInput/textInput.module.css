@@ -1,5 +1,6 @@
 .input {
     composes: input from 'components/Field/field.module.css';
+    height: 44px;
 }
 
 .input:disabled {
@@ -9,6 +10,13 @@
 .input_error {
     composes: input from 'components/Field/field.module.css';
     border-color: rgb(var(--venia-global-color-red-400));
+    height: 44px;
+}
+
+.input::placeholder,
+.input_error::placeholder {
+    color: rgb(var(--venia-global-color-gray-500));
+    opacity: 1; /* Firefox */
 }
 
 .input_shimmer {

@@ -21,11 +21,13 @@ const Field = props => {
 
     return (
         <div className={classes.root}>
-            <label className={classes.label} htmlFor={id}>
-                {label}
-                {requiredSymbol}
-                {optionalSymbol}
-            </label>
+            {label && (
+                <label className={classes.label} htmlFor={id}>
+                    {label}
+                    {requiredSymbol}
+                    {optionalSymbol}
+                </label>
+            )}
             {children}
         </div>
     );
