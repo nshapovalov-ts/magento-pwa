@@ -3,7 +3,7 @@ const { Targetables } = require('@magento/pwa-buildpack');
  *
  * Updates the RichContent component to clean up dangerous code from html before rendering it
  */
-const updateHtmlRenderer = targets => {
+const makeSafeHtmlRenderer = targets => {
     const targetables = Targetables.using(targets);
 
     const Component = targetables.esModule(
@@ -20,4 +20,4 @@ const updateHtmlRenderer = targets => {
     });
 };
 
-exports.updateHtmlRenderer = updateHtmlRenderer;
+exports.makeSafeHtmlRenderer = makeSafeHtmlRenderer;

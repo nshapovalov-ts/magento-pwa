@@ -26,7 +26,8 @@ const { ExtendLocalIntercept } = require('@larsroettig/component-targetables');
 const { useSingleWishlistTarget } = require('./src/targets/wishlist');
 const { useAccountMenuItemsTarget } = require('./src/targets/accountItems');
 const { updateRoutes } = require('./src/targets/router');
-const { updateHtmlRenderer } = require('./src/targets/htmlRenderer');
+const { makeSafeHtmlRenderer } = require('./src/targets/htmlRenderer');
+const { addRestSupportApollo } = require('./src/targets/adapter');
 
 function localIntercept(targets) {
     const { Targetables } = require('@magento/pwa-buildpack');
@@ -36,10 +37,11 @@ function localIntercept(targets) {
     extendLocalIntercept.allowCustomTargetables();
     extendLocalIntercept.allowCssOverwrites();
 
+    addRestSupportApollo(targets);
+    updateRoutes(targets);
+    makeSafeHtmlRenderer(targets);
     useSingleWishlistTarget(targets);
     useAccountMenuItemsTarget(targets);
-    updateRoutes(targets);
-    updateHtmlRenderer(targets);
 }
 
 module.exports = localIntercept;
