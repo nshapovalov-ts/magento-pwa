@@ -1,0 +1,45 @@
+.input {
+    composes: input from 'components/TextInput/textInput.module.css';
+    border-radius: 12px;
+    font-size: var(--venia-global-fontSize-100);
+    font-weight: var(--venia-global-fontWeight-bold);
+}
+
+.input_error {
+    composes: input_error from 'components/TextInput/textInput.module.css';
+    border-radius: 12px;
+    font-size: var(--venia-global-fontSize-100);
+    font-weight: var(--venia-global-fontWeight-bold);
+}
+
+.input::placeholder,
+.input_error::placeholder {
+    color: rgb(var(--venia-global-color-black));
+    opacity: 1; /* Firefox */
+}
+
+.submitButton {
+    margin: 15px 0;
+}
+
+.signIn {
+    text-align: left;
+}
+
+.signIn a {
+    padding-left: 5px;
+}
+
+.terms p {
+    text-align: center;
+    font-weight: var(--venia-global-fontWeight-semibold);
+}
+
+.terms a {
+    text-decoration: underline;
+}
+
+.offers span {
+    text-align: left;
+    font-size: var(--venia-global-fontSize-100);
+}

@@ -1,0 +1,107 @@
+.root {
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.container strong {
+    color: rgb(var(--venia-global-color-orange));
+}
+
+.imageBlock {
+    width: 100%;
+    order: 2;
+    padding: 30px;
+}
+
+@screen md {
+    .imageBlock {
+        width: 57%;
+        order: 1;
+    }
+}
+
+.imageBlock img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.description h2 {
+    font-size: var(--venia-global-fontSize-400);
+    margin-bottom: 30px;
+    font-weight: var(--venia-global-fontWeight-bold);
+}
+
+@screen md {
+    .description h2 {
+        font-size: var(--venia-global-fontSize-500);
+        margin-bottom: 38px;
+    }
+}
+
+.benefitsList {
+    counter-reset: i;
+}
+
+.benefitsList li {
+    margin: 0 0 8px;
+    padding: 5px 0 5px 42px;
+    width: 100%;
+    font-weight: var(--venia-global-fontWeight-semibold);
+    font-size: var(--venia-global-fontSize-100);
+    color: rgb(var(--venia-global-color-black));
+    position: relative;
+}
+
+.benefitsList li::before {
+    content: counter(i);
+    counter-increment: i;
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    left: 0;
+    top: 0;
+    background: rgb(var(--venia-global-color-orange));
+    font-style: normal;
+    font-weight: var(--venia-global-fontWeight-bold);
+    font-size: var(--venia-global-fontSize-50);
+    line-height: 28px;
+    color: rgb(var(--venia-global-color-white));
+    text-align: center;
+    border-radius: 100%;
+}
+
+.formBlock {
+    flex: 1;
+    order: 1;
+    justify-self: center;
+    max-width: 345px;
+    min-width: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+@screen md {
+    .formBlock {
+        width: 50%;
+        order: 2;
+        align-self: center;
+    }
+}
+
+.formBlock h2 {
+    font-size: var(--venia-global-fontSize-500);
+    font-weight: var(--venia-global-fontWeight-extrabold);
+    margin-bottom: 20px;
+}
+
+.formBlock p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 150%;
+}

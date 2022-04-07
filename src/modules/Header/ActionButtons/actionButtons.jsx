@@ -35,7 +35,7 @@ const ActionButtons = props => {
                         className={classes.signupButton}
                         component="link"
                         variant="contained"
-                        to="/create-account"
+                        to="/sign-up"
                     >
                         Sign Up
                     </Button>

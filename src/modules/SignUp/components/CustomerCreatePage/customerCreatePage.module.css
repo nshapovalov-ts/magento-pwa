@@ -1,0 +1,42 @@
+.container {
+    text-align: center;
+}
+
+.container h2 {
+    font-size: var(--venia-global-fontSize-600);
+    font-weight: var(--venia-global-fontWeight-bold);
+    margin: 35px auto 15px;
+    text-align: center;
+}
+
+@screen md {
+    .container h2 {
+        font-size: var(--venia-global-fontSize-900);
+    }
+}
+
+@screen md {
+    .container form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+.submitButton {
+    width: 345px;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+.field {
+    margin: 5px;
+}
+
+@screen md {
+    .field {
+        width: 35%;
+        margin: 0 20px;
+        min-height: 100px;
+    }
+}
