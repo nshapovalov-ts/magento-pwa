@@ -30,6 +30,7 @@ const Button = ({
     variant = 'text',
     size = 'medium',
     primary,
+    fullWidth,
     disabled,
     onPress,
     ...restProps
@@ -48,7 +49,8 @@ const Button = ({
     const classes = useStyle(defaultClasses, propClasses);
     const rootClassName = classNames(
         classes.root,
-        getRootClassName({ classes, variant, size, primary })
+        getRootClassName({ classes, variant, size, primary }),
+        fullWidth ? classes.fullWidth : {}
     );
 
     if (component === 'link') {
@@ -80,6 +82,7 @@ const Button = ({
  * @property {string} size the size of the Button
  * @property {string} type the type of the Button
  * @property {bool} disabled is the button disabled
+ * @property {bool} fullWidth is the button full width size
  */
 Button.propTypes = {
     classes: shape({
@@ -97,7 +100,8 @@ Button.propTypes = {
     variant: oneOf(['text', 'contained', 'outlined']),
     size: oneOf(['small', 'medium', 'large']),
     primary: bool,
-    disabled: bool
+    disabled: bool,
+    fullWidth: bool
 };
 
 export default Button;

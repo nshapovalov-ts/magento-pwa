@@ -11,9 +11,7 @@
     max-width: 100%;
     min-height: 2rem;
     outline: none;
-    color: rgb(var(--venia-global-color-white));
     padding: 10px 24px;
-    background: rgb(var(--venia-global-color-secondary));
 }
 
 /**
@@ -48,7 +46,7 @@
 
 .largeSize {
     composes: root;
-    padding: 20px 30px;
+    padding: 16px 30px;
 }
 
 /* variants of the button */
@@ -78,6 +76,10 @@
     composes: root;
     color: rgb(var(--venia-global-color-primary));
     background: none;
+}
+
+.fullWidth {
+    width: 100%;
 }
 
 .root_lowPriority {
