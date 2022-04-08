@@ -10,5 +10,14 @@
     "signUpPage.signInText": "Already on TradeSquare?",
     "signUpPage.terms": "By signing up TradeSquare, you're agreeing to our {terms} and {privacy}.",
     "signUpPage.formSubmitButton": "Get Started",
-    "signUpPage.checkboxLabel": "Join the TS Buying community - Be inspired by exclusive offers and updates."
+    "signUpPage.checkboxLabel": "Join the TS Buying community - Be inspired by exclusive offers and updates.",
+
+    "createAccountPage.title": "Let's get started with your business contact details",
+    "createAccountPage.firstNamePlaceholder": "First name*",
+    "createAccountPage.lastNamePlaceholder": "Last name*",
+    "createAccountPage.emailPlaceholder": "Email*",
+    "createAccountPage.phonePlaceholder": "Phone number*",
+    "createAccountPage.passwordPlaceholder": "Create password*",
+    "createAccountPage.confirmPasswordPlaceholder": "Confirm password*",
+    "createAccountPage.submitButton": "Next"
 }
