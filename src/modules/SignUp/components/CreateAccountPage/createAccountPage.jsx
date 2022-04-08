@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Redirect, useHistory, useLocation } from 'react-router-dom';
 import { Form } from 'informed';
 
@@ -19,11 +20,12 @@ import {
 } from '@magento/venia-ui/lib/util/formValidators';
 import { useCreateAccount } from '@magento/peregrine/lib/talons/CreateAccount/useCreateAccount';
 
-import classes from './customerCreatePage.module.css';
+import classes from './createAccountPage.module.css';
 
-const CustomerCreatePage = () => {
+const CreateAccountPage = () => {
     const { state } = useLocation();
     const history = useHistory();
+    const { formatMessage } = useIntl();
 
     const talonProps = useCreateAccount({
         initialValues: undefined,
@@ -43,7 +45,9 @@ const CustomerCreatePage = () => {
         <ContentLayout>
             {isDisabled && <LoadingIndicator global />}
             <div className={classes.container}>
-                <h2>Let's get started with your business contact details</h2>
+                <h2>
+                    <FormattedMessage id={'createAccountPage.title'} />
+                </h2>
                 <FormError errors={Array.from(errors.values())} allowErrorMessages />
                 <Form onSubmit={handleSubmit}>
                     <div className={classes.field}>
@@ -54,7 +58,10 @@ const CustomerCreatePage = () => {
                                 field="customer.firstname"
                                 validate={isRequired}
                                 data-cy="firstname"
-                                placeholder="First name*"
+                                placeholder={formatMessage({
+                                    id: 'createAccountPage.firstNamePlaceholder',
+                                    defaultMessage: 'First name*'
+                                })}
                                 initialValue={state.firstname}
                             />
                         </Field>
@@ -67,7 +74,10 @@ const CustomerCreatePage = () => {
                                 id="customer-lastname"
                                 validate={isRequired}
                                 data-cy="lastname"
-                                placeholder="Last name*"
+                                placeholder={formatMessage({
+                                    id: 'createAccountPage.lastNamePlaceholder',
+                                    defaultMessage: 'Last name*'
+                                })}
                             />
                         </Field>
                     </div>
@@ -81,7 +91,10 @@ const CustomerCreatePage = () => {
                                 mask={value => value && value.trim()}
                                 maskOnBlur={true}
                                 data-cy="email"
-                                placeholder="Email*"
+                                placeholder={formatMessage({
+                                    id: 'createAccountPage.emailPlaceholder',
+                                    defaultMessage: 'Email*'
+                                })}
                                 initialValue={state.email}
                             />
                         </Field>
@@ -96,7 +109,10 @@ const CustomerCreatePage = () => {
                                 mask={value => value && value.trim()}
                                 maskOnBlur={true}
                                 data-cy="phone"
-                                placeholder="Phone number*"
+                                placeholder={formatMessage({
+                                    id: 'createAccountPage.phonePlaceholder',
+                                    defaultMessage: 'Phone number*'
+                                })}
                             />
                         </Field>
                     </div>
@@ -113,7 +129,10 @@ const CustomerCreatePage = () => {
                             mask={value => value && value.trim()}
                             maskOnBlur={true}
                             data-cy="password"
-                            placeholder="Create password*"
+                            placeholder={formatMessage({
+                                id: 'createAccountPage.passwordPlaceholder',
+                                defaultMessage: 'Create password*'
+                            })}
                         />
                     </div>
                     <div className={classes.field}>
@@ -130,7 +149,10 @@ const CustomerCreatePage = () => {
                             mask={value => value && value.trim()}
                             maskOnBlur={true}
                             data-cy="password-confirm"
-                            placeholder="Confirm password*"
+                            placeholder={formatMessage({
+                                id: 'createAccountPage.confirmPasswordPlaceholder',
+                                defaultMessage: 'Confirm password*'
+                            })}
                         />
                     </div>
                     <div className={classes.submitButton}>
@@ -141,7 +163,10 @@ const CustomerCreatePage = () => {
                             size="large"
                             data-cy="submit"
                         >
-                            Next
+                            <FormattedMessage
+                                id={'createAccountPage.submitButton'}
+                                defaultMessage="Next"
+                            />
                         </Button>
                     </div>
                 </Form>
@@ -150,4 +175,4 @@ const CustomerCreatePage = () => {
     );
 };
 
-export default CustomerCreatePage;
+export default CreateAccountPage;

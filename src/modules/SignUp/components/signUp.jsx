@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
-import CustomerCreatePage from './CustomerCreatePage';
+import CreateAccountPage from './CreateAccountPage';
 import SignUpPage from './SignUpPage';
 
 const SignUp = () => {
@@ -13,7 +13,7 @@ const SignUp = () => {
                 <SignUpPage />
             </Route>
             <Route path={`${path}/create`}>
-                <CustomerCreatePage />
+                <CreateAccountPage />
             </Route>
         </Switch>
     );
