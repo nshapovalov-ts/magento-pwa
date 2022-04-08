@@ -45,19 +45,21 @@ const SignUpPage = () => {
                                 />
                             </h2>
                             <ul className={classes.benefitsList}>
-                                {[...Array(5).keys()].map(item => {
-                                    if (isTranslateExists(`signUpPage.list${item + 1}`)) {
-                                        return (
-                                            <li key={item}>
-                                                <FormattedMessage
-                                                    id={`signUpPage.list${item + 1}`}
-                                                />
-                                            </li>
-                                        );
-                                    }
-
-                                    return null;
-                                })}
+                                <li>
+                                    <FormattedMessage id="signUpPage.list1" defaultMessage="" />
+                                </li>
+                                <li>
+                                    <FormattedMessage id="signUpPage.list2" defaultMessage="" />
+                                </li>
+                                <li>
+                                    <FormattedMessage id="signUpPage.list3" defaultMessage="" />
+                                </li>
+                                <li>
+                                    <FormattedMessage id="signUpPage.list4" defaultMessage="" />
+                                </li>
+                                <li>
+                                    <FormattedMessage id="signUpPage.list5" defaultMessage="" />
+                                </li>
                             </ul>
                         </div>
                     </div>

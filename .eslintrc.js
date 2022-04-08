@@ -25,7 +25,7 @@ const config = {
                         '^\\.'
                     ],
                     // pwa magento hooks, helpers, utils and graphql requests
-                    ['^@magento/venia-ui/lib/', '^@magento/peregrine', '.+.gql?.js$'],
+                    ['^@magento/venia-ui/lib/', '^@magento/peregrine', '.+.gql(?.js)$'],
                     // static files and styles
                     ['.+.(gif|jpg|png|svg|jpeg|webp)$', '.+.css$']
                 ]

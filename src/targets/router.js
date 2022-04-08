@@ -7,19 +7,6 @@ const updateRoutes = targets => {
             path: require.resolve('../modules/SignInPage')
         });
 
-        // move default route for sign up to 404
-        routes.push({
-            name: 'Default SignUpPage',
-            pattern: '/create-account',
-            path: '@magento/venia-ui/lib/components/MagentoRoute'
-        });
-
-        routes.push({
-            name: 'SignUpPage',
-            pattern: '/sign-up',
-            path: require.resolve('../modules/SignUp')
-        });
-
         // Customer menu routes
         routes.push({
             name: 'My Account',
