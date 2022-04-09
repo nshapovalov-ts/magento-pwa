@@ -21,11 +21,16 @@ const config = {
                         '^@magento/venia-ui/lib/(components|RootComponents)/',
                         '^components',
                         '^modules',
-                        '^helpers',
+                        '^common',
                         '^\\.'
                     ],
                     // pwa magento hooks, helpers, utils and graphql requests
-                    ['^@magento/venia-ui/lib/', '^@magento/peregrine', '.+.gql(?.js)$'],
+                    [
+                        '^@magento/venia-ui/lib/',
+                        '^@magento/peregrine',
+                        '/(hooks|talons)/',
+                        '.+.gql(.js)$'
+                    ],
                     // static files and styles
                     ['.+.(gif|jpg|png|svg|jpeg|webp)$', '.+.css$']
                 ]

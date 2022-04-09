@@ -118,7 +118,7 @@ module.exports = async env => {
         ...config.resolve.alias,
         components: path.resolve(__dirname, './src/components/'),
         modules: path.resolve(__dirname, './src/modules/'),
-        helpers: path.resolve(__dirname, './src/helpers/')
+        common: path.resolve(__dirname, './src/common/')
     };
 
     config.module.rules = config.module.rules.map(rule => {

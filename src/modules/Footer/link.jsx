@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { string } from 'prop-types';
 
-import { isAbsoluteUrl } from 'helpers/utils';
+import { isAbsoluteUrl } from 'common/helpers/utils';
 
 import classes from './footer.module.css';
 
