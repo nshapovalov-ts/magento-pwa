@@ -3,8 +3,6 @@
     "private": true,
     "version": "0.1.0",
     "description": "A new project based on @magento/venia-concept",
-    "author": "Alexey Bogomazov <alexey@tradesquare.com.au>",
-    "license": "UNLICENSED",
     "scripts": {
         "buildpack": "buildpack",
         "build": "yarn run build:prod",
