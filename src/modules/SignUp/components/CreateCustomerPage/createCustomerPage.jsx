@@ -20,9 +20,9 @@ import {
 } from '@magento/venia-ui/lib/util/formValidators';
 import { useCreateAccount } from '@magento/peregrine/lib/talons/CreateAccount/useCreateAccount';
 
-import classes from './createAccountPage.module.css';
+import classes from './createCustomerPage.module.css';
 
-const CreateAccountPage = () => {
+const CreateCustomerPage = () => {
     const { state } = useLocation();
     const history = useHistory();
     const { formatMessage } = useIntl();
@@ -46,7 +46,7 @@ const CreateAccountPage = () => {
             {isDisabled && <LoadingIndicator global />}
             <div className={classes.container}>
                 <h2>
-                    <FormattedMessage id={'createAccountPage.title'} />
+                    <FormattedMessage id={'createCustomerPage.title'} defaultMessage="" />
                 </h2>
                 <FormError errors={Array.from(errors.values())} allowErrorMessages />
                 <Form onSubmit={handleSubmit}>
@@ -59,7 +59,7 @@ const CreateAccountPage = () => {
                                 validate={isRequired}
                                 data-cy="firstname"
                                 placeholder={formatMessage({
-                                    id: 'createAccountPage.firstNamePlaceholder',
+                                    id: 'createCustomerPage.firstNamePlaceholder',
                                     defaultMessage: 'First name*'
                                 })}
                                 initialValue={state.firstname}
@@ -75,7 +75,7 @@ const CreateAccountPage = () => {
                                 validate={isRequired}
                                 data-cy="lastname"
                                 placeholder={formatMessage({
-                                    id: 'createAccountPage.lastNamePlaceholder',
+                                    id: 'createCustomerPage.lastNamePlaceholder',
                                     defaultMessage: 'Last name*'
                                 })}
                             />
@@ -92,7 +92,7 @@ const CreateAccountPage = () => {
                                 maskOnBlur={true}
                                 data-cy="email"
                                 placeholder={formatMessage({
-                                    id: 'createAccountPage.emailPlaceholder',
+                                    id: 'createCustomerPage.emailPlaceholder',
                                     defaultMessage: 'Email*'
                                 })}
                                 initialValue={state.email}
@@ -110,7 +110,7 @@ const CreateAccountPage = () => {
                                 maskOnBlur={true}
                                 data-cy="phone"
                                 placeholder={formatMessage({
-                                    id: 'createAccountPage.phonePlaceholder',
+                                    id: 'createCustomerPage.phonePlaceholder',
                                     defaultMessage: 'Phone number*'
                                 })}
                             />
@@ -130,7 +130,7 @@ const CreateAccountPage = () => {
                             maskOnBlur={true}
                             data-cy="password"
                             placeholder={formatMessage({
-                                id: 'createAccountPage.passwordPlaceholder',
+                                id: 'createCustomerPage.passwordPlaceholder',
                                 defaultMessage: 'Create password*'
                             })}
                         />
@@ -150,7 +150,7 @@ const CreateAccountPage = () => {
                             maskOnBlur={true}
                             data-cy="password-confirm"
                             placeholder={formatMessage({
-                                id: 'createAccountPage.confirmPasswordPlaceholder',
+                                id: 'createCustomerPage.confirmPasswordPlaceholder',
                                 defaultMessage: 'Confirm password*'
                             })}
                         />
@@ -164,7 +164,7 @@ const CreateAccountPage = () => {
                             data-cy="submit"
                         >
                             <FormattedMessage
-                                id={'createAccountPage.submitButton'}
+                                id={'createCustomerPage.submitButton'}
                                 defaultMessage="Next"
                             />
                         </Button>
@@ -175,4 +175,4 @@ const CreateAccountPage = () => {
     );
 };
 
-export default CreateAccountPage;
+export default CreateCustomerPage;

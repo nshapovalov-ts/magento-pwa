@@ -12,12 +12,12 @@
     "signUpPage.formSubmitButton": "Get Started",
     "signUpPage.checkboxLabel": "Join the TS Buying community - Be inspired by exclusive offers and updates.",
 
-    "createAccountPage.title": "Let's get started with your business contact details",
-    "createAccountPage.firstNamePlaceholder": "First name*",
-    "createAccountPage.lastNamePlaceholder": "Last name*",
-    "createAccountPage.emailPlaceholder": "Email*",
-    "createAccountPage.phonePlaceholder": "Phone number*",
-    "createAccountPage.passwordPlaceholder": "Create password*",
-    "createAccountPage.confirmPasswordPlaceholder": "Confirm password*",
-    "createAccountPage.submitButton": "Next"
+    "createCustomerPage.title": "Let's get started with your business contact details",
+    "createCustomerPage.firstNamePlaceholder": "First name*",
+    "createCustomerPage.lastNamePlaceholder": "Last name*",
+    "createCustomerPage.emailPlaceholder": "Email*",
+    "createCustomerPage.phonePlaceholder": "Phone number*",
+    "createCustomerPage.passwordPlaceholder": "Create password*",
+    "createCustomerPage.confirmPasswordPlaceholder": "Confirm password*",
+    "createCustomerPage.submitButton": "Next"
 }

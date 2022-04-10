@@ -1,11 +1,8 @@
 module.exports = targets => {
-    const { specialFeatures } = targets.of('@magento/pwa-buildpack');
-    specialFeatures.tap(flags => {
-        flags[targets.name] = {
-            esModules: true,
-            cssModules: true,
-            i18n: true
-        };
+    const builtins = targets.of('@magento/pwa-buildpack');
+
+    builtins.specialFeatures.tap(features => {
+        features[targets.name] = { esModules: true, cssModules: true, i18n: true };
     });
 
     // routes changes
@@ -22,7 +19,7 @@ module.exports = targets => {
         routes.push({
             name: 'SignUpPage',
             pattern: '/sign-up',
-            path: require.resolve('./')
+            path: require.resolve('./index.js')
         });
 
         return routes;
