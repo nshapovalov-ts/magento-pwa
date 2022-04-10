@@ -116,9 +116,9 @@ Rewriting is done with a package [@larsroettig/component-targetables](https://gi
 
 _TODO: need to create stories for all reusable components_
 
-### `src/helpers`
+### `src/common`
 
-Here will be all reusable functions, such as different utils, formatters, date functions etc.
+Here will be all reusable functions (such as different utils, formatters, date functions), hooks, constants etc.
 
 ### `src/modules`
 
@@ -134,7 +134,7 @@ Interceptors for default logic, such as custom hooks, routing data and all other
 
 ### `tailwind-pwa-theme`
 
-Some custom values for tailwind configuration and creating global css variables. Will be updated as needed, the old default values ​​of css variables need to be updated with new ones from the theme.
+Some custom values for tailwind configuration and creating global css variables. Will be updated as needed, the old default values ​​of css variables need to be updated with new ones from the theme (not currently in use).
 
 ### `local-intercept.js`
 
