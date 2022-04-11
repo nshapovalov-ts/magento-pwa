@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { Redirect } from 'react-router-dom';
 
 import { ContentLayout } from 'components/Layouts';
@@ -11,15 +11,6 @@ import signUpImage from './assets/sign_up_img.png';
 import classes from './signUpPage.module.css';
 
 const SignUpPage = () => {
-    const intl = useIntl();
-
-    const isTranslateExists = useCallback(
-        id => {
-            return !!intl.messages[id];
-        },
-        [intl]
-    );
-
     const [{ isSignedIn }] = useUserContext();
 
     if (isSignedIn) {
