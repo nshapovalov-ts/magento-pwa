@@ -31,7 +31,8 @@
         "@magento/upward-js": "^5.3.0",
         "classnames": "^2.3.1",
         "dompurify": "^2.3.6",
-        "nuka-carousel": "^5.0.7"
+        "nuka-carousel": "^5.0.7",
+        "react-google-autocomplete": "^2.6.1"
     },
     "devDependencies": {
         "@adobe/apollo-link-mutation-queue": "~1.0.2",

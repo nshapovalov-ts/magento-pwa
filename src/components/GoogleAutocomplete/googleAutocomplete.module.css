@@ -1,0 +1,19 @@
+.root {
+    position: relative;
+}
+
+.placesList {
+    position: absolute;
+    width: 100%;
+    background-color: rgb(var(--venia-global-color-white));
+    border: 2px solid rgb(var(--venia-global-color-gray-200));
+}
+
+.placeItem {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.placeItem:hover {
+    background: rgb(var(--venia-global-color-gray-200));
+}
