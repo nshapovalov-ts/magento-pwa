@@ -1,16 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import usePlacesService from 'react-google-autocomplete/lib/usePlacesAutocompleteService';
 import { useFieldApi, useFieldState } from 'informed';
-import { func, node, shape, string } from 'prop-types';
+import { func, shape, string } from 'prop-types';
 
-import { Message } from 'components/Field';
 import TextInput from 'components/TextInput';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import defaultClasses from './googleAutocomplete.module.css';
 
-const GoogleAutocomplete = ({ classes: propClasses, apiKey, message, onSelect, ...props }) => {
+const GoogleAutocomplete = ({ classes: propClasses, apiKey, onSelect, ...props }) => {
     const classes = useStyle(defaultClasses, propClasses);
     const componentRef = useRef();
     const [isSuggestionVisible, setSuggestionVisible] = useState(false);
@@ -80,7 +79,6 @@ const GoogleAutocomplete = ({ classes: propClasses, apiKey, message, onSelect, .
             {options.length > 0 && isSuggestionVisible && (
                 <ul className={classes.placesList}>{options}</ul>
             )}
-            <Message fieldState={fieldState}>{message}</Message>
         </div>
     );
 };
@@ -94,6 +92,5 @@ GoogleAutocomplete.propTypes = {
     apiKey: string.isRequired,
     field: string.isRequired,
     placeholder: string,
-    message: node,
     onSelect: func
 };

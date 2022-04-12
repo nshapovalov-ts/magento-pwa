@@ -7,6 +7,7 @@
     width: 100%;
     background-color: rgb(var(--venia-global-color-white));
     border: 2px solid rgb(var(--venia-global-color-gray-200));
+    z-index: 2;
 }
 
 .placeItem {
