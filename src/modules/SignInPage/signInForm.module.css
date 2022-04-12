@@ -44,9 +44,8 @@
 }
 
 .signInButton {
-    composes: root contained from 'components/Button/button.module.css';
+    composes: contained primary from 'components/Button/button.module.css';
     padding: 1rem 1.75rem;
-    background: rgb(var(--venia-global-color-primary));
 }
 
 .forgotPasswordButtonContainer {

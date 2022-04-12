@@ -57,10 +57,7 @@
     color: rgb(var(--venia-global-color-white));
     border-color: rgb(var(--venia-global-color-secondary));
     background: rgb(var(--venia-global-color-secondary));
-}
-
-.contained:hover {
-    border-color: rgb(var(--venia-global-color-primary));
+    border-width: 2px;
 }
 
 .outlined {
@@ -123,4 +120,5 @@
 
 .primary {
     background: rgb(var(--venia-global-color-primary));
+    border-color: rgb(var(--venia-global-color-primary));
 }

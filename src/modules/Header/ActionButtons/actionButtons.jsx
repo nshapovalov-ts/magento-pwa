@@ -23,20 +23,10 @@ const ActionButtons = props => {
                     <Button className={classes.sellLink} component="link" to="/seller">
                         Sell with us
                     </Button>
-                    <Button
-                        className={classes.loginButton}
-                        component="link"
-                        variant="outlined"
-                        to="/sign-in"
-                    >
+                    <Button className={classes.loginButton} component="link" to="/sign-in">
                         Login
                     </Button>
-                    <Button
-                        className={classes.signupButton}
-                        component="link"
-                        variant="contained"
-                        to="/sign-up"
-                    >
+                    <Button className={classes.signupButton} component="link" to="/sign-up">
                         Sign Up
                     </Button>
                 </>

@@ -104,10 +104,9 @@ const SignIn = props => {
                 </div>
                 <div className={classes.buttonsContainer}>
                     <Button
-                        variant="contained"
+                        className={classes.signInButton}
                         type="submit"
                         data-cy="SignInButton-root_highPriority"
-                        className={classes.signInButton}
                     >
                         <FormattedMessage id={'signIn.signInText'} defaultMessage={'Sign In'} />
                     </Button>

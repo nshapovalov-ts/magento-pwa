@@ -29,8 +29,7 @@
 }
 
 .signupButton {
-    composes: contained from 'components/Button/button.module.css';
-    background: rgb(var(--venia-global-color-primary));
+    composes: contained primary from 'components/Button/button.module.css';
 }
 
 @media (max-width: 1024px) {

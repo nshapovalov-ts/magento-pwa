@@ -9,8 +9,8 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import defaultClasses from './button.module.css';
 
-const getRootClassName = ({ classes, variant = 'text', size = 'medium', primary }) =>
-    `${classes[variant]} ${classes[size + 'Size']} ${primary && classes.primary}`;
+const getRootClassName = ({ classes, variant = 'text', size = 'medium' }) =>
+    `${classes[variant]} ${classes[size + 'Size']}`;
 
 /**
  * A component for buttons.
@@ -49,8 +49,9 @@ const Button = ({
     const classes = useStyle(defaultClasses, propClasses);
     const rootClassName = classNames(
         classes.root,
-        getRootClassName({ classes, variant, size, primary }),
-        fullWidth ? classes.fullWidth : {}
+        getRootClassName({ classes, variant, size }),
+        fullWidth ? classes.fullWidth : {},
+        primary ? classes.primary : {}
     );
 
     if (component === 'link') {
