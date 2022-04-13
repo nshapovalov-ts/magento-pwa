@@ -8,7 +8,7 @@ module.exports = targets => {
     // routes changes
 
     targets.of('@magento/venia-ui').routes.tap(routes => {
-        // add new sign up route
+        // add new onboarding module to edit account data
         routes.push({
             name: 'Account Information',
             pattern: '/account-edit',
