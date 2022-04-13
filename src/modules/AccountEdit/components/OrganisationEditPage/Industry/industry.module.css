@@ -1,0 +1,13 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 1rem;
+}
+
+@screen md {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        row-gap: 1rem;
+    }
+}

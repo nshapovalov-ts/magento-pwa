@@ -1,0 +1,138 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 5px;
+    position: relative;
+}
+
+.checkbox input:focus + label {
+    color: red;
+    outline: 2px solid blue;
+    border: 1px solid rgb(var(--venia-global-color-gray-700));
+}
+
+.bigItem {
+    composes: item;
+    justify-content: center;
+    width: 95%;
+    height: 140px;
+    border-radius: 12px;
+    font-size: var(--venia-global-fontSize-100);
+    font-weight: var(--venia-global-fontWeight-bold);
+    border: 1px solid rgb(var(--venia-global-color-gray-300));
+    word-break: break-all;
+    padding: 0 3px;
+}
+
+.bigItem:global.active {
+    color: rgb(var(--venia-global-color-orange));
+    border: 1px solid rgb(var(--venia-global-color-orange));
+}
+
+@screen md {
+    .bigItem {
+        composes: item;
+        justify-content: center;
+        width: 188px;
+        height: 200px;
+        font-size: var(--venia-global-fontSize-300);
+        word-break: normal;
+    }
+}
+
+.bigItem img {
+    max-width: 64px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.smallItem {
+    composes: item;
+    justify-content: flex-start;
+    width: 110px;
+    height: 130px;
+    border-radius: 10px;
+    font-size: var(--venia-global-fontSize-75);
+    font-weight: var(--venia-global-fontWeight-semibold);
+    border: 1px solid rgb(var(--venia-global-color-gray-300));
+    padding: 0 3px;
+}
+
+.smallItem img {
+    width: 45%;
+    height: auto;
+    margin-top: 15px;
+}
+
+.smallItem .text {
+    margin: auto 0;
+}
+
+.smallItem:global.active {
+    color: rgb(var(--venia-global-color-orange));
+    border: 1px solid rgb(var(--venia-global-color-orange));
+}
+
+@screen md {
+    .bigItem {
+        width: 188px;
+        height: 200px;
+    }
+}
+
+.imageItem {
+    composes: item;
+    justify-content: flex-start;
+    border: none;
+    font-size: var(--venia-global-fontSize-100);
+    font-weight: var(--venia-global-fontWeight-semibold);
+}
+
+.imageItem img {
+    display: block;
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 5px;
+    border: 1px solid transparent;
+}
+
+.imageItem:global.active img {
+    border: 1px solid rgb(var(--venia-global-color-orange));
+}
+
+.imageItem:global.active span {
+    color: rgb(var(--venia-global-color-orange));
+}
+
+.textItem {
+    composes: item;
+    justify-content: center;
+    border: 1px solid rgb(var(--venia-global-color-gray-300));
+    border-radius: 10px;
+    padding: 25px 20px;
+    font-size: var(--venia-global-fontSize-100);
+    font-weight: var(--venia-global-fontWeight-semibold);
+}
+
+.textItem:global.active {
+    color: rgb(var(--venia-global-color-orange));
+    border: 1px solid rgb(var(--venia-global-color-orange));
+}
+
+@screen md {
+    .textItem {
+        composes: item;
+        white-space: nowrap;
+    }
+}
+
+.checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 1em;
+    height: 1em;
+    pointer-events: none;
+}

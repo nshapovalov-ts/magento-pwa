@@ -65,15 +65,6 @@ const updateRoutes = targets => {
         });
 
         routes.push({
-            name: 'Account Information',
-            pattern: '/account-edit',
-            exact: true,
-            path: require.resolve('../modules/Account/stub.jsx'),
-            authed: true,
-            redirectTo: '/sign-in'
-        });
-
-        routes.push({
             name: 'Reviews',
             pattern: '/reviews',
             exact: true,

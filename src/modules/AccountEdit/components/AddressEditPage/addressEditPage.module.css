@@ -1,0 +1,45 @@
+@screen md {
+    .container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+}
+
+.container h2 {
+    font-size: var(--venia-global-fontSize-600);
+    font-weight: var(--venia-global-fontWeight-bold);
+    margin: 35px auto 15px;
+    text-align: center;
+}
+
+@screen md {
+    .container h2 {
+        font-size: var(--venia-global-fontSize-900);
+    }
+}
+
+.rowBlock {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+@screen md {
+    .rowBlock {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+    }
+}
+
+.buttonsContainer {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submitButton {
+    flex: 1;
+    max-width: 250px;
+    margin-left: 10px;
+}

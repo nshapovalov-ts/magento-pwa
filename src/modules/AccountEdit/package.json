@@ -1,0 +1,16 @@
+{
+    "name": "@pwa/onboarding",
+    "version": "1.0.0",
+    "main": "./intercept.js",
+    "peerDependencies": {
+        "@magento/pwa-buildpack": "^11.2.0",
+        "react": "~17.0.1",
+        "react-router-dom": "~5.2.0",
+        "@magento/venia-ui": "^9.3.0"
+    },
+    "pwa-studio": {
+        "targets": {
+            "intercept": "./intercept"
+        }
+    }
+}

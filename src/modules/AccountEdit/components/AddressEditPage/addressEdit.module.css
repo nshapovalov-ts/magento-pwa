@@ -1,0 +1,19 @@
+.manualAddressButton {
+    text-align: right;
+}
+
+@screen md {
+    .rowBlock {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+    }
+}
+
+.manualAddress {
+    display: block;
+}
+
+.manualAddressHidden {
+    display: none;
+}

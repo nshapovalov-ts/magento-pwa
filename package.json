@@ -56,6 +56,7 @@
         "@magento/venia-sample-backends": "~0.0.1",
         "@magento/venia-ui": "^9.3.0",
         "@pmmmwh/react-refresh-webpack-plugin": "0.4.1",
+        "@pwa/onboarding": "file:./src/modules/AccountEdit",
         "@pwa/signup": "file:./src/modules/SignUp",
         "@storybook/react": "~6.3.7",
         "@types/node": "16",
