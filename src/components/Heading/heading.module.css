@@ -1,0 +1,11 @@
+.root h2 {
+    font-size: var(--venia-global-fontSize-500);
+    font-weight: var(--venia-global-fontWeight-extrabold);
+    margin: 35px 0 15px;
+}
+
+@screen md {
+    .root h2 {
+        font-size: var(--venia-global-fontSize-700);
+    }
+}
