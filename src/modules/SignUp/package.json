@@ -2,7 +2,6 @@
     "name": "@pwa/signup",
     "version": "1.0.0",
     "main": "./intercept.js",
-    "license": "MIT",
     "peerDependencies": {
         "@magento/pwa-buildpack": "^11.2.0",
         "react": "~17.0.1",
