@@ -7,12 +7,6 @@
     position: relative;
 }
 
-.checkbox input:focus + label {
-    color: red;
-    outline: 2px solid blue;
-    border: 1px solid rgb(var(--venia-global-color-gray-700));
-}
-
 .bigItem {
     composes: item;
     justify-content: center;

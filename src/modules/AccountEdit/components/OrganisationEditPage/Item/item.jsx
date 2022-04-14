@@ -22,7 +22,7 @@ const getClassName = type => {
     return classes.bigItem;
 };
 
-const Item = ({ id, field, name, imgSrc, type }) => {
+const Item = ({ id, field, title, imgSrc, type, multiple }) => {
     const { value: originalValue } = useFieldState(field);
     const value = originalValue || [];
     const { setValue } = useFieldApi(field);
@@ -32,7 +32,7 @@ const Item = ({ id, field, name, imgSrc, type }) => {
 
     const handleChange = e => {
         if (e.target.checked) {
-            const newVal = value.length ? [...value, id] : [id];
+            const newVal = value.length && multiple ? [...value, id] : [id];
             setValue(newVal);
         } else {
             const newVal = value.filter(item => item !== id);
@@ -51,19 +51,20 @@ const Item = ({ id, field, name, imgSrc, type }) => {
                 checked={isActive}
                 onChange={handleChange}
             />
-            {imgSrc && <img src={imgSrc} alt={name} />}
-            <span className={classes.text}>{name}</span>
+            {imgSrc && <img src={imgSrc} alt={title} />}
+            <span className={classes.text}>{title}</span>
         </label>
     );
 };
 
 Item.propTypes = {
     id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     imgSrc: PropTypes.string,
     type: PropTypes.oneOf(['big', 'small', 'text', 'image']),
     active: PropTypes.bool,
-    field: PropTypes.string.isRequired
+    field: PropTypes.string.isRequired,
+    multiple: PropTypes.bool
 };
 
 export default Item;
