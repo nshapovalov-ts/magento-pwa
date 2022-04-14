@@ -9,6 +9,7 @@ import Button from 'components/Button';
 import Field from 'components/Field';
 import { ContentLayout } from 'components/Layouts';
 import TextInput from 'components/TextInput';
+import { MODULE_ROUTE_PATH } from '../../constants';
 import AddressEdit from './addressEdit';
 
 import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
@@ -29,7 +30,7 @@ const AddressEditPage = () => {
         formProps
     } = useAddress({
         onSubmit: () => {
-            history.push('/account-edit/3');
+            history.push(`${MODULE_ROUTE_PATH}/3`);
         }
     });
     const [{ currentUser }] = useUserContext();
@@ -37,10 +38,6 @@ const AddressEditPage = () => {
         () => customerAddresses.find(address => address.default_billing),
         [customerAddresses]
     );
-
-    const handleBack = () => {
-        history.push('/account-edit/1');
-    };
 
     const handleSubmit = values => {
         const sendData = {
@@ -51,7 +48,7 @@ const AddressEditPage = () => {
             city: values.city,
             street: values.street,
             postcode: values.postcode,
-            telephone: '123456789',
+            telephone: '123456789', // TODO: there is no customer custom attributes in current default pwa backend
             default_billing: true
         };
 
@@ -105,9 +102,10 @@ const AddressEditPage = () => {
                         <div className={classes.buttonsContainer}>
                             <Button
                                 variant="outlined"
+                                component="link"
                                 size="large"
                                 data-cy="back"
-                                onClick={handleBack}
+                                to={`${MODULE_ROUTE_PATH}/1`}
                             >
                                 Back
                             </Button>

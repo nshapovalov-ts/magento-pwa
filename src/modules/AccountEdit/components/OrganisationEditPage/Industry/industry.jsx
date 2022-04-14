@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Message } from 'components/Field';
 import Heading from 'components/Heading';
 import {
     INDUSTRY_BUTTON_IMAGE_PATH,
@@ -9,12 +10,17 @@ import {
 import Item from '../Item';
 import { industryData } from './industyData.js';
 
+import useFieldState from '@magento/peregrine/lib/hooks/hook-wrappers/useInformedFieldStateWrapper';
+
 import classes from './industry.module.css';
 
 const Industry = () => {
+    const fieldState = useFieldState(ORGANISATION_PREFERENCES_SECTIONS.industry);
+
     return (
         <section>
             <Heading>What is your main industry?</Heading>
+            <Message fieldState={fieldState} />
             <div className={classes.container}>
                 {industryData.map(item => {
                     const imageSrc = `${INDUSTRY_BUTTON_IMAGE_PATH}${item.id}.png`;
@@ -28,6 +34,7 @@ const Industry = () => {
                             type={ITEM_TYPES.image}
                             imgSrc={imageSrc}
                             multiple
+                            required
                         />
                     );
                 })}

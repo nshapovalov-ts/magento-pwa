@@ -1,0 +1,12 @@
+.buttonsContainer {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submitButton {
+    flex: 1;
+    max-width: 250px;
+    margin-left: 10px;
+}
