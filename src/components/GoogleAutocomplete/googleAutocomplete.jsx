@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import usePlacesService from 'react-google-autocomplete/lib/usePlacesAutocompleteService';
-import { useFieldApi, useFieldState } from 'informed';
+import { useFieldApi } from 'informed';
 import { func, shape, string } from 'prop-types';
 
 import TextInput from 'components/TextInput';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
+// TODO: Search why warning appears even with this wrapper
+import useFieldState from '@magento/peregrine/lib/hooks/hook-wrappers/useInformedFieldStateWrapper';
 
 import defaultClasses from './googleAutocomplete.module.css';
 
