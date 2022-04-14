@@ -13,6 +13,7 @@ import defaultClasses from './searchBar.module.css';
 
 const SearchBar = React.forwardRef((props, ref) => {
     const { isOpen } = props;
+    // TODO: fix on focus open if first time render
     const talonProps = useSearchBar();
     const {
         containerRef,
