@@ -1,7 +1,11 @@
 import React from 'react';
 
 import Heading from 'components/Heading';
-import { BUTTON_IMAGE_PATH, ITEM_TYPES } from '../../../constants';
+import {
+    BUTTON_IMAGE_PATH,
+    ITEM_TYPES,
+    ORGANISATION_PREFERENCES_SECTIONS
+} from '../../../constants';
 import Item from '../Item';
 import { sellGoodsOfflineData } from './sellGoodsOfflineData.js';
 
@@ -9,7 +13,7 @@ import classes from './sellGoodsOffline.module.css';
 
 const SellGoodsOffline = () => {
     return (
-        <div>
+        <section>
             <Heading>Where do you currently sell your goods offline?</Heading>
             <div className={classes.container}>
                 {sellGoodsOfflineData.map(item => {
@@ -19,15 +23,15 @@ const SellGoodsOffline = () => {
                         <Item
                             key={item.id}
                             id={item.id}
-                            field={`sell_goods_offline`}
-                            name={item.name}
+                            field={ORGANISATION_PREFERENCES_SECTIONS.sellGoodsOffline}
+                            title={item.name}
                             imgSrc={imageSrc}
                             type={ITEM_TYPES.small}
                         />
                     );
                 })}
             </div>
-        </div>
+        </section>
     );
 };
 

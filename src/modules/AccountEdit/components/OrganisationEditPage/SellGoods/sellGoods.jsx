@@ -1,7 +1,11 @@
 import React from 'react';
 
 import Heading from 'components/Heading';
-import { BUTTON_IMAGE_PATH, ITEM_TYPES } from '../../../constants';
+import {
+    BUTTON_IMAGE_PATH,
+    ITEM_TYPES,
+    ORGANISATION_PREFERENCES_SECTIONS
+} from '../../../constants';
 import Item from '../Item';
 import { sellGoodsData } from './sellGoodsData.js';
 
@@ -9,7 +13,7 @@ import classes from './sellGoods.module.css';
 
 const SellGoods = () => {
     return (
-        <div>
+        <section>
             <Heading>Where do you currently sell your goods?</Heading>
             <div className={classes.container}>
                 {sellGoodsData.map(item => {
@@ -19,15 +23,15 @@ const SellGoods = () => {
                         <Item
                             key={item.id}
                             id={item.id}
-                            field={`sell_goods`}
-                            name={item.name}
+                            field={ORGANISATION_PREFERENCES_SECTIONS.sellGoods}
+                            title={item.name}
                             imgSrc={imageSrc}
                             type={ITEM_TYPES.small}
                         />
                     );
                 })}
             </div>
-        </div>
+        </section>
     );
 };
 

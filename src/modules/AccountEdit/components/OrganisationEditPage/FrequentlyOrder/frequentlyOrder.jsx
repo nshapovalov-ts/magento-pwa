@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Heading from 'components/Heading';
-import { ITEM_TYPES } from '../../../constants';
+import { ITEM_TYPES, ORGANISATION_PREFERENCES_SECTIONS } from '../../../constants';
 import Item from '../Item';
 import { frequentlyOrderData } from './frequentlyOrderData.js';
 
@@ -9,7 +9,7 @@ import classes from './frequentlyOrder.module.css';
 
 const FrequentlyOrder = () => {
     return (
-        <div>
+        <section>
             <Heading>How frequently do you order?</Heading>
             <div className={classes.container}>
                 {frequentlyOrderData.map(item => {
@@ -17,14 +17,14 @@ const FrequentlyOrder = () => {
                         <Item
                             key={item.id}
                             id={item.id}
-                            field={`frequently_order`}
-                            name={item.name}
+                            field={ORGANISATION_PREFERENCES_SECTIONS.frequentlyOrder}
+                            title={item.name}
                             type={ITEM_TYPES.text}
                         />
                     );
                 })}
             </div>
-        </div>
+        </section>
     );
 };
 

@@ -1,7 +1,11 @@
 import React from 'react';
 
 import Heading from 'components/Heading';
-import { BUTTON_IMAGE_PATH, ITEM_TYPES } from '../../../constants';
+import {
+    BUTTON_IMAGE_PATH,
+    ITEM_TYPES,
+    ORGANISATION_PREFERENCES_SECTIONS
+} from '../../../constants';
 import Item from '../Item';
 import { businessTypes } from './businessTypeData';
 
@@ -9,7 +13,7 @@ import classes from './businessType.module.css';
 
 const BusinessType = () => {
     return (
-        <div>
+        <section>
             <Heading>Which best describes your organisation?</Heading>
             <div className={classes.container}>
                 {businessTypes.map(item => {
@@ -19,15 +23,16 @@ const BusinessType = () => {
                         <Item
                             key={`business_type-${item.id}`}
                             id={item.id}
-                            field={`business_type`}
-                            name={item.name}
+                            field={ORGANISATION_PREFERENCES_SECTIONS.businessType}
+                            title={item.name}
                             imgSrc={imageSrc}
                             type={ITEM_TYPES.big}
+                            multiple
                         />
                     );
                 })}
             </div>
-        </div>
+        </section>
     );
 };
 

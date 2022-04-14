@@ -1,7 +1,11 @@
 import React from 'react';
 
 import Heading from 'components/Heading';
-import { BUTTON_IMAGE_PATH, ITEM_TYPES } from '../../../constants';
+import {
+    BUTTON_IMAGE_PATH,
+    ITEM_TYPES,
+    ORGANISATION_PREFERENCES_SECTIONS
+} from '../../../constants';
 import Item from '../Item';
 import { buyPurposeData } from './buyPurposeData';
 
@@ -9,7 +13,7 @@ import classes from './buyPurpose.module.css';
 
 const Lpo = () => {
     return (
-        <div>
+        <section>
             <Heading>What is your purpose for buying on TradeSquare?</Heading>
             <div className={classes.container}>
                 {buyPurposeData.map(item => {
@@ -19,15 +23,15 @@ const Lpo = () => {
                         <Item
                             key={item.id}
                             id={item.id}
-                            field={`tradesquare`}
-                            name={item.name}
+                            field={ORGANISATION_PREFERENCES_SECTIONS.buyPurpose}
+                            title={item.name}
                             imgSrc={imageSrc}
                             type={ITEM_TYPES.small}
                         />
                     );
                 })}
             </div>
-        </div>
+        </section>
     );
 };
 
