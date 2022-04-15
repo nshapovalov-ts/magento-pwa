@@ -6,6 +6,8 @@ import { useFakeFetch } from 'common/hooks/useFakeFetch';
 export const useCustomerData = () => {
     const { isLoading: isFetching, response } = useFakeFetch(null, 2000);
 
+    // start real rest api requests
+
     /*     TODO: query real customer attributes on page load
     const { data, loading } = useQuery(getCustomerAttributes); */
 

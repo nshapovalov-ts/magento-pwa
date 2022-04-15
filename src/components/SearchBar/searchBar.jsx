@@ -13,7 +13,6 @@ import defaultClasses from './searchBar.module.css';
 
 const SearchBar = React.forwardRef((props, ref) => {
     const { isOpen } = props;
-    // TODO: fix on focus open if first time render
     const talonProps = useSearchBar();
     const {
         containerRef,
@@ -49,7 +48,7 @@ const SearchBar = React.forwardRef((props, ref) => {
                     </div>
                     <div className={classes.search}>
                         <SearchField
-                            isSearchOpen={isMobile ? isOpen : true}
+                            isSearchOpen={isOpen}
                             onChange={handleChange}
                             onFocus={handleFocus}
                         />
