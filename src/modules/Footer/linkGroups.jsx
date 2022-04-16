@@ -42,17 +42,19 @@ const LinkGroups = () => {
                     <ul key={groupKey} className={classes.linkGroup}>
                         {linkElements}
                         {index === 2 ? (
-                            <ul className={classes.socialLinks}>
-                                <li>
-                                    <Instagram size={20} />
-                                </li>
-                                <li>
-                                    <Facebook size={20} />
-                                </li>
-                                <li>
-                                    <Twitter size={20} />
-                                </li>
-                            </ul>
+                            <li>
+                                <ul className={classes.socialLinks}>
+                                    <li>
+                                        <Instagram size={20} />
+                                    </li>
+                                    <li>
+                                        <Facebook size={20} />
+                                    </li>
+                                    <li>
+                                        <Twitter size={20} />
+                                    </li>
+                                </ul>
+                            </li>
                         ) : null}
                     </ul>
                 );
