@@ -18,7 +18,7 @@ import logo from 'public/Trade-Square-Logo-Black.png';
  * @returns {React.Element} A React component that displays a logo.
  */
 const Logo = props => {
-    const { height = 36, width = 100 } = props;
+    const { height = 34, width = 100 } = props;
     const classes = useStyle({}, props.classes);
     const { formatMessage } = useIntl();
 
@@ -46,8 +46,8 @@ const Logo = props => {
  *
  * @property {Object} classes An object containing the class names for the Logo component.
  * @property {string} classes.logo Classes for logo
- * @property {number} [height=50] Height of the logo.
- * @property {number} [width=102] Width of the logo.
+ * @property {number} [height=34] Height of the logo.
+ * @property {number} [width=100] Width of the logo.
  */
 Logo.propTypes = {
     classes: PropTypes.shape({

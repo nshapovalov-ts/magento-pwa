@@ -50,8 +50,8 @@
 }
 
 .logo {
-    composes: h-full from global;
-    composes: max-h-10 from global;
+    height: var(--height);
+    width: var(--width);
 }
 
 .primaryActions {
