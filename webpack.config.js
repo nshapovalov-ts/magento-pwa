@@ -147,8 +147,8 @@ module.exports = async env => {
     });
 
     config.module.rules.push({
-        test: /\.html$/i,
-        use: 'raw-loader'
+        test: /\/src\/modules\/.+\.html$/i,
+        loader: 'raw-loader'
     });
 
     /* 
