@@ -37,6 +37,10 @@ function localIntercept(targets) {
     extendLocalIntercept.allowCustomTargetables();
     extendLocalIntercept.allowCssOverwrites();
 
+    targets.of('@magento/pwa-buildpack').transformUpward.tap(def => {
+        def.staticFromRoot.inline.body.file.template.inline = './public/{{ filename }}';
+    });
+
     addRestSupportApollo(targets);
     updateRoutes(targets);
     makeSafeHtmlRenderer(targets);
