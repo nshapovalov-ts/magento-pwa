@@ -1,10 +1,6 @@
 const path = require('path');
 const {
-    graphQL: {
-        getPossibleTypes,
-        getStoreConfigData,
-        getAvailableStoresConfigData
-    },
+    graphQL: { getPossibleTypes, getStoreConfigData, getAvailableStoresConfigData },
     Utilities: { loadEnvironment }
 } = require('@magento/pwa-buildpack');
 const baseWebpackConfig = require('../../webpack.config');
@@ -49,9 +45,7 @@ module.exports = async ({ config: storybookBaseConfig, mode }) => {
                 : JSON.stringify(storeConfigData.code),
             AVAILABLE_STORE_VIEWS: JSON.stringify(availableStores),
             DEFAULT_LOCALE: JSON.stringify(global.LOCALE),
-            DEFAULT_COUNTRY_CODE: JSON.stringify(
-                process.env.DEFAULT_COUNTRY_CODE || 'US'
-            )
+            DEFAULT_COUNTRY_CODE: JSON.stringify(process.env.DEFAULT_COUNTRY_CODE || 'US')
         }),
         new EnvironmentPlugin(projectConfig.env),
         new ReactRefreshWebpackPlugin()

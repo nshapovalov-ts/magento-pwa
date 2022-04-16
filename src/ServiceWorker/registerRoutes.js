@@ -1,20 +1,12 @@
 import { ExpirationPlugin } from 'workbox-expiration';
 import { registerRoute } from 'workbox-routing';
-import {
-    CacheFirst,
-    StaleWhileRevalidate,
-    NetworkFirst
-} from 'workbox-strategies';
+import { CacheFirst, StaleWhileRevalidate, NetworkFirst } from 'workbox-strategies';
 import {
     isResizedImage,
     findSameOrLargerImage,
     createImageCacheHandler
 } from './Utilities/imageCacheHandler';
-import {
-    THIRTY_DAYS,
-    MAX_NUM_OF_IMAGES_TO_CACHE,
-    IMAGES_CACHE_NAME
-} from './defaults';
+import { THIRTY_DAYS, MAX_NUM_OF_IMAGES_TO_CACHE, IMAGES_CACHE_NAME } from './defaults';
 
 /**
  * registerRoutes function contains all the routes that need to
@@ -79,8 +71,7 @@ export default function() {
      */
     registerRoute(
         ({ url, request }) =>
-            url.origin === self.location.origin &&
-            request.destination === 'document',
+            url.origin === self.location.origin && request.destination === 'document',
         new NetworkFirst()
     );
 }

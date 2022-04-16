@@ -1,0 +1,57 @@
+{
+    "id": 1224,
+    "group_id": 6,
+    "default_billing": "800",
+    "default_shipping": "800",
+    "created_at": "2022-04-11 04:57:16",
+    "updated_at": "2022-04-13 11:14:13",
+    "created_in": "Default Store View",
+    "email": "alexey10@tradesquare.com.au",
+    "firstname": "alexey",
+    "lastname": "bogomazov",
+    "store_id": 1,
+    "website_id": 1,
+    "addresses": [
+        {
+            "id": 800,
+            "customer_id": 1224,
+            "region": { "region_code": "NSW", "region": "New South Wales", "region_id": 570 },
+            "region_id": 570,
+            "country_id": "AU",
+            "street": ["Sydney"],
+            "company": "My business",
+            "telephone": "999999999",
+            "postcode": "2127",
+            "city": "Sydney Olympic Park",
+            "firstname": "alexey",
+            "lastname": "bogomazov",
+            "default_shipping": true,
+            "default_billing": true
+        }
+    ],
+    "disable_auto_group_change": 0,
+    "extension_attributes": { "is_subscribed": false },
+    "custom_attributes": [
+        { "attribute_code": "business_name", "value": "My business" },
+        { "attribute_code": "phone_number", "value": "999999999" },
+        { "attribute_code": "tradesquare", "value": "5616" },
+        { "attribute_code": "sell_goods", "value": "5620" },
+        { "attribute_code": "currently_goods_online", "value": "5745" },
+        { "attribute_code": "business_type", "value": "5749,5751" },
+        { "attribute_code": "abn", "value": "97640578614" },
+        {
+            "attribute_code": "industry",
+            "value": "accommodation-group,accounting-and-finance,grocery,jewellery-and-accessories,tobacconist,other"
+        },
+        { "attribute_code": "is_auto_approved_status", "value": "approved" },
+        { "attribute_code": "annual_purchasing_spend", "value": "12668" },
+        { "attribute_code": "categories_usually_buy", "value": "12653,12654,12658,12665,12666" },
+        { "attribute_code": "my_network", "value": "nlna" },
+        { "attribute_code": "frequently_order", "value": "12674" },
+        { "attribute_code": "purchase_priorities", "value": "12680" },
+        { "attribute_code": "registration_step", "value": "business_info" },
+        { "attribute_code": "is_approved", "value": "approved" },
+        { "attribute_code": "incomplete_application", "value": "2" },
+        { "attribute_code": "ismobverify", "value": "0" }
+    ]
+}

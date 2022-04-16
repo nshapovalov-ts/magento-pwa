@@ -1,6 +1,6 @@
 const config = {
     parser: 'babel-eslint',
-    extends: ['@magento'],
+    extends: ['@magento', 'eslint-config-prettier'],
     parserOptions: {
         sourceType: 'module'
     },
