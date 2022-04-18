@@ -1,15 +1,9 @@
 import { useCallback, useState } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
+
 // import { useMutation } from '@apollo/client';
-
 // import { CONFIRM_EMAIL } from '../hooks/signUp.gql';
-
-const fakeFetch = () =>
-    new Promise(resolve =>
-        setTimeout(() => {
-            resolve();
-        }, 3000)
-    );
+import { useFakePost } from 'common/hooks/useFakeFetch';
 
 export const useSignUp = () => {
     const history = useHistory();
@@ -17,12 +11,13 @@ export const useSignUp = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     // const [sendEmail] = useMutation(CONFIRM_EMAIL);
+    const { fakePost } = useFakePost();
 
     const handleSubmit = useCallback(
         async formValues => {
             setIsSubmitting(true);
             try {
-                await fakeFetch();
+                await fakePost(null, 2000);
 
                 // await sendEmail({
                 //     variables: {
@@ -35,7 +30,8 @@ export const useSignUp = () => {
 
                 history.push(`${path}/create`, {
                     firstname: formValues.firstname,
-                    email: formValues.email
+                    email: formValues.email,
+                    is_subscribed: !!formValues.offers_checkbox
                 });
             } catch (error) {
                 if (process.env.NODE_ENV !== 'production') {
@@ -44,7 +40,7 @@ export const useSignUp = () => {
                 setIsSubmitting(false);
             }
         },
-        [history, path]
+        [fakePost, history, path]
     );
 
     return {
