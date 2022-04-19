@@ -13,19 +13,6 @@
     overflow: auto;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.25rem 1.25rem 0;
-}
-
-.headerTitle {
-    display: flex;
-    align-items: center;
-    font-size: var(--venia-global-typography-heading-L-fontSize);
-    line-height: 0.875rem;
-}
-
 .action {
     padding: 1rem 1.25rem 0;
 }
@@ -36,7 +23,7 @@
 }
 
 .blocks {
-    padding: 1rem 1.25rem 0;
+    padding: 1rem 0.5rem 0;
 }
 
 .blocks > li:last-child {
