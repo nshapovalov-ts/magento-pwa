@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useRef } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { array, arrayOf, number, shape, string } from 'prop-types';
 
+import CategoryList from '../CategoryList';
 import FilterBlock from '../FilterModal/filterBlock';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
@@ -43,8 +43,6 @@ const FilterSidebar = props => {
             Array.from(filterItems, ([group, items], iteration) => {
                 const blockState = filterState.get(group);
                 const groupName = filterNames.get(group);
-                console.log('blockState', blockState);
-                console.log('groupName', groupName);
 
                 return (
                     <FilterBlock
@@ -71,14 +69,7 @@ const FilterSidebar = props => {
             aria-busy="false"
         >
             <div className={classes.body}>
-                <div className={classes.header}>
-                    <h2 data-cy="FilterSidebar-headerTitle" className={classes.headerTitle}>
-                        <FormattedMessage
-                            id={'filterModal.headerTitle'}
-                            defaultMessage={'Filters'}
-                        />
-                    </h2>
-                </div>
+                <CategoryList />
                 <ul className={classes.blocks}>
                     <div>{filtersList}</div>
                 </ul>

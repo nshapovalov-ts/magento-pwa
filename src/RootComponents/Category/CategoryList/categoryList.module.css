@@ -1,0 +1,13 @@
+.categories {
+    padding: 24px 20px;
+    background: rgb(var(--venia-global-color-gray-100));
+    border-radius: 10px;
+}
+
+.headerTitle {
+    display: flex;
+    align-items: center;
+    font-size: var(--venia-global-typography-heading-L-fontSize);
+    line-height: 0.875rem;
+    margin-bottom: 1rem;
+}
