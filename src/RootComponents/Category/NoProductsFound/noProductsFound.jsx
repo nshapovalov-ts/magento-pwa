@@ -28,7 +28,7 @@ const NoProductsFound = props => {
             const uri = resourceUrl(`/${category.url_path}${category.url_suffix}`);
 
             return (
-                <li key={category.id} className={classes.listItem}>
+                <li key={category.uid} className={classes.listItem}>
                     <Link to={uri}>{category.name}</Link>
                 </li>
             );
@@ -64,7 +64,7 @@ const NoProductsFound = props => {
 export default NoProductsFound;
 
 NoProductsFound.propTypes = {
-    categoryId: number,
+    categoryId: string,
     classes: shape({
         root: string,
         title: string,
