@@ -26,6 +26,7 @@ import defaultClasses from './category.module.css';
 
 const FilterModal = React.lazy(() => import('./FilterModal'));
 const FilterSidebar = React.lazy(() => import('./FilterSidebar'));
+const FilterRow = React.lazy(() => import('./FiltersRow'));
 
 const CategoryContent = props => {
     const { categoryId, data, isLoading, pageControl, sortProps, pageSize } = props;
@@ -67,6 +68,8 @@ const CategoryContent = props => {
     ) : null;
 
     const filtersModal = shouldShowFilterButtons ? <FilterModal filters={filters} /> : null;
+
+    const filtersRow = shouldShowFilterButtons ? <FilterRow filters={filters} /> : null;
 
     const sidebar = shouldShowFilterButtons ? (
         <FilterSidebar filters={filters} />
@@ -139,6 +142,7 @@ const CategoryContent = props => {
             <Breadcrumbs categoryId={categoryId} />
             <StoreTitle>{categoryName}</StoreTitle>
             <article className={classes.root} data-cy="CategoryContent-root">
+                {filtersRow}
                 <div className={classes.categoryHeader}>
                     <h1 className={classes.title}>
                         <div

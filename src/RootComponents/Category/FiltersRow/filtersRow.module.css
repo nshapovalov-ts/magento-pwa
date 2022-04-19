@@ -1,0 +1,13 @@
+.root {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.action {
+    composes: text from 'components/Button/button.module.css';
+    text-decoration: none;
+    color: rgb(var(--venia-global-color-black));
+    --stroke: rgb(var(--venia-global-color-black));
+    padding: 0 0 0 1.125rem;
+}

@@ -2,10 +2,7 @@ import React, { useCallback, useMemo, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { array, arrayOf, number, shape, string } from 'prop-types';
 
-import LinkButton from '@magento/venia-ui/lib/components/LinkButton';
-import CurrentFilters from '../FilterModal/CurrentFilters';
 import FilterBlock from '../FilterModal/filterBlock';
-import TopFilters from '../TopFilters';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useFilterSidebar } from '@magento/peregrine/lib/talons/FilterSidebar';
@@ -22,14 +19,7 @@ const SCROLL_OFFSET = 150;
 const FilterSidebar = props => {
     const { filters, filterCountToOpen } = props;
     const talonProps = useFilterSidebar({ filters });
-    const {
-        filterApi,
-        filterItems,
-        filterNames,
-        filterState,
-        handleApply,
-        handleReset
-    } = talonProps;
+    const { filterApi, filterItems, filterNames, filterState, handleApply } = talonProps;
 
     const filterRef = useRef();
     const classes = useStyle(defaultClasses, props.classes);
@@ -72,14 +62,6 @@ const FilterSidebar = props => {
         [filterApi, filterItems, filterNames, filterState, filterCountToOpen, handleApplyFilter]
     );
 
-    const clearAll = filterState.size ? (
-        <div className={classes.action}>
-            <LinkButton type="button" onClick={handleReset} data-cy="FilterSidebar-clearButton">
-                <FormattedMessage id={'filterModal.action'} defaultMessage={'Clear all'} />
-            </LinkButton>
-        </div>
-    ) : null;
-
     return (
         <aside
             className={classes.root}
@@ -97,18 +79,8 @@ const FilterSidebar = props => {
                         />
                     </h2>
                 </div>
-                <CurrentFilters
-                    filterApi={filterApi}
-                    filterNames={filterNames}
-                    filterState={filterState}
-                    onRemove={handleApplyFilter}
-                />
-                {clearAll}
                 <ul className={classes.blocks}>
-                    <div>
-                        <TopFilters />
-                        {filtersList}
-                    </div>
+                    <div>{filtersList}</div>
                 </ul>
             </div>
         </aside>
