@@ -1,12 +1,8 @@
 .root {
     --borderColor: var(--venia-global-color-border);
-    background-color: white;
-    bottom: 0;
+    background-color: var(--venia-global-color-white);
     display: none;
-    grid-template-rows: 1fr 7rem;
-    max-width: 360px;
-    width: 100%;
-    z-index: 3;
+    width: 270px;
 }
 
 .body {
@@ -32,6 +28,6 @@
 
 @media (min-width: 1024px) {
     .root {
-        display: grid;
+        display: block;
     }
 }
