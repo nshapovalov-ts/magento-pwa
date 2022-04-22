@@ -9,7 +9,7 @@ import FilterModalOpenButton, {
 import Gallery, { GalleryShimmer } from '@magento/venia-ui/lib/components/Gallery';
 import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import Pagination from '@magento/venia-ui/lib/components/Pagination';
-import ProductSort, { ProductSortShimmer } from '@magento/venia-ui/lib/components/ProductSort';
+// import ProductSort, { ProductSortShimmer } from '@magento/venia-ui/lib/components/ProductSort';
 import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 import SortedByContainer, {
@@ -69,7 +69,15 @@ const CategoryContent = props => {
 
     const filtersModal = shouldShowFilterButtons ? <FilterModal filters={filters} /> : null;
 
-    const filtersRow = shouldShowFilterButtons ? <FilterRow filters={filters} /> : null;
+    const filtersRow = shouldShowFilterButtons ? (
+        <FilterRow
+            filters={filters}
+            sortProps={sortProps}
+            availableSortMethods={availableSortMethods}
+            shouldShowSortButtons={shouldShowSortButtons}
+            shouldShowSortShimmer={shouldShowSortShimmer}
+        />
+    ) : null;
 
     const sidebar = shouldShowFilterButtons ? (
         <FilterSidebar filters={filters} />
@@ -77,11 +85,11 @@ const CategoryContent = props => {
         <FilterSidebarShimmer />
     ) : null;
 
-    const maybeSortButton = shouldShowSortButtons ? (
-        <ProductSort sortProps={sortProps} availableSortMethods={availableSortMethods} />
-    ) : shouldShowSortShimmer ? (
-        <ProductSortShimmer />
-    ) : null;
+    // const maybeSortButton = shouldShowSortButtons ? (
+    //     <ProductSort sortProps={sortProps} availableSortMethods={availableSortMethods} />
+    // ) : shouldShowSortShimmer ? (
+    //     <ProductSortShimmer />
+    // ) : null;
 
     const maybeSortContainer = shouldShowSortButtons ? (
         <SortedByContainer currentSort={currentSort} />
@@ -170,7 +178,7 @@ const CategoryContent = props => {
                             </div>
                             <div className={classes.headerButtons}>
                                 {maybeFilterButtons}
-                                {maybeSortButton}
+                                {/* {maybeSortButton} */}
                             </div>
                             {maybeSortContainer}
                         </div>

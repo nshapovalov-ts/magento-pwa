@@ -14,12 +14,22 @@
     padding: 0 0 0 1.125rem;
 }
 
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
 .filterBlocks {
     display: flex;
-    flex-direction: row;
-    margin-bottom: 30px;
     padding-left: 1.125rem;
+    flex-wrap: nowrap;
 }
+
+/* .filterBlocks::-webkit-scrollbar {
+    display: none;
+} */
 
 .selectedFilters {
     display: flex;

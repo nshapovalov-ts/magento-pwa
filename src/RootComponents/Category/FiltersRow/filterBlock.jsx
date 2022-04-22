@@ -44,6 +44,7 @@ const FilterBlock = props => {
     };
 
     useEventListener(globalThis, 'mousedown', handleClickOutside);
+    useEventListener(globalThis, 'keydown', handleClickOutside);
 
     const itemAriaLabel = formatMessage(
         {
@@ -88,8 +89,8 @@ const FilterBlock = props => {
     };
 
     const handleChange = formData => {
-        const findedFilters = getFiltersBySearch(formData.values.search || '');
-        setFilteredItems(findedFilters);
+        const foundFilters = getFiltersBySearch(formData.values.search || '');
+        setFilteredItems(foundFilters);
     };
 
     const handleApply = () => {

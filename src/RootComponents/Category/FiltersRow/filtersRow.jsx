@@ -2,11 +2,12 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { X as Remove } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
 import { useLocation } from 'react-router-dom';
-import { array, arrayOf, shape, string } from 'prop-types';
+import { array, arrayOf, bool, shape, string } from 'prop-types';
 
 import Icon from '@magento/venia-ui/lib/components/Icon';
+import ProductSort, { ProductSortShimmer } from '@magento/venia-ui/lib/components/ProductSort';
 import Button from 'components/Button';
-import CurrentFilters from '../FilterModal/CurrentFilters';
+import CurrentFilters from '../CurrentFilters';
 import FilterBlock from './filterBlock';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
@@ -17,7 +18,13 @@ import { getStateFromSearch } from '@magento/peregrine/lib/talons/FilterModal/he
 import defaultClasses from './filtersRow.module.css';
 
 const FiltersRow = props => {
-    const { filters } = props;
+    const {
+        filters,
+        availableSortMethods,
+        sortProps,
+        shouldShowSortButtons,
+        shouldShowSortShimmer
+    } = props;
     const { pathname, search } = useLocation();
     const talonProps = useFilterModal({ filters });
     const {
@@ -52,6 +59,12 @@ const FiltersRow = props => {
         },
         [handleApply]
     );
+
+    const maybeSortButton = shouldShowSortButtons ? (
+        <ProductSort sortProps={sortProps} availableSortMethods={availableSortMethods} />
+    ) : shouldShowSortShimmer ? (
+        <ProductSortShimmer />
+    ) : null;
 
     // console.log('filterItems', filterItems);
 
@@ -92,7 +105,10 @@ const FiltersRow = props => {
 
     return (
         <div className={classes.root} ref={filterRef}>
-            <div className={classes.filterBlocks}>{filtersList}</div>
+            <div className={classes.row}>
+                <ul className={classes.filterBlocks}>{filtersList}</ul>
+                {maybeSortButton}
+            </div>
             <div className={classes.selectedFilters}>
                 <CurrentFilters
                     filterApi={filterApi}
@@ -112,7 +128,16 @@ FiltersRow.propTypes = {
             attribute_code: string,
             items: array
         })
-    )
+    ),
+    availableSortMethods: arrayOf(
+        shape({
+            label: string,
+            value: string
+        })
+    ),
+    sortProps: array,
+    shouldShowSortButtons: bool,
+    shouldShowSortShimmer: bool
 };
 
 export default FiltersRow;
