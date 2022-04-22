@@ -4,6 +4,7 @@
     align-items: flex-start;
     justify-content: center;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .action {
@@ -16,20 +17,55 @@
 
 .row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    overflow-x: auto;
+    width: 100%;
+    white-space: nowrap;
     margin-bottom: 30px;
+}
+
+.row::-webkit-scrollbar {
+    display: none;
+}
+
+.row::after {
+    content: '';
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 10px;
+    height: 100%;
+    right: 0;
+    position: absolute;
+    z-index: 5;
+    margin-left: auto;
+    top: 0;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.7) 40%,
+        #fff 70%
+    );
+}
+
+@screen xl {
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow-x: visible;
+        width: 100%;
+    }
+
+    .row::after {
+        content: none;
+    }
 }
 
 .filterBlocks {
     display: flex;
     padding-left: 1.125rem;
-    flex-wrap: nowrap;
 }
-
-/* .filterBlocks::-webkit-scrollbar {
-    display: none;
-} */
 
 .selectedFilters {
     display: flex;

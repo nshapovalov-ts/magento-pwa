@@ -8,6 +8,7 @@ import { useIntl } from 'react-intl';
 import { Form } from 'informed';
 import { arrayOf, bool, func, shape, string } from 'prop-types';
 
+import Dialog from '@magento/venia-ui/lib/components/Dialog';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import Button from 'components/Button';
 import TextInput from 'components/TextInput';
@@ -15,7 +16,9 @@ import FilterList from './FilterList';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useEventListener } from '@magento/peregrine/lib/hooks/useEventListener';
+import { useWindowSize } from '@magento/peregrine/lib/hooks/useWindowSize';
 import setValidator from '@magento/peregrine/lib/validators/set';
+import { useScrollLock } from 'common/hooks/useScrollLock';
 
 import defaultClasses from './filterBlock.module.css';
 
@@ -31,15 +34,20 @@ const FilterBlock = props => {
     const searchIcon = <Icon src={SearchIcon} size={20} />;
     const classes = useStyle(defaultClasses, props.classes);
 
-    const handleClick = () => {
+    const windowSize = useWindowSize();
+    const isFilterModal = windowSize.innerWidth < 1280;
+    useScrollLock(isFilterModal && isOpen);
+
+    const handleClick = e => {
+        console.log('coords', e.target.getClientRects()[0]);
         setOpen(!isOpen);
     };
 
     const handleClickOutside = e => {
-        if (isOpen && !blockRef.current.contains(e.target)) {
+        if (!isFilterModal && isOpen && !blockRef.current.contains(e.target)) {
             filterApi.clear();
             resetFilters();
-            handleClick();
+            setOpen(isFilterModal && !isOpen);
         }
     };
 
@@ -93,9 +101,9 @@ const FilterBlock = props => {
         setFilteredItems(foundFilters);
     };
 
-    const handleApply = () => {
+    const handleApply = e => {
         onApply();
-        handleClick();
+        handleClick(e);
     };
 
     const list = isOpen ? (
@@ -116,11 +124,13 @@ const FilterBlock = props => {
                 items={filteredItems}
                 itemCountToShow={100}
             />
-            <div className={classes.applyButton}>
-                <Button variant="contained" onClick={handleApply}>
-                    Apply
-                </Button>
-            </div>
+            {!isFilterModal && (
+                <div className={classes.applyButton}>
+                    <Button variant="contained" onClick={handleApply}>
+                        Apply
+                    </Button>
+                </div>
+            )}
         </Form>
     ) : null;
 
@@ -146,7 +156,24 @@ const FilterBlock = props => {
                     {arrowIcon}
                 </span>
             </button>
-            {list}
+            {isFilterModal ? (
+                <Dialog
+                    isOpen={isOpen}
+                    classes={{
+                        root: classes.modalRoot,
+                        root_open: classes.modalRoot_open,
+                        dialog: classes.modalDialog,
+                        form: classes.modalForm,
+                        contents: classes.modalContent,
+                        buttons: classes.modalButtons
+                    }}
+                    onCancel={handleClick}
+                >
+                    {list}
+                </Dialog>
+            ) : (
+                list
+            )}
         </li>
     );
 };

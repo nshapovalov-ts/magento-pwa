@@ -3,13 +3,9 @@ import { FormattedMessage } from 'react-intl';
 import { array, number, shape, string } from 'prop-types';
 
 import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
-import FilterModalOpenButton, {
-    FilterModalOpenButtonShimmer
-} from '@magento/venia-ui/lib/components/FilterModalOpenButton';
 import Gallery, { GalleryShimmer } from '@magento/venia-ui/lib/components/Gallery';
 import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import Pagination from '@magento/venia-ui/lib/components/Pagination';
-// import ProductSort, { ProductSortShimmer } from '@magento/venia-ui/lib/components/ProductSort';
 import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 import SortedByContainer, {
@@ -58,14 +54,8 @@ const CategoryContent = props => {
     const shouldShowFilterShimmer = filters === null;
 
     // If there are no products we can hide the sort button.
-    const shouldShowSortButtons = totalPagesFromData && availableSortMethods;
+    const shouldShowSortButtons = totalPagesFromData && !!availableSortMethods?.length;
     const shouldShowSortShimmer = !totalPagesFromData && isLoading;
-
-    const maybeFilterButtons = shouldShowFilterButtons ? (
-        <FilterModalOpenButton filters={filters} />
-    ) : shouldShowFilterShimmer ? (
-        <FilterModalOpenButtonShimmer />
-    ) : null;
 
     const filtersModal = shouldShowFilterButtons ? <FilterModal filters={filters} /> : null;
 
@@ -74,6 +64,8 @@ const CategoryContent = props => {
             filters={filters}
             sortProps={sortProps}
             availableSortMethods={availableSortMethods}
+            shouldShowFilterButtons={shouldShowFilterButtons}
+            shouldShowFilterShimmer={shouldShowFilterShimmer}
             shouldShowSortButtons={shouldShowSortButtons}
             shouldShowSortShimmer={shouldShowSortShimmer}
         />
@@ -84,12 +76,6 @@ const CategoryContent = props => {
     ) : shouldShowFilterShimmer ? (
         <FilterSidebarShimmer />
     ) : null;
-
-    // const maybeSortButton = shouldShowSortButtons ? (
-    //     <ProductSort sortProps={sortProps} availableSortMethods={availableSortMethods} />
-    // ) : shouldShowSortShimmer ? (
-    //     <ProductSortShimmer />
-    // ) : null;
 
     const maybeSortContainer = shouldShowSortButtons ? (
         <SortedByContainer currentSort={currentSort} />
@@ -176,10 +162,6 @@ const CategoryContent = props => {
                             >
                                 {categoryResultsHeading}
                             </div>
-                            <div className={classes.headerButtons}>
-                                {maybeFilterButtons}
-                                {/* {maybeSortButton} */}
-                            </div>
                             {maybeSortContainer}
                         </div>
                         {content}
@@ -207,9 +189,6 @@ CategoryContent.propTypes = {
         categoryInfo: string,
         headerButtons: string
     }),
-    // sortProps contains the following structure:
-    // [{sortDirection: string, sortAttribute: string, sortText: string},
-    // React.Dispatch<React.SetStateAction<{sortDirection: string, sortAttribute: string, sortText: string}]
     sortProps: array,
     pageSize: number
 };

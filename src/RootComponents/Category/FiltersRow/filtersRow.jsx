@@ -4,6 +4,9 @@ import { FormattedMessage } from 'react-intl';
 import { useLocation } from 'react-router-dom';
 import { array, arrayOf, bool, shape, string } from 'prop-types';
 
+import FilterModalOpenButton, {
+    FilterModalOpenButtonShimmer
+} from '@magento/venia-ui/lib/components/FilterModalOpenButton';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import ProductSort, { ProductSortShimmer } from '@magento/venia-ui/lib/components/ProductSort';
 import Button from 'components/Button';
@@ -23,7 +26,9 @@ const FiltersRow = props => {
         availableSortMethods,
         sortProps,
         shouldShowSortButtons,
-        shouldShowSortShimmer
+        shouldShowSortShimmer,
+        shouldShowFilterButtons,
+        shouldShowFilterShimmer
     } = props;
     const { pathname, search } = useLocation();
     const talonProps = useFilterModal({ filters });
@@ -66,7 +71,11 @@ const FiltersRow = props => {
         <ProductSortShimmer />
     ) : null;
 
-    // console.log('filterItems', filterItems);
+    const maybeFilterButtons = shouldShowFilterButtons ? (
+        <FilterModalOpenButton filters={filters} />
+    ) : shouldShowFilterShimmer ? (
+        <FilterModalOpenButtonShimmer />
+    ) : null;
 
     const clearAll = filterState.size ? (
         <Button
@@ -106,8 +115,9 @@ const FiltersRow = props => {
     return (
         <div className={classes.root} ref={filterRef}>
             <div className={classes.row}>
-                <ul className={classes.filterBlocks}>{filtersList}</ul>
                 {maybeSortButton}
+                {maybeFilterButtons}
+                <ul className={classes.filterBlocks}>{filtersList}</ul>
             </div>
             <div className={classes.selectedFilters}>
                 <CurrentFilters
@@ -137,7 +147,9 @@ FiltersRow.propTypes = {
     ),
     sortProps: array,
     shouldShowSortButtons: bool,
-    shouldShowSortShimmer: bool
+    shouldShowSortShimmer: bool,
+    shouldShowFilterButtons: bool,
+    shouldShowFilterShimmer: bool
 };
 
 export default FiltersRow;
