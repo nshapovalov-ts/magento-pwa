@@ -60,6 +60,7 @@
 .input:active:enabled,
 .input:focus:enabled {
     outline: none;
+    box-shadow: 0px 0px 1px 2px rgb(var(--venia-global-color-orange));
 }
 
 .input_shimmer {
