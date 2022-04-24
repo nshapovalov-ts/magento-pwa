@@ -64,10 +64,6 @@ const CategoryContent = props => {
             filters={filters}
             sortProps={sortProps}
             availableSortMethods={availableSortMethods}
-            shouldShowFilterButtons={shouldShowFilterButtons}
-            shouldShowFilterShimmer={shouldShowFilterShimmer}
-            shouldShowSortButtons={shouldShowSortButtons}
-            shouldShowSortShimmer={shouldShowSortShimmer}
         />
     ) : null;
 

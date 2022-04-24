@@ -1,15 +1,11 @@
 import React, { useCallback, useMemo } from 'react';
-import { func, number, oneOfType, shape, string } from 'prop-types';
+import { bool, func, number, oneOfType, shape, string } from 'prop-types';
 
 import FilterDefault from './filterDefault';
 
-import setValidator from '@magento/peregrine/lib/validators/set';
-
 const FilterItem = props => {
-    const { filterApi, filterState, group, item, onApply } = props;
-    const { toggleItem } = filterApi;
+    const { toggleItem, group, item, onApply, isSelected } = props;
     const { title, value } = item;
-    const isSelected = filterState && filterState.has(item);
 
     // create and memoize an item that matches the tile interface
     const tileItem = useMemo(
@@ -59,21 +55,14 @@ const FilterItem = props => {
     );
 };
 
-FilterItem.defaultProps = {
-    onChange: null
-};
-
 FilterItem.propTypes = {
-    filterApi: shape({
-        toggleItem: func.isRequired
-    }).isRequired,
-    filterState: setValidator,
+    toggleItem: func.isRequired,
+    isSelected: bool,
     group: string.isRequired,
     item: shape({
         title: string.isRequired,
         value: oneOfType([number, string]).isRequired
-    }).isRequired,
-    onChange: func
+    }).isRequired
 };
 
 export default FilterItem;

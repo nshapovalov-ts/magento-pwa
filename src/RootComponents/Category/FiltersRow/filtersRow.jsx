@@ -4,11 +4,9 @@ import { FormattedMessage } from 'react-intl';
 import { useLocation } from 'react-router-dom';
 import { array, arrayOf, bool, shape, string } from 'prop-types';
 
-import FilterModalOpenButton, {
-    FilterModalOpenButtonShimmer
-} from '@magento/venia-ui/lib/components/FilterModalOpenButton';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import ProductSort, { ProductSortShimmer } from '@magento/venia-ui/lib/components/ProductSort';
+import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 import Button from 'components/Button';
 import CurrentFilters from '../CurrentFilters';
 import FilterBlock from './filterBlock';
@@ -17,20 +15,11 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useFilterModal } from '@magento/peregrine/lib/talons/FilterModal';
 import { getStateFromSearch } from '@magento/peregrine/lib/talons/FilterModal/helpers';
 
-// import { useFilterModal } from '@magento/peregrine/lib/talons/FilterSidebar';
 import defaultClasses from './filtersRow.module.css';
 
 const FiltersRow = props => {
-    const {
-        filters,
-        availableSortMethods,
-        sortProps,
-        shouldShowSortButtons,
-        shouldShowSortShimmer,
-        shouldShowFilterButtons,
-        shouldShowFilterShimmer
-    } = props;
-    const { pathname, search } = useLocation();
+    const { filters, availableSortMethods, sortProps } = props;
+    const { search } = useLocation();
     const talonProps = useFilterModal({ filters });
     const {
         filterApi,
@@ -38,22 +27,25 @@ const FiltersRow = props => {
         filterNames,
         filterState,
         handleApply,
-        handleClose,
         filterKeys,
-        handleReset,
-        handleKeyDownActions
+        handleReset
     } = talonProps;
 
-    useEffect(() => {
-        const nextState = getStateFromSearch(search, filterKeys, filterItems);
+    const shouldShowShimmer = !availableSortMethods?.length && !filters?.length;
 
-        filterApi.setItems(nextState);
-    }, [filterApi, filterItems, filterKeys, search]);
+    const queryState = useMemo(() => getStateFromSearch(search, filterKeys, filterItems), [
+        search,
+        filterKeys,
+        filterItems
+    ]);
+
+    useEffect(() => {
+        filterApi.setItems(queryState);
+    }, [filterApi, filterItems, filterKeys, search, queryState]);
 
     const resetFilters = useCallback(() => {
-        const nextState = getStateFromSearch(search, filterKeys, filterItems);
-        filterApi.setItems(nextState);
-    }, [filterApi, search, filterKeys, filterItems]);
+        filterApi.setItems(queryState);
+    }, [filterApi, queryState]);
 
     const filterRef = useRef();
     const classes = useStyle(defaultClasses, props.classes);
@@ -65,19 +57,11 @@ const FiltersRow = props => {
         [handleApply]
     );
 
-    const maybeSortButton = shouldShowSortButtons ? (
+    const maybeSortButton = availableSortMethods?.length && (
         <ProductSort sortProps={sortProps} availableSortMethods={availableSortMethods} />
-    ) : shouldShowSortShimmer ? (
-        <ProductSortShimmer />
-    ) : null;
+    );
 
-    const maybeFilterButtons = shouldShowFilterButtons ? (
-        <FilterModalOpenButton filters={filters} />
-    ) : shouldShowFilterShimmer ? (
-        <FilterModalOpenButtonShimmer />
-    ) : null;
-
-    const clearAll = filterState.size ? (
+    const clearAll = queryState.size ? (
         <Button
             className={classes.action}
             variant="text"
@@ -92,7 +76,7 @@ const FiltersRow = props => {
     const filtersList = useMemo(
         () =>
             // TODO: check which filters should be displayed on top, as example show only first 5
-            [...filterItems].slice(0, 5).map(([group, items], iteration) => {
+            [...filterItems].slice(0, 5).map(([group, items]) => {
                 const blockState = filterState.get(group);
                 const groupName = filterNames.get(group);
 
@@ -114,16 +98,20 @@ const FiltersRow = props => {
 
     return (
         <div className={classes.root} ref={filterRef}>
-            <div className={classes.row}>
-                {maybeSortButton}
-                {maybeFilterButtons}
-                <ul className={classes.filterBlocks}>{filtersList}</ul>
-            </div>
+            {shouldShowShimmer ? (
+                // TODO: add classes to shimmer
+                <Shimmer height={'56px'} width={`100%`} style={{ marginBottom: 30 }} />
+            ) : (
+                <div className={classes.row}>
+                    {maybeSortButton}
+                    <ul className={classes.filterBlocks}>{filtersList}</ul>
+                </div>
+            )}
             <div className={classes.selectedFilters}>
                 <CurrentFilters
                     filterApi={filterApi}
                     filterNames={filterNames}
-                    filterState={filterState}
+                    filterState={queryState}
                     onRemove={handleApplyFilter}
                 />
                 {clearAll}
@@ -145,11 +133,7 @@ FiltersRow.propTypes = {
             value: string
         })
     ),
-    sortProps: array,
-    shouldShowSortButtons: bool,
-    shouldShowSortShimmer: bool,
-    shouldShowFilterButtons: bool,
-    shouldShowFilterShimmer: bool
+    sortProps: array
 };
 
 export default FiltersRow;

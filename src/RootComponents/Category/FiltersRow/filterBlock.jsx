@@ -1,58 +1,27 @@
-import React, { useRef, useState } from 'react';
-import {
-    ChevronDown as ArrowDown,
-    ChevronUp as ArrowUp,
-    Search as SearchIcon
-} from 'react-feather';
+import React, { useState } from 'react';
+import { Search as SearchIcon } from 'react-feather';
 import { useIntl } from 'react-intl';
-import { Form } from 'informed';
 import { arrayOf, bool, func, shape, string } from 'prop-types';
 
-import Dialog from '@magento/venia-ui/lib/components/Dialog';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import Button from 'components/Button';
 import TextInput from 'components/TextInput';
+import DropdownButton from '../DropdownButton';
 import FilterList from './FilterList';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import { useEventListener } from '@magento/peregrine/lib/hooks/useEventListener';
-import { useWindowSize } from '@magento/peregrine/lib/hooks/useWindowSize';
 import setValidator from '@magento/peregrine/lib/validators/set';
-import { useScrollLock } from 'common/hooks/useScrollLock';
 
 import defaultClasses from './filterBlock.module.css';
 
 const FilterBlock = props => {
     const { filterApi, filterState, group, items, name, onApply, resetFilters } = props;
-    const [isOpen, setOpen] = useState(false);
     const [filteredItems, setFilteredItems] = useState(items);
-    const blockRef = useRef(null);
 
     const { formatMessage } = useIntl();
 
-    const arrowIcon = <Icon src={isOpen ? ArrowUp : ArrowDown} size={16} />;
     const searchIcon = <Icon src={SearchIcon} size={20} />;
     const classes = useStyle(defaultClasses, props.classes);
-
-    const windowSize = useWindowSize();
-    const isFilterModal = windowSize.innerWidth < 1280;
-    useScrollLock(isFilterModal && isOpen);
-
-    const handleClick = e => {
-        console.log('coords', e.target.getClientRects()[0]);
-        setOpen(!isOpen);
-    };
-
-    const handleClickOutside = e => {
-        if (!isFilterModal && isOpen && !blockRef.current.contains(e.target)) {
-            filterApi.clear();
-            resetFilters();
-            setOpen(isFilterModal && !isOpen);
-        }
-    };
-
-    useEventListener(globalThis, 'mousedown', handleClickOutside);
-    useEventListener(globalThis, 'keydown', handleClickOutside);
 
     const itemAriaLabel = formatMessage(
         {
@@ -64,32 +33,12 @@ const FilterBlock = props => {
         }
     );
 
-    const toggleItemOptionsAriaLabel = isOpen
-        ? formatMessage(
-              {
-                  id: 'filterModal.item.hideOptions',
-                  defaultMessage: 'Hide "{itemName}" filter item options.'
-              },
-              {
-                  itemName: name
-              }
-          )
-        : formatMessage(
-              {
-                  id: 'filterModal.item.showOptions',
-                  defaultMessage: 'Show "{itemName}" filter item options.'
-              },
-              {
-                  itemName: name
-              }
-          );
-
-    const getFiltersBySearch = str => {
-        if (str) {
+    const getFiltersBySearch = searchStr => {
+        if (searchStr) {
             return items.filter(item => {
                 const title = item.title.toLowerCase();
 
-                return title.includes(str.toLowerCase());
+                return title.includes(searchStr.toLowerCase());
             });
         }
 
@@ -101,16 +50,26 @@ const FilterBlock = props => {
         setFilteredItems(foundFilters);
     };
 
-    const handleApply = e => {
-        onApply();
-        handleClick(e);
+    const handleToggle = ({ group, item }) => {
+        filterApi.toggleItem({ group, item });
     };
 
-    const list = isOpen ? (
-        <Form className={classes.list} onChange={handleChange}>
+    const handleClear = () => {
+        if (filterState) {
+            filterState.forEach(item => filterApi.removeItem({ group, item }));
+        }
+    };
+
+    const list = (
+        <div>
             <div className={classes.topRow}>
                 <span className={classes.filterName}>{name}</span>
-                <Button variant="text" classes={{ root: classes.clearButton }}>
+                <Button
+                    variant="text"
+                    classes={{ root: classes.clearButton }}
+                    onClick={handleClear}
+                    disabled={!filterState}
+                >
                     Clear All
                 </Button>
             </div>
@@ -118,62 +77,28 @@ const FilterBlock = props => {
                 <TextInput field="search" placeholder={`Search for ${name}`} after={searchIcon} />
             </div>
             <FilterList
-                filterApi={filterApi}
+                toggleItem={handleToggle}
                 filterState={filterState}
                 group={group}
                 items={filteredItems}
                 itemCountToShow={100}
             />
-            {!isFilterModal && (
-                <div className={classes.applyButton}>
-                    <Button variant="contained" onClick={handleApply}>
-                        Apply
-                    </Button>
-                </div>
-            )}
-        </Form>
-    ) : null;
-
-    const rootClasses = filterState ? classes.rootActive : classes.root;
+        </div>
+    );
 
     return (
-        <li
-            className={rootClasses}
-            aria-label={itemAriaLabel}
-            data-cy="FilterBlock-root"
-            ref={blockRef}
-        >
-            <button
-                className={classes.trigger}
-                onClick={handleClick}
-                data-cy="FilterBlock-triggerButton"
-                type="button"
-                aria-expanded={isOpen}
-                aria-label={toggleItemOptionsAriaLabel}
+        <li className={classes.root} aria-label={itemAriaLabel} data-cy="FilterBlock-root">
+            <DropdownButton
+                onClose={resetFilters}
+                onApply={onApply}
+                title={name}
+                formProps={{
+                    onChange: handleChange
+                }}
+                isActive={!!filterState}
             >
-                <span className={classes.header}>
-                    <span className={classes.name}>{name}</span>
-                    {arrowIcon}
-                </span>
-            </button>
-            {isFilterModal ? (
-                <Dialog
-                    isOpen={isOpen}
-                    classes={{
-                        root: classes.modalRoot,
-                        root_open: classes.modalRoot_open,
-                        dialog: classes.modalDialog,
-                        form: classes.modalForm,
-                        contents: classes.modalContent,
-                        buttons: classes.modalButtons
-                    }}
-                    onCancel={handleClick}
-                >
-                    {list}
-                </Dialog>
-            ) : (
-                list
-            )}
+                {list}
+            </DropdownButton>
         </li>
     );
 };

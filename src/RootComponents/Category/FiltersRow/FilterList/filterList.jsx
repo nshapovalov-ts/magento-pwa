@@ -13,7 +13,7 @@ import defaultClasses from './filterList.module.css';
 const labels = new WeakMap();
 
 const FilterList = props => {
-    const { filterApi, filterState, group, itemCountToShow, items, onApply } = props;
+    const { toggleItem, filterState, group, itemCountToShow, items, onApply } = props;
     const classes = useStyle(defaultClasses, props.classes);
     const talonProps = useFilterList({ filterState, items, itemCountToShow });
     const { isListExpanded, handleListToggle } = talonProps;
@@ -31,15 +31,17 @@ const FilterList = props => {
                     return null;
                 }
 
+                const isSelected = filterState && filterState.has(item);
+
                 // create an element for each item
                 const element = (
                     <li key={key} className={classes.item} data-cy="FilterList-item">
                         <FilterItem
-                            filterApi={filterApi}
-                            filterState={filterState}
+                            toggleItem={toggleItem}
                             group={group}
                             item={item}
                             onApply={onApply}
+                            isSelected={isSelected}
                         />
                     </li>
                 );
@@ -50,7 +52,7 @@ const FilterList = props => {
 
                 return element;
             }),
-        [classes, filterApi, filterState, group, items, isListExpanded, itemCountToShow, onApply]
+        [classes, toggleItem, filterState, group, items, isListExpanded, itemCountToShow, onApply]
     );
 
     const showMoreLessItem = useMemo(() => {

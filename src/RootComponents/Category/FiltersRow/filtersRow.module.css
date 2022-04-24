@@ -28,30 +28,9 @@
     display: none;
 }
 
-.row::after {
-    content: '';
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 10px;
-    height: 100%;
-    right: 0;
-    position: absolute;
-    z-index: 5;
-    margin-left: auto;
-    top: 0;
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0) 0,
-        rgba(255, 255, 255, 0.7) 40%,
-        #fff 70%
-    );
-}
-
 @screen xl {
     .row {
         display: flex;
-        justify-content: space-between;
         align-items: center;
         overflow-x: visible;
         width: 100%;
