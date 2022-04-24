@@ -79,6 +79,10 @@
     width: 100%;
 }
 
+.disabled {
+    opacity: 0.4;
+}
+
 .root_lowPriority {
     composes: root;
     --stroke: var(--venia-global-color-gray-700);

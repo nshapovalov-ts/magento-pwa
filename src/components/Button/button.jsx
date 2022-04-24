@@ -50,8 +50,9 @@ const Button = ({
     const rootClassName = classNames(
         classes.root,
         getRootClassName({ classes, variant, size }),
-        fullWidth ? classes.fullWidth : {},
-        primary ? classes.primary : {}
+        fullWidth && classes.fullWidth,
+        primary && classes.primary,
+        disabled && classes.disabled
     );
 
     if (component === 'link') {
