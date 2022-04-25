@@ -45,7 +45,7 @@ const FilterBlock = props => {
         return items;
     };
 
-    const handleChange = formData => {
+    const handleSearchChange = formData => {
         const foundFilters = getFiltersBySearch(formData.values.search || '');
         setFilteredItems(foundFilters);
     };
@@ -61,7 +61,7 @@ const FilterBlock = props => {
     };
 
     const list = (
-        <div>
+        <div className={classes.list}>
             <div className={classes.topRow}>
                 <span className={classes.filterName}>{name}</span>
                 <Button
@@ -81,7 +81,6 @@ const FilterBlock = props => {
                 filterState={filterState}
                 group={group}
                 items={filteredItems}
-                itemCountToShow={100}
             />
         </div>
     );
@@ -93,7 +92,7 @@ const FilterBlock = props => {
                 onApply={onApply}
                 title={name}
                 formProps={{
-                    onChange: handleChange
+                    onChange: handleSearchChange
                 }}
                 isActive={!!filterState}
             >
@@ -101,11 +100,6 @@ const FilterBlock = props => {
             </DropdownButton>
         </li>
     );
-};
-
-FilterBlock.defaultProps = {
-    onApply: null,
-    initialOpen: false
 };
 
 FilterBlock.propTypes = {
@@ -121,8 +115,7 @@ FilterBlock.propTypes = {
     group: string.isRequired,
     items: arrayOf(shape({})),
     name: string.isRequired,
-    onApply: func,
-    initialOpen: bool
+    onApply: func
 };
 
 export default FilterBlock;

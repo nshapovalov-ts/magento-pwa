@@ -1,11 +1,9 @@
 import React, { Fragment, useMemo } from 'react';
-import { useIntl } from 'react-intl';
-import { array, func, number, shape, string } from 'prop-types';
+import { array, func, shape, string } from 'prop-types';
 
 import FilterItem from './filterItem';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import { useFilterList } from '@magento/peregrine/lib/talons/FilterModal';
 import setValidator from '@magento/peregrine/lib/validators/set';
 
 import defaultClasses from './filterList.module.css';
@@ -13,23 +11,16 @@ import defaultClasses from './filterList.module.css';
 const labels = new WeakMap();
 
 const FilterList = props => {
-    const { toggleItem, filterState, group, itemCountToShow, items, onApply } = props;
+    const { toggleItem, filterState, group, items, onApply } = props;
     const classes = useStyle(defaultClasses, props.classes);
-    const talonProps = useFilterList({ filterState, items, itemCountToShow });
-    const { isListExpanded, handleListToggle } = talonProps;
-    const { formatMessage } = useIntl();
 
     // memoize item creation
     // search value is not referenced, so this array is stable
     const itemElements = useMemo(
         () =>
-            items.map((item, index) => {
+            items.map(item => {
                 const { title, value } = item;
                 const key = `item-${group}-${value}`;
-
-                if (!isListExpanded && index >= itemCountToShow) {
-                    return null;
-                }
 
                 const isSelected = filterState && filterState.has(item);
 
@@ -52,50 +43,14 @@ const FilterList = props => {
 
                 return element;
             }),
-        [classes, toggleItem, filterState, group, items, isListExpanded, itemCountToShow, onApply]
+        [classes, toggleItem, filterState, group, items, onApply]
     );
-
-    const showMoreLessItem = useMemo(() => {
-        if (items.length <= itemCountToShow) {
-            return null;
-        }
-
-        const label = isListExpanded
-            ? formatMessage({
-                  id: 'filterList.showLess',
-                  defaultMessage: 'Show Less'
-              })
-            : formatMessage({
-                  id: 'filterList.showMore',
-                  defaultMessage: 'Show More'
-              });
-
-        return (
-            <li className={classes.showMoreLessItem}>
-                <button
-                    onClick={handleListToggle}
-                    className={classes.showMoreLessButton}
-                    data-cy="FilterList-showMoreLessButton"
-                >
-                    {label}
-                </button>
-            </li>
-        );
-    }, [isListExpanded, handleListToggle, items, itemCountToShow, formatMessage, classes]);
 
     return (
         <Fragment>
-            <ul className={classes.items}>
-                {itemElements}
-                {showMoreLessItem}
-            </ul>
+            <ul className={classes.items}>{itemElements}</ul>
         </Fragment>
     );
-};
-
-FilterList.defaultProps = {
-    onApply: null,
-    itemCountToShow: 5
 };
 
 FilterList.propTypes = {
@@ -103,12 +58,10 @@ FilterList.propTypes = {
         item: string,
         items: string
     }),
-    filterApi: shape({}),
     filterState: setValidator,
     group: string,
     items: array,
-    onApply: func,
-    itemCountToShow: number
+    onApply: func
 };
 
 export default FilterList;

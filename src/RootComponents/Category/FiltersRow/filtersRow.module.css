@@ -46,6 +46,12 @@
     padding-left: 1.125rem;
 }
 
+@screen xl {
+    .filterBlocks {
+        flex-wrap: wrap;
+    }
+}
+
 .selectedFilters {
     display: flex;
     flex-wrap: wrap;
