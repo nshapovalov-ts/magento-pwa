@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ChevronDown as ArrowDown, ChevronUp as ArrowUp } from 'react-feather';
 import { useIntl } from 'react-intl';
 import { Form } from 'informed';
-import { func, node, string } from 'prop-types';
+import { bool, func, node, shape, string } from 'prop-types';
 
 import Dialog from '@magento/venia-ui/lib/components/Dialog';
 import Icon from '@magento/venia-ui/lib/components/Icon';
@@ -14,52 +14,80 @@ import { useScrollLock } from 'common/hooks/useScrollLock';
 
 import classes from './dropdownButton.module.css';
 
+// TODO: think about better use dialog inside dropdown component before move to common components folder
+
 export const DropdownButton = props => {
     const { children, title, onClick, onClose, onApply, formProps, isActive } = props;
 
     const [isOpen, setOpen] = useState(false);
+    const [leftIndent, setLeftIndent] = useState(0);
 
     const rootClasses = isActive ? classes.root_active : classes.root;
+    const contentClasses = isOpen ? classes.content_open : classes.content;
 
     const blockRef = useRef(null);
     const { formatMessage } = useIntl();
     const windowSize = useWindowSize();
     const isModalDropdown = windowSize.innerWidth < 1280;
+
     useScrollLock(isModalDropdown && isOpen);
 
     const arrowIcon = <Icon src={isOpen ? ArrowUp : ArrowDown} size={16} />;
 
     const handleClickOutside = e => {
         if (!isModalDropdown && isOpen && !blockRef.current.contains(e.target)) {
-            if (onClose) {
+            if (typeof onClose === 'function') {
                 onClose();
             }
-            setOpen(isModalDropdown && !isOpen);
+            setOpen(isModalDropdown && false);
         }
     };
 
     useEventListener(globalThis, 'mousedown', handleClickOutside);
     useEventListener(globalThis, 'keydown', handleClickOutside);
 
-    const handleClick = e => {
-        // TODO: check that the parameters being opened are in the viewport, if not, then move inside it
-        // e.target.getClientRects()[0];
-        setOpen(!isOpen);
-        if (onClick) {
+    useEffect(() => {
+        // move element to the left if it goes offscreen
+        if (isOpen && !isModalDropdown) {
+            const EDGE_SCREEN_INDENT = 50;
+            const dropdownCoord = blockRef.current.getBoundingClientRect();
+            // screen size - current x position - width of block - current indent - needed width of indent from edge of screen
+            const indentX =
+                windowSize.innerWidth -
+                dropdownCoord.x -
+                dropdownCoord.width -
+                Math.abs(leftIndent) -
+                EDGE_SCREEN_INDENT;
+
+            if (indentX <= 0) {
+                setLeftIndent(indentX);
+            } else {
+                // if element fit screen reset indent
+                setLeftIndent(0);
+            }
+        }
+    }, [isOpen, isModalDropdown, windowSize, leftIndent]);
+
+    const handleClick = () => {
+        if (!isOpen) {
+            setOpen(true);
+        }
+
+        if (typeof onClick === 'function') {
             onClick();
         }
     };
 
     const handleClose = () => {
         setOpen(false);
-        if (onClose) {
+        if (typeof onClose === 'function') {
             onClose();
         }
     };
 
     const handleApply = () => {
         setOpen(false);
-        if (onApply) {
+        if (typeof onApply === 'function') {
             onApply();
         }
     };
@@ -117,39 +145,27 @@ export const DropdownButton = props => {
                     <div className={classes.content}>{children}</div>
                 </Dialog>
             ) : (
-                isOpen && (
-                    <div className={classes.content} ref={blockRef}>
-                        <Form {...formProps}>{children}</Form>
-                        <div className={classes.applyButton}>
-                            <Button variant="contained" onClick={handleApply}>
-                                Apply
-                            </Button>
-                        </div>
+                <div className={contentClasses} ref={blockRef} style={{ left: leftIndent }}>
+                    <Form {...formProps}>{children}</Form>
+                    <div className={classes.applyButton}>
+                        <Button variant="contained" onClick={handleApply}>
+                            Apply
+                        </Button>
                     </div>
-                )
+                </div>
             )}
         </>
     );
 };
 
 DropdownButton.propTypes = {
-    filters: arrayOf(
-        shape({
-            attribute_code: string,
-            items: array
-        })
-    ),
-    availableSortMethods: arrayOf(
-        shape({
-            label: string,
-            value: string
-        })
-    ),
-    sortProps: array,
-    shouldShowSortButtons: bool,
-    shouldShowSortShimmer: bool,
-    shouldShowFilterButtons: bool,
-    shouldShowFilterShimmer: bool
+    children: node,
+    title: string,
+    onClick: func,
+    onClose: func,
+    onApply: func,
+    formProps: shape({}),
+    isActive: bool
 };
 
 export default DropdownButton;
