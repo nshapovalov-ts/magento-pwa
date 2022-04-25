@@ -3,14 +3,27 @@ import { bool, func, number, oneOfType, shape, string } from 'prop-types';
 
 import FilterDefault from './filterDefault';
 
+// TODO: If it is still useful somewhere else, then it is necessary to take it out to the utilities
+// But most likely normal labels will come from the backend
+const getLabelTitle = title => {
+    if (title == 0) {
+        return 'No';
+    }
+    if (title == 1) {
+        return 'Yes';
+    }
+
+    return title;
+};
+
 const FilterItem = props => {
-    const { toggleItem, group, item, onApply, isSelected } = props;
+    const { toggleItem, group, item, onApply, isSelected, isRadio } = props;
     const { title, value } = item;
 
     // create and memoize an item that matches the tile interface
     const tileItem = useMemo(
         () => ({
-            label: title,
+            label: getLabelTitle(title),
             value_index: value
         }),
         [title, value]
@@ -51,6 +64,7 @@ const FilterItem = props => {
             onKeyDown={handleKeyDown}
             title={title}
             value={value}
+            isRadio={isRadio}
         />
     );
 };
@@ -62,7 +76,8 @@ FilterItem.propTypes = {
     item: shape({
         title: string.isRequired,
         value: oneOfType([number, string]).isRequired
-    }).isRequired
+    }).isRequired,
+    isRadio: bool
 };
 
 export default FilterItem;

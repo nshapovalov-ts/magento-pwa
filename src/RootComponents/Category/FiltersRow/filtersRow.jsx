@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { X as Remove } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
 import { useLocation } from 'react-router-dom';
-import { array, arrayOf, bool, shape, string } from 'prop-types';
+import { array, arrayOf, shape, string } from 'prop-types';
 
 import Icon from '@magento/venia-ui/lib/components/Icon';
-import ProductSort, { ProductSortShimmer } from '@magento/venia-ui/lib/components/ProductSort';
+import ProductSort from '@magento/venia-ui/lib/components/ProductSort';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 import Button from 'components/Button';
 import CurrentFilters from '../CurrentFilters';
@@ -47,7 +47,6 @@ const FiltersRow = props => {
         filterApi.setItems(queryState);
     }, [filterApi, queryState]);
 
-    const filterRef = useRef();
     const classes = useStyle(defaultClasses, props.classes);
 
     const handleApplyFilter = useCallback(
@@ -75,8 +74,9 @@ const FiltersRow = props => {
 
     const filtersList = useMemo(
         () =>
-            // TODO: check which filters should be displayed on top, as example show only first 5
-            [...filterItems].slice(0, 5).map(([group, items]) => {
+            // TODO: check which filters should be displayed on top, as example show only first of ..
+            // need some kind of type in filters data and the presence of a search field
+            [...filterItems].slice(0, 10).map(([group, items], index) => {
                 const blockState = filterState.get(group);
                 const groupName = filterNames.get(group);
 
@@ -90,6 +90,8 @@ const FiltersRow = props => {
                         name={groupName}
                         resetFilters={resetFilters}
                         onApply={handleApply}
+                        withSearch={true}
+                        type={index === 2 ? 'radio' : 'checkbox'} // as sample
                     />
                 );
             }),
@@ -97,7 +99,7 @@ const FiltersRow = props => {
     );
 
     return (
-        <div className={classes.root} ref={filterRef}>
+        <div className={classes.root}>
             {shouldShowShimmer ? (
                 // TODO: add classes to shimmer
                 <Shimmer height={'56px'} width={`100%`} style={{ marginBottom: 30 }} />

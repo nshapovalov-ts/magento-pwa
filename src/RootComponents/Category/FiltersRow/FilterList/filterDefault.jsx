@@ -9,9 +9,18 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './filterDefault.module.css';
 
 const FilterDefault = props => {
-    const { classes: propsClasses, isSelected, item, ...restProps } = props;
+    const {
+        classes: propsClasses,
+        isSelected,
+        item,
+        isRadio,
+        onMouseDown,
+        onKeyDown,
+        ...restProps
+    } = props;
 
     const { label, value_index } = item || {};
+
     const classes = useStyle(defaultClasses, propsClasses);
     const { formatMessage } = useIntl();
 
@@ -35,14 +44,43 @@ const FilterDefault = props => {
               }
           );
 
+    const id = `${label}-${value_index}`;
+
+    if (isRadio) {
+        return (
+            // TODO: Fix default venia radio component before use as common component, then replace this one
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+            <label
+                className={classes.radio}
+                aria-label={ariaLabel}
+                aria-checked={isSelected}
+                onMouseDown={onMouseDown}
+                onKeyDown={onKeyDown}
+            >
+                <input
+                    type="radio"
+                    name={`${label}-${value_index}`}
+                    value={value_index}
+                    data-cy="FilterDefault-radio"
+                    checked={isSelected}
+                    onChange={onMouseDown}
+                    {...restProps}
+                />
+                {label}
+            </label>
+        );
+    }
+
     return (
         <Checkbox
             classes={classes}
-            field={`${label}-${value_index}`}
-            fieldValue={!!isSelected}
+            field={id}
+            fieldValue={isSelected}
             label={label}
             ariaLabel={ariaLabel}
             data-cy="FilterDefault-checkbox"
+            onMouseDown={onMouseDown}
+            onKeyDown={onKeyDown}
             {...restProps}
         />
     );
@@ -63,5 +101,6 @@ FilterDefault.propTypes = {
         label: string.isRequired,
         value_index: string.isRequired
     }).isRequired,
-    label: string
+    label: string,
+    isRadio: bool
 };

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { memo } from 'react';
 import { Search as SearchIcon } from 'react-feather';
 import { useIntl } from 'react-intl';
-import { arrayOf, bool, func, shape, string } from 'prop-types';
+import { arrayOf, bool, func, oneOf, shape, string } from 'prop-types';
 
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import Button from 'components/Button';
@@ -14,9 +14,18 @@ import setValidator from '@magento/peregrine/lib/validators/set';
 
 import defaultClasses from './filterBlock.module.css';
 
-const FilterBlock = props => {
-    const { filterApi, filterState, group, items, name, onApply, resetFilters } = props;
-    const [filteredItems, setFilteredItems] = useState(items);
+const FilterBlock = memo(props => {
+    const {
+        filterApi,
+        filterState,
+        group,
+        items,
+        name,
+        onApply,
+        resetFilters,
+        withSearch,
+        type
+    } = props;
 
     const { formatMessage } = useIntl();
 
@@ -33,31 +42,17 @@ const FilterBlock = props => {
         }
     );
 
-    const getFiltersBySearch = searchStr => {
-        if (searchStr) {
-            return items.filter(item => {
-                const title = item.title.toLowerCase();
-
-                return title.includes(searchStr.toLowerCase());
-            });
-        }
-
-        return items;
-    };
-
-    const handleSearchChange = formData => {
-        const foundFilters = getFiltersBySearch(formData.values.search || '');
-        setFilteredItems(foundFilters);
-    };
-
-    const handleToggle = ({ group, item }) => {
-        filterApi.toggleItem({ group, item });
-    };
-
     const handleClear = () => {
         if (filterState) {
             filterState.forEach(item => filterApi.removeItem({ group, item }));
         }
+    };
+
+    const handleToggle = ({ group, item }) => {
+        if (type === 'radio') {
+            handleClear();
+        }
+        filterApi.toggleItem({ group, item });
     };
 
     const list = (
@@ -73,14 +68,21 @@ const FilterBlock = props => {
                     Clear All
                 </Button>
             </div>
-            <div className={classes.search}>
-                <TextInput field="search" placeholder={`Search for ${name}`} after={searchIcon} />
-            </div>
+            {withSearch && (
+                <div className={classes.search}>
+                    <TextInput
+                        field="search"
+                        placeholder={`Search for ${name}`}
+                        after={searchIcon}
+                    />
+                </div>
+            )}
             <FilterList
                 toggleItem={handleToggle}
                 filterState={filterState}
                 group={group}
-                items={filteredItems}
+                items={items}
+                isRadio={type === 'radio'}
             />
         </div>
     );
@@ -91,16 +93,13 @@ const FilterBlock = props => {
                 onClose={resetFilters}
                 onApply={onApply}
                 title={name}
-                formProps={{
-                    onChange: handleSearchChange
-                }}
                 isActive={!!filterState}
             >
                 {list}
             </DropdownButton>
         </li>
     );
-};
+});
 
 FilterBlock.propTypes = {
     classes: shape({
@@ -115,7 +114,9 @@ FilterBlock.propTypes = {
     group: string.isRequired,
     items: arrayOf(shape({})),
     name: string.isRequired,
-    onApply: func
+    onApply: func,
+    withSearch: bool,
+    type: oneOf(['checkbox', 'radio', 'slider'])
 };
 
 export default FilterBlock;

@@ -1,5 +1,6 @@
 import React, { Fragment, useMemo } from 'react';
-import { array, func, shape, string } from 'prop-types';
+import { useFieldState } from 'informed';
+import { array, bool, func, shape, string } from 'prop-types';
 
 import FilterItem from './filterItem';
 
@@ -8,21 +9,32 @@ import setValidator from '@magento/peregrine/lib/validators/set';
 
 import defaultClasses from './filterList.module.css';
 
-const labels = new WeakMap();
-
 const FilterList = props => {
-    const { toggleItem, filterState, group, items, onApply } = props;
+    const { toggleItem, filterState, group, items, onApply, isRadio } = props;
     const classes = useStyle(defaultClasses, props.classes);
+
+    const { value: searchFieldValue = '' } = useFieldState('search');
+
+    const filtersBySearch = useMemo(() => {
+        if (searchFieldValue) {
+            return items.filter(item => {
+                const title = item.title.toLowerCase();
+
+                return title.includes(searchFieldValue.toLowerCase());
+            });
+        }
+
+        return items;
+    }, [items, searchFieldValue]);
 
     // memoize item creation
     // search value is not referenced, so this array is stable
     const itemElements = useMemo(
         () =>
-            items.map(item => {
-                const { title, value } = item;
-                const key = `item-${group}-${value}`;
+            filtersBySearch.map(item => {
+                const key = `item-${group}-${item.value}`;
 
-                const isSelected = filterState && filterState.has(item);
+                const isSelected = !!(filterState && filterState.has(item));
 
                 // create an element for each item
                 const element = (
@@ -33,17 +45,14 @@ const FilterList = props => {
                             item={item}
                             onApply={onApply}
                             isSelected={isSelected}
+                            isRadio={isRadio}
                         />
                     </li>
                 );
 
-                // associate each element with its normalized title
-                // titles are not unique, so use the element as the key
-                labels.set(element, title.toUpperCase());
-
                 return element;
             }),
-        [classes, toggleItem, filterState, group, items, onApply]
+        [classes, toggleItem, filterState, group, filtersBySearch, onApply, isRadio]
     );
 
     return (
@@ -61,7 +70,8 @@ FilterList.propTypes = {
     filterState: setValidator,
     group: string,
     items: array,
-    onApply: func
+    onApply: func,
+    isRadio: bool
 };
 
 export default FilterList;

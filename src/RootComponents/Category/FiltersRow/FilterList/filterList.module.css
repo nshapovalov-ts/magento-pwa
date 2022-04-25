@@ -14,16 +14,3 @@
         max-height: 310px;
     }
 }
-
-.showMoreLessItem {
-    padding-left: 3px;
-}
-
-.showMoreLessButton {
-    font-size: 14px;
-    text-decoration: underline;
-}
-
-.showMoreLessButton:hover {
-    text-decoration: none;
-}
