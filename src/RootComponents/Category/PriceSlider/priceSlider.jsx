@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useFieldApi, useFieldState } from 'informed';
 import PropTypes from 'prop-types';
 
@@ -6,21 +6,43 @@ import TextInput from 'components/TextInput';
 
 import classes from './priceSlider.module.css';
 
+const getStyle = (leftValue, rightValue) => {
+    return `linear-gradient(to right, 
+    rgb(var(--venia-global-color-gray-300)) ${leftValue}%, 
+    rgb(var(--venia-global-color-orange)) ${leftValue}%, 
+    rgb(var(--venia-global-color-orange)) ${rightValue}%, 
+    rgb(var(--venia-global-color-gray-300)) ${rightValue}%)`;
+};
+
 // TODO: add currency sign in text fields
 const PriceSlider = props => {
     const { field, minValue = 0, maxValue, initialMin = 0, initialMax = maxValue, onBlur } = props;
+
+    const maxRangeRef = useRef();
+
     const { setValue: setMinValue } = useFieldApi(`${field}_from`);
     const { setValue: setMaxValue } = useFieldApi(`${field}_to`);
+
+    const currentMin = parseInt(useFieldState(`${field}_from`)?.value || 0);
+    const currentMax = parseInt(useFieldState(`${field}_to`)?.value || 0);
+
+    useEffect(() => {
+        if (currentMin === minValue && currentMax === maxValue) {
+            const background = getStyle(minValue, maxValue);
+            maxRangeRef.current.style.background = background;
+        }
+    }, [currentMin, currentMax, minValue, maxValue]);
 
     useEffect(() => {
         if (initialMin || initialMax) {
             setMinValue(initialMin);
             setMaxValue(initialMax);
+            const leftValue = (((initialMin - minValue) / (maxValue - minValue)) * 100).toFixed(2);
+            const rightValue = ((initialMax / maxValue) * 100).toFixed(2);
+            const background = getStyle(leftValue, rightValue);
+            maxRangeRef.current.style.background = background;
         }
-    }, [setMinValue, setMaxValue, initialMin, initialMax]);
-
-    const currentMin = useFieldState(`${field}_from`)?.value;
-    const currentMax = useFieldState(`${field}_to`)?.value;
+    }, [setMinValue, setMaxValue, initialMin, initialMax, maxValue, minValue]);
 
     const onChange = type => e => {
         const value = parseInt(e.target.value);
@@ -29,11 +51,20 @@ const PriceSlider = props => {
                 setMaxValue(value);
             }
             setMinValue(value);
+
+            const leftValue = (((value - minValue) / (maxValue - minValue)) * 100).toFixed(2);
+            const rightValue = ((currentMax / maxValue) * 100).toFixed(2);
+            const background = getStyle(leftValue, rightValue);
+            maxRangeRef.current.style.background = background;
         } else {
             if (value < currentMin) {
                 setMinValue(value);
             }
             setMaxValue(value);
+            const leftValue = (((currentMin - minValue) / (maxValue - minValue)) * 100).toFixed(2);
+            const rightValue = ((value / maxValue) * 100).toFixed(2);
+            const background = getStyle(leftValue, rightValue);
+            maxRangeRef.current.style.background = background;
         }
     };
 
@@ -57,6 +88,7 @@ const PriceSlider = props => {
                     onBlur={onBlur}
                 />
                 <input
+                    ref={maxRangeRef}
                     className={classes.maxSlider}
                     type="range"
                     min={minValue}
