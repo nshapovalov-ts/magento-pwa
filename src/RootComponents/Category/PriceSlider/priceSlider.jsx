@@ -9,7 +9,6 @@ import classes from './priceSlider.module.css';
 // TODO: add currency sign in text fields
 const PriceSlider = props => {
     const { field, minValue = 0, maxValue, initialMin = 0, initialMax = maxValue, onBlur } = props;
-
     const { setValue: setMinValue } = useFieldApi(`${field}_from`);
     const { setValue: setMaxValue } = useFieldApi(`${field}_to`);
 
@@ -52,9 +51,9 @@ const PriceSlider = props => {
                     max={maxValue}
                     step="1"
                     name={`${field}_from`}
-                    initialValue={initialMin || 0}
+                    initialvalue={initialMin || 0}
                     onChange={onChange('min')}
-                    value={currentMin}
+                    value={currentMin || 0}
                     onBlur={onBlur}
                 />
                 <input
@@ -64,9 +63,9 @@ const PriceSlider = props => {
                     max={maxValue}
                     step="1"
                     name={`${field}_to`}
-                    initialValue={initialMax || maxValue}
+                    initialvalue={initialMax || maxValue}
                     onChange={onChange('max')}
-                    value={currentMax}
+                    value={currentMax || 0}
                     onBlur={onBlur}
                 />
             </div>

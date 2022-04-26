@@ -34,10 +34,10 @@ const FilterPrice = props => {
         <div>
             <PriceSlider
                 field={group}
-                minValue={from}
-                maxValue={to}
-                initialMin={initialValues && initialValues.from}
-                initialMax={initialValues && initialValues.to}
+                minValue={parseInt(from)}
+                maxValue={parseInt(to)}
+                initialMin={initialValues && parseInt(initialValues.from)}
+                initialMax={initialValues && parseInt(initialValues.to)}
                 onBlur={handleBlur}
             />
         </div>
