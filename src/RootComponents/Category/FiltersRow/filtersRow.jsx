@@ -9,6 +9,7 @@ import ProductSort from '@magento/venia-ui/lib/components/ProductSort';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 import Button from 'components/Button';
 import CurrentFilters from '../CurrentFilters';
+import { getPriceFromSearch } from '../helpers';
 import FilterBlock from './filterBlock';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
@@ -39,9 +40,16 @@ const FiltersRow = props => {
         filterItems
     ]);
 
+    // replace price filter values with custom full range from min to max
+    const priceState = useMemo(() => getPriceFromSearch(search), [search]);
+
+    if (priceState.size) {
+        queryState.set('price', priceState);
+    }
+
     useEffect(() => {
         filterApi.setItems(queryState);
-    }, [filterApi, filterItems, filterKeys, search, queryState]);
+    }, [filterApi, filterItems, filterKeys, search, queryState, priceState]);
 
     const resetFilters = useCallback(() => {
         filterApi.setItems(queryState);
@@ -75,10 +83,20 @@ const FiltersRow = props => {
     const filtersList = useMemo(
         () =>
             // TODO: check which filters should be displayed on top, as example show only first of ..
-            // need some kind of type in filters data and the presence of a search field
-            [...filterItems].slice(0, 10).map(([group, items], index) => {
+            Array.from(filterItems, ([group, items], index) => {
                 const blockState = filterState.get(group);
                 const groupName = filterNames.get(group);
+
+                const sampleTypes = () => {
+                    if (index === 2) {
+                        return 'radio';
+                    }
+                    if (group === 'price') {
+                        return 'slider';
+                    }
+
+                    return 'checkbox';
+                };
 
                 return (
                     <FilterBlock
@@ -90,8 +108,9 @@ const FiltersRow = props => {
                         name={groupName}
                         resetFilters={resetFilters}
                         onApply={handleApply}
-                        withSearch={true}
-                        type={index === 2 ? 'radio' : 'checkbox'} // as sample
+                        withSearch={group !== 'price'}
+                        // need some kind of type in filters data and the presence of a search field
+                        type={sampleTypes()} // as sample
                     />
                 );
             }),

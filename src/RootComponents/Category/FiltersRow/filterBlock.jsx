@@ -8,6 +8,7 @@ import Button from 'components/Button';
 import TextInput from 'components/TextInput';
 import DropdownButton from '../DropdownButton';
 import FilterList from './FilterList';
+import FilterPrice from './FilterPrice';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import setValidator from '@magento/peregrine/lib/validators/set';
@@ -49,7 +50,7 @@ const FilterBlock = memo(props => {
     };
 
     const handleToggle = ({ group, item }) => {
-        if (type === 'radio') {
+        if (type === 'radio' || type === 'slider') {
             handleClear();
         }
         filterApi.toggleItem({ group, item });
@@ -77,13 +78,22 @@ const FilterBlock = memo(props => {
                     />
                 </div>
             )}
-            <FilterList
-                toggleItem={handleToggle}
-                filterState={filterState}
-                group={group}
-                items={items}
-                isRadio={type === 'radio'}
-            />
+            {group === 'price' ? (
+                <FilterPrice
+                    toggleItem={handleToggle}
+                    filterState={filterState}
+                    group={group}
+                    items={items}
+                />
+            ) : (
+                <FilterList
+                    toggleItem={handleToggle}
+                    filterState={filterState}
+                    group={group}
+                    items={items}
+                    isRadio={type === 'radio'}
+                />
+            )}
         </div>
     );
 
