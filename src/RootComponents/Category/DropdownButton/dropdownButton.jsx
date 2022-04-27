@@ -17,7 +17,16 @@ import classes from './dropdownButton.module.css';
 // TODO: think about better use dialog inside dropdown component before move to common components folder
 
 export const DropdownButton = props => {
-    const { children, title, onClick, onClose, onApply, formProps, isActive } = props;
+    const {
+        children,
+        buttonTitle,
+        modalTitle,
+        onClick,
+        onClose,
+        onApply,
+        formProps,
+        isActive
+    } = props;
 
     const [isOpen, setOpen] = useState(false);
     const [leftIndent, setLeftIndent] = useState(0);
@@ -99,7 +108,7 @@ export const DropdownButton = props => {
                   defaultMessage: 'Hide "{itemName}" item options.'
               },
               {
-                  itemName: title
+                  itemName: modalTitle || buttonTitle
               }
           )
         : formatMessage(
@@ -108,7 +117,7 @@ export const DropdownButton = props => {
                   defaultMessage: 'Show "{itemName}" item options.'
               },
               {
-                  itemName: title
+                  itemName: modalTitle || buttonTitle
               }
           );
 
@@ -123,7 +132,7 @@ export const DropdownButton = props => {
                 aria-label={toggleOptionsAriaLabel}
             >
                 <span className={classes.header}>
-                    <span className={classes.title}>{title}</span>
+                    <span className={classes.title}>{buttonTitle}</span>
                     {arrowIcon}
                 </span>
             </button>
@@ -131,6 +140,7 @@ export const DropdownButton = props => {
                 <Dialog
                     isOpen={isOpen}
                     formProps={formProps}
+                    title={modalTitle}
                     classes={{
                         root: classes.modalRoot,
                         root_open: classes.modalRoot_open,
@@ -160,7 +170,8 @@ export const DropdownButton = props => {
 
 DropdownButton.propTypes = {
     children: node,
-    title: string,
+    buttonTitle: string.isRequired,
+    modalTitle: string,
     onClick: func,
     onClose: func,
     onApply: func,
