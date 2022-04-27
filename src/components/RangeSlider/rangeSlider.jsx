@@ -3,20 +3,13 @@ import { useFieldApi, useFieldState } from 'informed';
 import PropTypes from 'prop-types';
 
 import TextInput from 'components/TextInput';
+import { getSliderBackground } from './helpers';
 
-import classes from './priceSlider.module.css';
-
-const getStyle = (leftValue, rightValue) => {
-    return `linear-gradient(to right, 
-    rgb(var(--venia-global-color-gray-300)) ${leftValue}%, 
-    rgb(var(--venia-global-color-orange)) ${leftValue}%, 
-    rgb(var(--venia-global-color-orange)) ${rightValue}%, 
-    rgb(var(--venia-global-color-gray-300)) ${rightValue}%)`;
-};
+import classes from './rangeSlider.module.css';
 
 // TODO: add currency sign in text fields
-const PriceSlider = props => {
-    const { field, minValue = 0, maxValue, initialMin = 0, initialMax = maxValue, onBlur } = props;
+const RangeSlider = props => {
+    const { field, minValue = 0, maxValue, initialMin = 0, initialMax = maxValue, onStop } = props;
 
     const maxRangeRef = useRef();
 
@@ -28,7 +21,7 @@ const PriceSlider = props => {
 
     useEffect(() => {
         if (currentMin === minValue && currentMax === maxValue) {
-            const background = getStyle(minValue, maxValue);
+            const background = getSliderBackground(minValue, maxValue);
             maxRangeRef.current.style.background = background;
         }
     }, [currentMin, currentMax, minValue, maxValue]);
@@ -37,9 +30,13 @@ const PriceSlider = props => {
         if (initialMin || initialMax) {
             setMinValue(initialMin);
             setMaxValue(initialMax);
-            const leftValue = (((initialMin - minValue) / (maxValue - minValue)) * 100).toFixed(2);
-            const rightValue = ((initialMax / maxValue) * 100).toFixed(2);
-            const background = getStyle(leftValue, rightValue);
+
+            const background = getSliderBackground({
+                currentMin: initialMin,
+                currentMax: initialMax,
+                minValue,
+                maxValue
+            });
             maxRangeRef.current.style.background = background;
         }
     }, [setMinValue, setMaxValue, initialMin, initialMax, maxValue, minValue]);
@@ -52,18 +49,25 @@ const PriceSlider = props => {
             }
             setMinValue(value);
 
-            const leftValue = (((value - minValue) / (maxValue - minValue)) * 100).toFixed(2);
-            const rightValue = ((currentMax / maxValue) * 100).toFixed(2);
-            const background = getStyle(leftValue, rightValue);
+            const background = getSliderBackground({
+                currentMin: value,
+                currentMax,
+                minValue,
+                maxValue
+            });
             maxRangeRef.current.style.background = background;
         } else {
             if (value < currentMin) {
                 setMinValue(value);
             }
             setMaxValue(value);
-            const leftValue = (((currentMin - minValue) / (maxValue - minValue)) * 100).toFixed(2);
-            const rightValue = ((value / maxValue) * 100).toFixed(2);
-            const background = getStyle(leftValue, rightValue);
+
+            const background = getSliderBackground({
+                currentMin,
+                currentMax: value,
+                minValue,
+                maxValue
+            });
             maxRangeRef.current.style.background = background;
         }
     };
@@ -85,7 +89,8 @@ const PriceSlider = props => {
                     initialvalue={initialMin || 0}
                     onChange={onChange('min')}
                     value={currentMin || 0}
-                    onBlur={onBlur}
+                    onMouseUp={onStop}
+                    onTouchEnd={onStop}
                 />
                 <input
                     ref={maxRangeRef}
@@ -98,20 +103,21 @@ const PriceSlider = props => {
                     initialvalue={initialMax || maxValue}
                     onChange={onChange('max')}
                     value={currentMax || 0}
-                    onBlur={onBlur}
+                    onMouseUp={onStop}
+                    onTouchEnd={onStop}
                 />
             </div>
         </div>
     );
 };
 
-PriceSlider.propTypes = {
+RangeSlider.propTypes = {
     field: PropTypes.string.isRequired,
     minValue: PropTypes.number,
     maxValue: PropTypes.number.isRequired,
     initialMin: PropTypes.number,
     initialMax: PropTypes.number,
-    onBlur: PropTypes.func
+    onStop: PropTypes.func
 };
 
-export default PriceSlider;
+export default RangeSlider;

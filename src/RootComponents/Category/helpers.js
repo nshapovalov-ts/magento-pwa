@@ -21,10 +21,10 @@ export const getRangeFromFilterItems = items => {
         return {};
     }
 
-    const [from] = items[0].value.split('_');
-    const [_, to] = items[items.length - 1].value.split('_');
+    const [min] = items[0].value.split('_');
+    const [_, max] = items[items.length - 1].value.split('_');
 
-    return { from, to };
+    return { minValue: parseInt(min), maxValue: parseInt(max) };
 };
 
 export const getPriceValuesFromFilterState = filterState => {
