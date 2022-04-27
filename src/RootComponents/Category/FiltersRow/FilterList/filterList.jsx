@@ -2,6 +2,7 @@ import React, { Fragment, useMemo } from 'react';
 import { useFieldState } from 'informed';
 import { array, bool, func, shape, string } from 'prop-types';
 
+import RadioGroup from 'components/RadioGroup';
 import FilterItem from './filterItem';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
@@ -54,6 +55,16 @@ const FilterList = props => {
             }),
         [classes, toggleItem, filterState, group, filtersBySearch, onApply, isRadio]
     );
+
+    if (isRadio) {
+        const selectedRadioValue = filterState && Array.from(filterState)[0].value;
+
+        return (
+            <RadioGroup field={group} fieldValue={selectedRadioValue || ''}>
+                <ul className={classes.items}>{itemElements}</ul>
+            </RadioGroup>
+        );
+    }
 
     return (
         <Fragment>

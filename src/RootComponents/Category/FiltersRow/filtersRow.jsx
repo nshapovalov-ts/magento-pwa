@@ -5,12 +5,12 @@ import { useLocation } from 'react-router-dom';
 import { array, arrayOf, shape, string } from 'prop-types';
 
 import Icon from '@magento/venia-ui/lib/components/Icon';
-import ProductSort from '@magento/venia-ui/lib/components/ProductSort';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 import Button from 'components/Button';
 import CurrentFilters from '../CurrentFilters';
 import { getPriceFromSearch } from '../helpers';
 import FilterBlock from './filterBlock';
+import SortList from './SortList';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useFilterModal } from '@magento/peregrine/lib/talons/FilterModal';
@@ -64,10 +64,6 @@ const FiltersRow = props => {
         [handleApply]
     );
 
-    const maybeSortButton = availableSortMethods?.length && (
-        <ProductSort sortProps={sortProps} availableSortMethods={availableSortMethods} />
-    );
-
     const clearAll = queryState.size ? (
         <Button
             className={classes.action}
@@ -82,7 +78,7 @@ const FiltersRow = props => {
 
     const filtersList = useMemo(
         () =>
-            // TODO: check which filters should be displayed on top, as example show only first of ..
+            // TODO: need to separate filters by location first (top, sidebar)
             Array.from(filterItems, ([group, items], index) => {
                 const blockState = filterState.get(group);
                 const groupName = filterNames.get(group);
@@ -108,8 +104,8 @@ const FiltersRow = props => {
                         name={groupName}
                         resetFilters={resetFilters}
                         onApply={handleApply}
+                        // TODO: need some kind of type in filters data and the presence of a search field
                         withSearch={group !== 'price'}
-                        // need some kind of type in filters data and the presence of a search field
                         type={sampleTypes()} // as sample
                     />
                 );
@@ -124,8 +120,13 @@ const FiltersRow = props => {
                 <Shimmer height={'56px'} width={`100%`} style={{ marginBottom: 30 }} />
             ) : (
                 <div className={classes.row}>
-                    {maybeSortButton}
-                    <ul className={classes.filterBlocks}>{filtersList}</ul>
+                    <ul className={classes.filterBlocks}>
+                        <SortList
+                            availableSortMethods={availableSortMethods}
+                            sortProps={sortProps}
+                        />
+                        {filtersList}
+                    </ul>
                 </div>
             )}
             <div className={classes.selectedFilters}>

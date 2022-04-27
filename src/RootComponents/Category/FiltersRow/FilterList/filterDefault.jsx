@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl';
 import { bool, shape, string } from 'prop-types';
 
 import Checkbox from '@magento/venia-ui/lib/components/Checkbox';
+import Radio from 'components/RadioGroup/radio';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
@@ -48,26 +49,13 @@ const FilterDefault = props => {
 
     if (isRadio) {
         return (
-            // TODO: Fix default venia radio component before use as common component, then replace this one
-            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-            <label
-                className={classes.radio}
-                aria-label={ariaLabel}
-                aria-checked={isSelected}
-                onMouseDown={onMouseDown}
-                onKeyDown={onKeyDown}
-            >
-                <input
-                    type="radio"
-                    name={`${label}-${value_index}`}
-                    value={value_index}
-                    data-cy="FilterDefault-radio"
-                    checked={isSelected}
-                    onChange={onMouseDown}
-                    {...restProps}
-                />
-                {label}
-            </label>
+            <Radio
+                id={`${label}-${value_index}`}
+                label={label}
+                value={value_index}
+                onClick={onMouseDown}
+                {...restProps}
+            />
         );
     }
 

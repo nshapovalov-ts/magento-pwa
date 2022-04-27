@@ -102,7 +102,7 @@ const FilterBlock = memo(props => {
             <DropdownButton
                 onClose={resetFilters}
                 onApply={onApply}
-                title={name}
+                buttonTitle={name}
                 isActive={!!filterState}
             >
                 {list}

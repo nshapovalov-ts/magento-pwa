@@ -20,7 +20,6 @@ import { useCategoryContent } from '@magento/peregrine/lib/talons/RootComponents
 
 import defaultClasses from './category.module.css';
 
-const FilterModal = React.lazy(() => import('./FilterModal'));
 const FilterSidebar = React.lazy(() => import('./FilterSidebar'));
 const FilterRow = React.lazy(() => import('./FiltersRow'));
 
@@ -56,8 +55,6 @@ const CategoryContent = props => {
     // If there are no products we can hide the sort button.
     const shouldShowSortButtons = totalPagesFromData && !!availableSortMethods?.length;
     const shouldShowSortShimmer = !totalPagesFromData && isLoading;
-
-    const filtersModal = shouldShowFilterButtons ? <FilterModal filters={filters} /> : null;
 
     const filtersRow = shouldShowFilterButtons ? (
         <FilterRow
@@ -161,7 +158,6 @@ const CategoryContent = props => {
                             {maybeSortContainer}
                         </div>
                         {content}
-                        <Suspense fallback={null}>{filtersModal}</Suspense>
                     </div>
                 </div>
             </article>
