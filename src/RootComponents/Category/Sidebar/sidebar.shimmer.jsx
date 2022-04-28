@@ -5,9 +5,9 @@ import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
-import defaultClasses from './filterSidebar.module.css';
+import defaultClasses from './sidebar.module.css';
 
-const FilterSidebar = props => {
+const Sidebar = props => {
     const classes = useStyle(defaultClasses, props.classes);
 
     return (
@@ -17,10 +17,10 @@ const FilterSidebar = props => {
     );
 };
 
-FilterSidebar.propTypes = {
+Sidebar.propTypes = {
     classes: shape({
         root: string
     })
 };
 
-export default FilterSidebar;
+export default Sidebar;

@@ -11,8 +11,8 @@ import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 import SortedByContainer, {
     SortedByContainerShimmer
 } from '@magento/venia-ui/lib/components/SortedByContainer';
-import { FilterSidebarShimmer } from './FilterSidebar';
 import NoProductsFound from './NoProductsFound';
+import { SidebarShimmer } from './Sidebar';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useIsInViewport } from '@magento/peregrine/lib/hooks/useIsInViewport';
@@ -20,7 +20,7 @@ import { useCategoryContent } from '@magento/peregrine/lib/talons/RootComponents
 
 import defaultClasses from './category.module.css';
 
-const FilterSidebar = React.lazy(() => import('./FilterSidebar'));
+const Sidebar = React.lazy(() => import('./Sidebar'));
 const FilterRow = React.lazy(() => import('./FiltersRow'));
 
 const CategoryContent = props => {
@@ -65,9 +65,9 @@ const CategoryContent = props => {
     ) : null;
 
     const sidebar = shouldShowFilterButtons ? (
-        <FilterSidebar filters={filters} />
+        <Sidebar filters={filters} />
     ) : shouldShowFilterShimmer ? (
-        <FilterSidebarShimmer />
+        <SidebarShimmer />
     ) : null;
 
     const maybeSortContainer = shouldShowSortButtons ? (
@@ -129,7 +129,8 @@ const CategoryContent = props => {
             <Breadcrumbs categoryId={categoryId} />
             <StoreTitle>{categoryName}</StoreTitle>
             <article className={classes.root} data-cy="CategoryContent-root">
-                {filtersRow}
+                <Suspense fallback={null}>{filtersRow}</Suspense>
+
                 <div className={classes.categoryHeader}>
                     <h1 className={classes.title}>
                         <div
@@ -143,7 +144,7 @@ const CategoryContent = props => {
                 </div>
                 <div className={classes.contentWrapper}>
                     <div ref={sidebarRef} className={classes.sidebar}>
-                        <Suspense fallback={<FilterSidebarShimmer />}>
+                        <Suspense fallback={<SidebarShimmer />}>
                             {shouldRenderSidebarContent ? sidebar : null}
                         </Suspense>
                     </div>

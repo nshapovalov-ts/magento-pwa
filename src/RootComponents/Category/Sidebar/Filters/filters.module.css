@@ -1,0 +1,6 @@
+.filters {
+    padding: 24px 20px;
+    background: rgb(var(--venia-global-color-gray-100));
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
