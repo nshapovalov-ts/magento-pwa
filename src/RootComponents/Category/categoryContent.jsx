@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense, useMemo, useRef } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { array, number, shape, string } from 'prop-types';
 
@@ -8,14 +8,9 @@ import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import Pagination from '@magento/venia-ui/lib/components/Pagination';
 import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
-import SortedByContainer, {
-    SortedByContainerShimmer
-} from '@magento/venia-ui/lib/components/SortedByContainer';
 import NoProductsFound from './NoProductsFound';
-import { SidebarShimmer } from './Sidebar';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import { useIsInViewport } from '@magento/peregrine/lib/hooks/useIsInViewport';
 import { useCategoryContent } from '@magento/peregrine/lib/talons/RootComponents/Category';
 
 import defaultClasses from './category.module.css';
@@ -25,7 +20,6 @@ const FilterRow = React.lazy(() => import('./FiltersRow'));
 
 const CategoryContent = props => {
     const { categoryId, data, isLoading, pageControl, sortProps, pageSize } = props;
-    const [currentSort] = sortProps;
 
     const talonProps = useCategoryContent({
         categoryId,
@@ -43,18 +37,9 @@ const CategoryContent = props => {
         totalPagesFromData
     } = talonProps;
 
-    const sidebarRef = useRef(null);
     const classes = useStyle(defaultClasses, props.classes);
-    const shouldRenderSidebarContent = useIsInViewport({
-        elementRef: sidebarRef
-    });
 
     const shouldShowFilterButtons = filters && filters.length;
-    const shouldShowFilterShimmer = filters === null;
-
-    // If there are no products we can hide the sort button.
-    const shouldShowSortButtons = totalPagesFromData && !!availableSortMethods?.length;
-    const shouldShowSortShimmer = !totalPagesFromData && isLoading;
 
     const filtersRow = shouldShowFilterButtons ? (
         <FilterRow
@@ -62,18 +47,6 @@ const CategoryContent = props => {
             sortProps={sortProps}
             availableSortMethods={availableSortMethods}
         />
-    ) : null;
-
-    const sidebar = shouldShowFilterButtons ? (
-        <Sidebar filters={filters} />
-    ) : shouldShowFilterShimmer ? (
-        <SidebarShimmer />
-    ) : null;
-
-    const maybeSortContainer = shouldShowSortButtons ? (
-        <SortedByContainer currentSort={currentSort} />
-    ) : shouldShowSortShimmer ? (
-        <SortedByContainerShimmer />
     ) : null;
 
     const categoryResultsHeading =
@@ -130,7 +103,6 @@ const CategoryContent = props => {
             <StoreTitle>{categoryName}</StoreTitle>
             <article className={classes.root} data-cy="CategoryContent-root">
                 <Suspense fallback={null}>{filtersRow}</Suspense>
-
                 <div className={classes.categoryHeader}>
                     <h1 className={classes.title}>
                         <div
@@ -143,9 +115,9 @@ const CategoryContent = props => {
                     {categoryDescriptionElement}
                 </div>
                 <div className={classes.contentWrapper}>
-                    <div ref={sidebarRef} className={classes.sidebar}>
-                        <Suspense fallback={<SidebarShimmer />}>
-                            {shouldRenderSidebarContent ? sidebar : null}
+                    <div className={classes.sidebar}>
+                        <Suspense fallback={null}>
+                            <Sidebar filters={filters} />
                         </Suspense>
                     </div>
                     <div className={classes.categoryContent}>
@@ -156,7 +128,6 @@ const CategoryContent = props => {
                             >
                                 {categoryResultsHeading}
                             </div>
-                            {maybeSortContainer}
                         </div>
                         {content}
                     </div>

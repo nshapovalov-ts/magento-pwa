@@ -93,7 +93,7 @@
         display: flex;
         align-self: flex-start;
         width: var(--category-sidebar-width);
-        padding-top: 4rem;
+        padding-top: 2.8rem;
     }
 
     .categoryContent {
