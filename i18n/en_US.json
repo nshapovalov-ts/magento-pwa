@@ -181,6 +181,7 @@
     "customerForm.formMessage": "The shipping address you enter will be saved to your address book and set as your default for future purchases.",
     "customerForm.loading": "Fetching Customer Details...",
     "discountSummary.lineItemLabel": "Discounts applied",
+    "dropdownButton.confirmText": "Apply",
     "editModal.headerText": "Edit Item",
     "errorView.goHome": "Take me home",
     "errorView.header": "Oops!",
