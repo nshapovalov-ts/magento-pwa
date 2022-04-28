@@ -8,14 +8,14 @@ import Dialog from '@magento/venia-ui/lib/components/Dialog';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import Button from 'components/Button';
 
+import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useEventListener } from '@magento/peregrine/lib/hooks/useEventListener';
 import { useWindowSize } from '@magento/peregrine/lib/hooks/useWindowSize';
 import { useScrollLock } from 'common/hooks/useScrollLock';
 
-import classes from './dropdownButton.module.css';
+import defaultClasses from './dropdownButton.module.css';
 
 // TODO: think about better use dialog inside dropdown component before move to common components folder
-
 export const DropdownButton = props => {
     const {
         children,
@@ -27,6 +27,8 @@ export const DropdownButton = props => {
         formProps,
         isActive
     } = props;
+
+    const classes = useStyle(defaultClasses, props.classes);
 
     const [isOpen, setOpen] = useState(false);
     const [leftIndent, setLeftIndent] = useState(0);
@@ -149,6 +151,8 @@ export const DropdownButton = props => {
                         contents: classes.modalContent,
                         buttons: classes.modalButtons
                     }}
+                    confirmTranslationId="dropdownButton.confirmText"
+                    confirmText="Apply"
                     onConfirm={handleApply}
                     onCancel={handleClose}
                 >

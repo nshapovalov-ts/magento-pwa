@@ -41,6 +41,10 @@
     overflow: hidden;
 }
 
+.applyButton {
+    margin-top: 30px;
+}
+
 @screen xl {
     .content {
         position: absolute;
