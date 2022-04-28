@@ -11,7 +11,7 @@ import setValidator from '@magento/peregrine/lib/validators/set';
 import defaultClasses from './filterList.module.css';
 
 const FilterList = props => {
-    const { toggleItem, filterState, group, items, onApply, isRadio } = props;
+    const { toggleItem, filterState, group, groupName, items, onApply, isRadio } = props;
     const classes = useStyle(defaultClasses, props.classes);
 
     const { value: searchFieldValue = '' } = useFieldState('search');
@@ -37,12 +37,18 @@ const FilterList = props => {
 
                 const isSelected = !!(filterState && filterState.has(item));
 
+                // we don't need No value in yes/no filter
+                if (item.value == 0) {
+                    return null;
+                }
+
                 // create an element for each item
                 const element = (
                     <li key={key} className={classes.item} data-cy="FilterList-item">
                         <FilterItem
                             toggleItem={toggleItem}
                             group={group}
+                            groupName={groupName}
                             item={item}
                             onApply={onApply}
                             isSelected={isSelected}
@@ -53,7 +59,7 @@ const FilterList = props => {
 
                 return element;
             }),
-        [classes, toggleItem, filterState, group, filtersBySearch, onApply, isRadio]
+        [classes, toggleItem, filterState, group, groupName, filtersBySearch, onApply, isRadio]
     );
 
     if (isRadio) {
@@ -80,6 +86,7 @@ FilterList.propTypes = {
     }),
     filterState: setValidator,
     group: string,
+    groupName: string,
     items: array,
     onApply: func,
     isRadio: bool

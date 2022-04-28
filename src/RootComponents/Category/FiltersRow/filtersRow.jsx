@@ -18,7 +18,7 @@ import { getStateFromSearch } from '@magento/peregrine/lib/talons/FilterModal/he
 
 import defaultClasses from './filtersRow.module.css';
 
-const sampleTypes = index => {
+const sampleTypes = (index, group) => {
     if (index === 2) {
         return 'radio';
     }
@@ -107,7 +107,7 @@ const FiltersRow = props => {
                         onApply={handleApply}
                         // TODO: need some kind of type in filters data and the presence of a search field
                         withSearch={group !== 'price'}
-                        type={sampleTypes(index)} // as sample
+                        type={sampleTypes(index, group)} // as sample
                     />
                 );
             }),

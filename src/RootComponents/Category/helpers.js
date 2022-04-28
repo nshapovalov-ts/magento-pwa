@@ -43,12 +43,12 @@ export const getPriceValuesFromFilterState = filterState => {
     }
 };
 
-export const getLabelTitle = title => {
-    if (title == 0) {
+export const getLabelTitle = (title, groupName) => {
+    if (title === '0') {
         return 'No';
     }
-    if (title == 1) {
-        return 'Yes';
+    if (title === '1') {
+        return groupName || 'Yes';
     }
 
     return title;

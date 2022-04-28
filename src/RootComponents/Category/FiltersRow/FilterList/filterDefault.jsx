@@ -54,6 +54,7 @@ const FilterDefault = props => {
                 label={label}
                 value={value_index}
                 onClick={onMouseDown}
+                onKeyDown={onKeyDown}
                 {...restProps}
             />
         );
@@ -67,7 +68,7 @@ const FilterDefault = props => {
             label={label}
             ariaLabel={ariaLabel}
             data-cy="FilterDefault-checkbox"
-            onMouseDown={onMouseDown}
+            onClick={onMouseDown}
             onKeyDown={onKeyDown}
             {...restProps}
         />

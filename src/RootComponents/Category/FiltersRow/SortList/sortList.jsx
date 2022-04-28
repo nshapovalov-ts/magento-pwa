@@ -165,6 +165,9 @@ const SortList = memo(props => {
                 onApply={handleApply}
                 buttonTitle={buttonTitle}
                 modalTitle={modalTitle}
+                classes={{
+                    root: classes.dropdownButton
+                }}
             >
                 {sortElements}
             </DropdownButton>

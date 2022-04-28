@@ -14,3 +14,21 @@
         max-height: 310px;
     }
 }
+
+.dropdownButton {
+    border: 1px solid rgb(var(--venia-global-color-primary));
+    border-radius: 12px;
+    font-size: 14px;
+    color: rgb(var(--venia-global-color-black));
+    display: grid;
+    margin: 5px 10px 5px 0;
+    position: relative;
+    white-space: nowrap;
+    padding: 5px 10px;
+}
+
+@screen md {
+    .dropdownButton {
+        padding: 10px 20px;
+    }
+}
