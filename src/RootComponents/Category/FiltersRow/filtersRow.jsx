@@ -8,7 +8,7 @@ import Icon from '@magento/venia-ui/lib/components/Icon';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 import Button from 'components/Button';
 import CurrentFilters from '../CurrentFilters';
-import { getPriceFromSearch } from '../helpers';
+import { getPriceFromSearch, getTopFilters } from '../helpers';
 import FilterBlock from './filterBlock';
 import SortList from './SortList';
 
@@ -17,6 +17,17 @@ import { useFilterModal } from '@magento/peregrine/lib/talons/FilterModal';
 import { getStateFromSearch } from '@magento/peregrine/lib/talons/FilterModal/helpers';
 
 import defaultClasses from './filtersRow.module.css';
+
+const sampleTypes = index => {
+    if (index === 2) {
+        return 'radio';
+    }
+    if (group === 'price') {
+        return 'slider';
+    }
+
+    return 'checkbox';
+};
 
 const FiltersRow = props => {
     const { filters, availableSortMethods, sortProps } = props;
@@ -76,23 +87,13 @@ const FiltersRow = props => {
         </Button>
     ) : null;
 
+    const topFilters = getTopFilters(filterItems);
+
     const filtersList = useMemo(
         () =>
-            // TODO: need to separate filters by location first (top, sidebar)
-            Array.from(filterItems, ([group, items], index) => {
+            Array.from(topFilters, ([group, items], index) => {
                 const blockState = filterState.get(group);
                 const groupName = filterNames.get(group);
-
-                const sampleTypes = () => {
-                    if (index === 2) {
-                        return 'radio';
-                    }
-                    if (group === 'price') {
-                        return 'slider';
-                    }
-
-                    return 'checkbox';
-                };
 
                 return (
                     <FilterBlock
@@ -106,11 +107,11 @@ const FiltersRow = props => {
                         onApply={handleApply}
                         // TODO: need some kind of type in filters data and the presence of a search field
                         withSearch={group !== 'price'}
-                        type={sampleTypes()} // as sample
+                        type={sampleTypes(index)} // as sample
                     />
                 );
             }),
-        [filterApi, filterItems, filterNames, filterState, resetFilters, handleApply]
+        [filterApi, topFilters, filterNames, filterState, resetFilters, handleApply]
     );
 
     return (

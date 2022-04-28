@@ -42,3 +42,38 @@ export const getPriceValuesFromFilterState = filterState => {
         return null;
     }
 };
+
+export const getLabelTitle = title => {
+    if (title == 0) {
+        return 'No';
+    }
+    if (title == 1) {
+        return 'Yes';
+    }
+
+    return title;
+};
+
+// All filters except yes/no displays to top
+export const getTopFilters = filters => {
+    const topFilters = new Map(filters);
+    topFilters.forEach((item, key) => {
+        if (['0', '1'].includes(item[0].title)) {
+            topFilters.delete(key);
+        }
+    });
+
+    return topFilters;
+};
+
+export const getSidebarFilters = filters => {
+    const sidebar = new Map();
+
+    filters.forEach((item, key) => {
+        if (['0', '1'].includes(item[0].title) && item.length !== 1) {
+            sidebar.set(key, item);
+        }
+    });
+
+    return sidebar;
+};
