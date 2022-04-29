@@ -2,15 +2,22 @@ import React, { useEffect, useRef } from 'react';
 import { useFieldApi, useFieldState } from 'informed';
 import PropTypes from 'prop-types';
 
+import CurrencySymbol from '@magento/venia-ui/lib/components/CurrencySymbol';
 import TextInput from 'components/TextInput';
 import { getSliderBackground } from './helpers';
 
 import classes from './rangeSlider.module.css';
 
-// TODO: add currency sign in text fields
 const RangeSlider = props => {
-    const { field, minValue = 0, maxValue, initialMin = 0, initialMax = maxValue, onStop } = props;
-
+    const {
+        field,
+        minValue = 0,
+        maxValue,
+        initialMin = 0,
+        initialMax = maxValue,
+        currencyCode,
+        onStop
+    } = props;
     const maxRangeRef = useRef();
 
     const { setValue: setMinValue } = useFieldApi(`${field}_from`);
@@ -75,8 +82,14 @@ const RangeSlider = props => {
     return (
         <div className={classes.range_slider}>
             <div className={classes.inputs}>
-                <TextInput field={`${field}_from`} />
-                <TextInput field={`${field}_to`} />
+                <TextInput
+                    field={`${field}_from`}
+                    before={currencyCode && <CurrencySymbol currencyCode={currencyCode} />}
+                />
+                <TextInput
+                    field={`${field}_to`}
+                    before={currencyCode && <CurrencySymbol currencyCode={currencyCode} />}
+                />
             </div>
             <div className={classes.slider}>
                 <input
@@ -117,7 +130,8 @@ RangeSlider.propTypes = {
     maxValue: PropTypes.number.isRequired,
     initialMin: PropTypes.number,
     initialMax: PropTypes.number,
-    onStop: PropTypes.func
+    onStop: PropTypes.func,
+    currencyCode: PropTypes.string
 };
 
 export default RangeSlider;

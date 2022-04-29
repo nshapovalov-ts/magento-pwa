@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { bool, func, number, oneOfType, shape, string } from 'prop-types';
 
-import { getLabelTitle } from '../helpers';
+import { getFilterLabelText } from '../helpers';
 import FilterDefault from './filterDefault';
 
 const FilterItem = props => {
@@ -11,7 +11,7 @@ const FilterItem = props => {
     // create and memoize an item that matches the tile interface
     const tileItem = useMemo(
         () => ({
-            label: getLabelTitle(title, groupName),
+            label: getFilterLabelText({ defaultTitle: title, groupName }),
             value_index: value
         }),
         [groupName, value, title]

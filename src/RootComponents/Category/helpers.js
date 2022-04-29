@@ -43,15 +43,15 @@ export const getPriceValuesFromFilterState = filterState => {
     }
 };
 
-export const getLabelTitle = (title, groupName) => {
-    if (title === '0') {
+export const getFilterLabelText = ({ defaultTitle, groupName }) => {
+    if (defaultTitle === '0') {
         return 'No';
     }
-    if (title === '1') {
+    if (defaultTitle === '1') {
         return groupName || 'Yes';
     }
 
-    return title;
+    return defaultTitle;
 };
 
 // All filters except yes/no displays to top

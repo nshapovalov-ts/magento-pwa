@@ -4,8 +4,12 @@ import { useFieldApi, useFieldState } from 'informed';
 import RangeSlider from 'components/RangeSlider';
 import { getPriceValuesFromFilterState, getRangeFromFilterItems } from '../../helpers';
 
+import { useCurrencySwitcher } from '@magento/peregrine/lib/talons/Header/useCurrencySwitcher';
+
 const FilterPrice = props => {
     const { group, items, filterState, toggleItem } = props;
+
+    const { currentCurrencyCode } = useCurrencySwitcher();
 
     const { setValue: setMinValue } = useFieldApi(`${group}_from`);
     const { setValue: setMaxValue } = useFieldApi(`${group}_to`);
@@ -42,6 +46,7 @@ const FilterPrice = props => {
                 initialMin={initialValues && parseInt(initialValues.from)}
                 initialMax={initialValues && parseInt(initialValues.to)}
                 onStop={handleSliderStop}
+                currencyCode={currentCurrencyCode}
             />
         </div>
     );
