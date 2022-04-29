@@ -44,6 +44,7 @@ const TopBlock = props => {
     } = talonProps;
 
     const shouldShowShimmer = !availableSortMethods?.length && !filters?.length;
+    const shouldShowSortButton = !!availableSortMethods?.length;
 
     const queryState = useMemo(() => getStateFromSearch(search, filterKeys, filterItems), [
         search,
@@ -122,10 +123,12 @@ const TopBlock = props => {
             ) : (
                 <div className={classes.row}>
                     <ul className={classes.filterBlocks}>
-                        <SortList
-                            availableSortMethods={availableSortMethods}
-                            sortProps={sortProps}
-                        />
+                        {shouldShowSortButton && (
+                            <SortList
+                                availableSortMethods={availableSortMethods}
+                                sortProps={sortProps}
+                            />
+                        )}
                         {filtersList}
                     </ul>
                 </div>

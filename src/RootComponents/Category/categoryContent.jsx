@@ -40,6 +40,16 @@ const CategoryContent = props => {
 
     const classes = useStyle(defaultClasses, props.classes);
 
+    const shouldShowTopBlock = filters && filters.length;
+
+    const topBlock = shouldShowTopBlock ? (
+        <TopBlock
+            filters={filters}
+            sortProps={sortProps}
+            availableSortMethods={availableSortMethods}
+        />
+    ) : null;
+
     const categoryResultsHeading =
         totalCount > 0 ? (
             <FormattedMessage
@@ -93,13 +103,7 @@ const CategoryContent = props => {
             <Breadcrumbs categoryId={categoryId} />
             <StoreTitle>{categoryName}</StoreTitle>
             <article className={classes.root} data-cy="CategoryContent-root">
-                <Suspense fallback={null}>
-                    <TopBlock
-                        filters={filters}
-                        sortProps={sortProps}
-                        availableSortMethods={availableSortMethods}
-                    />
-                </Suspense>
+                <Suspense fallback={null}>{topBlock}</Suspense>
                 <div className={classes.categoryHeader}>
                     <h1 className={classes.title}>
                         <div
