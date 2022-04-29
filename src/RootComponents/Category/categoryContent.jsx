@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo } from 'react';
+import React, { Fragment, Suspense, useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { array, number, shape, string } from 'prop-types';
 
@@ -9,6 +9,7 @@ import Pagination from '@magento/venia-ui/lib/components/Pagination';
 import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 import NoProductsFound from './NoProductsFound';
+import { SidebarShimmer } from './Sidebar';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useCategoryContent } from '@magento/peregrine/lib/talons/RootComponents/Category';
@@ -116,7 +117,7 @@ const CategoryContent = props => {
                 </div>
                 <div className={classes.contentWrapper}>
                     <div className={classes.sidebar}>
-                        <Suspense fallback={null}>
+                        <Suspense fallback={<SidebarShimmer />}>
                             <Sidebar filters={filters} />
                         </Suspense>
                     </div>
