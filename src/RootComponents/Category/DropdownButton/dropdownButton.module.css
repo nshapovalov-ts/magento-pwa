@@ -1,0 +1,160 @@
+.root {
+    border: 1px solid rgb(var(--venia-global-color-gray-200));
+    border-radius: 12px;
+    font-size: 14px;
+    color: rgb(var(--venia-global-color-black));
+    display: grid;
+    margin: 5px 10px 5px 0;
+    position: relative;
+    white-space: nowrap;
+    padding: 5px 10px;
+}
+
+.root_active {
+    composes: root;
+    border: 1px solid rgb(var(--venia-global-color-orange));
+}
+
+.header {
+    align-items: center;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr auto;
+    column-gap: 0.5rem;
+}
+
+.title {
+    height: 1.5rem;
+    line-height: 1.5rem;
+    text-align: left;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    background: rgb(var(--venia-global-color-white));
+    height: 100%;
+    padding: 22px 22px 0 22px;
+    z-index: 5;
+    left: calc(50% - 150px);
+    white-space: pre-wrap;
+    overflow: hidden;
+}
+
+.applyButton {
+    margin-top: 30px;
+}
+
+@screen xl {
+    .content {
+        position: absolute;
+        display: none;
+        left: 0;
+        top: 66px;
+        box-shadow: 0px 16px 64px -12px rgb(0 0 0 / 20%);
+        border-radius: 12px;
+        background: rgb(var(--venia-global-color-white));
+        width: 400px;
+        z-index: 5;
+        margin-top: 0;
+        height: auto;
+        overflow: visible;
+        padding: 22px;
+    }
+
+    .content_open {
+        composes: content;
+        display: flex;
+    }
+}
+
+@screen md {
+    .root {
+        padding: 10px 20px;
+    }
+}
+
+.modalRoot {
+    position: fixed;
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(-50%, 0, 0);
+    transition: none;
+    z-index: 3;
+}
+
+.modalRoot_open {
+    composes: modalRoot;
+    left: 50%;
+    opacity: 1;
+    visibility: visible;
+    transition: none;
+}
+
+.modalDialog {
+    background-color: rgb(var(--venia-global-color-background));
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgb(var(--venia-global-color-gray-darker));
+
+    /* It sets maximum sizes so its body can handle overflow. */
+    height: 602px;
+    max-height: 90vh;
+    /* Minimum keeps a 16:9 aspect ratio and is 40rem x 22.5rem.  */
+    min-height: 600px;
+    width: 640px;
+
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    pointer-events: auto;
+    z-index: 4;
+}
+
+.modalForm {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+@media (max-width: 960px) {
+    .modalRoot {
+        composes: modalRoot;
+    }
+
+    .modalRoot_open {
+        composes: modalRoot_open;
+    }
+
+    .modalForm {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .modalDialog {
+        min-height: 100vh;
+        width: 100vw;
+    }
+}
+
+.modalContent {
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.modalButtons {
+    padding: 0 1rem 1rem 1rem;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1rem;
+    justify-content: center;
+}

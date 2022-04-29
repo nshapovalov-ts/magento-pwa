@@ -24,6 +24,7 @@
     border: 2px solid transparent;
     cursor: pointer;
     grid-area: input;
+    background: rgb(var(--venia-global-color-white));
 }
 
 .icon {
@@ -54,12 +55,17 @@
 }
 
 .input:checked:enabled + .icon {
-    --stroke: var(--venia-global-color-primary);
+    --stroke: var(--venia-global-color-orange);
 }
 
 .input:active:enabled,
 .input:focus:enabled {
     outline: none;
+}
+
+.input:active:enabled,
+.input:focus:enabled + .icon {
+    --stroke: var(--venia-global-color-orange);
 }
 
 .input_shimmer {

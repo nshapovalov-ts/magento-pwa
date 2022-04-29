@@ -13,6 +13,7 @@
     margin: 0 auto;
     min-height: 40rem;
     padding-bottom: 30px;
+    max-width: var(--venia-global-maxWidth);
 }
 
 .page_masked {

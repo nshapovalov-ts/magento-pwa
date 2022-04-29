@@ -1,0 +1,33 @@
+.root {
+    --borderColor: var(--venia-global-color-border);
+    background-color: var(--venia-global-color-white);
+    display: none;
+    width: 270px;
+}
+
+.body {
+    overflow: auto;
+}
+
+.action {
+    padding: 1rem 1.25rem 0;
+}
+
+.action button {
+    font-size: var(--venia-typography-body-S-fontSize);
+    text-decoration: none;
+}
+
+.blocks {
+    padding: 1rem 0.5rem 0;
+}
+
+.blocks > li:last-child {
+    border-bottom: 2px solid rgb(var(--borderColor));
+}
+
+@media (min-width: 1024px) {
+    .root {
+        display: block;
+    }
+}

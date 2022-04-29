@@ -1,0 +1,58 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.action {
+    composes: text from 'components/Button/button.module.css';
+    text-decoration: none;
+    color: rgb(var(--venia-global-color-black));
+    --stroke: rgb(var(--venia-global-color-black));
+    padding: 0 0 0 1.125rem;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    width: 100%;
+    white-space: nowrap;
+    margin-bottom: 30px;
+}
+
+.row::-webkit-scrollbar {
+    display: none;
+}
+
+@screen xl {
+    .row {
+        display: flex;
+        align-items: center;
+        overflow-x: visible;
+        width: 100%;
+    }
+
+    .row::after {
+        content: none;
+    }
+}
+
+.filterBlocks {
+    display: flex;
+    padding-left: 1.125rem;
+}
+
+@screen xl {
+    .filterBlocks {
+        flex-wrap: wrap;
+    }
+}
+
+.selectedFilters {
+    display: flex;
+    flex-wrap: wrap;
+}

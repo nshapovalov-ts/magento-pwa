@@ -1,0 +1,18 @@
+.menuItem {
+    padding-bottom: 8px;
+    font-size: var(--venia-global-fontSize-200);
+    font-weight: var(--venia-global-fontWeight-normal);
+}
+
+.menuLink:hover {
+    color: rgb(var(--venia-global-color-orange));
+}
+
+.menuLinkActive {
+    composes: menuLink;
+}
+
+.menuItem_active {
+    composes: menuItem;
+    font-weight: var(--venia-global-fontWeight-bold);
+}

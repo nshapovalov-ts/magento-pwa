@@ -28,6 +28,7 @@ const { useAccountMenuItemsTarget } = require('./src/targets/accountItems');
 const { updateRoutes } = require('./src/targets/router');
 const { makeSafeHtmlRenderer } = require('./src/targets/htmlRenderer');
 const { addRestSupportApollo } = require('./src/targets/adapter');
+const { fixCrashOnWrongFilterUrl } = require('./src/targets/useCategory');
 
 function localIntercept(targets) {
     const { Targetables } = require('@magento/pwa-buildpack');
@@ -46,6 +47,7 @@ function localIntercept(targets) {
     makeSafeHtmlRenderer(targets);
     useSingleWishlistTarget(targets);
     useAccountMenuItemsTarget(targets);
+    fixCrashOnWrongFilterUrl(targets);
 }
 
 module.exports = localIntercept;

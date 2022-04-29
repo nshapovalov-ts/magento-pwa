@@ -1,0 +1,39 @@
+.submenuColumn {
+    padding: 0 0 10px 16px;
+}
+
+.submenuColumnActive {
+    composes: submenuColumn;
+}
+
+.submenuColumnActive > .link {
+    font-weight: var(--venia-global-fontWeight-bold);
+}
+
+.submenuChild {
+    padding: 10px 0 0 16px;
+}
+
+.submenuChildItem {
+    padding-bottom: 10px;
+}
+
+.submenuChildItem .linkActive {
+    font-weight: var(--venia-global-fontWeight-bold);
+}
+
+.submenuChildItem:hover {
+    color: rgb(var(--venia-global-color-orange));
+}
+
+.submenuColumn .link:hover {
+    color: rgb(var(--venia-global-color-orange));
+}
+
+.submenuColumn:last-child {
+    padding-bottom: 0;
+}
+
+.submenuChildItem:last-child {
+    padding-bottom: 0;
+}

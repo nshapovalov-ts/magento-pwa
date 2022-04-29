@@ -1,0 +1,15 @@
+.items {
+    display: grid;
+    gap: 0.25rem;
+    align-content: flex-start;
+    grid-template-columns: 100%;
+    padding: 0.2rem;
+    overflow-y: auto;
+    height: 100%;
+}
+
+@screen lg {
+    .items {
+        max-height: 310px;
+    }
+}
