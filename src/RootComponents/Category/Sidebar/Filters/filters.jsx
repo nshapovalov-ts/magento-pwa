@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { Form } from 'informed';
 import { array, arrayOf, shape, string } from 'prop-types';
 
-import FilterList from '../../FiltersRow/FilterList';
+import FilterList from '../../FilterList';
 import { getSidebarFilters } from '../../helpers';
 
 import { useFilterSidebar } from '@magento/peregrine/lib/talons/FilterSidebar';

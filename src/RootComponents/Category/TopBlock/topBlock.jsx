@@ -16,7 +16,7 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useFilterModal } from '@magento/peregrine/lib/talons/FilterModal';
 import { getStateFromSearch } from '@magento/peregrine/lib/talons/FilterModal/helpers';
 
-import defaultClasses from './filtersRow.module.css';
+import defaultClasses from './topBlock.module.css';
 
 const sampleTypes = (index, group) => {
     if (index === 2) {
@@ -29,7 +29,7 @@ const sampleTypes = (index, group) => {
     return 'checkbox';
 };
 
-const FiltersRow = props => {
+const TopBlock = props => {
     const { filters, availableSortMethods, sortProps } = props;
     const { search } = useLocation();
     const talonProps = useFilterModal({ filters });
@@ -143,7 +143,7 @@ const FiltersRow = props => {
     );
 };
 
-FiltersRow.propTypes = {
+TopBlock.propTypes = {
     filters: arrayOf(
         shape({
             attribute_code: string,
@@ -159,4 +159,4 @@ FiltersRow.propTypes = {
     sortProps: array
 };
 
-export default FiltersRow;
+export default TopBlock;

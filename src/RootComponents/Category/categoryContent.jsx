@@ -17,7 +17,7 @@ import { useCategoryContent } from '@magento/peregrine/lib/talons/RootComponents
 import defaultClasses from './category.module.css';
 
 const Sidebar = React.lazy(() => import('./Sidebar'));
-const FilterRow = React.lazy(() => import('./FiltersRow'));
+const TopBlock = React.lazy(() => import('./TopBlock'));
 
 const CategoryContent = props => {
     const { categoryId, data, isLoading, pageControl, sortProps, pageSize } = props;
@@ -39,16 +39,6 @@ const CategoryContent = props => {
     } = talonProps;
 
     const classes = useStyle(defaultClasses, props.classes);
-
-    const shouldShowFilterButtons = filters && filters.length;
-
-    const filtersRow = shouldShowFilterButtons ? (
-        <FilterRow
-            filters={filters}
-            sortProps={sortProps}
-            availableSortMethods={availableSortMethods}
-        />
-    ) : null;
 
     const categoryResultsHeading =
         totalCount > 0 ? (
@@ -103,7 +93,13 @@ const CategoryContent = props => {
             <Breadcrumbs categoryId={categoryId} />
             <StoreTitle>{categoryName}</StoreTitle>
             <article className={classes.root} data-cy="CategoryContent-root">
-                <Suspense fallback={null}>{filtersRow}</Suspense>
+                <Suspense fallback={null}>
+                    <TopBlock
+                        filters={filters}
+                        sortProps={sortProps}
+                        availableSortMethods={availableSortMethods}
+                    />
+                </Suspense>
                 <div className={classes.categoryHeader}>
                     <h1 className={classes.title}>
                         <div

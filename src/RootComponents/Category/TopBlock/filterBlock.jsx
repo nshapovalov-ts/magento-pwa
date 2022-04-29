@@ -7,7 +7,7 @@ import Icon from '@magento/venia-ui/lib/components/Icon';
 import Button from 'components/Button';
 import TextInput from 'components/TextInput';
 import DropdownButton from '../DropdownButton';
-import FilterList from './FilterList';
+import FilterList from '../FilterList';
 import FilterPrice from './FilterPrice';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';

@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { bool, func, number, oneOfType, shape, string } from 'prop-types';
 
-import { getLabelTitle } from '../../helpers';
+import { getLabelTitle } from '../helpers';
 import FilterDefault from './filterDefault';
 
 const FilterItem = props => {

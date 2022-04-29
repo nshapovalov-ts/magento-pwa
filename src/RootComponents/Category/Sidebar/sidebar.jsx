@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { array, arrayOf, shape, string } from 'prop-types';
 
-import CategoryList from '../CategoryList';
+import CategoryList from './CategoryList';
 import Filters from './Filters';
 import SidebarShimmer from './sidebar.shimmer';
 
