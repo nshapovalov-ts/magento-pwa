@@ -24,7 +24,7 @@ const Sidebar = props => {
     }
 
     if (filters === null) {
-        <SidebarShimmer />;
+        return <SidebarShimmer />;
     }
 
     return (
