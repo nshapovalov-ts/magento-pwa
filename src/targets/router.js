@@ -7,6 +7,13 @@ const updateRoutes = targets => {
             path: require.resolve('../modules/SignInPage')
         });
 
+        routes.push({
+            name: 'Search',
+            pattern: '/search.html',
+            exact: true,
+            path: require.resolve('../RootComponents/Search')
+        });
+
         // Customer menu routes
         routes.push({
             name: 'My Account',
