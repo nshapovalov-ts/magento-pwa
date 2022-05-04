@@ -26,9 +26,14 @@ const Filters = props => {
     const filtersList = useMemo(
         () =>
             Array.from(sidebarFilters, ([group, items]) => {
+                const item = items.find(data => data.value === '1');
+
+                if (!item) {
+                    return null;
+                }
+
                 const blockState = filterState.get(group);
                 const groupName = filterNames.get(group);
-                const [_, item] = items;
 
                 const handleToggle = () => {
                     filterApi.toggleItem({ group, item });
