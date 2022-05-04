@@ -16,7 +16,7 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useFilterModal } from '@magento/peregrine/lib/talons/FilterModal';
 import { getStateFromSearch } from '@magento/peregrine/lib/talons/FilterModal/helpers';
 
-import defaultClasses from './topBlock.module.css';
+import defaultClasses from './filtersTop.module.css';
 
 const sampleTypes = (index, group) => {
     if (index === 2) {

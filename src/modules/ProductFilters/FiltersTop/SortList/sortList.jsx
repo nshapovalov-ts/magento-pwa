@@ -37,6 +37,8 @@ const SortList = memo(props => {
                           sortDirection: 'ASC'
                       };
                   }
+
+                  return undefined;
               })
               .filter(method => !!method)
         : null;

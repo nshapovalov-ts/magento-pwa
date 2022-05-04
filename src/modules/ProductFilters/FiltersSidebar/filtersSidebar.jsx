@@ -3,14 +3,14 @@ import { array, arrayOf, shape, string } from 'prop-types';
 
 import CategoryList from './CategoryList';
 import Filters from './Filters';
-import SidebarShimmer from './sidebar.shimmer';
+import SidebarShimmer from './filtersSidebar.shimmer';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useIsInViewport } from '@magento/peregrine/lib/hooks/useIsInViewport';
 
-import defaultClasses from './sidebar.module.css';
+import defaultClasses from './filtersSidebar.module.css';
 
-const Sidebar = props => {
+const FiltersSidebar = props => {
     const { filters } = props;
     const classes = useStyle(defaultClasses, props.classes);
     const sidebarRef = useRef();
@@ -43,11 +43,11 @@ const Sidebar = props => {
     );
 };
 
-Sidebar.defaultProps = {
+FiltersSidebar.defaultProps = {
     filterCountToOpen: 3
 };
 
-Sidebar.propTypes = {
+FiltersSidebar.propTypes = {
     classes: shape({
         body: string,
         root: string
@@ -60,4 +60,4 @@ Sidebar.propTypes = {
     )
 };
 
-export default Sidebar;
+export default FiltersSidebar;

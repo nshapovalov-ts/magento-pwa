@@ -38,7 +38,7 @@ const FilterList = props => {
                 const isSelected = !!(filterState && filterState.has(item));
 
                 // we don't need No value in yes/no filter
-                if (item.value == 0) {
+                if (item.value === '0') {
                     return null;
                 }
 

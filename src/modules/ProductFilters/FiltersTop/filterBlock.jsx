@@ -13,7 +13,7 @@ import FilterPrice from './FilterPrice';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import setValidator from '@magento/peregrine/lib/validators/set';
 
-import defaultClasses from './filterBlock.module.css';
+import defaultClasses from './filtersTop.module.css';
 
 const FilterBlock = memo(props => {
     const {

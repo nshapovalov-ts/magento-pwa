@@ -8,16 +8,16 @@ import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import Pagination from '@magento/venia-ui/lib/components/Pagination';
 import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
+import { FiltersSidebarShimmer } from 'modules/ProductFilters';
 import NoProductsFound from './NoProductsFound';
-import { SidebarShimmer } from './Sidebar';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useCategoryContent } from '@magento/peregrine/lib/talons/RootComponents/Category';
 
 import defaultClasses from './category.module.css';
 
-const Sidebar = React.lazy(() => import('./Sidebar'));
-const TopBlock = React.lazy(() => import('./TopBlock'));
+const FiltersSidebar = React.lazy(() => import('modules/ProductFilters/FiltersSidebar'));
+const FiltersTop = React.lazy(() => import('modules/ProductFilters/FiltersTop'));
 
 const CategoryContent = props => {
     const { categoryId, data, isLoading, pageControl, sortProps, pageSize } = props;
@@ -43,7 +43,7 @@ const CategoryContent = props => {
     const shouldShowTopBlock = filters && filters.length;
 
     const topBlock = shouldShowTopBlock ? (
-        <TopBlock
+        <FiltersTop
             filters={filters}
             sortProps={sortProps}
             availableSortMethods={availableSortMethods}
@@ -117,8 +117,8 @@ const CategoryContent = props => {
                 </div>
                 <div className={classes.contentWrapper}>
                     <div className={classes.sidebar}>
-                        <Suspense fallback={<SidebarShimmer />}>
-                            <Sidebar filters={filters} />
+                        <Suspense fallback={<FiltersSidebarShimmer />}>
+                            <FiltersSidebar filters={filters} />
                         </Suspense>
                     </div>
                     <div className={classes.categoryContent}>
