@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
-import { array, arrayOf, shape, string } from 'prop-types';
+import React, { Suspense, useRef } from 'react';
+import { array, arrayOf, bool, shape, string } from 'prop-types';
 
-import CategoryList from './CategoryList';
 import Filters from './Filters';
 import SidebarShimmer from './filtersSidebar.shimmer';
 
@@ -10,8 +9,11 @@ import { useIsInViewport } from '@magento/peregrine/lib/hooks/useIsInViewport';
 
 import defaultClasses from './filtersSidebar.module.css';
 
+const CategoryList = React.lazy(() => import('./CategoryList'));
+const CategoryFilterList = React.lazy(() => import('./CategoryFilterList'));
+
 const FiltersSidebar = props => {
-    const { filters } = props;
+    const { filters, isCategoryFilter } = props;
     const classes = useStyle(defaultClasses, props.classes);
     const sidebarRef = useRef();
 
@@ -37,7 +39,9 @@ const FiltersSidebar = props => {
         >
             <div className={classes.body}>
                 {filters && filters.length > 0 && <Filters filters={filters} />}
-                <CategoryList />
+                <Suspense fallback={null}>
+                    {isCategoryFilter ? <CategoryFilterList filters={filters} /> : <CategoryList />}
+                </Suspense>
             </div>
         </aside>
     );
@@ -57,7 +61,8 @@ FiltersSidebar.propTypes = {
             attribute_code: string,
             items: array
         })
-    )
+    ),
+    isCategoryFilter: bool
 };
 
 export default FiltersSidebar;

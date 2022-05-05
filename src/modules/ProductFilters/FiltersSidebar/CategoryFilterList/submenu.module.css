@@ -1,0 +1,11 @@
+.submenu {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.submenuItems {
+    display: flex;
+    flex-direction: column;
+    font-weight: var(--venia-global-fontWeight-normal);
+    padding-top: 10px;
+}

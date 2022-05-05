@@ -6,6 +6,7 @@ import Gallery, { GalleryShimmer } from '@magento/venia-ui/lib/components/Galler
 import { Meta, Title } from '@magento/venia-ui/lib/components/Head';
 import Pagination from '@magento/venia-ui/lib/components/Pagination';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
+import { ContentLayout } from 'components/Layouts';
 import { FiltersSidebarShimmer } from 'modules/ProductFilters';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
@@ -139,25 +140,27 @@ const SearchPage = props => {
             <Title>{metaLabel}</Title>
             <Meta name="title" content={metaLabel} />
             <Meta name="description" content={metaLabel} />
-            <article className={classes.root} data-cy="SearchPage-root">
-                <Suspense fallback={null}>{topBlock}</Suspense>
-                <div className={classes.contentWrapper}>
-                    <div className={classes.sidebar}>
-                        <Suspense fallback={<FiltersSidebarShimmer />}>
-                            <FiltersSidebar filters={filters} />
-                        </Suspense>
-                    </div>
-                    <div className={classes.searchContent}>
-                        <div className={classes.heading}>
-                            <div className={classes.searchInfo}>
-                                {searchResultsHeading}
-                                {itemCountHeading}
-                            </div>
+            <ContentLayout>
+                <article className={classes.root} data-cy="SearchPage-root">
+                    <Suspense fallback={null}>{topBlock}</Suspense>
+                    <div className={classes.contentWrapper}>
+                        <div className={classes.sidebar}>
+                            <Suspense fallback={<FiltersSidebarShimmer />}>
+                                <FiltersSidebar filters={filters} isCategoryFilter />
+                            </Suspense>
                         </div>
-                        {content}
+                        <div className={classes.searchContent}>
+                            <div className={classes.heading}>
+                                <div className={classes.searchInfo}>
+                                    {searchResultsHeading}
+                                    {itemCountHeading}
+                                </div>
+                            </div>
+                            {content}
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            </ContentLayout>
         </>
     );
 };

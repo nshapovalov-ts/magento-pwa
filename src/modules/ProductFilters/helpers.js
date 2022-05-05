@@ -77,3 +77,9 @@ export const getSidebarFilters = filters => {
 
     return sidebar;
 };
+
+export const getCategoryFilters = filters => {
+    const categoryFilters = filters.get('category_id');
+
+    return categoryFilters;
+};
