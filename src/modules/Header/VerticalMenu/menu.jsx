@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import MenuItem from './menuItem';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { useIsInViewport } from '@magento/peregrine/lib/hooks/useIsInViewport';
 import { useMegaMenu } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenu';
+import { GET_CATEGORIES } from '../categoryList.gql.js';
 
 import defaultClasses from './menu.module.css';
 
@@ -23,29 +24,12 @@ const VerticalMenu = props => {
         categoryUrlSuffix,
         handleNavigate,
         handleClickOutside
-    } = useMegaMenu({ mainNavRef });
+    } = useMegaMenu({ mainNavRef, operations: { getMegaMenuQuery: GET_CATEGORIES } });
 
     const classes = useStyle(defaultClasses, props.classes);
 
-    const [mainNavWidth, setMainNavWidth] = useState(0);
     const shouldRenderItems = useIsInViewport({
         elementRef: mainNavRef
-    });
-
-    useEffect(() => {
-        const handleResize = () => {
-            const navWidth = mainNavRef.current ? mainNavRef.current.offsetWidth : null;
-
-            setMainNavWidth(navWidth);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        handleResize();
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
     });
 
     const items = megaMenuData.children
@@ -55,7 +39,6 @@ const VerticalMenu = props => {
                       category={category}
                       activeCategoryId={activeCategoryId}
                       categoryUrlSuffix={categoryUrlSuffix}
-                      mainNavWidth={mainNavWidth}
                       onNavigate={handleNavigate}
                       key={category.uid}
                       subMenuState={subMenuState}

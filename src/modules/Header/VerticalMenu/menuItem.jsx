@@ -15,14 +15,12 @@ import defaultClasses from './menuItem.module.css';
  *
  * @param {VerticalMenuCategory} props.category
  * @param {String} props.activeCategoryId - uid of active category
- * @param {int} props.mainNavWidth - width of the main nav. It's used for setting min-width of the submenu
  * @param {function} props.onNavigate - function called when clicking on Link
  */
 const MenuItem = props => {
     const {
         activeCategoryId,
         category,
-        mainNavWidth,
         categoryUrlSuffix,
         subMenuState,
         disableFocus,
@@ -50,7 +48,7 @@ const MenuItem = props => {
         handleKeyDown
     } = talonProps;
 
-    const menuItemClassname = isMenuActive ? classes.menuItem_active : classes.menuItem;
+    const menuItemClasses = isMenuActive ? classes.menuItem_active : classes.menuItem;
 
     const children = useMemo(() => {
         return category.children.length ? (
@@ -58,21 +56,12 @@ const MenuItem = props => {
                 isFocused={isFocused}
                 subMenuState={subMenuState}
                 items={category.children}
-                mainNavWidth={mainNavWidth}
                 handleCloseSubMenu={handleCloseSubMenu}
                 categoryUrlSuffix={categoryUrlSuffix}
                 onNavigate={onNavigate}
             />
         ) : null;
-    }, [
-        category,
-        isFocused,
-        mainNavWidth,
-        subMenuState,
-        handleCloseSubMenu,
-        categoryUrlSuffix,
-        onNavigate
-    ]);
+    }, [category, isFocused, subMenuState, handleCloseSubMenu, categoryUrlSuffix, onNavigate]);
 
     const linkAttributes = category.children.length
         ? {
@@ -82,7 +71,7 @@ const MenuItem = props => {
 
     return (
         <div
-            className={menuItemClassname}
+            className={menuItemClasses}
             data-cy="VerticalMenu-MenuItem"
             onMouseEnter={() => {
                 handleSubMenuFocus();
@@ -126,7 +115,6 @@ MenuItem.propTypes = {
         url_path: PropTypes.string.isRequired
     }).isRequired,
     activeCategoryId: PropTypes.string,
-    mainNavWidth: PropTypes.number.isRequired,
     categoryUrlSuffix: PropTypes.string,
     onNavigate: PropTypes.func.isRequired,
     handleSubMenuFocus: PropTypes.func.isRequired,

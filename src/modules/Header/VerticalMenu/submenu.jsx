@@ -12,13 +12,11 @@ import defaultClasses from './submenu.module.css';
  * The Submenu component displays submenu in mega menu
  *
  * @param {array} props.items - categories to display
- * @param {int} props.mainNavWidth - width of the main nav. It's used for setting min-width of the submenu
  * @param {function} props.onNavigate - function called when clicking on Link
  */
 const Submenu = props => {
     const {
         items,
-        mainNavWidth,
         isFocused,
         subMenuState,
         handleCloseSubMenu,
@@ -36,7 +34,7 @@ const Submenu = props => {
 
     const { isSubMenuActive } = talonProps;
 
-    const subMenuClassname = isSubMenuActive ? classes.submenu_active : classes.submenu;
+    const subMenuClasses = isSubMenuActive ? classes.submenu_active : classes.submenu;
 
     const subMenus = items.map((category, index) => {
         const keyboardProps = index === items.length - 1 ? talonProps.keyboardProps : {};
@@ -55,11 +53,8 @@ const Submenu = props => {
     });
 
     return (
-        <div className={subMenuClassname}>
-            <div
-                className={classes.submenuItems}
-                style={{ minWidth: mainNavWidth + PADDING_OFFSET }}
-            >
+        <div className={subMenuClasses}>
+            <div className={classes.submenuItems} style={{ minWidth: PADDING_OFFSET }}>
                 {subMenus}
             </div>
         </div>
@@ -81,7 +76,6 @@ Submenu.propTypes = {
             url_path: PropTypes.string.isRequired
         })
     ).isRequired,
-    mainNavWidth: PropTypes.number.isRequired,
     categoryUrlSuffix: PropTypes.string,
     onNavigate: PropTypes.func.isRequired,
     handleCloseSubMenu: PropTypes.func.isRequired
