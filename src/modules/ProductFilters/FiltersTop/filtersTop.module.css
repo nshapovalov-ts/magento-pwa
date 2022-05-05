@@ -21,7 +21,6 @@
     overflow-x: auto;
     width: 100%;
     white-space: nowrap;
-    margin-bottom: 30px;
 }
 
 .row::-webkit-scrollbar {
