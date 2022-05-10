@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import Button from 'components/Button';
+
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
 
 import defaultClasses from './submenuColumn.module.css';
 
@@ -12,51 +12,49 @@ import defaultClasses from './submenuColumn.module.css';
  *
  * @param {MenuCategory} props.category
  * @param {function} props.onNavigate - function called when clicking on Link
+ * @param {Number} props.activeCategoryId - id of active category
  */
 const SubmenuColumn = props => {
-    const { category, onNavigate } = props;
+    const { category, onNavigate, activeCategoryId } = props;
     const classes = useStyle(defaultClasses, props.classes);
 
-    const submenuClasses = category.isActive ? classes.submenuColumnActive : classes.submenuColumn;
+    const submenuClasses =
+        category.id === activeCategoryId ? classes.submenuColumnActive : classes.submenuColumn;
 
     let children = null;
 
     if (category.children.length) {
-        let isChildrenDisplayed = !!category.isActive;
         const childrenItems = category.children.map((subCategory, index) => {
-            const { isActive, name } = subCategory;
-
-            if (isActive || category.isActive) {
-                isChildrenDisplayed = true;
-            }
+            const { id, name } = subCategory;
+            const isSubCategoryActive = id === activeCategoryId;
 
             return (
                 <li key={index} className={classes.submenuChildItem}>
-                    <Link
-                        className={isActive ? classes.linkActive : classes.link}
+                    <Button
+                        variant="text"
+                        className={isSubCategoryActive ? classes.linkActive : classes.link}
                         data-cy="VerticalMenu-SubmenuColumn-link"
-                        onClick={onNavigate}
+                        onClick={() => onNavigate(id)}
                     >
                         {name}
-                    </Link>
+                    </Button>
                 </li>
             );
         });
 
-        children = isChildrenDisplayed ? (
-            <ul className={classes.submenuChild}>{childrenItems}</ul>
-        ) : null;
+        children = <ul className={classes.submenuChild}>{childrenItems}</ul>;
     }
 
     return (
         <li className={submenuClasses}>
-            <Link
+            <Button
+                variant="text"
                 className={classes.link}
                 data-cy="VerticalMenu-SubmenuColumn-link"
-                onClick={onNavigate}
+                onClick={() => onNavigate(category.id)}
             >
                 <span>{category.name}</span>
-            </Link>
+            </Button>
             {children}
         </li>
     );
@@ -75,5 +73,6 @@ SubmenuColumn.propTypes = {
         position: PropTypes.number.isRequired,
         url_path: PropTypes.string.isRequired
     }).isRequired,
-    onNavigate: PropTypes.func.isRequired
+    onNavigate: PropTypes.func.isRequired,
+    activeCategoryId: PropTypes.number
 };

@@ -12,9 +12,10 @@ import defaultClasses from './submenu.module.css';
  *
  * @param {array} props.items - categories to display
  * @param {function} props.onNavigate - function called when clicking on Link
+ * @param {Number} props.activeCategoryId - id of active category
  */
 const Submenu = props => {
-    const { items, onNavigate } = props;
+    const { items, onNavigate, activeCategoryId } = props;
     const classes = useStyle(defaultClasses, props.classes);
 
     const subMenus = items.map((category, index) => {
@@ -23,6 +24,7 @@ const Submenu = props => {
                 index={index}
                 key={category.id}
                 category={category}
+                activeCategoryId={activeCategoryId}
                 onNavigate={onNavigate}
             />
         );

@@ -1,42 +1,62 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
-import { getCategoryFilters } from '../../helpers';
+import { CATEGORY_FILTER_GROUP } from '../../constants.js';
+import { getCategoryFilters, getFilterFromSearch, getVisibleCategories } from '../../helpers';
 import MenuItem from './menuItem';
 
 import { useFilterSidebar } from '@magento/peregrine/lib/talons/FilterSidebar';
 import { useMegaMenu } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenu';
+import { GET_CATEGORIES } from 'modules/Header/categoryList.gql.js';
 
 import classes from './categoryFilterList.module.css';
 
 const CategoryFilterList = props => {
     const { filters } = props;
     const talonProps = useFilterSidebar({ filters });
-    const { filterApi, filterItems, filterNames, filterState, handleApply } = talonProps;
-
+    const { filterApi, filterItems, filterState, handleApply } = talonProps;
+    const { search } = useLocation();
     const mainNavRef = useRef(null);
-    const { megaMenuData: categories, subMenuState, handleNavigate } = useMegaMenu({ mainNavRef });
+    const { megaMenuData: categories } = useMegaMenu({
+        mainNavRef,
+        operations: { getMegaMenuQuery: GET_CATEGORIES }
+    });
 
-    const categoryFilters = getCategoryFilters(filterItems);
+    const categoryFilters = useMemo(() => getCategoryFilters(filterItems), [filterItems]);
+    const [selectedCategory] = useMemo(() => getFilterFromSearch(search, CATEGORY_FILTER_GROUP), [
+        search
+    ]);
 
-    const items = categories.children
-        ? categories.children.map(category => {
+    const handleNavigate = useCallback(
+        id => {
+            const item = { title: categoryFilters[id], value: id };
+            if (filterState) {
+                filterState.delete(CATEGORY_FILTER_GROUP);
+            }
+            filterApi.toggleItem({
+                group: CATEGORY_FILTER_GROUP,
+                item
+            });
+            handleApply();
+        },
+        [categoryFilters, filterApi, filterState, handleApply]
+    );
+
+    const visibleCategories =
+        categories && getVisibleCategories(categories?.children, categoryFilters);
+
+    const items = visibleCategories
+        ? visibleCategories.map(category => {
               return (
                   <MenuItem
                       category={category}
                       onNavigate={handleNavigate}
                       key={category.uid}
-                      subMenuState={subMenuState}
+                      activeCategoryId={selectedCategory && Number(selectedCategory.value)}
                   />
               );
           })
         : null;
-
-    const handleApplyCategoryFilter = useCallback(
-        (...args) => {
-            handleApply(...args);
-        },
-        [handleApply]
-    );
 
     return (
         <div ref={mainNavRef}>
