@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Form } from 'informed';
 import { array, arrayOf, shape, string } from 'prop-types';
 
@@ -16,13 +16,6 @@ const Filters = props => {
 
     const sidebarFilters = getSidebarFilters(filterItems);
 
-    const handleApplyFilter = useCallback(
-        (...args) => {
-            handleApply(...args);
-        },
-        [handleApply]
-    );
-
     const filtersList = useMemo(
         () =>
             Array.from(sidebarFilters, ([group, items]) => {
@@ -37,7 +30,7 @@ const Filters = props => {
 
                 const handleToggle = () => {
                     filterApi.toggleItem({ group, item });
-                    handleApplyFilter();
+                    handleApply();
                 };
 
                 return (
@@ -52,7 +45,7 @@ const Filters = props => {
                     </Form>
                 );
             }),
-        [filterNames, filterState, filterApi, sidebarFilters, handleApplyFilter]
+        [filterNames, filterState, filterApi, sidebarFilters, handleApply]
     );
 
     if (filtersList.length == 0) {

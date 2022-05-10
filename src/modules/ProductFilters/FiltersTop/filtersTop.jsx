@@ -8,7 +8,7 @@ import Icon from '@magento/venia-ui/lib/components/Icon';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 import Button from 'components/Button';
 import CurrentFilters from '../CurrentFilters';
-import { getPriceFromSearch, getTopFilters } from '../helpers';
+import { getFilterFromSearch, getTopFilters } from '../helpers';
 import FilterBlock from './filterBlock';
 import SortList from './SortList';
 
@@ -53,7 +53,7 @@ const TopBlock = props => {
     ]);
 
     // replace price filter values with custom full range from min to max
-    const priceState = useMemo(() => getPriceFromSearch(search), [search]);
+    const priceState = useMemo(() => getFilterFromSearch(search, 'price'), [search]);
 
     if (priceState.size) {
         queryState.set('price', priceState);
@@ -68,13 +68,6 @@ const TopBlock = props => {
     }, [filterApi, queryState]);
 
     const classes = useStyle(defaultClasses, props.classes);
-
-    const handleApplyFilter = useCallback(
-        (...args) => {
-            handleApply(...args);
-        },
-        [handleApply]
-    );
 
     const clearAll = queryState.size ? (
         <Button
@@ -138,7 +131,7 @@ const TopBlock = props => {
                     filterApi={filterApi}
                     filterNames={filterNames}
                     filterState={queryState}
-                    onRemove={handleApplyFilter}
+                    onRemove={handleApply}
                 />
                 {clearAll}
             </div>
