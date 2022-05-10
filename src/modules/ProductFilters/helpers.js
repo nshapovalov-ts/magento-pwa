@@ -1,9 +1,11 @@
-export const getPriceFromSearch = initialValue => {
-    const params = new URLSearchParams(initialValue);
+import { CATEGORY_FILTER_GROUP } from './constants.js';
+
+export const getFilterFromSearch = (search, group) => {
+    const params = new URLSearchParams(search);
     const uniqueKeys = new Set(params.keys());
     const item = new Set();
     for (const key of uniqueKeys) {
-        if (key.startsWith('price') && key.endsWith('[filter]')) {
+        if (key.startsWith(group) && key.endsWith('[filter]')) {
             for (const value of params.getAll(key)) {
                 const [first, second] = value.split(',');
                 const priceItem = { title: first, value: second };
@@ -79,7 +81,35 @@ export const getSidebarFilters = filters => {
 };
 
 export const getCategoryFilters = filters => {
-    const categoryFilters = filters.get('category_id');
+    const categoryFilters = filters.get(CATEGORY_FILTER_GROUP);
 
-    return categoryFilters;
+    const categoriesObject = categoryFilters.reduce((acc, category) => {
+        acc[category.value] = category.title;
+        return acc;
+    }, {});
+
+    return categoriesObject;
+};
+
+export const getVisibleCategories = (categories, filters) => {
+    if (!categories || !Array.isArray(categories)) {
+        return null;
+    }
+
+    const filterCategory = categories => {
+        return categories
+            .filter(category => !!filters[category.id])
+            .map(category => {
+                const newItem = { ...category };
+                if (newItem.children) {
+                    newItem.children = filterCategory(category.children);
+                }
+
+                return newItem;
+            });
+    };
+
+    const visibleCategories = filterCategory(categories);
+
+    return visibleCategories;
 };
