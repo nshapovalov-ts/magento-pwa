@@ -113,3 +113,21 @@ export const getVisibleCategories = (categories, filters) => {
 
     return visibleCategories;
 };
+
+const findActiveCategory = (category, activeCategoryId) => {
+    if (category.id === activeCategoryId) {
+        return category;
+    }
+
+    if (category.children) {
+        return category.children.find(category => findActiveCategory(category, activeCategoryId));
+    }
+};
+
+export const findActiveParent = (categories, activeCategoryId) => {
+    if (!activeCategoryId) {
+        return;
+    }
+
+    return categories.find(category => findActiveCategory(category, activeCategoryId));
+};
