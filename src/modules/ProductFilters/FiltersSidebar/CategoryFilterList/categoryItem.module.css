@@ -1,0 +1,28 @@
+.categoryItem {
+    padding-bottom: 8px;
+}
+
+.categoryItem_active {
+    composes: categoryItem;
+    font-weight: var(--venia-global-fontWeight-bold);
+}
+
+.categoryItem_active .button {
+    font-weight: var(--venia-global-fontWeight-bold);
+}
+
+.categoryName {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.button {
+    font-size: var(--venia-global-fontSize-200);
+    font-weight: var(--venia-global-fontWeight-normal);
+}
+
+.button:hover {
+    color: rgb(var(--venia-global-color-orange));
+}

@@ -1,9 +1,4 @@
-.submenu {
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.submenuItems {
+.subcategory {
     display: flex;
     flex-direction: column;
     font-weight: var(--venia-global-fontWeight-normal);

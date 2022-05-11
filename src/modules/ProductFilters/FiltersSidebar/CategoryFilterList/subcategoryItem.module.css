@@ -1,0 +1,46 @@
+.subcategoryItem {
+    padding: 0 0 10px 16px;
+}
+
+.subcategoryItem_active {
+    composes: subcategoryItem;
+}
+
+.subcategoryItem_active .button_active {
+    font-weight: var(--venia-global-fontWeight-bold);
+}
+
+.submenuChild {
+    padding: 10px 0 0 16px;
+}
+
+.subcategoryItemChild {
+    padding: 0 0 10px 10px;
+}
+
+.subcategoryItemChild .button_active {
+    font-weight: var(--venia-global-fontWeight-bold);
+}
+
+.subcategoryItemChild:hover {
+    color: rgb(var(--venia-global-color-orange));
+}
+
+.subcategoryItem .button:hover {
+    color: rgb(var(--venia-global-color-orange));
+}
+
+.subcategoryItem:last-child {
+    padding-bottom: 0;
+}
+
+.subcategoryItemChild:last-child {
+    padding-bottom: 0;
+}
+
+.subcategoryName {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

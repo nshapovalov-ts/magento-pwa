@@ -2,8 +2,13 @@ import React, { useCallback, useMemo, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { CATEGORY_FILTER_GROUP } from '../../constants.js';
-import { getCategoryFilters, getFilterFromSearch, getVisibleCategories } from '../../helpers';
-import MenuItem from './menuItem';
+import {
+    findActiveParent,
+    getCategoryFilters,
+    getFilterFromSearch,
+    getVisibleCategories
+} from '../../helpers';
+import CategoryItem from './categoryItem';
 
 import { useFilterSidebar } from '@magento/peregrine/lib/talons/FilterSidebar';
 import { useMegaMenu } from '@magento/peregrine/lib/talons/MegaMenu/useMegaMenu';
@@ -45,14 +50,21 @@ const CategoryFilterList = props => {
     const visibleCategories =
         categories && getVisibleCategories(categories?.children, categoryFilters);
 
+    const activeParent = useMemo(
+        () =>
+            findActiveParent(visibleCategories, selectedCategory && Number(selectedCategory.value)),
+        [visibleCategories, selectedCategory]
+    );
+
     const items = visibleCategories
         ? visibleCategories.map(category => {
               return (
-                  <MenuItem
+                  <CategoryItem
                       category={category}
                       onNavigate={handleNavigate}
                       key={category.uid}
                       activeCategoryId={selectedCategory && Number(selectedCategory.value)}
+                      activeParentId={activeParent?.id === category.id ? category.id : undefined}
                   />
               );
           })
