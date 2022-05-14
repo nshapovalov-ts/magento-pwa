@@ -123,6 +123,11 @@ export const DropdownButton = props => {
               }
           );
 
+    const confirmButtonText = formatMessage({
+        id: 'dropdownButton.confirmText',
+        defaultMessage: 'Apply'
+    });
+
     return (
         <>
             <button
@@ -163,7 +168,7 @@ export const DropdownButton = props => {
                     <Form {...formProps}>{children}</Form>
                     <div className={classes.applyButton}>
                         <Button variant="contained" onClick={handleApply}>
-                            Apply
+                            {confirmButtonText}
                         </Button>
                     </div>
                 </div>

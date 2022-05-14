@@ -43,6 +43,11 @@ const FilterBlock = memo(props => {
         }
     );
 
+    const clearText = formatMessage({
+        id: 'filterModal.action',
+        defaultMessage: 'Clear All'
+    });
+
     const handleClear = () => {
         if (filterState) {
             filterState.forEach(item => filterApi.removeItem({ group, item }));
@@ -66,7 +71,7 @@ const FilterBlock = memo(props => {
                     onClick={handleClear}
                     disabled={!filterState}
                 >
-                    Clear All
+                    {clearText}
                 </Button>
             </div>
             {withSearch && (
