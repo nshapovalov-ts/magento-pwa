@@ -16,11 +16,18 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding-left: 18px;
+    position: relative;
+}
+
+.dropdownIcon {
+    position: absolute;
+    left: -10px;
 }
 
 .button {
     font-size: var(--venia-global-fontSize-200);
-    font-weight: var(--venia-global-fontWeight-normal);
+    text-align: left;
 }
 
 .button:hover {

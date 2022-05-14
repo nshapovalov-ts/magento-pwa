@@ -1,5 +1,6 @@
 .subcategoryItem {
     padding: 0 0 10px 16px;
+    text-align: left;
 }
 
 .subcategoryItem_active {
@@ -15,11 +16,7 @@
 }
 
 .subcategoryItemChild {
-    padding: 0 0 10px 10px;
-}
-
-.subcategoryItemChild .button_active {
-    font-weight: var(--venia-global-fontWeight-bold);
+    padding: 0 0 10px 16px;
 }
 
 .subcategoryItemChild:hover {
@@ -43,4 +40,19 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding-left: 18px;
+    position: relative;
+}
+
+.dropdownIcon {
+    position: absolute;
+    left: -10px;
+}
+
+.button {
+    text-align: left;
+}
+
+.button_active {
+    font-weight: var(--venia-global-fontWeight-bold);
 }

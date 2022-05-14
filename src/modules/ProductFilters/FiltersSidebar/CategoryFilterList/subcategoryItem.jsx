@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown, ChevronRight } from 'react-feather';
 import PropTypes from 'prop-types';
 
-import Icon from '@magento/venia-ui/lib/components/Icon';
 import Button from 'components/Button';
+import DropdownIcon from './dropdownIcon';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
@@ -73,18 +72,18 @@ const SubcategoryItem = props => {
             ) : null;
     }
 
+    const dropdownToggle = () => {
+        setOpen(!open);
+    };
+
     return (
         <li className={subcategoryItemClasses}>
             <div className={classes.subcategoryName}>
-                {category.children.length > 0 ? (
-                    <Icon
-                        src={open ? ChevronDown : ChevronRight}
-                        size={18}
-                        onClick={() => setOpen(!open)}
-                    />
-                ) : (
-                    <span style={{ width: 18 }} />
-                )}
+                <span className={classes.dropdownIcon}>
+                    {category.children.length > 0 && (
+                        <DropdownIcon isOpen={open} onClick={dropdownToggle} />
+                    )}
+                </span>
 
                 <Button
                     variant="text"
@@ -94,7 +93,7 @@ const SubcategoryItem = props => {
                     data-cy="VerticalMenu-SubcategoryItem-button"
                     onClick={() => onNavigate(category.id)}
                 >
-                    <span>{category.name}</span>
+                    {category.name}
                 </Button>
             </div>
             {open && children}
