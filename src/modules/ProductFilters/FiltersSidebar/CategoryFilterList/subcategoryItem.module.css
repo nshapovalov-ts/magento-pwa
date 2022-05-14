@@ -54,5 +54,6 @@
 }
 
 .button_active {
+    composes: button;
     font-weight: var(--venia-global-fontWeight-bold);
 }

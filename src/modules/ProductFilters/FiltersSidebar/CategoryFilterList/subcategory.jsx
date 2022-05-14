@@ -13,10 +13,9 @@ import defaultClasses from './subcategory.module.css';
  * @param {array} props.items - categories to display
  * @param {function} props.onNavigate - function called when clicking on button
  * @param {Number} props.activeCategoryId - id of active category
- * @param {Number} props.activeParentId - parent active category id
  */
 const Subcategory = props => {
-    const { items, onNavigate, activeCategoryId, activeParentId } = props;
+    const { items, onNavigate, activeCategoryId } = props;
     const classes = useStyle(defaultClasses, props.classes);
 
     const subcategoryItems = items.map((category, index) => {
@@ -26,7 +25,6 @@ const Subcategory = props => {
                 key={category.id}
                 category={category}
                 activeCategoryId={activeCategoryId}
-                activeParentId={activeParentId}
                 onNavigate={onNavigate}
             />
         );
@@ -46,6 +44,5 @@ Subcategory.propTypes = {
         })
     ).isRequired,
     onNavigate: PropTypes.func.isRequired,
-    activeCategoryId: PropTypes.number,
-    activeParentId: PropTypes.number
+    activeCategoryId: PropTypes.number
 };

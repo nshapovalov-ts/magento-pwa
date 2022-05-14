@@ -15,27 +15,27 @@ import defaultClasses from './categoryItem.module.css';
  *
  * @param {Category} props.category
  * @param {Number} props.activeCategoryId - id of active category
- * @param {Number} props.activeParentId - active parent category id
+ * @param {Bool} props.isParentActive - is parent category active
  * @param {function} props.onNavigate - function called when clicking on button
  */
 const CategoryItem = props => {
-    const { category, onNavigate, activeCategoryId, activeParentId } = props;
+    const { category, onNavigate, activeCategoryId, isParentActive } = props;
     const classes = useStyle(defaultClasses, props.classes);
 
     const categoryItemClasses =
         category.id === activeCategoryId ? classes.categoryItem_active : classes.categoryItem;
 
-    const [open, setOpen] = useState(activeParentId === category.id);
+    const [open, setOpen] = useState(activeCategoryId === category.id);
 
     const prevActiveCategoryId = usePrevious(activeCategoryId);
-    const prevActiveParentId = usePrevious(activeParentId);
+    const prevParentActive = usePrevious(isParentActive);
 
     // close current category on parent category change or filters clear
     useEffect(() => {
-        if (prevActiveParentId && !activeParentId) {
+        if (prevParentActive && !isParentActive) {
             setOpen(false);
         }
-    }, [prevActiveParentId, activeParentId]);
+    }, [prevParentActive, isParentActive]);
 
     // show subcategory after parent category select
     useEffect(() => {
@@ -50,10 +50,9 @@ const CategoryItem = props => {
                 items={category.children}
                 onNavigate={onNavigate}
                 activeCategoryId={activeCategoryId}
-                activeParentId={activeParentId}
             />
         ) : null;
-    }, [category, onNavigate, activeCategoryId, activeParentId]);
+    }, [category, onNavigate, activeCategoryId]);
 
     const dropdownToggle = () => {
         setOpen(!open);
@@ -91,5 +90,5 @@ CategoryItem.propTypes = {
     }).isRequired,
     onNavigate: PropTypes.func.isRequired,
     activeCategoryId: PropTypes.number,
-    activeParentId: PropTypes.number
+    isParentActive: PropTypes.bool.isRequired
 };

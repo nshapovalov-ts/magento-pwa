@@ -64,7 +64,7 @@ const CategoryFilterList = props => {
                       onNavigate={handleNavigate}
                       key={category.uid}
                       activeCategoryId={selectedCategory && Number(selectedCategory.value)}
-                      activeParentId={activeParent?.id === category.id ? category.id : undefined}
+                      isParentActive={activeParent?.id === category.id}
                   />
               );
           })
