@@ -1,0 +1,9 @@
+.root {
+    transform: rotate(0deg);
+    transition: transform 0.1s linear;
+}
+
+.root_active {
+    transform: rotate(90deg);
+    transition: transform 0.1s linear;
+}
