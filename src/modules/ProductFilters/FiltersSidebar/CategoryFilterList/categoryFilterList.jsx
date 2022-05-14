@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useRef } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useLocation } from 'react-router-dom';
 
 import { CATEGORY_FILTER_GROUP } from '../../constants.js';
@@ -74,7 +75,10 @@ const CategoryFilterList = props => {
         <div ref={mainNavRef}>
             <div className={classes.header}>
                 <h2 data-cy="FilterSidebar-headerTitle" className={classes.headerTitle}>
-                    Category
+                    <FormattedMessage
+                        id={'productFilters.categoryListTitle'}
+                        defaultMessage={'Category'}
+                    />
                 </h2>
             </div>
             <ul className={classes.categories}>{items}</ul>

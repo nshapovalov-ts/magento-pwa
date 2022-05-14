@@ -349,6 +349,7 @@
     "productDetail.outOfStock": "Out of stock",
     "productDetail.skuNumber": "SKU # {sku}",
     "productDetail.unknown": "Unknown",
+    "productFilters.categoryListTitle": "Category",
     "productForm.dataError": "Something went wrong. Please refresh and try again.",
     "productForm.fetchingProductOptions": "Fetching Product Options...",
     "productForm.quantity": "Quantity",
