@@ -59,7 +59,7 @@ const CategoryItem = props => {
     };
 
     return (
-        <li className={categoryItemClasses} data-cy="categorySearch-categoryItem">
+        <li className={categoryItemClasses} data-cy="FilterSidebar-categoryItem">
             <div className={classes.categoryName}>
                 <span className={classes.dropdownIcon}>
                     {category.children.length > 0 && (
@@ -69,7 +69,7 @@ const CategoryItem = props => {
                 <Button
                     className={classes.button}
                     variant="text"
-                    data-cy="categorySearch-categoryItem-button"
+                    data-cy="FilterSidebar-categoryItem-button"
                     onClick={() => onNavigate(category.id)}
                 >
                     {category.name}

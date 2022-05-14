@@ -52,7 +52,7 @@ const SubcategoryItem = props => {
                     <Button
                         variant="text"
                         className={isSubCategoryActive ? classes.button_active : classes.button}
-                        data-cy="VerticalMenu-SubcategoryItem-button"
+                        data-cy="FilterSidebar-SubcategoryItem-button"
                         onClick={() => onNavigate(id)}
                     >
                         {name}
@@ -89,7 +89,7 @@ const SubcategoryItem = props => {
                     className={
                         activeCategoryId === category.id ? classes.button_active : classes.button
                     }
-                    data-cy="VerticalMenu-SubcategoryItem-button"
+                    data-cy="FilterSidebar-SubcategoryItem-button"
                     onClick={() => onNavigate(category.id)}
                 >
                     {category.name}

@@ -51,12 +51,12 @@ const MenuItem = props => {
         : {};
 
     return (
-        <li className={menuItemClasses} data-cy="productsCategory-menuItem">
+        <li className={menuItemClasses} data-cy="FilterSidebar-menuItem">
             <Link
                 {...linkAttributes}
                 onKeyDown={handleKeyDown}
                 className={isActive ? classes.menuItemLinkActive : classes.menuLink}
-                data-cy="productsCategory-menuItem-link"
+                data-cy="FilterSidebar-menuItem-link"
                 to={categoryUrl}
                 onClick={onNavigate}
             >

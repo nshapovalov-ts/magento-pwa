@@ -19,9 +19,6 @@ import { getStateFromSearch } from '@magento/peregrine/lib/talons/FilterModal/he
 import defaultClasses from './filtersTop.module.css';
 
 const sampleTypes = (index, group) => {
-    if (index === 2) {
-        return 'radio';
-    }
     if (group === 'price') {
         return 'slider';
     }
