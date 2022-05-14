@@ -59,6 +59,9 @@ export const getFilterLabelText = ({ defaultTitle, groupName }) => {
 // All filters except yes/no displays to top
 export const getTopFilters = filters => {
     const topFilters = new Map(filters);
+
+    topFilters.delete('category_id');
+
     topFilters.forEach((item, key) => {
         if (['0', '1'].includes(item[0].title)) {
             topFilters.delete(key);
