@@ -18,33 +18,6 @@ const SubmenuColumn = props => {
     const classes = useStyle(defaultClasses, props.classes);
 
     const categoryUrl = resourceUrl(`/${category.url_path}${categoryUrlSuffix || ''}`);
-    let children = null;
-
-    if (category.children.length) {
-        const childrenItems = category.children.map((subCategory, index) => {
-            const { url_path, isActive, name } = subCategory;
-            const categoryUrl = resourceUrl(`/${url_path}${categoryUrlSuffix || ''}`);
-
-            // setting keyboardProps if it is last child of that category
-            const keyboardProps = index === category.children.length - 1 ? props.keyboardProps : {};
-
-            return (
-                <li key={index} className={classes.submenuChildItem}>
-                    <Link
-                        {...keyboardProps}
-                        className={isActive ? classes.linkActive : classes.link}
-                        data-cy="VerticalMenu-SubmenuColumn-link"
-                        to={categoryUrl}
-                        onClick={onNavigate}
-                    >
-                        {name}
-                    </Link>
-                </li>
-            );
-        });
-
-        children = <ul className={classes.submenuChild}>{childrenItems}</ul>;
-    }
 
     // setting keyboardProps if category does not have any sub-category
     const keyboardProps = category.children.length ? {} : props.keyboardProps;
@@ -63,7 +36,6 @@ const SubmenuColumn = props => {
             >
                 <span className={classes.heading}>{category.name}</span>
             </Link>
-            {children}
         </div>
     );
 };
