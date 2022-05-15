@@ -90,6 +90,10 @@
     -webkit-appearance: none;
 }
 
+:global(button:focus) {
+    outline: 0;
+}
+
 :global(button:disabled) {
     cursor: default;
     touch-action: none;

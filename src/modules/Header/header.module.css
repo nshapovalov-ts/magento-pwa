@@ -93,7 +93,7 @@
 
 /* >= 1024 screen styles */
 .menuDropdown {
-    max-width: 280px;
+    max-width: 250px;
     align-items: center;
     position: relative;
     composes: lg_block from global;
