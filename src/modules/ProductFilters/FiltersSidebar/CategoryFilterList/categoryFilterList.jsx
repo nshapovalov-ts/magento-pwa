@@ -73,15 +73,19 @@ const CategoryFilterList = props => {
 
     return (
         <div ref={mainNavRef}>
-            <div className={classes.header}>
-                <h2 data-cy="FilterSidebar-headerTitle" className={classes.headerTitle}>
-                    <FormattedMessage
-                        id={'productFilters.categoryListTitle'}
-                        defaultMessage={'Category'}
-                    />
-                </h2>
-            </div>
-            <ul className={classes.categories}>{items}</ul>
+            {items.length > 0 && (
+                <>
+                    <div className={classes.header}>
+                        <h2 data-cy="FilterSidebar-headerTitle" className={classes.headerTitle}>
+                            <FormattedMessage
+                                id={'productFilters.categoryListTitle'}
+                                defaultMessage={'Category'}
+                            />
+                        </h2>
+                    </div>
+                    <ul className={classes.categories}>{items}</ul>
+                </>
+            )}
         </div>
     );
 };

@@ -86,6 +86,10 @@ export const getSidebarFilters = filters => {
 export const getCategoryFilters = filters => {
     const categoryFilters = filters.get(CATEGORY_FILTER_GROUP);
 
+    if (!categoryFilters) {
+        return {};
+    }
+
     const categoriesObject = categoryFilters.reduce((acc, category) => {
         acc[category.value] = category.title;
         return acc;
