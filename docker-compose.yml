@@ -4,13 +4,9 @@ services:
     image: node:slim
     volumes:
       - ./:/app
-  nginx:
-    # используем последний стабильный образ nginx
-    image: nginx:latest
-    # маршрутизируем порты
-    ports:
-      - "8081:80"
-      - "443:443"
-    # монтируем директории, слева директории на основной машине, справа - куда они монтируются в контейнере
-    volumes:
-      - ./dist/:/usr/share/nginx/html
+    command: >
+      sh -c "cd /app &&
+             export NODE_OPTIONS=--openssl-legacy-provider &&
+             yarn &&
+             yarn build &&
+             yarn install --production --ignore-scripts --prefer-offline"
