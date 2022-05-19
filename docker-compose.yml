@@ -9,4 +9,5 @@ services:
              export NODE_OPTIONS=--openssl-legacy-provider &&
              yarn &&
              yarn build &&
-             yarn install --production --ignore-scripts --prefer-offline"
+             yarn install --production --ignore-scripts --prefer-offline &&
+             exit"
