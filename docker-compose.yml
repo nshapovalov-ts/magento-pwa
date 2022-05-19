@@ -1,0 +1,16 @@
+version: '3'
+services:
+  pwa_5:
+    image: node:slim
+    volumes:
+      - ./:/app
+  nginx:
+    # используем последний стабильный образ nginx
+    image: nginx:latest
+    # маршрутизируем порты
+    ports:
+      - "8081:80"
+      - "443:443"
+    # монтируем директории, слева директории на основной машине, справа - куда они монтируются в контейнере
+    volumes:
+      - ./dist/:/usr/share/nginx/html
