@@ -1,12 +1,7 @@
 version: '3'
 services:
   pwa_5:
+    tty: true
     image: node:slim
     volumes:
       - ./:/app
-    command: >
-      sh -c "cd /app &&
-             export NODE_OPTIONS=--openssl-legacy-provider &&
-             yarn &&
-             yarn build &&
-             yarn install --production --ignore-scripts --prefer-offline"
